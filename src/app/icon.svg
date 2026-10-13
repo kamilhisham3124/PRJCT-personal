@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="4" fill="#12140F" stroke="#1F6032" stroke-width="2"/>
+  <text x="4" y="9" font-family="monospace" font-size="6" fill="#E9D71B">19</text>
+  <text x="16" y="22" font-family="sans-serif" font-weight="bold" font-size="14" fill="#EDEAE1" text-anchor="middle">Ka</text>
+</svg>
