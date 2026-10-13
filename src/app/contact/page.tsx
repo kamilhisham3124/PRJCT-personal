@@ -11,14 +11,14 @@ export default function ContactPage() {
     <div className="flex flex-col gap-8">
       <header className="border-b border-structural pb-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <span className="text-xs font-mono uppercase text-text-secondary">
-            Contact Interface / RT-08
+          <span className="text-xs font-mono uppercase text-accent-chemical font-bold tracking-wider">
+            [ CONTACT INTERFACE // DIRECT TRANSMISSION PROTOCOL ]
           </span>
-          <div className="font-marginalia text-annotation text-text-secondary">
+          <div className="font-marginalia text-annotation text-accent-chemical">
             // direct server action: 0 client-side credential exposure
           </div>
         </div>
-        <h1 className="text-3xl font-bold font-display text-text-primary mt-1">
+        <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">
           Initiate Direct Technical Inquiry
         </h1>
         <p className="text-sm text-text-secondary mt-2 max-w-2xl leading-relaxed">
@@ -33,8 +33,8 @@ export default function ContactPage() {
 
         {/* Contact Coordinates & Privacy Governance */}
         <div className="flex flex-col gap-6">
-          <section className="border-structural bg-surface-secondary p-6">
-            <h2 className="text-xs font-mono uppercase text-text-secondary mb-3 border-b border-structural pb-2">
+          <section className="border-element bg-surface-secondary p-6">
+            <h2 className="text-xs font-mono uppercase text-accent-chemical font-bold mb-3 border-b border-structural pb-2">
               Direct Verified Coordinates
             </h2>
             <div className="space-y-3 font-mono text-xs">
@@ -42,7 +42,7 @@ export default function ContactPage() {
                 <span className="text-text-secondary block">Email:</span>
                 <a
                   href={`mailto:${resume.contact.email}`}
-                  className="font-bold text-text-primary underline hover:text-text-secondary"
+                  className="font-bold text-accent-chemical underline hover:text-text-primary"
                 >
                   {resume.contact.email}
                 </a>
@@ -59,7 +59,7 @@ export default function ContactPage() {
                   href={resume.contact.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-text-primary underline hover:text-text-secondary"
+                  className="font-bold text-accent-chemical underline hover:text-text-primary"
                 >
                   {resume.contact.github}
                 </a>
@@ -70,7 +70,7 @@ export default function ContactPage() {
                   href={resume.contact.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-text-primary underline hover:text-text-secondary"
+                  className="font-bold text-accent-chemical underline hover:text-text-primary"
                 >
                   {resume.contact.linkedin}
                 </a>
@@ -78,8 +78,8 @@ export default function ContactPage() {
             </div>
           </section>
 
-          <section className="border-structural bg-surface-primary p-6">
-            <h2 className="text-xs font-mono uppercase text-text-secondary mb-2">
+          <section className="border-element bg-surface-secondary p-6">
+            <h2 className="text-xs font-mono uppercase text-accent-chemical font-bold mb-2">
               Privacy &amp; Data Rights Notice (DOC-21)
             </h2>
             <p className="text-xs text-text-secondary font-mono leading-relaxed">

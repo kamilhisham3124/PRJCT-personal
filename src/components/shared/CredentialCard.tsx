@@ -29,18 +29,18 @@ export function CredentialCard({
         className="border-structural bg-surface-secondary p-4"
         style={{ minHeight: "130px" }}
       >
-        <div className="h-4 w-1/3 bg-surface-primary border-structural animate-pulse mb-3" />
-        <div className="h-4 w-3/4 bg-surface-primary border-structural animate-pulse mb-2" />
-        <div className="h-4 w-1/2 bg-surface-primary border-structural animate-pulse" />
+        <div className="h-4 w-1/3 bg-surface-primary border-element animate-pulse mb-3" />
+        <div className="h-4 w-3/4 bg-surface-primary border-element animate-pulse mb-2" />
+        <div className="h-4 w-1/2 bg-surface-primary border-element animate-pulse" />
       </div>
     );
   }
 
   if (state === "error") {
     return (
-      <div className="border-structural bg-surface-secondary p-4 border-l-4 border-l-accent-signal">
-        <div className="text-xs font-mono uppercase text-text-secondary mb-1">
-          Git Credential Verification
+      <div className="border-element bg-surface-secondary p-4 border-l-4 border-l-accent-alert">
+        <div className="text-xs font-mono uppercase text-accent-alert mb-1 font-bold">
+          [ GIT CRYPTOGRAPHIC VERIFICATION // DEGRADED ]
         </div>
         <p className="text-xs text-text-secondary">
           Live commit telemetry is temporarily unavailable for this repository.
@@ -53,7 +53,7 @@ export function CredentialCard({
     return (
       <div className="border-structural bg-surface-secondary p-4">
         <div className="text-xs font-mono uppercase text-text-secondary mb-1">
-          Git Credential Verification
+          [ GIT CREDENTIAL VERIFICATION ]
         </div>
         <p className="text-xs text-text-secondary">
           Zero public commits detected in the queried window.
@@ -67,25 +67,25 @@ export function CredentialCard({
   return (
     <article
       aria-labelledby={titleId}
-      className="border-structural bg-surface-secondary p-4 flex flex-col gap-3"
+      className="border-element bg-surface-secondary p-4 flex flex-col gap-3"
     >
       <div className="flex items-center justify-between border-b border-structural pb-2">
-        <h3 id={titleId} className="text-xs font-mono uppercase text-text-secondary">
-          Git Cryptographic Evidence
+        <h3 id={titleId} className="text-xs font-mono uppercase text-accent-chemical font-bold">
+          [ GIT CRYPTOGRAPHIC PROOF ]
         </h3>
         {isVerified && (
           <span
-            className="border-structural bg-surface-primary px-2 py-0.5 text-xs font-mono text-text-primary"
+            className="border-element bg-surface-primary px-2 py-0.5 text-[10px] font-mono text-accent-barrel font-bold"
             aria-label="Signed commit"
           >
-            [Signed commit]
+            [SIGNED COMMIT]
           </span>
         )}
       </div>
 
       <div className="text-xs font-mono">
-        <span className="text-text-secondary">Commit: </span>
-        <span className="font-bold text-text-primary">{shortSha}</span>
+        <span className="text-text-secondary">COMMIT SHA: </span>
+        <span className="font-bold text-accent-chemical">{shortSha}</span>
         {authoredDate && (
           <span className="text-text-secondary ml-2">
             ({new Date(authoredDate).toLocaleDateString()})
@@ -105,9 +105,9 @@ export function CredentialCard({
             href={previewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block text-xs font-mono underline text-text-primary hover:text-text-secondary"
+            className="inline-block text-xs font-mono underline text-accent-chemical hover:text-text-primary"
           >
-            Inspect Repository &gt;
+            Inspect GitHub Repository &gt;
           </a>
         </div>
       )}

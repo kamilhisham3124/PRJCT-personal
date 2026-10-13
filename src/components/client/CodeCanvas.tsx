@@ -44,14 +44,14 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
     <div
       role="group"
       aria-label="Interactive layout demonstration"
-      className="border-structural bg-surface-secondary p-4 md:p-6"
+      className="border-element bg-surface-secondary p-4 md:p-6"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-structural pb-4 mb-4">
         <div>
-          <span className="text-xs font-mono uppercase text-text-secondary block">
-            Architecture Sandbox
+          <span className="text-xs font-mono uppercase text-accent-chemical font-bold block">
+            [ ARCHITECTURE SANDBOX // STATE ENGINE ]
           </span>
-          <span className="text-sm font-bold text-text-primary">
+          <span className="text-sm font-bold text-text-primary font-display">
             Component Composition Engine
           </span>
         </div>
@@ -63,21 +63,21 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
               role="button"
               aria-pressed={layout === mode}
               onClick={() => handleLayoutSelect(mode)}
-              className={`px-3 py-1.5 text-xs font-mono border-structural ${
+              className={`px-3 py-1.5 text-xs font-mono border transition-colors ${
                 layout === mode
-                  ? "bg-text-primary text-surface-primary font-bold"
-                  : "bg-surface-primary text-text-primary hover:bg-surface-secondary"
+                  ? "border-element bg-accent-element text-text-primary font-bold"
+                  : "border-structural bg-surface-primary text-text-secondary hover:text-text-primary hover:border-element"
               }`}
             >
-              {mode.toUpperCase()}
+              [{mode.toUpperCase()}]
             </button>
           ))}
           <button
             type="button"
             onClick={reset}
-            className="px-3 py-1.5 text-xs font-mono border-structural bg-surface-primary text-text-secondary hover:text-text-primary"
+            className="px-3 py-1.5 text-xs font-mono border-structural bg-surface-primary text-text-secondary hover:text-accent-chemical"
           >
-            RESET
+            [RESET]
           </button>
         </div>
       </div>
@@ -86,12 +86,12 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
         {SAMPLE_MODULES.map((item, idx) => (
           <div
             key={item.id}
-            className={`p-3 border-structural bg-surface-primary transition-all duration-150 ${
+            className={`p-3 border-element bg-surface-primary transition-all duration-150 ${
               layout === "split" && idx < 2 ? "md:col-span-2" : ""
             }`}
           >
-            <div className="text-xs font-mono text-text-secondary">
-              0{idx + 1} / NODE
+            <div className="text-[10px] font-mono text-accent-chemical">
+              0{idx + 1} // CIRCUIT NODE
             </div>
             <div className="text-sm font-bold font-mono text-text-primary">
               {item.label}
@@ -105,7 +105,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
 
       {history.length > 0 && (
         <div className="mt-4 pt-3 border-t border-structural text-xs font-mono text-text-secondary">
-          <span>State History ({history.length}/10): </span>
+          <span className="text-accent-chemical">STATE HISTORY ({history.length}/10): </span>
           <span>{history.join(" &gt; ")}</span>
         </div>
       )}

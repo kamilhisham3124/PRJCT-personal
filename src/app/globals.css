@@ -1,30 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Chivo:wght@700;900&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --surface-primary: #F5F3EE;
-  --surface-secondary: #EAE6DC;
-  --text-primary: #1A1812;
-  --text-secondary: #5C564A;
-  --border-structural: #C9C3B4;
-  --accent-signal: #C4461D;
-  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+  --surface-primary: #12140F;
+  --surface-secondary: #181C15;
+  --surface-elevated: #1F261C;
+  --border-structural: #283323;
+  --border-highlight: #1F6032;
+  --text-primary: #EDEAE1;
+  --text-secondary: #9BA493;
+  --accent-signal: #E06A3C;
+  --accent-element: #1F6032;
+  --accent-barrel: #00892B;
+  --accent-vapor: #032202;
+  --accent-chemical: #E9D71B;
+  --accent-sky: #87CEEB;
+  --accent-gold: #D4AF37;
+  --accent-alert: #CE1126;
+  --font-chivo: 'Chivo', -apple-system, sans-serif;
+  --font-fraunces: 'Fraunces', Georgia, serif;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, monospace;
   --font-caveat: 'Caveat', cursive;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --surface-primary: #15130F;
-    --surface-secondary: #211E18;
-    --text-primary: #EDEAE1;
-    --text-secondary: #A8A294;
-    --border-structural: #3A362C;
-    --accent-signal: #E06A3C;
-  }
 }
 
 html,
@@ -39,31 +39,30 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Accessible focus rings using reserved accent-signal token (DOC-18, DOC-22) */
 :focus-visible {
-  outline: 2px solid var(--accent-signal);
+  outline: 2px solid var(--accent-chemical);
   outline-offset: 2px;
 }
 
-/* Tabular figures for mono-face to prevent digit-width layout shift (DOC-18 Section 2.1) */
 .font-mono {
   font-family: var(--font-jetbrains-mono);
   font-variant-numeric: tabular-nums;
 }
 
 .font-display {
-  font-family: var(--font-inter);
+  font-family: var(--font-chivo);
+}
+
+.font-title {
+  font-family: var(--font-fraunces);
 }
 
 .font-marginalia {
   font-family: var(--font-caveat);
 }
 
-/* Reduced motion honoring (DOC-19 Section 4.0) */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -71,7 +70,28 @@ body {
   }
 }
 
-/* Industrial 1px structural border utility */
 .border-structural {
   border: 1px solid var(--border-structural);
+}
+
+.border-element {
+  border: 1px solid var(--border-highlight);
+}
+
+.border-element-2 {
+  border: 2px solid var(--border-highlight);
+}
+
+.hazard-stripe {
+  background-image: repeating-linear-gradient(45deg, #1F6032, #1F6032 6px, #12140F 6px, #12140F 12px);
+}
+
+.hazard-stripe-yellow {
+  background-image: repeating-linear-gradient(45deg, #E9D71B, #E9D71B 6px, #12140F 6px, #12140F 12px);
+}
+
+.grid-mesh {
+  background-size: 32px 32px;
+  background-image: linear-gradient(to right, rgba(31, 96, 50, 0.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(31, 96, 50, 0.08) 1px, transparent 1px);
 }

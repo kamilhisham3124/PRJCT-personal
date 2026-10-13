@@ -23,10 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen bg-surface-primary text-text-primary antialiased">
+      <body className="flex flex-col min-h-screen bg-surface-primary text-text-primary antialiased grid-mesh selection:bg-accent-element selection:text-text-primary">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-text-primary focus:text-surface-primary focus:font-mono focus:text-xs"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent-element focus:text-text-primary focus:font-mono focus:text-xs border-element"
         >
           Skip to main content
         </a>

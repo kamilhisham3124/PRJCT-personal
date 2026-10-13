@@ -35,20 +35,21 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="border-structural bg-surface-secondary p-4 md:p-6 flex flex-col gap-4 max-w-xl"
+      className="border-element bg-surface-secondary p-4 md:p-6 flex flex-col gap-4 max-w-xl relative overflow-hidden"
     >
+      <div className="absolute top-0 right-0 w-20 h-1 hazard-stripe" />
       <div className="border-b border-structural pb-2">
-        <h2 className="text-xs font-mono uppercase text-text-secondary">
-          Direct Transmission Interface
+        <h2 className="text-xs font-mono uppercase text-accent-chemical font-bold">
+          [ DIRECT TRANSMISSION PROTOCOL ]
         </h2>
-        <p className="text-sm font-bold text-text-primary">
+        <p className="text-sm font-bold text-text-primary font-display">
           Send Qualified Technical Inquiry
         </p>
       </div>
 
       <div>
         <label htmlFor="field-name" className="block text-xs font-mono text-text-secondary mb-1">
-          Full Name
+          FULL NAME //
         </label>
         <input
           id="field-name"
@@ -57,10 +58,10 @@ export function ContactForm() {
           required
           aria-invalid={Boolean(fieldErrors.name)}
           aria-describedby={fieldErrors.name ? "err-name" : undefined}
-          className="w-full bg-surface-primary border-structural p-2 text-sm text-text-primary font-mono focus:outline-none"
+          className="w-full bg-surface-primary border-structural focus:border-highlight p-2 text-sm text-text-primary font-mono focus:outline-none"
         />
         {fieldErrors.name && (
-          <p id="err-name" className="text-xs font-mono text-accent-signal mt-1">
+          <p id="err-name" className="text-xs font-mono text-accent-alert mt-1">
             {fieldErrors.name}
           </p>
         )}
@@ -68,7 +69,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="field-email" className="block text-xs font-mono text-text-secondary mb-1">
-          Work Email
+          WORK EMAIL //
         </label>
         <input
           id="field-email"
@@ -77,10 +78,10 @@ export function ContactForm() {
           required
           aria-invalid={Boolean(fieldErrors.email)}
           aria-describedby={fieldErrors.email ? "err-email" : undefined}
-          className="w-full bg-surface-primary border-structural p-2 text-sm text-text-primary font-mono focus:outline-none"
+          className="w-full bg-surface-primary border-structural focus:border-highlight p-2 text-sm text-text-primary font-mono focus:outline-none"
         />
         {fieldErrors.email && (
-          <p id="err-email" className="text-xs font-mono text-accent-signal mt-1">
+          <p id="err-email" className="text-xs font-mono text-accent-alert mt-1">
             {fieldErrors.email}
           </p>
         )}
@@ -88,7 +89,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="field-message" className="block text-xs font-mono text-text-secondary mb-1">
-          Technical Scope / Message
+          TECHNICAL SCOPE / MESSAGE //
         </label>
         <textarea
           id="field-message"
@@ -97,10 +98,10 @@ export function ContactForm() {
           required
           aria-invalid={Boolean(fieldErrors.message)}
           aria-describedby={fieldErrors.message ? "err-message" : undefined}
-          className="w-full bg-surface-primary border-structural p-2 text-sm text-text-primary font-mono focus:outline-none"
+          className="w-full bg-surface-primary border-structural focus:border-highlight p-2 text-sm text-text-primary font-mono focus:outline-none"
         />
         {fieldErrors.message && (
-          <p id="err-message" className="text-xs font-mono text-accent-signal mt-1">
+          <p id="err-message" className="text-xs font-mono text-accent-alert mt-1">
             {fieldErrors.message}
           </p>
         )}
@@ -109,20 +110,20 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={formState === "submitting"}
-        className="w-full p-2.5 bg-text-primary text-surface-primary font-mono text-xs uppercase tracking-wider font-bold border-structural hover:opacity-90 disabled:opacity-50"
+        className="w-full p-2.5 bg-accent-element text-text-primary font-mono text-xs uppercase tracking-wider font-bold border-element hover:bg-accent-barrel transition-colors disabled:opacity-50"
       >
-        {formState === "submitting" ? "Transmitting..." : "Submit Message"}
+        {formState === "submitting" ? "[ TRANSMITTING PROBE... ]" : "[ TRANSMIT MESSAGE ]"}
       </button>
 
       {formState === "success" && (
-        <div className="p-3 bg-surface-primary border-structural text-xs font-mono text-text-primary">
-          [Transmitted]: Message persisted to database with verified timestamp.
+        <div className="p-3 bg-surface-primary border-element text-xs font-mono text-accent-barrel font-bold">
+          [TRANSMITTED]: Message persisted to database with verified timestamp.
         </div>
       )}
 
       {formState === "error" && (
-        <div className="p-3 bg-surface-primary border-structural border-l-4 border-l-accent-signal text-xs font-mono text-accent-signal">
-          [Failure]: Service currently unreachable. Please contact directly via email.
+        <div className="p-3 bg-surface-primary border-element border-l-4 border-l-accent-alert text-xs font-mono text-accent-alert">
+          [FAILURE]: Service currently unreachable. Please contact directly via email.
         </div>
       )}
 

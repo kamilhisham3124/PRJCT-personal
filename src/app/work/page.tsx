@@ -23,37 +23,37 @@ export default async function WorkPage() {
     <div className="flex flex-col gap-8">
       <div className="border-b border-structural pb-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <span className="text-xs font-mono uppercase text-text-secondary">
-            Work Artifacts / Systems Track
+          <span className="text-xs font-mono uppercase text-accent-chemical font-bold tracking-wider">
+            [ ARTIFACT DOSSIER // PRODUCTION SYSTEMS TRACK ]
           </span>
-          <div className="font-marginalia text-annotation text-text-secondary">
+          <div className="font-marginalia text-annotation text-accent-chemical">
             // commit shas verified against github api
           </div>
         </div>
-        <h1 className="text-3xl font-bold font-display text-text-primary mt-1">
+        <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">
           Production Systems &amp; Case Studies
         </h1>
-        <p className="text-sm text-text-secondary font-display mt-2 max-w-2xl leading-relaxed">
+        <p className="text-sm text-text-secondary max-w-2xl leading-relaxed mt-2">
           Verifiable evidence of production engineering: normalized SQL models,
-          12-endpoint REST APIs, and strict MVC separation.
+          12-endpoint REST APIs, and strict MVC separation under ACID guarantees.
         </p>
       </div>
 
-      {/* Grid: 1 col on BP-01/02, 2 cols on BP-03/04, 3 cols on BP-05 (DOC-20 Section 3.0) */}
       <div className="grid grid-cols-1 bp03:grid-cols-2 bp05:grid-cols-3 gap-6">
         {studiesWithCommits.map((study) => (
           <article
             key={study.slug}
-            className="border-structural bg-surface-secondary p-6 flex flex-col justify-between"
+            className="border-element bg-surface-secondary p-6 flex flex-col justify-between relative overflow-hidden"
           >
+            <div className="absolute top-0 right-0 w-16 h-1 hazard-stripe" />
             <div>
               <div className="flex items-center justify-between border-b border-structural pb-3 mb-4">
-                <span className="text-xs font-mono text-text-secondary">
-                  SLUG: {study.slug}
+                <span className="text-[11px] font-mono text-accent-chemical">
+                  SPEC // {study.slug.toUpperCase()}
                 </span>
                 {study.topCommit?.verified && (
-                  <span className="border-structural bg-surface-primary px-2 py-0.5 text-xs font-mono text-text-primary">
-                    [Signed commit]
+                  <span className="border-element bg-surface-primary px-2 py-0.5 text-[10px] font-mono text-accent-barrel font-bold">
+                    [SIGNED COMMIT]
                   </span>
                 )}
               </div>
@@ -70,7 +70,7 @@ export default async function WorkPage() {
                 {study.tech_stack.map((tech) => (
                   <span
                     key={tech}
-                    className="border-structural bg-surface-primary px-2 py-0.5 text-xs font-mono text-text-secondary"
+                    className="border-element bg-surface-primary px-2 py-0.5 text-[11px] font-mono text-text-primary"
                   >
                     {tech}
                   </span>
@@ -79,12 +79,12 @@ export default async function WorkPage() {
             </div>
 
             <div className="flex items-center justify-between pt-4 border-t border-structural">
-              <span className="text-xs font-mono text-text-secondary">
-                Published: {study.published_at}
+              <span className="text-[11px] font-mono text-text-secondary">
+                RELEASED: {study.published_at}
               </span>
               <Link
                 href={`/work/${study.slug}`}
-                className="text-xs font-mono font-bold underline text-text-primary hover:text-text-secondary"
+                className="text-xs font-mono font-bold text-accent-chemical hover:underline"
               >
                 Inspect Architecture &gt;
               </Link>

@@ -8,13 +8,13 @@ export default function LabIndexPage() {
   return (
     <div className="flex flex-col gap-8">
       <header className="border-b border-structural pb-4">
-        <span className="text-xs font-mono uppercase text-text-secondary">
-          Experimental &amp; Dynamic Subsystems / RT-05
+        <span className="text-xs font-mono uppercase text-accent-chemical font-bold tracking-wider">
+          [ EXPERIMENTAL SUBSYSTEMS // LAB SUPERSTRUCTURE ]
         </span>
-        <h1 className="text-3xl font-bold font-display text-text-primary mt-1">
+        <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">
           Systems Engineering Lab
         </h1>
-        <p className="text-sm text-text-secondary mt-2 max-w-2xl">
+        <p className="text-sm text-text-secondary mt-2 max-w-2xl leading-relaxed">
           Isolated client state sandboxes and live edge execution telemetry
           demonstrating deterministic rendering strategies.
         </p>
@@ -23,12 +23,13 @@ export default function LabIndexPage() {
       {/* Snapshot Widget */}
       <TelemetryWidget />
 
-      {/* Two sub-route entry pathways */}
+      {/* Two sub-route pathways */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="border-structural bg-surface-secondary p-6 flex flex-col justify-between">
+        <div className="border-element bg-surface-secondary p-6 flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-16 h-1 hazard-stripe" />
           <div>
-            <div className="text-xs font-mono uppercase text-text-secondary mb-2">
-              Route RT-06 / Client Component
+            <div className="text-xs font-mono uppercase text-accent-chemical mb-2 font-bold">
+              ROUTE RT-06 // CLIENT COMPONENT
             </div>
             <h2 className="text-xl font-bold font-display text-text-primary mb-2">
               Interactive Code Canvas
@@ -45,16 +46,17 @@ export default function LabIndexPage() {
           </div>
           <Link
             href="/lab/canvas"
-            className="text-xs font-mono font-bold underline text-text-primary hover:text-text-secondary"
+            className="text-xs font-mono font-bold text-accent-chemical hover:underline pt-2 border-t border-structural"
           >
             Open Interactive Canvas &gt;
           </Link>
         </div>
 
-        <div className="border-structural bg-surface-secondary p-6 flex flex-col justify-between">
+        <div className="border-element bg-surface-secondary p-6 flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-16 h-1 hazard-stripe" />
           <div>
-            <div className="text-xs font-mono uppercase text-text-secondary mb-2">
-              Route RT-07 / Incremental Static Regeneration
+            <div className="text-xs font-mono uppercase text-accent-chemical mb-2 font-bold">
+              ROUTE RT-07 // INCREMENTAL STATIC REGENERATION
             </div>
             <h2 className="text-xl font-bold font-display text-text-primary mb-2">
               Live Edge Telemetry
@@ -71,7 +73,7 @@ export default function LabIndexPage() {
           </div>
           <Link
             href="/lab/telemetry"
-            className="text-xs font-mono font-bold underline text-text-primary hover:text-text-secondary"
+            className="text-xs font-mono font-bold text-accent-chemical hover:underline pt-2 border-t border-structural"
           >
             Inspect 24-Hour Telemetry &gt;
           </Link>
