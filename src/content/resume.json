@@ -1,0 +1,48 @@
+{
+  "name": "Kamil Hisham",
+  "contact": {
+    "phone": "+91-8610333768",
+    "email": "kamil.hisham3124@gmail.com",
+    "github": "https://github.com/kamilhisham3124",
+    "github_username": "kamilhisham3124",
+    "linkedin": "https://linkedin.com/in/kamilhisham"
+  },
+  "persona_statement": "Full-Stack Systems Engineer with an AI/Infrastructure orientation. Constructs deterministic, highly optimized backend architectures and edge services that survive production scale, in the category where AI-generated code commonly fails.",
+  "experience_entries": [
+    {
+      "role": "Python Django Developer (Trainee)",
+      "organization": "Clovion Tech Solutions Pvt. Ltd.",
+      "location": "Azhagiyamandapam, Nagercoil, India",
+      "start_date": "2025-10-01",
+      "end_date": null,
+      "summary": "Built REST APIs using Django REST Framework to handle client-server data exchange, reducing manual data handling latency. Designed and implemented SQL database models with strict normalization and relational integrity. Developed CRUD operations for core modules including user management and administrative controls. Collaborated in a 3-member engineering team using Git, maintaining clean commit discipline across release cycles."
+    },
+    {
+      "role": "Python Programming Intern",
+      "organization": "Pantech eLearning",
+      "location": "Remote",
+      "start_date": "2023-06-01",
+      "end_date": "2023-08-31",
+      "summary": "Completed intensive certificate-based training in core Python systems programming, data structures, and object-oriented architecture."
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Engineering in Computer Science",
+    "institution": "PET Engineering College",
+    "location": "Vallioor, Tirunelveli, India",
+    "graduation_date": "2025-05-01",
+    "cgpa": "8.0/10"
+  },
+  "skills": [
+    "Python",
+    "JavaScript",
+    "SQL (PostgreSQL, MySQL, SQLite)",
+    "Django",
+    "Django REST Framework (DRF)",
+    "REST API Architecture",
+    "Database Schema Normalization",
+    "Role-Based Access Control",
+    "Git Version Control",
+    "Postman API Verification"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "slug": "gift-delivery-ecommerce",
+  "title": "Gift Delivery Ecommerce System",
+  "summary": "Multi-role e-commerce web platform isolating customer ordering, vendor fulfillment, and administrator operations through strict MVC architecture and SQLite relational integrity.",
+  "tech_stack": ["Python", "Django", "SQLite", "HTML", "CSS", "Git"],
+  "github_repo": "https://github.com/kamilhisham3124/gift-delivery-ecommerce",
+  "preview_url": "https://github.com/kamilhisham3124/gift-delivery-ecommerce",
+  "published_at": "2025-05-10",
+  "problem_statement": "Coordinating product catalog updates, inventory reservations, and delivery routing across distinct customer and vendor actors without state drift or race conditions.",
+  "architecture_overview": "Model-View-Controller architecture segregating presentation templates, view controllers, and ORM query logic. Custom permission decorators enforce role boundaries across admin, vendor, and customer dashboards.",
+  "database_design": "SQLite schema with relational foreign keys establishing strict integrity between Orders, LineItems, Products, and VendorProfiles with automatic cascade handling.",
+  "verifiable_metrics": [
+    { "metric": "User Roles Managed", "value": "3 distinct dashboard views (Admin, Vendor, Customer)" },
+    { "metric": "Data Integrity", "value": "ACID compliance via Django ORM transactions" },
+    { "metric": "Codebase Structure", "value": "Modular Django app decoupling" }
+  ]
+}
