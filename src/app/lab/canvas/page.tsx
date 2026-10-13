@@ -17,7 +17,7 @@ export default function LabCanvasPage() {
             [ INTERACTIVE SANDBOX // STATE COMPOSITION ]
           </span>
           <div className="font-marginalia text-annotation text-accent-chemical">
-            // instantaneous client state execution
+            {"// instantaneous client state execution"}
           </div>
         </div>
         <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">

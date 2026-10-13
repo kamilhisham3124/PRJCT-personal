@@ -14,7 +14,7 @@ export default function AboutPage() {
             [ PERSONA DOSSIER // TECHNICAL QUALIFICATIONS ]
           </span>
           <div className="font-marginalia text-annotation text-accent-chemical">
-            // verified experience ledger
+            {"// verified experience ledger"}
           </div>
         </div>
         <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">

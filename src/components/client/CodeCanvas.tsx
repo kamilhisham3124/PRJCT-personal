@@ -91,7 +91,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
             }`}
           >
             <div className="text-[10px] font-mono text-accent-chemical">
-              0{idx + 1} // CIRCUIT NODE
+              0{idx + 1} {"//"} CIRCUIT NODE
             </div>
             <div className="text-sm font-bold font-mono text-text-primary">
               {item.label}

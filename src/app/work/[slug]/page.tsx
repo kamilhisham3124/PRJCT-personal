@@ -49,7 +49,7 @@ export default async function CaseStudyDetailPage({
             SPEC // CASE STUDY ARCHITECTURE // {study.slug.toUpperCase()}
           </span>
           <div className="font-marginalia text-annotation text-accent-chemical">
-            // verified relational schema design
+            {"// verified relational schema design"}
           </div>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-text-primary mt-1">

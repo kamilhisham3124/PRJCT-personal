@@ -7,7 +7,7 @@ export function Footer() {
       <div className="max-w-dense mx-auto px-4 md:px-8 py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs font-mono text-text-secondary">
         <div>
           <span className="font-bold text-text-primary">Kamil Hisham</span>
-          <span className="mx-2 text-accent-chemical">//</span>
+          <span className="mx-2 text-accent-chemical">{"//"}</span>
           <span>Full-Stack Systems Engineer</span>
           <span className="mx-2 text-border-highlight">|</span>
           <span className="text-text-secondary">BATCH 00892-B</span>

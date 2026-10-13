@@ -15,7 +15,7 @@ export default function ContactPage() {
             [ DIRECT CONTACT // TRANSMISSION INTERFACE ]
           </span>
           <div className="font-marginalia text-annotation text-accent-chemical">
-            // verified direct contact channel
+            {"// verified direct contact channel"}
           </div>
         </div>
         <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">

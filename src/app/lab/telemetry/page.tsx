@@ -52,7 +52,7 @@ export default async function LabTelemetryPage() {
                 24-Hour Historical Latency Sampling Ledger
               </h2>
               <div className="font-marginalia text-annotation text-accent-chemical">
-                // edge cached data snapshot
+                {"// edge cached data snapshot"}
               </div>
             </div>
 

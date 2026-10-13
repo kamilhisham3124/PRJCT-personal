@@ -33,7 +33,7 @@ export default function HomePage() {
               Designs robust backend architectures, normalized relational schemas, and responsive edge services. Builds verifiable web applications focused on stability, performance, and clean code discipline under real-world load.
             </p>
             <div className="font-marginalia text-annotation text-accent-chemical">
-              // verified engineering artifacts and open source code
+              {"// verified engineering artifacts and open source code"}
             </div>
           </section>
 
@@ -77,7 +77,7 @@ export default function HomePage() {
           <div className="flex flex-col gap-2">
             <TelemetryWidget />
             <div className="font-marginalia text-annotation text-accent-chemical px-1">
-              // edge runtime performance monitoring
+              {"// edge runtime performance monitoring"}
             </div>
           </div>
 
