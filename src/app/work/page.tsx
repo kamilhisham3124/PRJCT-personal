@@ -27,7 +27,7 @@ export default async function WorkPage() {
             [ ARTIFACT DOSSIER // PRODUCTION SYSTEMS TRACK ]
           </span>
           <div className="font-marginalia text-annotation text-accent-chemical">
-            // commit shas verified against github api
+            // cryptographic git commit verification
           </div>
         </div>
         <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">

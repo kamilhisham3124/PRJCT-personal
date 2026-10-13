@@ -22,18 +22,18 @@ export default function HomePage() {
             <div className="absolute top-0 right-0 w-24 h-1 hazard-stripe" />
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-structural pb-3 mb-4">
               <span className="text-xs font-mono uppercase text-accent-chemical tracking-widest font-bold">
-                Kamil Hisham // Technical Baseline
+                Kamil Hisham // Portfolio
               </span>
-              <span className="text-xs font-mono text-text-secondary">Persona: Full-Stack Systems Engineer (AI/Infra)</span>
+              <span className="text-xs font-mono text-text-secondary">Full-Stack Systems Engineer</span>
             </div>
             <h1 className="text-2xl sm:text-4xl lg:text-claim font-extrabold tracking-tight text-text-primary leading-tight font-display mb-4">
               Deterministic, production-grade systems engineered to survive scale.
             </h1>
             <p className="text-sm sm:text-base text-text-secondary font-sans max-w-2xl leading-relaxed mb-4">
-              Constructs deterministic backend architectures, normalized relational schemas, and low-latency edge services. Delivers verifiable systems in the category where stochastic AI-generated code fails under production load.
+              Designs robust backend architectures, normalized relational schemas, and responsive edge services. Builds verifiable web applications focused on stability, performance, and clean code discipline under real-world load.
             </p>
             <div className="font-marginalia text-annotation text-accent-chemical">
-              // verifiable engineering evidence: zero descriptive marketing claims
+              // verified engineering artifacts and open source code
             </div>
           </section>
 
@@ -42,7 +42,7 @@ export default function HomePage() {
               <h2 className="text-xs font-mono uppercase text-accent-chemical font-bold tracking-wider">
                 Production Case Studies Ledger
               </h2>
-              <span className="text-xs font-mono text-accent-barrel font-bold">[ GIT &amp; CI VERIFIED ]</span>
+              <span className="text-xs font-mono text-accent-barrel font-bold">[ VERIFIED ARTIFACTS ]</span>
             </div>
             <div className="flex flex-col divide-y divide-structural">
               {caseStudies.map((study, idx) => (
@@ -77,7 +77,7 @@ export default function HomePage() {
           <div className="flex flex-col gap-2">
             <TelemetryWidget />
             <div className="font-marginalia text-annotation text-accent-chemical px-1">
-              // measured live from edge runtime: 60s revalidation
+              // edge runtime performance monitoring
             </div>
           </div>
 
@@ -92,7 +92,7 @@ export default function HomePage() {
               </div>
               <div className="flex justify-between">
                 <span className="text-text-secondary">Runtime:</span>
-                <span className="text-text-primary">Next.js 15 / RSC Edge</span>
+                <span className="text-text-primary">Next.js 15 / Edge</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-text-secondary">Database:</span>
@@ -100,11 +100,11 @@ export default function HomePage() {
               </div>
               <div className="flex justify-between">
                 <span className="text-text-secondary">Security:</span>
-                <span className="text-text-primary">Row-Level Security</span>
+                <span className="text-text-primary">Protected Endpoints</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-text-secondary">WCAG Target:</span>
-                <span className="text-accent-barrel font-bold">2.2 AA (0 errors)</span>
+                <span className="text-text-secondary">Accessibility:</span>
+                <span className="text-accent-barrel font-bold">WCAG 2.2 Level AA</span>
               </div>
             </div>
           </section>
@@ -115,13 +115,13 @@ export default function HomePage() {
             </h3>
             <div className="flex flex-col gap-2 font-mono text-xs">
               <Link href="/lab/canvas" className="p-2 border-element bg-surface-primary text-text-primary hover:border-accent-chemical block">
-                &gt; Architecture Sandbox (RT-06)
+                &gt; Architecture Sandbox
               </Link>
               <Link href="/lab/telemetry" className="p-2 border-element bg-surface-primary text-text-primary hover:border-accent-chemical block">
-                &gt; Historical Telemetry Ledger (RT-07)
+                &gt; Historical Performance Ledger
               </Link>
               <Link href="/contact" className="p-2 border-element bg-accent-element text-text-primary font-bold block text-center hover:bg-accent-barrel transition-colors">
-                Direct Inquiry Interface (RT-08) &gt;
+                Direct Inquiry Interface &gt;
               </Link>
             </div>
           </section>

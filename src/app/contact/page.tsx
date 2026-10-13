@@ -12,10 +12,10 @@ export default function ContactPage() {
       <header className="border-b border-structural pb-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="text-xs font-mono uppercase text-accent-chemical font-bold tracking-wider">
-            [ CONTACT INTERFACE // DIRECT TRANSMISSION PROTOCOL ]
+            [ DIRECT CONTACT // TRANSMISSION INTERFACE ]
           </span>
           <div className="font-marginalia text-annotation text-accent-chemical">
-            // direct server action: 0 client-side credential exposure
+            // verified direct contact channel
           </div>
         </div>
         <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">
@@ -80,12 +80,13 @@ export default function ContactPage() {
 
           <section className="border-element bg-surface-secondary p-6">
             <h2 className="text-xs font-mono uppercase text-accent-chemical font-bold mb-2">
-              Privacy &amp; Data Rights Notice (DOC-21)
+              Privacy &amp; Communications Notice
             </h2>
             <p className="text-xs text-text-secondary font-mono leading-relaxed">
-              Voluntary submissions (name, email, message) are stored in the contact_messages
-              table under strict RLS policies (RLS-01 denies anonymous reads). Data is used
-              solely for correspondence. Deletion requests are fulfilled manually per Section 4.0.
+              Information submitted through this form (name, email, message) is stored in a secured
+              PostgreSQL database and used strictly for professional correspondence. Inquiries are
+              never shared or retained for marketing purposes. You may request data deletion at any
+              time by contacting the email address above.
             </p>
           </section>
         </div>

@@ -1,0 +1,19 @@
+[
+  {
+    "incident_id": "INC-2026-001",
+    "timestamp_utc": "2026-10-13T11:05:00Z",
+    "category": "data_exposure",
+    "status": "DISCLOSED",
+    "severity": "CRITICAL",
+    "governing_document": "DOC-23 Section 4.0",
+    "description": "Specification content leak: internal document citations (DOC-21), route keys (RT-06, RT-07, RT-08), threat model policies (RLS-01), and test script text were rendered in server-generated UI copy.",
+    "root_cause": "Hardcoded copy-paste of planning and specification text into user-facing JSX strings during template construction.",
+    "remediation": [
+      "Rewrote all affected UI copy to original, visitor-facing content matching DOC-02 and DOC-17.",
+      "Added pre-build blocking audit script (scripts/audit-spec-leak.mjs) executing via package.json prebuild hook.",
+      "Configured Webpack IgnorePlugin in next.config.mjs to block .context bundling.",
+      "Enacted permanent boundary rule in AGENTS.md and CLAUDE.md."
+    ],
+    "verification_status": "VERIFIED_RESOLVED"
+  }
+]

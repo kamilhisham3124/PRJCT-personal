@@ -37,7 +37,7 @@ export function Footer() {
             kamil.hisham3124@gmail.com
           </a>
           <Link href="/about" className="hover:text-accent-chemical underline">
-            WCAG 2.2 AA [0 Errors]
+            WCAG 2.2 AA Conformance
           </Link>
         </div>
 

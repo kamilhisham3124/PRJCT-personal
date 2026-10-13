@@ -27,12 +27,12 @@ export default async function LabTelemetryPage() {
       <div className="flex items-center gap-2 text-xs font-mono text-text-secondary">
         <Link href="/lab" className="hover:text-accent-chemical underline">Lab</Link>
         <span>/</span>
-        <span className="text-accent-chemical">Telemetry (RT-07)</span>
+        <span className="text-accent-chemical">Edge Telemetry</span>
       </div>
 
       <header className="border-b border-structural pb-4">
         <span className="text-xs font-mono uppercase text-accent-chemical font-bold tracking-wider">
-          [ HISTORICAL TELEMETRY // 24-HOUR EDGE HORIZON ]
+          [ EDGE PERFORMANCE // 24-HOUR TELEMETRY ]
         </span>
         <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">
           Edge Performance Ledger
@@ -52,7 +52,7 @@ export default async function LabTelemetryPage() {
                 24-Hour Historical Latency Sampling Ledger
               </h2>
               <div className="font-marginalia text-annotation text-accent-chemical">
-                // 60s stale-while-revalidate cache
+                // edge cached data snapshot
               </div>
             </div>
 
@@ -90,7 +90,7 @@ export default async function LabTelemetryPage() {
 
           <section className="border-element bg-surface-secondary p-6">
             <h2 className="text-xs font-mono uppercase text-accent-chemical font-bold mb-3">
-              Supabase Telemetry Aggregates (RLS Protected)
+              Database Telemetry Aggregates
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {aggregates.map((item) => (

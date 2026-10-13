@@ -14,7 +14,7 @@ export default function AboutPage() {
             [ PERSONA DOSSIER // TECHNICAL QUALIFICATIONS ]
           </span>
           <div className="font-marginalia text-annotation text-accent-chemical">
-            // single content model: site and resume synchrony
+            // verified experience ledger
           </div>
         </div>
         <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">
@@ -92,15 +92,15 @@ export default function AboutPage() {
         </section>
       </div>
 
-      {/* WCAG 2.2 AA Conformance Statement */}
+      {/* Accessibility Statement */}
       <section className="border-element bg-surface-secondary p-6 border-l-4 border-l-accent-barrel">
         <h2 className="text-xs font-mono uppercase text-accent-chemical font-bold mb-1">
-          Accessibility &amp; Governance Conformance
+          Accessibility &amp; Standards Conformance
         </h2>
         <p className="text-xs text-text-secondary font-mono leading-relaxed">
-          Conforms to WCAG 2.2 Level AA. Enforces strict contrast ratios (&ge;7:1 primary text),
-          minimum 24x24px touch targets, full keyboard traversal, polite and assertive live regions,
-          and CSS-level prefers-reduced-motion honorifics.
+          Engineered to meet WCAG 2.2 Level AA accessibility standards, featuring high-contrast
+          typography, complete keyboard operability, screen reader live announcements, and support
+          for reduced motion preferences across all viewpoints.
         </p>
       </section>
     </div>
