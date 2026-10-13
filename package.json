@@ -5,10 +5,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/audit-spec-leak.mjs",
+    "audit:leak": "node scripts/audit-spec-leak.mjs",
+    "audit:lines": "node scripts/audit-line-limits.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "next lint",
+    "test": "npm run audit:leak && npm run audit:lines && npm run typecheck && npm run lint",
+    "prebuild": "npm run audit:leak && npm run audit:lines",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "next": "15.1.0",
@@ -22,6 +26,8 @@
     "@types/react": "19.0.0",
     "@types/react-dom": "19.0.0",
     "autoprefixer": "^10.4.20",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "15.1.0",
     "postcss": "^8.4.49",
     "tailwindcss": "3.4.17",
     "typescript": "5.9.3"

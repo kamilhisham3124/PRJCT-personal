@@ -1,0 +1,78 @@
+name: CI/CD Release Governance Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static-checks:
+    name: Stage 1 - Static Checks & Architecture Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Audit Component Line Ceiling (CC-02 / NFR-009)
+        run: npm run audit:lines
+
+      - name: Strict TypeScript Compilation (CC-01)
+        run: npm run typecheck
+
+      - name: ESLint Code Quality Gate
+        run: npm run lint
+
+  security-compliance:
+    name: Stage 2 - Security & Specification Leak Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Enforce Specification Boundary & Zero Leak Gate (BND-04 / INC-2026-001)
+        run: npm run audit:leak
+
+  build:
+    name: Stage 4 - Deterministic Production Build
+    needs: [static-checks, security-compliance]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Compile Production Build
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
