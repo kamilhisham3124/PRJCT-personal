@@ -10,9 +10,14 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col gap-8">
       <header className="border-b border-structural pb-4">
-        <span className="text-xs font-mono uppercase text-text-secondary">
-          Contact Interface / RT-08
-        </span>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="text-xs font-mono uppercase text-text-secondary">
+            Contact Interface / RT-08
+          </span>
+          <div className="font-marginalia text-annotation text-text-secondary">
+            // direct server action: 0 client-side credential exposure
+          </div>
+        </div>
         <h1 className="text-3xl font-bold font-display text-text-primary mt-1">
           Initiate Direct Technical Inquiry
         </h1>

@@ -44,9 +44,14 @@ export default async function CaseStudyDetailPage({
       <CaseStudyNav items={navItems} currentPath={`/work/${slug}`} />
 
       <header className="border-b border-structural pb-4">
-        <span className="text-xs font-mono uppercase text-text-secondary">
-          Case Study Detail / Architecture Specification
-        </span>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="text-xs font-mono uppercase text-text-secondary">
+            Case Study Detail / Architecture Specification
+          </span>
+          <div className="font-marginalia text-annotation text-text-secondary">
+            // deterministic relational schema &amp; acid compliance
+          </div>
+        </div>
         <h1 className="text-2xl sm:text-3xl font-bold font-display text-text-primary mt-1">
           {study.title}
         </h1>

@@ -9,9 +9,14 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col gap-10">
       <header className="border-b border-structural pb-4">
-        <span className="text-xs font-mono uppercase text-text-secondary">
-          Engineering Persona / Technical Dossier
-        </span>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="text-xs font-mono uppercase text-text-secondary">
+            Engineering Persona / Technical Dossier
+          </span>
+          <div className="font-marginalia text-annotation text-text-secondary">
+            // single content model: site and resume synchrony
+          </div>
+        </div>
         <h1 className="text-3xl font-bold font-display text-text-primary mt-1">
           {resume.name}
         </h1>
@@ -93,7 +98,7 @@ export default function AboutPage() {
           Accessibility Governance Statement
         </h2>
         <p className="text-xs text-text-secondary font-mono leading-relaxed">
-          Conforms to WCAG 2.2 Level AA. Enforces strict contrast ratios (≥7:1 primary text),
+          Conforms to WCAG 2.2 Level AA. Enforces strict contrast ratios (&ge;7:1 primary text),
           minimum 24x24px touch targets, full keyboard traversal, polite and assertive live regions,
           and CSS-level prefers-reduced-motion honorifics.
         </p>

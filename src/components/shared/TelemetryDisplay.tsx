@@ -25,7 +25,7 @@ export function TelemetryDisplay({
         <div className="text-xs uppercase tracking-wider text-text-secondary font-mono mb-3">
           Telemetry Snapshot (Initializing)
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 bp03:grid-cols-3 gap-3">
           <div className="h-10 bg-surface-primary border-structural animate-pulse" />
           <div className="h-10 bg-surface-primary border-structural animate-pulse" />
           <div className="h-10 bg-surface-primary border-structural animate-pulse" />
@@ -82,7 +82,7 @@ export function TelemetryDisplay({
       </div>
 
       <div
-        className="grid grid-cols-1 sm:grid-cols-3 gap-3"
+        className="grid grid-cols-1 bp03:grid-cols-3 gap-3 bp05:gap-5"
         aria-live="polite"
       >
         <div className="bg-surface-primary p-3 border-structural">

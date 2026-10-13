@@ -6,17 +6,20 @@ export default function LabCanvasPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center gap-2 text-xs font-mono text-text-secondary">
-        <Link href="/lab" className="hover:text-text-primary underline">
-          Lab
-        </Link>
+        <Link href="/lab" className="hover:text-text-primary underline">Lab</Link>
         <span>/</span>
         <span>Canvas (RT-06)</span>
       </div>
 
       <header className="border-b border-structural pb-4">
-        <span className="text-xs font-mono uppercase text-text-secondary">
-          Interactive Architecture Sandbox / Client State
-        </span>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="text-xs font-mono uppercase text-text-secondary">
+            Interactive Architecture Sandbox / Client State
+          </span>
+          <div className="font-marginalia text-annotation text-text-secondary">
+            // zero server round-trip: 0ms network latency
+          </div>
+        </div>
         <h1 className="text-3xl font-bold font-display text-text-primary mt-1">
           Component Composition Sandbox
         </h1>

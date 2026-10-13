@@ -22,7 +22,9 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
   const [announcement, setAnnouncement] = useState("");
 
   useEffect(() => {
-    initialize(initialLayout);
+    const isNarrow = typeof window !== "undefined" && window.innerWidth < 1024;
+    const resolved = isNarrow ? "stack" : initialLayout;
+    initialize(resolved);
   }, [initialLayout, initialize]);
 
   const handleLayoutSelect = (next: CanvasLayout) => {

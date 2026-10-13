@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -41,6 +43,20 @@ body {
 :focus-visible {
   outline: 2px solid var(--accent-signal);
   outline-offset: 2px;
+}
+
+/* Tabular figures for mono-face to prevent digit-width layout shift (DOC-18 Section 2.1) */
+.font-mono {
+  font-family: var(--font-jetbrains-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.font-display {
+  font-family: var(--font-inter);
+}
+
+.font-marginalia {
+  font-family: var(--font-caveat);
 }
 
 /* Reduced motion honoring (DOC-19 Section 4.0) */

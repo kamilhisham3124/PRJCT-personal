@@ -8,7 +8,6 @@ export const dynamic = "force-static";
 export default async function WorkPage() {
   const caseStudies = getAllCaseStudies();
 
-  // Pre-fetch commit signals for each case study
   const studiesWithCommits = await Promise.all(
     caseStudies.map(async (study) => {
       const parts = study.github_repo.split("/");
@@ -16,29 +15,32 @@ export default async function WorkPage() {
       const repoOwner = parts[parts.length - 2];
       const commitRes = await githubAccessor({ repoOwner, repoName, maxCommits: 1 });
       const topCommit = commitRes.ok ? commitRes.data.commits[0] : null;
-      return {
-        ...study,
-        topCommit,
-      };
+      return { ...study, topCommit };
     })
   );
 
   return (
     <div className="flex flex-col gap-8">
       <div className="border-b border-structural pb-4">
-        <span className="text-xs font-mono uppercase text-text-secondary block">
-          Work Artifacts / Systems Track
-        </span>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="text-xs font-mono uppercase text-text-secondary">
+            Work Artifacts / Systems Track
+          </span>
+          <div className="font-marginalia text-annotation text-text-secondary">
+            // commit shas verified against github api
+          </div>
+        </div>
         <h1 className="text-3xl font-bold font-display text-text-primary mt-1">
           Production Systems &amp; Case Studies
         </h1>
-        <p className="text-sm text-text-secondary font-display mt-2 max-w-2xl">
-          Verifiable evidence of production-grade engineering: normalized SQL models,
-          structured REST interfaces, and clean MVC separation.
+        <p className="text-sm text-text-secondary font-display mt-2 max-w-2xl leading-relaxed">
+          Verifiable evidence of production engineering: normalized SQL models,
+          12-endpoint REST APIs, and strict MVC separation.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Grid: 1 col on BP-01/02, 2 cols on BP-03/04, 3 cols on BP-05 (DOC-20 Section 3.0) */}
+      <div className="grid grid-cols-1 bp03:grid-cols-2 bp05:grid-cols-3 gap-6">
         {studiesWithCommits.map((study) => (
           <article
             key={study.slug}
