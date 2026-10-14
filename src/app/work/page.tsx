@@ -40,7 +40,7 @@ export default async function WorkPage() {
         {studiesWithCommits.map((study) => (
           <article
             key={study.slug}
-            className="group bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-7 shadow-stripe hover:shadow-stripe-hover transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 relative overflow-hidden"
+            className="group bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-7 shadow-stripe hover:shadow-stripe-hover focus-within:ring-2 focus-within:ring-[#635BFF]/50 focus-within:ring-offset-2 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#635BFF] to-[#00D4FF] opacity-0 group-hover:opacity-100 transition-opacity" />
             <div>
@@ -68,7 +68,7 @@ export default async function WorkPage() {
                 {study.tech_stack.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/50 dark:border-slate-700/50"
+                    className="px-3 py-1.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/50 dark:border-slate-700/50"
                   >
                     {tech}
                   </span>

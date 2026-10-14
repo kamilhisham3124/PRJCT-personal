@@ -27,6 +27,16 @@ export async function supabaseReadAggregate(): Promise<
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !anonKey) {
+    if (process.env.NODE_ENV === "production") {
+      return {
+        ok: false,
+        error: {
+          errorType: "upstream_unavailable",
+          occurredAt: new Date().toISOString(),
+          retryable: false,
+        },
+      };
+    }
     // Local dev mode: return typed in-memory aggregates
     const now = new Date().toISOString();
     const metrics: TelemetryAggregateItem[] = [
@@ -121,6 +131,7 @@ export async function supabaseInsertContactMessage(data: {
     });
     return res.ok;
   } catch (err) {
+    console.error("[supabaseAccessor] insertContactMessage network failure:", err);
     return false;
   }
 }

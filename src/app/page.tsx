@@ -53,7 +53,7 @@ export default function HomePage() {
 
           <div className="flex flex-col gap-4">
             {caseStudies.map((study, idx) => (
-              <article key={study.slug} className="group p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-stripe hover:shadow-stripe-hover transition-all duration-300">
+              <article key={study.slug} className="group p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-stripe hover:shadow-stripe-hover focus-within:ring-2 focus-within:ring-[#635BFF]/50 focus-within:ring-offset-2 transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-2">
                   <Link href={`/work/${study.slug}`} className="text-xl font-bold font-display text-[#0A2540] dark:text-white group-hover:text-[#635BFF] transition-colors">
                     0{idx + 1}. {study.title}
@@ -64,7 +64,7 @@ export default function HomePage() {
                 <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100 dark:border-slate-800/80">
                   <div className="flex flex-wrap gap-1.5">
                     {study.tech_stack.map((t) => (
-                      <span key={t} className="px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60">
+                      <span key={t} className="px-3 py-1.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60">
                         {t}
                       </span>
                     ))}

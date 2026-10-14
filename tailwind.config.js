@@ -13,11 +13,6 @@ module.exports = {
       lg: "1024px",
       xl: "1280px",
       "2xl": "1536px",
-      bp01: "320px",
-      bp02: "640px",
-      bp03: "1024px",
-      bp04: "1440px",
-      bp05: "2560px",
     },
     extend: {
       colors: {

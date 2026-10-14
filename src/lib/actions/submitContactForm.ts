@@ -45,6 +45,7 @@ export async function submitContactForm(
       submittedAt: new Date().toISOString(),
     };
   } catch (err) {
+    console.error("[submitContactForm] Unexpected error during form submission:", err);
     return {
       status: "server-error",
     };

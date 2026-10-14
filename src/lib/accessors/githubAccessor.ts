@@ -8,7 +8,10 @@ import { AccessorErrorEnvelope } from "../validators/errorEnvelope";
 export type AccessorResult<T> =
   | { ok: true; data: T }
   | { ok: false; error: AccessorErrorEnvelope };
-
+interface RawGitHubCommit {
+  sha: string;
+  commit: { message: string; author: { date: string }; verification: { verified: boolean } };
+}
 export async function githubAccessor(
   request: GitHubAccessorRequest
 ): Promise<AccessorResult<GitHubAccessorResponse>> {
@@ -67,7 +70,7 @@ export async function githubAccessor(
       };
     }
 
-    const commits = rawCommits.map((item: any) => ({
+    const commits = (rawCommits as RawGitHubCommit[]).map((item) => ({
       sha: (item.sha || "").substring(0, 40),
       message: (item.commit?.message || "Commit record").split("\n")[0],
       authoredAt: item.commit?.author?.date || new Date().toISOString(),

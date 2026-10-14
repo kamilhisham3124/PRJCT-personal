@@ -80,6 +80,7 @@ export function Header() {
           <button
             type="button"
             aria-expanded={isOpen}
+            aria-controls="mobile-nav"
             aria-label="Toggle navigation menu"
             onClick={() => setIsOpen(!isOpen)}
             className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
@@ -92,6 +93,7 @@ export function Header() {
       {/* Mobile Drawer */}
       {isOpen && (
         <nav
+          id="mobile-nav"
           role="navigation"
           aria-label="Mobile navigation"
           className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#080D1A]/95 p-4 flex flex-col gap-2"
