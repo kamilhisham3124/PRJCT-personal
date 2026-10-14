@@ -27,10 +27,10 @@ export function Header() {
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <span className="font-display font-bold text-sm tracking-tight text-[#0A2540] dark:text-white group-hover:text-[#635BFF] dark:group-hover:text-indigo-400 transition-colors">
+              <span className="font-display font-bold text-sm tracking-tight text-[#0A2540] dark:text-white group-hover:text-accent-brand dark:group-hover:text-indigo-400 transition-colors">
                 Kamil Hisham
               </span>
-              <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-[#635BFF] dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800/60">
+              <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-accent-brand dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800/60">
                 Systems
               </span>
             </div>
@@ -54,7 +54,7 @@ export function Header() {
                 aria-current={isCurrent ? "page" : undefined}
                 className={`px-4 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 ${
                   isCurrent
-                    ? "bg-white dark:bg-slate-800 text-[#635BFF] dark:text-white shadow-sm"
+                    ? "bg-white dark:bg-slate-800 text-accent-brand dark:text-white shadow-sm"
                     : "text-slate-600 dark:text-slate-400 hover:text-[#0A2540] dark:hover:text-white"
                 }`}
               >
@@ -68,7 +68,7 @@ export function Header() {
         <div className="hidden sm:flex items-center gap-3">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white bg-[#635BFF] hover:bg-[#5349e0] shadow-[0_4px_12px_rgba(99,91,255,0.35)] hover:shadow-[0_6px_20px_rgba(99,91,255,0.45)] transition-all group"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold text-white bg-accent-brand hover:bg-[#5349e0] shadow-[0_4px_12px_rgba(99,91,255,0.35)] hover:shadow-[0_6px_20px_rgba(99,91,255,0.45)] transition-all group"
           >
             <span>Get in touch</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -111,7 +111,7 @@ export function Header() {
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className="mt-2 p-3 text-center rounded-xl font-semibold text-sm text-white bg-[#635BFF]"
+            className="mt-2 p-3 text-center rounded-xl font-semibold text-sm text-white bg-accent-brand"
           >
             Get in touch
           </Link>

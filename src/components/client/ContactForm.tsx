@@ -36,19 +36,19 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-7 sm:p-8 shadow-stripe flex flex-col gap-5 max-w-xl"
+      className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 sm:p-7 shadow-sm flex flex-col gap-5 max-w-xl"
     >
-      <div className="border-b border-slate-100 dark:border-slate-800 pb-4">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-[#635BFF] dark:text-indigo-400">
-          Transmission Interface
+      <div className="border-b border-slate-100 dark:border-slate-800 pb-3">
+        <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-accent-brand">
+          Transmission Form
         </h2>
-        <p className="text-lg font-bold text-slate-900 dark:text-white mt-1">
-          Send Qualified Technical Inquiry
+        <p className="text-base font-bold text-slate-900 dark:text-white mt-1">
+          Send a direct inquiry
         </p>
       </div>
 
       <div>
-        <label htmlFor="field-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+        <label htmlFor="field-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
           Full Name
         </label>
         <input
@@ -59,17 +59,17 @@ export function ContactForm() {
           placeholder="Jane Doe"
           aria-invalid={Boolean(fieldErrors.name)}
           aria-describedby={fieldErrors.name ? "err-name" : undefined}
-          className="w-full bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-[#635BFF] focus:ring-4 focus:ring-[#635BFF]/10 transition-all"
+          className="w-full bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-accent-brand focus:ring-2 focus:ring-accent-brand/20 transition-all"
         />
         {fieldErrors.name && (
-          <p id="err-name" className="text-xs text-rose-500 mt-1.5 font-medium">
+          <p id="err-name" className="text-xs text-rose-500 mt-1 font-medium">
             {fieldErrors.name}
           </p>
         )}
       </div>
 
       <div>
-        <label htmlFor="field-email" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+        <label htmlFor="field-email" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
           Work Email
         </label>
         <input
@@ -80,18 +80,18 @@ export function ContactForm() {
           placeholder="jane@company.com"
           aria-invalid={Boolean(fieldErrors.email)}
           aria-describedby={fieldErrors.email ? "err-email" : undefined}
-          className="w-full bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-[#635BFF] focus:ring-4 focus:ring-[#635BFF]/10 transition-all"
+          className="w-full bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-lg px-3.5 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-accent-brand focus:ring-2 focus:ring-accent-brand/20 transition-all"
         />
         {fieldErrors.email && (
-          <p id="err-email" className="text-xs text-rose-500 mt-1.5 font-medium">
+          <p id="err-email" className="text-xs text-rose-500 mt-1 font-medium">
             {fieldErrors.email}
           </p>
         )}
       </div>
 
       <div>
-        <label htmlFor="field-message" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-          Technical Scope &amp; Message
+        <label htmlFor="field-message" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+          Message
         </label>
         <textarea
           id="field-message"
@@ -101,10 +101,10 @@ export function ContactForm() {
           placeholder="Describe your inquiry, project scope, or opportunity..."
           aria-invalid={Boolean(fieldErrors.message)}
           aria-describedby={fieldErrors.message ? "err-message" : undefined}
-          className="w-full bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl p-4 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-[#635BFF] focus:ring-4 focus:ring-[#635BFF]/10 transition-all resize-none"
+          className="w-full bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-lg p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-accent-brand focus:ring-2 focus:ring-accent-brand/20 transition-all resize-none"
         />
         {fieldErrors.message && (
-          <p id="err-message" className="text-xs text-rose-500 mt-1.5 font-medium">
+          <p id="err-message" className="text-xs text-rose-500 mt-1 font-medium">
             {fieldErrors.message}
           </p>
         )}
@@ -113,30 +113,30 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={formState === "submitting"}
-        className="w-full py-3 px-6 bg-[#635BFF] hover:bg-[#5349e0] text-white font-semibold rounded-full shadow-stripe-btn hover:shadow-[0_6px_20px_rgba(99,91,255,0.45)] transition-all flex items-center justify-center gap-2 group disabled:opacity-50"
+        className="w-full py-2.5 px-5 bg-accent-brand hover:bg-[#5349e0] text-white font-semibold rounded-lg shadow-stripe-btn transition-all flex items-center justify-center gap-2 group disabled:opacity-50 text-sm"
       >
         {formState === "submitting" ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin" />
-            <span>Transmitting Inquiry...</span>
+            <span>Sending...</span>
           </>
         ) : (
           <>
-            <span>Transmit Message</span>
+            <span>Send Message</span>
             <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </>
         )}
       </button>
 
       {formState === "success" && (
-        <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 rounded-xl text-xs font-medium text-emerald-800 dark:text-emerald-300 flex items-center gap-2">
+        <div className="p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 rounded-lg text-xs font-medium text-emerald-800 dark:text-emerald-300 flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-          <span>Message persisted to database with verified timestamp.</span>
+          <span>Message persisted with verified timestamp.</span>
         </div>
       )}
 
       {formState === "error" && (
-        <div className="p-4 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/60 rounded-xl text-xs font-medium text-rose-800 dark:text-rose-300 flex items-center gap-2">
+        <div className="p-3 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/60 rounded-lg text-xs font-medium text-rose-800 dark:text-rose-300 flex items-center gap-2">
           <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" />
           <span>Service currently unreachable. Please contact directly via email.</span>
         </div>

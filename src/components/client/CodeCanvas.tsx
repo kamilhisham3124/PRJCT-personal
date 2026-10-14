@@ -45,7 +45,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
     <div
       role="group"
       aria-label="Interactive layout demonstration"
-      className="bg-[#0A2540] text-white rounded-2xl p-5 sm:p-7 shadow-stripe border border-slate-800"
+      className="bg-[#0A2540] text-white rounded-xl p-5 sm:p-7 shadow-stripe border border-slate-800"
     >
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-6">
         <div className="flex items-center gap-3">
@@ -74,7 +74,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
                 onClick={() => handleLayoutSelect(mode)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   isSelected
-                    ? "bg-[#635BFF] text-white shadow-stripe-btn"
+                    ? "bg-accent-brand text-white shadow-stripe-btn"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
@@ -98,13 +98,13 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
         {SAMPLE_MODULES.map((item, idx) => (
           <div
             key={item.id}
-            className={`p-4 rounded-xl bg-slate-900/90 border border-slate-800/80 hover:border-indigo-500/50 transition-all ${
+            className={`p-4 rounded-lg bg-slate-900/90 border border-slate-800/80 hover:border-indigo-500/50 transition-all ${
               layout === "split" && idx < 2 ? "md:col-span-2" : ""
             }`}
           >
             <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
-              <span className="text-[#00D4FF]">node_0{idx + 1}</span>
-              <span className="bg-emerald-950/60 text-emerald-400 px-2 py-0.5 rounded-full text-[10px] font-semibold border border-emerald-800/40">
+              <span className="text-cyan-400">node_0{idx + 1}</span>
+              <span className="bg-emerald-950/60 text-emerald-400 px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold border border-emerald-800/40">
                 {item.status}
               </span>
             </div>

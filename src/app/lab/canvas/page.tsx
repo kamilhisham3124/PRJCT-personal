@@ -1,23 +1,22 @@
 import React from "react";
 import Link from "next/link";
 import { CodeCanvas } from "../../../components/client/CodeCanvas";
-import { LayoutGrid, ChevronRight, Zap, Shield, Sparkles } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export default function LabCanvasPage() {
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
-        <Link href="/lab" className="hover:text-[#635BFF] transition-colors">Lab</Link>
+      <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
+        <Link href="/lab" className="hover:text-accent-brand transition-colors">Lab</Link>
         <ChevronRight className="w-3.5 h-3.5" />
         <span className="text-slate-900 dark:text-white font-semibold">Interactive Canvas</span>
       </div>
 
       <header>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-[#635BFF] dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60 mb-3">
-          <LayoutGrid className="w-3.5 h-3.5" />
-          <span>Interactive State Engine</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-accent-brand dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60 mb-3">
+          <span>[STATE_ENGINE_SANDBOX]</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white font-display">
           Component Composition Sandbox
         </h1>
         <p className="text-base text-slate-600 dark:text-slate-300 mt-3 max-w-2xl leading-relaxed">
@@ -31,11 +30,11 @@ export default function LabCanvasPage() {
 
       {/* Architectural Justification Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-6 shadow-stripe">
-          <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 flex items-center justify-center text-[#635BFF] mb-3">
-            <Zap className="w-4 h-4" />
+        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 shadow-sm">
+          <div className="text-xs font-mono font-bold uppercase tracking-wider text-accent-brand mb-1.5">
+            01 // Latency
           </div>
-          <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1.5">
+          <h3 className="text-base font-bold font-display text-slate-900 dark:text-white mb-2">
             Deterministic Latency
           </h3>
           <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -44,11 +43,11 @@ export default function LabCanvasPage() {
           </p>
         </div>
 
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-6 shadow-stripe">
-          <div className="w-8 h-8 rounded-lg bg-cyan-50 dark:bg-cyan-950/60 flex items-center justify-center text-[#00D4FF] mb-3">
-            <Shield className="w-4 h-4" />
+        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 shadow-sm">
+          <div className="text-xs font-mono font-bold uppercase tracking-wider text-accent-brand mb-1.5">
+            02 // Boundary
           </div>
-          <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1.5">
+          <h3 className="text-base font-bold font-display text-slate-900 dark:text-white mb-2">
             State Isolation
           </h3>
           <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -57,11 +56,11 @@ export default function LabCanvasPage() {
           </p>
         </div>
 
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-6 shadow-stripe">
-          <div className="w-8 h-8 rounded-lg bg-purple-50 dark:bg-purple-950/60 flex items-center justify-center text-[#7A73FF] mb-3">
-            <Sparkles className="w-4 h-4" />
+        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 shadow-sm">
+          <div className="text-xs font-mono font-bold uppercase tracking-wider text-accent-brand mb-1.5">
+            03 // Input
           </div>
-          <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-1.5">
+          <h3 className="text-base font-bold font-display text-slate-900 dark:text-white mb-2">
             Keyboard Operability
           </h3>
           <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">

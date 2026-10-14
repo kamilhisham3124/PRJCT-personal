@@ -1,7 +1,7 @@
 import React from "react";
 import { ContactForm } from "../../components/client/ContactForm";
 import { getResumeContent } from "../../content";
-import { Mail, Phone, ShieldCheck, MessageSquare } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 export const dynamic = "force-static";
 
@@ -27,12 +27,11 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col gap-10">
       <header>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-[#635BFF] dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60 mb-4 shadow-sm">
-          <MessageSquare className="w-3.5 h-3.5" />
-          <span>Direct Contact Channel</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-accent-brand dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60 mb-4">
+          <span>[COMM_CHANNEL]</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-          Initiate Direct Technical Inquiry
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white font-display">
+          Contact &amp; Technical Inquiries
         </h1>
         <p className="text-base text-slate-600 dark:text-slate-300 mt-3 max-w-2xl leading-relaxed">
           Reach out for engineering roles, systems reviews, or architectural discussions.
@@ -44,20 +43,18 @@ export default function ContactPage() {
         <ContactForm />
 
         <div className="flex flex-col gap-6">
-          <section className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-7 shadow-stripe">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-5 pb-3 border-b border-slate-100 dark:border-slate-800">
-              Direct Verified Coordinates
+          <section className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 shadow-sm">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 mb-5 pb-3 border-b border-slate-100 dark:border-slate-800">
+              Verified Coordinates
             </h2>
             <div className="space-y-4 text-sm">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 flex items-center justify-center text-[#635BFF] shrink-0">
-                  <Mail className="w-4 h-4" />
-                </div>
+                <Mail className="w-4 h-4 text-accent-brand shrink-0" />
                 <div>
-                  <span className="text-xs text-slate-400 font-medium block">Email:</span>
+                  <span className="text-[11px] font-mono text-slate-400 block">Email</span>
                   <a
                     href={`mailto:${resume.contact.email}`}
-                    className="font-semibold text-slate-900 dark:text-white hover:text-[#635BFF] dark:hover:text-indigo-400 transition-colors"
+                    className="font-semibold text-slate-900 dark:text-white hover:text-accent-brand transition-colors"
                   >
                     {resume.contact.email}
                   </a>
@@ -65,11 +62,9 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-cyan-50 dark:bg-cyan-950/60 flex items-center justify-center text-[#00D4FF] shrink-0">
-                  <Phone className="w-4 h-4" />
-                </div>
+                <Phone className="w-4 h-4 text-accent-brand shrink-0" />
                 <div>
-                  <span className="text-xs text-slate-400 font-medium block">Phone:</span>
+                  <span className="text-[11px] font-mono text-slate-400 block">Phone</span>
                   <span className="font-semibold text-slate-900 dark:text-white">
                     {resume.contact.phone}
                   </span>
@@ -77,16 +72,14 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-700 dark:text-slate-300 shrink-0">
-                  <GithubIcon className="w-4 h-4" />
-                </div>
+                <GithubIcon className="w-4 h-4 text-slate-700 dark:text-slate-300 shrink-0" />
                 <div>
-                  <span className="text-xs text-slate-400 font-medium block">GitHub:</span>
+                  <span className="text-[11px] font-mono text-slate-400 block">GitHub</span>
                   <a
                     href={resume.contact.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-slate-900 dark:text-white hover:text-[#635BFF] dark:hover:text-indigo-400 transition-colors"
+                    className="font-semibold text-slate-900 dark:text-white hover:text-accent-brand transition-colors"
                   >
                     github.com/kamilhisham3124
                   </a>
@@ -94,16 +87,14 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/60 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
-                  <LinkedinIcon className="w-4 h-4" />
-                </div>
+                <LinkedinIcon className="w-4 h-4 text-[#0077B5] shrink-0" />
                 <div>
-                  <span className="text-xs text-slate-400 font-medium block">LinkedIn:</span>
+                  <span className="text-[11px] font-mono text-slate-400 block">LinkedIn</span>
                   <a
                     href={resume.contact.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-slate-900 dark:text-white hover:text-[#635BFF] dark:hover:text-indigo-400 transition-colors"
+                    className="font-semibold text-slate-900 dark:text-white hover:text-accent-brand transition-colors"
                   >
                     linkedin.com/in/kamilhisham
                   </a>
@@ -112,21 +103,17 @@ export default function ContactPage() {
             </div>
           </section>
 
-          <section className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-6 shadow-stripe flex items-start gap-4">
-            <div className="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5">
-              <ShieldCheck className="w-4 h-4" />
-            </div>
-            <div>
-              <h2 className="text-sm font-bold text-slate-900 dark:text-white mb-1">
-                Privacy &amp; Communications Notice
-              </h2>
-              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                Information submitted through this form is stored in a secured
-                PostgreSQL database and used strictly for professional correspondence. Inquiries are
-                never shared or retained for marketing purposes.
-              </p>
-            </div>
-          </section>
+          {/* Privacy Callout — Left Accent Callout */}
+          <div className="border-l-4 border-slate-400 dark:border-slate-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl p-5 border-y border-r border-slate-200/50 dark:border-slate-800">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 mb-1">
+              Privacy &amp; Communications Notice
+            </h3>
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Information submitted through this form is stored in a secured PostgreSQL database
+              and used strictly for professional correspondence. Inquiries are never shared or
+              retained for marketing purposes.
+            </p>
+          </div>
         </div>
       </div>
     </div>
