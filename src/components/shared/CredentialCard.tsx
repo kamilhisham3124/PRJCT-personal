@@ -25,10 +25,10 @@ export function CredentialCard({
 
   if (state === "loading") {
     return (
-      <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 shadow-sm">
-        <div className="h-4 w-1/3 bg-slate-200 dark:bg-slate-800 rounded animate-pulse mb-3" />
-        <div className="h-4 w-3/4 bg-slate-200 dark:bg-slate-800 rounded animate-pulse mb-2" />
-        <div className="h-4 w-1/2 bg-slate-200 dark:bg-slate-800 rounded animate-pulse" />
+      <div className="aero-panel rounded-xl p-6">
+        <div className="h-4 w-1/3 bg-sky-200/50 dark:bg-sky-800/50 rounded animate-pulse mb-3" />
+        <div className="h-4 w-3/4 bg-sky-200/50 dark:bg-sky-800/50 rounded animate-pulse mb-2" />
+        <div className="h-4 w-1/2 bg-sky-200/50 dark:bg-sky-800/50 rounded animate-pulse" />
       </div>
     );
   }
@@ -49,7 +49,7 @@ export function CredentialCard({
 
   if (state === "unavailable") {
     return (
-      <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+      <div className="aero-panel rounded-xl p-5">
         <div className="text-xs font-mono font-bold text-slate-500 mb-1">Git Credential Verification</div>
         <p className="text-xs text-slate-500">Zero public commits detected in the queried window.</p>
       </div>
@@ -61,11 +61,11 @@ export function CredentialCard({
   return (
     <article
       aria-labelledby={titleId}
-      className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 shadow-sm flex flex-col gap-4"
+      className="aero-panel rounded-xl p-6 flex flex-col gap-4"
     >
-      <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+      <div className="flex items-center justify-between border-b border-sky-100 dark:border-sky-800/60 pb-3">
         <div className="flex items-center gap-2">
-          <GitCommit className="w-4 h-4 text-accent-brand shrink-0" />
+          <GitCommit className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" />
           <h3 id={titleId} className="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
             Git Cryptographic Proof
           </h3>
@@ -83,7 +83,7 @@ export function CredentialCard({
 
       <div className="flex items-center gap-2 text-xs">
         <span className="text-slate-500 font-medium">Commit:</span>
-        <code className="font-mono bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded text-slate-800 dark:text-slate-200 font-semibold">
+        <code className="font-mono bg-sky-50 dark:bg-sky-950/60 border border-sky-200/60 dark:border-sky-800/60 px-2 py-0.5 rounded text-sky-900 dark:text-sky-200 font-semibold">
           {shortSha}
         </code>
         {authoredDate && (
@@ -94,7 +94,7 @@ export function CredentialCard({
       </div>
 
       {commitMessage && (
-        <div className="p-3 bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 rounded-lg">
+        <div className="p-3 bg-sky-50/60 dark:bg-sky-950/40 border border-sky-100 dark:border-sky-800/60 rounded-lg">
           <p className="text-xs font-mono text-slate-700 dark:text-slate-300 line-clamp-2">
             &quot;{commitMessage}&quot;
           </p>
@@ -107,7 +107,7 @@ export function CredentialCard({
             href={previewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent-brand hover:underline transition-colors group"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 hover:underline transition-colors group"
           >
             <span>Inspect GitHub Repository</span>
             <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />

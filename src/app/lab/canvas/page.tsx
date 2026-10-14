@@ -7,14 +7,14 @@ export default function LabCanvasPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
-        <Link href="/lab" className="hover:text-accent-brand transition-colors">Lab</Link>
+        <Link href="/lab" className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Lab</Link>
         <ChevronRight className="w-3.5 h-3.5" />
         <span className="text-slate-900 dark:text-white font-semibold">Interactive Canvas</span>
       </div>
 
       <header>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-accent-brand dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60 mb-3">
-          <span>[STATE_ENGINE_SANDBOX]</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200/80 dark:border-sky-800/60 mb-3">
+          <span>[STATE_ENGINE_AERO]</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white font-display">
           Component Composition Sandbox
@@ -30,8 +30,8 @@ export default function LabCanvasPage() {
 
       {/* Architectural Justification Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 shadow-sm">
-          <div className="text-xs font-mono font-bold uppercase tracking-wider text-accent-brand mb-1.5">
+        <div className="aero-panel rounded-xl p-6">
+          <div className="text-xs font-mono font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-1.5">
             01 // Latency
           </div>
           <h3 className="text-base font-bold font-display text-slate-900 dark:text-white mb-2">
@@ -43,8 +43,8 @@ export default function LabCanvasPage() {
           </p>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 shadow-sm">
-          <div className="text-xs font-mono font-bold uppercase tracking-wider text-accent-brand mb-1.5">
+        <div className="aero-panel rounded-xl p-6">
+          <div className="text-xs font-mono font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-1.5">
             02 // Boundary
           </div>
           <h3 className="text-base font-bold font-display text-slate-900 dark:text-white mb-2">
@@ -56,8 +56,8 @@ export default function LabCanvasPage() {
           </p>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 shadow-sm">
-          <div className="text-xs font-mono font-bold uppercase tracking-wider text-accent-brand mb-1.5">
+        <div className="aero-panel rounded-xl p-6">
+          <div className="text-xs font-mono font-bold uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-1.5">
             03 // Input
           </div>
           <h3 className="text-base font-bold font-display text-slate-900 dark:text-white mb-2">

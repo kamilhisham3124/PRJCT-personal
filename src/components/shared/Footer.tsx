@@ -20,29 +20,29 @@ function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-50/70 dark:bg-[#070B14]/80 mt-auto transition-colors">
+    <footer className="w-full border-t border-sky-200/80 dark:border-sky-900/60 bg-white/70 dark:bg-[#021426]/80 mt-auto transition-colors">
       <div className="max-w-dense mx-auto px-4 md:px-8 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#635BFF] to-[#00D4FF] flex items-center justify-center text-white font-extrabold text-xs">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-b from-sky-400 to-sky-600 border border-sky-300 flex items-center justify-center text-white font-extrabold text-xs shadow-aero-glass">
             KH
           </div>
           <div>
-            <div className="font-display font-bold text-sm text-[#0A2540] dark:text-white">
+            <div className="font-display font-bold text-sm text-slate-900 dark:text-white">
               Kamil Hisham
             </div>
-            <div className="text-xs text-slate-500 dark:text-slate-400">
+            <div className="text-xs font-mono text-sky-600 dark:text-sky-300">
               Full-Stack Systems Engineer
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
+        <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-sky-200">
           <a
             href="https://github.com/kamilhisham3124"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
-            className="p-2 rounded-full hover:bg-white dark:hover:bg-slate-800 hover:text-[#635BFF] transition-all"
+            className="p-2 rounded-full hover:bg-sky-100 dark:hover:bg-sky-900/60 hover:text-sky-600 transition-all"
           >
             <GithubIcon className="w-4 h-4" />
           </a>
@@ -51,14 +51,14 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="p-2 rounded-full hover:bg-white dark:hover:bg-slate-800 hover:text-[#635BFF] transition-all"
+            className="p-2 rounded-full hover:bg-sky-100 dark:hover:bg-sky-900/60 hover:text-sky-600 transition-all"
           >
             <LinkedinIcon className="w-4 h-4" />
           </a>
           <a
             href="mailto:kamil.hisham3124@gmail.com"
             aria-label="Email Address"
-            className="p-2 rounded-full hover:bg-white dark:hover:bg-slate-800 hover:text-[#635BFF] transition-all"
+            className="p-2 rounded-full hover:bg-sky-100 dark:hover:bg-sky-900/60 hover:text-sky-600 transition-all"
           >
             <Mail className="w-4 h-4" />
           </a>
@@ -67,15 +67,15 @@ export function Footer() {
         <div className="flex items-center gap-3">
           <Link
             href="/about"
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]"
           >
             <CheckCircle2 className="w-3.5 h-3.5" />
             <span>WCAG 2.2 AA Conformance</span>
           </Link>
         </div>
       </div>
-      <div className="border-t border-slate-200/60 dark:border-slate-800/60 py-4 text-center text-xs text-slate-400">
-        &copy; {new Date().getFullYear()} Kamil Hisham. Designed with high-performance edge architecture.
+      <div className="border-t border-sky-100 dark:border-sky-950 py-4 text-center text-xs font-mono text-slate-400">
+        (c) {new Date().getFullYear()} Kamil Hisham. Engineered with deterministic Frutiger Aero architecture.
       </div>
     </footer>
   );

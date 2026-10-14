@@ -16,9 +16,9 @@ export function CaseStudyNav({ items, currentPath }: CaseStudyNavProps) {
     <nav
       role="navigation"
       aria-label="Case studies index"
-      className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-1.5 rounded-full inline-flex flex-wrap items-center gap-1 shadow-sm w-fit max-w-full"
+      className="bg-white/90 dark:bg-sky-950/70 backdrop-blur-md border border-sky-200/80 dark:border-sky-800/80 p-1.5 rounded-full inline-flex flex-wrap items-center gap-1 shadow-aero-card w-fit max-w-full"
     >
-      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 py-1">
+      <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-sky-600/70 dark:text-sky-400/80 px-3 py-1">
         Index:
       </span>
       {items.map((item) => {
@@ -30,8 +30,8 @@ export function CaseStudyNav({ items, currentPath }: CaseStudyNavProps) {
             aria-current={isCurrent ? "page" : undefined}
             className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
               isCurrent
-                ? "bg-accent-brand text-white shadow-stripe-btn"
-                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800"
+                ? "bg-gradient-to-b from-sky-400 to-sky-600 text-white shadow-aero-btn border border-sky-300/40"
+                : "text-slate-600 dark:text-sky-200 hover:text-sky-900 dark:hover:text-white hover:bg-sky-100/60 dark:hover:bg-sky-900/40"
             }`}
           >
             {item.label}

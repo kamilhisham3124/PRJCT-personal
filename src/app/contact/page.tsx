@@ -27,13 +27,13 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col gap-10">
       <header>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-accent-brand dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60 mb-4">
-          <span>[COMM_CHANNEL]</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-sky-50 dark:bg-sky-950/60 text-aero-sky dark:text-sky-300 border border-sky-200/80 dark:border-sky-800/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] mb-4">
+          <span>[COMM_AERO_CHANNEL]</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white font-display">
           Contact &amp; Technical Inquiries
         </h1>
-        <p className="text-base text-slate-600 dark:text-slate-300 mt-3 max-w-2xl leading-relaxed">
+        <p className="text-base text-slate-600 dark:text-sky-100/90 mt-3 max-w-2xl leading-relaxed">
           Reach out for engineering roles, systems reviews, or architectural discussions.
           Messages are validated server-side and recorded with explicit timestamps.
         </p>
@@ -43,18 +43,18 @@ export default function ContactPage() {
         <ContactForm />
 
         <div className="flex flex-col gap-6">
-          <section className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl p-6 shadow-sm">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 mb-5 pb-3 border-b border-slate-100 dark:border-slate-800">
+          <section className="aero-panel rounded-xl p-6">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-aero-sky dark:text-sky-300 mb-5 pb-3 border-b border-sky-100 dark:border-sky-800/60">
               Verified Coordinates
             </h2>
             <div className="space-y-4 text-sm">
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-accent-brand shrink-0" />
+                <Mail className="w-4 h-4 text-aero-sky shrink-0" />
                 <div>
-                  <span className="text-[11px] font-mono text-slate-400 block">Email</span>
+                  <span className="text-[11px] font-mono text-slate-400 dark:text-sky-300/80 block">Email</span>
                   <a
                     href={`mailto:${resume.contact.email}`}
-                    className="font-semibold text-slate-900 dark:text-white hover:text-accent-brand transition-colors"
+                    className="font-semibold text-slate-900 dark:text-white hover:text-aero-sky transition-colors"
                   >
                     {resume.contact.email}
                   </a>
@@ -62,9 +62,9 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-accent-brand shrink-0" />
+                <Phone className="w-4 h-4 text-aero-sky shrink-0" />
                 <div>
-                  <span className="text-[11px] font-mono text-slate-400 block">Phone</span>
+                  <span className="text-[11px] font-mono text-slate-400 dark:text-sky-300/80 block">Phone</span>
                   <span className="font-semibold text-slate-900 dark:text-white">
                     {resume.contact.phone}
                   </span>
@@ -72,14 +72,14 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-center gap-3">
-                <GithubIcon className="w-4 h-4 text-slate-700 dark:text-slate-300 shrink-0" />
+                <GithubIcon className="w-4 h-4 text-slate-700 dark:text-sky-200 shrink-0" />
                 <div>
-                  <span className="text-[11px] font-mono text-slate-400 block">GitHub</span>
+                  <span className="text-[11px] font-mono text-slate-400 dark:text-sky-300/80 block">GitHub</span>
                   <a
                     href={resume.contact.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-slate-900 dark:text-white hover:text-accent-brand transition-colors"
+                    className="font-semibold text-slate-900 dark:text-white hover:text-aero-sky transition-colors"
                   >
                     github.com/kamilhisham3124
                   </a>
@@ -87,14 +87,14 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-center gap-3">
-                <LinkedinIcon className="w-4 h-4 text-[#0077B5] shrink-0" />
+                <LinkedinIcon className="w-4 h-4 text-[#0284C7] shrink-0" />
                 <div>
-                  <span className="text-[11px] font-mono text-slate-400 block">LinkedIn</span>
+                  <span className="text-[11px] font-mono text-slate-400 dark:text-sky-300/80 block">LinkedIn</span>
                   <a
                     href={resume.contact.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-slate-900 dark:text-white hover:text-accent-brand transition-colors"
+                    className="font-semibold text-slate-900 dark:text-white hover:text-aero-sky transition-colors"
                   >
                     linkedin.com/in/kamilhisham
                   </a>
@@ -104,11 +104,11 @@ export default function ContactPage() {
           </section>
 
           {/* Privacy Callout — Left Accent Callout */}
-          <div className="border-l-4 border-slate-400 dark:border-slate-600 bg-slate-50 dark:bg-slate-800/40 rounded-r-xl p-5 border-y border-r border-slate-200/50 dark:border-slate-800">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 mb-1">
+          <div className="border-l-4 border-sky-400 dark:border-sky-600 bg-sky-50/70 dark:bg-sky-950/30 rounded-r-xl p-5 border-y border-r border-sky-200/50 dark:border-sky-900/40 shadow-sm">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-aero-sky dark:text-sky-300 mb-1">
               Privacy &amp; Communications Notice
             </h3>
-            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
               Information submitted through this form is stored in a secured PostgreSQL database
               and used strictly for professional correspondence. Inquiries are never shared or
               retained for marketing purposes.

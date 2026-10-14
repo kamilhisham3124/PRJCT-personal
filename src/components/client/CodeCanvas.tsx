@@ -45,23 +45,23 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
     <div
       role="group"
       aria-label="Interactive layout demonstration"
-      className="bg-[#0A2540] text-white rounded-xl p-5 sm:p-7 shadow-stripe border border-slate-800"
+      className="bg-[#031B33]/95 dark:bg-[#021324]/95 backdrop-blur-md text-white rounded-xl p-5 sm:p-7 shadow-aero-card border border-sky-500/30"
     >
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-sky-900/60 pb-5 mb-6">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-            <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-            <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+            <span className="w-3 h-3 rounded-full bg-rose-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)] inline-block" />
+            <span className="w-3 h-3 rounded-full bg-amber-400 shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)] inline-block" />
+            <span className="w-3 h-3 rounded-full bg-emerald-400 shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)] inline-block" />
           </div>
-          <div className="h-4 w-px bg-slate-700" />
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-            <Terminal className="w-3.5 h-3.5 text-[#00D4FF]" />
+          <div className="h-4 w-px bg-sky-800/80" />
+          <div className="flex items-center gap-2 text-xs font-mono text-sky-200">
+            <Terminal className="w-3.5 h-3.5 text-sky-400" />
             <span className="text-white font-semibold">state_engine.tsx</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 bg-slate-900/80 p-1 rounded-full border border-slate-800">
+        <div className="flex items-center gap-1.5 bg-sky-950/80 p-1 rounded-full border border-sky-800/80">
           {(["grid", "stack", "split"] as CanvasLayout[]).map((mode) => {
             const Icon = mode === "grid" ? LayoutGrid : mode === "stack" ? Rows3 : Columns3;
             const isSelected = layout === mode;
@@ -74,8 +74,8 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
                 onClick={() => handleLayoutSelect(mode)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   isSelected
-                    ? "bg-accent-brand text-white shadow-stripe-btn"
-                    : "text-slate-400 hover:text-white"
+                    ? "bg-gradient-to-b from-sky-400 to-sky-600 text-white shadow-aero-btn border border-sky-300/40"
+                    : "text-sky-200 hover:text-white hover:bg-sky-900/50"
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -87,7 +87,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
             type="button"
             onClick={reset}
             title="Reset sandbox"
-            className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-full transition-colors"
+            className="p-1.5 text-sky-200 hover:text-white hover:bg-sky-900/50 rounded-full transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>
@@ -98,29 +98,29 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
         {SAMPLE_MODULES.map((item, idx) => (
           <div
             key={item.id}
-            className={`p-4 rounded-lg bg-slate-900/90 border border-slate-800/80 hover:border-indigo-500/50 transition-all ${
+            className={`p-4 rounded-lg bg-sky-950/60 border border-sky-800/60 hover:border-sky-400/50 transition-all ${
               layout === "split" && idx < 2 ? "md:col-span-2" : ""
             }`}
           >
-            <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
+            <div className="flex items-center justify-between text-[11px] font-mono text-sky-300 mb-2">
               <span className="text-cyan-400">node_0{idx + 1}</span>
               <span className="bg-emerald-950/60 text-emerald-400 px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold border border-emerald-800/40">
                 {item.status}
               </span>
             </div>
             <div className="text-sm font-bold text-white mb-1">{item.label}</div>
-            <div className="text-xs font-mono text-slate-400">{item.tech}</div>
+            <div className="text-xs font-mono text-sky-200/80">{item.tech}</div>
           </div>
         ))}
       </div>
 
       {history.length > 0 && (
-        <div className="mt-6 pt-4 border-t border-slate-800 flex items-center gap-2 text-xs font-mono text-slate-400 overflow-x-auto">
-          <span className="text-slate-500">History:</span>
+        <div className="mt-6 pt-4 border-t border-sky-900/60 flex items-center gap-2 text-xs font-mono text-sky-200 overflow-x-auto">
+          <span className="text-sky-400">History:</span>
           {history.map((h, i) => (
             <span key={i} className="inline-flex items-center gap-1">
-              <span className="bg-slate-800 text-slate-300 px-2 py-0.5 rounded text-[11px]">{h}</span>
-              {i < history.length - 1 && <span className="text-slate-600">&rarr;</span>}
+              <span className="bg-sky-900/60 border border-sky-800/60 text-sky-100 px-2 py-0.5 rounded text-[11px]">{h}</span>
+              {i < history.length - 1 && <span className="text-sky-500">&rarr;</span>}
             </span>
           ))}
         </div>
