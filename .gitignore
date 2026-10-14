@@ -4,4 +4,3 @@ out
 .env*.local
 *.log
 *.tsbuildinfo
-.context/
