@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { submitContactForm } from "../../lib/actions/submitContactForm";
+import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 export function ContactForm() {
   const [formState, setFormState] = useState<
@@ -35,73 +36,75 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="border-element bg-surface-secondary p-4 md:p-6 flex flex-col gap-4 max-w-xl relative overflow-hidden"
+      className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-7 sm:p-8 shadow-stripe flex flex-col gap-5 max-w-xl"
     >
-      <div className="absolute top-0 right-0 w-20 h-1 hazard-stripe" />
-      <div className="border-b border-structural pb-2">
-        <h2 className="text-xs font-mono uppercase text-accent-chemical font-bold">
-          [ DIRECT TRANSMISSION PROTOCOL ]
+      <div className="border-b border-slate-100 dark:border-slate-800 pb-4">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-[#635BFF] dark:text-indigo-400">
+          Transmission Interface
         </h2>
-        <p className="text-sm font-bold text-text-primary font-display">
+        <p className="text-lg font-bold text-slate-900 dark:text-white mt-1">
           Send Qualified Technical Inquiry
         </p>
       </div>
 
       <div>
-        <label htmlFor="field-name" className="block text-xs font-mono text-text-secondary mb-1">
-          FULL NAME //
+        <label htmlFor="field-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+          Full Name
         </label>
         <input
           id="field-name"
           name="name"
           type="text"
           required
+          placeholder="Jane Doe"
           aria-invalid={Boolean(fieldErrors.name)}
           aria-describedby={fieldErrors.name ? "err-name" : undefined}
-          className="w-full bg-surface-primary border-structural focus:border-highlight p-2 text-sm text-text-primary font-mono focus:outline-none"
+          className="w-full bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-[#635BFF] focus:ring-4 focus:ring-[#635BFF]/10 transition-all"
         />
         {fieldErrors.name && (
-          <p id="err-name" className="text-xs font-mono text-accent-alert mt-1">
+          <p id="err-name" className="text-xs text-rose-500 mt-1.5 font-medium">
             {fieldErrors.name}
           </p>
         )}
       </div>
 
       <div>
-        <label htmlFor="field-email" className="block text-xs font-mono text-text-secondary mb-1">
-          WORK EMAIL //
+        <label htmlFor="field-email" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+          Work Email
         </label>
         <input
           id="field-email"
           name="email"
           type="email"
           required
+          placeholder="jane@company.com"
           aria-invalid={Boolean(fieldErrors.email)}
           aria-describedby={fieldErrors.email ? "err-email" : undefined}
-          className="w-full bg-surface-primary border-structural focus:border-highlight p-2 text-sm text-text-primary font-mono focus:outline-none"
+          className="w-full bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-[#635BFF] focus:ring-4 focus:ring-[#635BFF]/10 transition-all"
         />
         {fieldErrors.email && (
-          <p id="err-email" className="text-xs font-mono text-accent-alert mt-1">
+          <p id="err-email" className="text-xs text-rose-500 mt-1.5 font-medium">
             {fieldErrors.email}
           </p>
         )}
       </div>
 
       <div>
-        <label htmlFor="field-message" className="block text-xs font-mono text-text-secondary mb-1">
-          TECHNICAL SCOPE / MESSAGE //
+        <label htmlFor="field-message" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+          Technical Scope &amp; Message
         </label>
         <textarea
           id="field-message"
           name="message"
           rows={4}
           required
+          placeholder="Describe your inquiry, project scope, or opportunity..."
           aria-invalid={Boolean(fieldErrors.message)}
           aria-describedby={fieldErrors.message ? "err-message" : undefined}
-          className="w-full bg-surface-primary border-structural focus:border-highlight p-2 text-sm text-text-primary font-mono focus:outline-none"
+          className="w-full bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl p-4 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-[#635BFF] focus:ring-4 focus:ring-[#635BFF]/10 transition-all resize-none"
         />
         {fieldErrors.message && (
-          <p id="err-message" className="text-xs font-mono text-accent-alert mt-1">
+          <p id="err-message" className="text-xs text-rose-500 mt-1.5 font-medium">
             {fieldErrors.message}
           </p>
         )}
@@ -110,26 +113,36 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={formState === "submitting"}
-        className="w-full p-2.5 bg-accent-element text-text-primary font-mono text-xs uppercase tracking-wider font-bold border-element hover:bg-accent-barrel transition-colors disabled:opacity-50"
+        className="w-full py-3 px-6 bg-[#635BFF] hover:bg-[#5349e0] text-white font-semibold rounded-full shadow-stripe-btn hover:shadow-[0_6px_20px_rgba(99,91,255,0.45)] transition-all flex items-center justify-center gap-2 group disabled:opacity-50"
       >
-        {formState === "submitting" ? "[ TRANSMITTING PROBE... ]" : "[ TRANSMIT MESSAGE ]"}
+        {formState === "submitting" ? (
+          <>
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span>Transmitting Inquiry...</span>
+          </>
+        ) : (
+          <>
+            <span>Transmit Message</span>
+            <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          </>
+        )}
       </button>
 
       {formState === "success" && (
-        <div className="p-3 bg-surface-primary border-element text-xs font-mono text-accent-barrel font-bold">
-          [TRANSMITTED]: Message persisted to database with verified timestamp.
+        <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 rounded-xl text-xs font-medium text-emerald-800 dark:text-emerald-300 flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+          <span>Message persisted to database with verified timestamp.</span>
         </div>
       )}
 
       {formState === "error" && (
-        <div className="p-3 bg-surface-primary border-element border-l-4 border-l-accent-alert text-xs font-mono text-accent-alert">
-          [FAILURE]: Service currently unreachable. Please contact directly via email.
+        <div className="p-4 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/60 rounded-xl text-xs font-medium text-rose-800 dark:text-rose-300 flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" />
+          <span>Service currently unreachable. Please contact directly via email.</span>
         </div>
       )}
 
-      <div className="sr-only" aria-live="assertive">
-        {liveAnnouncement}
-      </div>
+      <div className="sr-only" aria-live="assertive">{liveAnnouncement}</div>
     </form>
   );
 }

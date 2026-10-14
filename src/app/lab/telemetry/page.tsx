@@ -1,19 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import {
-  vercelTelemetryAccessor,
-  getTelemetryHistory,
-} from "../../../lib/accessors/vercelTelemetryAccessor";
+import { vercelTelemetryAccessor, getTelemetryHistory } from "../../../lib/accessors/vercelTelemetryAccessor";
 import { supabaseReadAggregate } from "../../../lib/accessors/supabaseAccessor";
 import { TelemetryDisplay } from "../../../components/shared/TelemetryDisplay";
+import { Activity, ChevronRight, Server, Globe2 } from "lucide-react";
 
 export const revalidate = 60;
 
 export default async function LabTelemetryPage() {
-  const telemetryRes = await vercelTelemetryAccessor({
-    metricSet: "edge_latency",
-    windowMinutes: 60,
-  });
+  const telemetryRes = await vercelTelemetryAccessor({ metricSet: "edge_latency", windowMinutes: 60 });
   const historyRes = await getTelemetryHistory(1440);
   const aggregateRes = await supabaseReadAggregate();
 
@@ -24,62 +19,58 @@ export default async function LabTelemetryPage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-center gap-2 text-xs font-mono text-text-secondary">
-        <Link href="/lab" className="hover:text-accent-chemical underline">Lab</Link>
-        <span>/</span>
-        <span className="text-accent-chemical">Edge Telemetry</span>
+      <div className="flex items-center gap-2 text-xs font-medium text-slate-500">
+        <Link href="/lab" className="hover:text-[#635BFF] transition-colors">Lab</Link>
+        <ChevronRight className="w-3.5 h-3.5" />
+        <span className="text-slate-900 dark:text-white font-semibold">Edge Telemetry</span>
       </div>
 
-      <header className="border-b border-structural pb-4">
-        <span className="text-xs font-mono uppercase text-accent-chemical font-bold tracking-wider">
-          [ EDGE PERFORMANCE // 24-HOUR TELEMETRY ]
-        </span>
-        <h1 className="text-3xl font-extrabold font-display text-text-primary mt-1">
-          Edge Performance Ledger
+      <header>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-[#635BFF] dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60 mb-3">
+          <Activity className="w-3.5 h-3.5" />
+          <span>Edge Performance Ledger</span>
+        </div>
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+          Edge Telemetry &amp; Latency SLA
         </h1>
-        <p className="text-sm text-text-secondary mt-2 max-w-2xl leading-relaxed">
+        <p className="text-base text-slate-600 dark:text-slate-300 mt-3 max-w-2xl leading-relaxed">
           Sourced from live edge timing metrics with 60-second stale-while-revalidate caching.
         </p>
       </header>
 
-      {/* 70% / 30% Asymmetrical Split */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        {/* Left 70% Column: Historical Data Ledger */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-8 flex flex-col gap-6">
-          <section className="border-element bg-surface-secondary p-6">
-            <div className="flex justify-between items-center border-b border-structural pb-3 mb-4">
-              <h2 className="text-xs font-mono uppercase text-accent-chemical font-bold">
-                24-Hour Historical Latency Sampling Ledger
-              </h2>
-              <div className="font-marginalia text-annotation text-accent-chemical">
-                {"// edge cached data snapshot"}
-              </div>
-            </div>
-
+          <section className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-6 shadow-stripe">
+            <h2 className="text-sm font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <Server className="w-4 h-4 text-[#635BFF]" />
+              <span>24-Hour Latency Sampling</span>
+            </h2>
             <div className="overflow-x-auto">
-              <table className="w-full text-left font-mono text-xs border-collapse">
+              <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-structural text-accent-chemical">
-                    <th className="py-2 px-3">Timestamp (UTC)</th>
-                    <th className="py-2 px-3">Edge Latency</th>
-                    <th className="py-2 px-3">Bundle Gzip</th>
-                    <th className="py-2 px-3">SLA Status</th>
+                  <tr className="border-b border-slate-100 dark:border-slate-800 text-slate-400 font-semibold">
+                    <th className="py-2.5 px-3">Timestamp (UTC)</th>
+                    <th className="py-2.5 px-3">Edge Latency</th>
+                    <th className="py-2.5 px-3">Bundle Gzip</th>
+                    <th className="py-2.5 px-3">SLA Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {historyPoints.slice(-10).map((point, idx) => (
-                    <tr key={idx} className="border-b border-structural hover:bg-surface-primary">
-                      <td className="py-2 px-3 text-text-secondary">
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                  {historyPoints.slice(-8).map((point, idx) => (
+                    <tr key={idx} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                      <td className="py-2.5 px-3 text-slate-500 font-mono">
                         {new Date(point.timestamp).toISOString().substring(11, 19)}Z
                       </td>
-                      <td className="py-2 px-3 font-bold text-accent-sky">
+                      <td className="py-2.5 px-3 font-bold text-slate-900 dark:text-white font-mono">
                         {point.edgeLatencyMs}ms
                       </td>
-                      <td className="py-2 px-3 text-text-secondary">
+                      <td className="py-2.5 px-3 text-slate-500 font-mono">
                         {point.bundleSizeKb}KB
                       </td>
-                      <td className="py-2 px-3 text-accent-barrel font-bold">
-                        [PASS &le; 50ms]
+                      <td className="py-2.5 px-3">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/40">
+                          Pass &le; 50ms
+                        </span>
                       </td>
                     </tr>
                   ))}
@@ -88,18 +79,18 @@ export default async function LabTelemetryPage() {
             </div>
           </section>
 
-          <section className="border-element bg-surface-secondary p-6">
-            <h2 className="text-xs font-mono uppercase text-accent-chemical font-bold mb-3">
+          <section className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-6 shadow-stripe">
+            <h2 className="text-sm font-bold text-slate-900 dark:text-white mb-4">
               Database Telemetry Aggregates
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {aggregates.map((item) => (
-                <div key={item.metric_key} className="p-3 bg-surface-primary border-element">
-                  <div className="text-xs font-mono text-text-secondary">{item.metric_key}</div>
-                  <div className="text-metric font-mono font-bold text-accent-chemical mt-1">
+                <div key={item.metric_key} className="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <div className="text-xs font-medium text-slate-500">{item.metric_key}</div>
+                  <div className="text-xl font-extrabold text-slate-900 dark:text-white font-mono mt-1">
                     {item.metric_value.toLocaleString()}
                   </div>
-                  <div className="text-[10px] font-mono text-text-secondary mt-1">
+                  <div className="text-[11px] text-slate-400 mt-1">
                     Updated: {new Date(item.last_computed_at).toLocaleTimeString()}
                   </div>
                 </div>
@@ -108,24 +99,21 @@ export default async function LabTelemetryPage() {
           </section>
         </div>
 
-        {/* Right 30% Column: Metadata Rail */}
         <aside className="lg:col-span-4 flex flex-col gap-6">
-          <TelemetryDisplay
-            state={isSuccess ? "success" : "error"}
-            data={currentData}
-            lastUpdatedAt={currentData?.measuredAt}
-          />
+          <TelemetryDisplay state={isSuccess ? "success" : "error"} data={currentData} lastUpdatedAt={currentData?.measuredAt} />
 
-          <section className="border-element bg-surface-secondary p-4">
-            <h3 className="text-xs font-mono uppercase text-accent-chemical font-bold mb-3 border-b border-structural pb-2">
-              PoP Regional Distribution
+          <section className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 rounded-2xl p-6 shadow-stripe">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-2">
+              <Globe2 className="w-3.5 h-3.5 text-[#635BFF]" />
+              <span>PoP Regional Distribution</span>
             </h3>
-            <div className="flex flex-col gap-2 font-mono text-xs">
+            <div className="flex flex-col gap-2">
               {currentData?.nodeStatus.map((node) => (
-                <div key={node.region} className="flex justify-between items-center p-2 border-element bg-surface-primary">
-                  <span className="text-text-primary">{node.region}</span>
-                  <span className="font-bold text-accent-barrel uppercase text-[10px]">
-                    [{node.status}]
+                <div key={node.region} className="flex justify-between items-center p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800 text-xs">
+                  <span className="font-medium text-slate-700 dark:text-slate-300">{node.region}</span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200/60 dark:border-emerald-800/40">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    {node.status}
                   </span>
                 </div>
               ))}

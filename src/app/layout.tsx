@@ -23,15 +23,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen bg-surface-primary text-text-primary antialiased grid-mesh selection:bg-accent-element selection:text-text-primary">
+      <body className="flex flex-col min-h-screen bg-[#F6F9FC] dark:bg-[#080D1A] text-[#0A2540] dark:text-[#F8FAFC] antialiased stripe-mesh selection:bg-[#635BFF] selection:text-white">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent-element focus:text-text-primary focus:font-mono focus:text-xs border-element"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#635BFF] focus:text-white focus:text-xs focus:font-semibold focus:rounded-full"
         >
           Skip to main content
         </a>
         <Header />
-        <main id="main-content" className="flex-1 max-w-dense w-full mx-auto px-4 md:px-8 py-6 md:py-10">
+        <main id="main-content" className="flex-1 max-w-dense w-full mx-auto px-4 md:px-8 py-8 md:py-14">
           {children}
         </main>
         <Footer />

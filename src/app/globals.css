@@ -1,30 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Chivo:wght@700;900&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --surface-primary: #12140F;
-  --surface-secondary: #181C15;
-  --surface-elevated: #1F261C;
-  --border-structural: #283323;
-  --border-highlight: #1F6032;
-  --text-primary: #EDEAE1;
-  --text-secondary: #9BA493;
-  --accent-signal: #E06A3C;
-  --accent-element: #1F6032;
-  --accent-barrel: #00892B;
-  --accent-vapor: #032202;
-  --accent-chemical: #E9D71B;
-  --accent-sky: #87CEEB;
-  --accent-gold: #D4AF37;
-  --accent-alert: #CE1126;
-  --font-chivo: 'Chivo', -apple-system, sans-serif;
-  --font-fraunces: 'Fraunces', Georgia, serif;
+  --surface-primary: #FFFFFF;
+  --surface-secondary: #F6F9FC;
+  --surface-elevated: #FFFFFF;
+  --border-structural: #E3E8EE;
+  --border-highlight: #635BFF;
+  --text-primary: #0A2540;
+  --text-secondary: #425466;
+  --accent-signal: #DF1B41;
+  --accent-brand: #635BFF;
+  --font-plus-jakarta-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
   --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --font-caveat: 'Caveat', cursive;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-primary: #080D1A;
+    --surface-secondary: #0F172A;
+    --surface-elevated: #151F32;
+    --border-structural: #1E293B;
+    --border-highlight: #7A73FF;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --accent-signal: #F87171;
+    --accent-brand: #7A73FF;
+  }
 }
 
 html,
@@ -40,7 +46,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent-chemical);
+  outline: 2px solid var(--border-highlight);
   outline-offset: 2px;
 }
 
@@ -50,15 +56,7 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-chivo);
-}
-
-.font-title {
-  font-family: var(--font-fraunces);
-}
-
-.font-marginalia {
-  font-family: var(--font-caveat);
+  font-family: var(--font-plus-jakarta-sans);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -74,24 +72,29 @@ body {
   border: 1px solid var(--border-structural);
 }
 
-.border-element {
-  border: 1px solid var(--border-highlight);
+.stripe-mesh {
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(99, 91, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(122, 115, 255, 0.06) 0%, transparent 45%);
 }
 
-.border-element-2 {
-  border: 2px solid var(--border-highlight);
+.stripe-gradient-text {
+  background: linear-gradient(135deg, #0A2540 20%, #635BFF 60%, #00D4FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.hazard-stripe {
-  background-image: repeating-linear-gradient(45deg, #1F6032, #1F6032 6px, #12140F 6px, #12140F 12px);
-}
-
-.hazard-stripe-yellow {
-  background-image: repeating-linear-gradient(45deg, #E9D71B, #E9D71B 6px, #12140F 6px, #12140F 12px);
-}
-
-.grid-mesh {
-  background-size: 32px 32px;
-  background-image: linear-gradient(to right, rgba(31, 96, 50, 0.08) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(31, 96, 50, 0.08) 1px, transparent 1px);
+@media (prefers-color-scheme: dark) {
+  .stripe-gradient-text {
+    background: linear-gradient(135deg, #FFFFFF 20%, #A5B4FC 60%, #38BDF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stripe-mesh {
+    background-image: 
+      radial-gradient(circle at 10% 10%, rgba(99, 91, 255, 0.15) 0%, transparent 45%),
+      radial-gradient(circle at 90% 20%, rgba(0, 212, 255, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(122, 115, 255, 0.10) 0%, transparent 50%);
+  }
 }

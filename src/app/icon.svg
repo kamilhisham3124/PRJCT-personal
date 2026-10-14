@@ -1,5 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="4" fill="#12140F" stroke="#1F6032" stroke-width="2"/>
-  <text x="4" y="9" font-family="monospace" font-size="6" fill="#E9D71B">19</text>
-  <text x="16" y="22" font-family="sans-serif" font-weight="bold" font-size="14" fill="#EDEAE1" text-anchor="middle">Ka</text>
+  <defs>
+    <linearGradient id="stripeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#635BFF" />
+      <stop offset="100%" stop-color="#00D4FF" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#stripeGrad)"/>
+  <path d="M10 8h4v6.5l5.5-6.5h5l-6.5 7.5 7 8.5h-5.2l-5.8-7V24h-4V8z" fill="#FFFFFF"/>
 </svg>
