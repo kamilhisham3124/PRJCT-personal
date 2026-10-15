@@ -7,9 +7,10 @@
     "dev": "next dev",
     "audit:leak": "node scripts/audit-spec-leak.mjs",
     "audit:lines": "node scripts/audit-line-limits.mjs",
+    "test:unit": "node --experimental-strip-types --no-warnings scripts/test-unit.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "next lint",
-    "test": "npm run audit:leak && npm run audit:lines && npm run typecheck && npm run lint",
+    "test": "npm run audit:leak && npm run audit:lines && npm run test:unit && npm run typecheck && npm run lint",
     "prebuild": "npm run audit:leak && npm run audit:lines",
     "build": "next build",
     "start": "next start"
