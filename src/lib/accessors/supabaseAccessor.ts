@@ -6,7 +6,7 @@ export interface TelemetryAggregateItem {
   last_computed_at: string;
 }
 
-// In-memory persistent store for development environment (DOC-11 Section 3.0)
+// In-memory store for development environment
 let memoryStore: Record<string, number> = {
   total_page_views: 1420,
   total_canvas_interactions: 388,
@@ -85,16 +85,6 @@ export async function supabaseReadAggregate(): Promise<
         retryable: true,
       },
     };
-  }
-}
-
-export async function recordVisitorEvent(
-  eventType: "page_view" | "canvas_interaction"
-): Promise<void> {
-  if (eventType === "page_view") {
-    memoryStore.total_page_views += 1;
-  } else if (eventType === "canvas_interaction") {
-    memoryStore.total_canvas_interactions += 1;
   }
 }
 

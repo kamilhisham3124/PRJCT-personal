@@ -14,7 +14,7 @@ export async function vercelTelemetryAccessor(
   const token = process.env.VERCEL_ANALYTICS_API_TOKEN;
 
   if (!token) {
-    // Permitted local development fallback per DOC-11 Section 3.0 (ENV-03)
+    // Local development fallback data for offline environment
     const baseLatency = 24.8;
     const jitter = Math.floor(Math.random() * 4);
     const simulatedResponse: VercelTelemetryResponse = {

@@ -103,7 +103,7 @@ export async function githubAccessor(
 function fallbackCommitData(
   request: GitHubAccessorRequest
 ): AccessorResult<GitHubAccessorResponse> {
-  // Deterministic local cache per DOC-11 Section 3.0 (ENV-03 local development)
+  // Deterministic local fallback cache for offline development
   const isTaskMgmt = request.repoName.includes("task");
   const baseSha = isTaskMgmt ? "4f9b8a1c" : "7e2a9d0f";
 
