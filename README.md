@@ -13,7 +13,7 @@ Deterministic, verified portfolio website showcasing normalized backend architec
 
 ## Prerequisites
 
-- Node.js 20.x or later
+- Node.js 22.x or later
 - npm 10.x or later
 
 ## Environment Variables
@@ -45,7 +45,7 @@ Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
 ## Quality Gates & Verification
 
-All code must pass four CI verification gates before shipping:
+All code must pass five CI verification gates before shipping:
 
 ```bash
 # 1. Specification content leak check
@@ -54,10 +54,13 @@ npm run audit:leak
 # 2. File line-budget verification (max 150 lines per module)
 npm run audit:lines
 
-# 3. TypeScript compilation
+# 3. Native Node unit test suite
+npm run test:unit
+
+# 4. TypeScript compilation
 npm run typecheck
 
-# 4. ESLint analysis
+# 5. ESLint analysis
 npm run lint
 
 # Or run all gates sequentially
