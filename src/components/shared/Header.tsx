@@ -17,31 +17,27 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-sky-200/80 dark:border-sky-900/60 bg-white/85 dark:bg-[#031B33]/85 backdrop-blur-xl transition-colors shadow-[0_2px_12px_rgba(2,132,199,0.06)]">
-      <div className="max-w-dense mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-sky-300 via-sky-500 to-sky-700 p-[1px] shadow-aero-glass transition-all group-hover:scale-105">
-            <div className="w-full h-full bg-[#031B33] rounded-[11px] flex items-center justify-center text-white font-extrabold text-sm font-display tracking-tight shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]">
-              KH
-            </div>
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--border-structural)] bg-[var(--surface-primary)]/80 backdrop-blur-md transition-colors">
+      <div className="max-w-dense mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 group min-h-[44px] py-1">
+          <div className="w-8 h-8 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-bold text-xs tracking-tight transition-transform group-hover:scale-105">
+            KH
           </div>
           <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="font-display font-bold text-sm tracking-tight text-slate-900 dark:text-white group-hover:text-aero-sky transition-colors">
-                Kamil Hisham
-              </span>
-              <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold bg-sky-50 dark:bg-sky-950/60 text-aero-sky dark:text-sky-300 border border-sky-200/80 dark:border-sky-800/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-                [AERO_SYS]
-              </span>
-            </div>
+            <span className="font-semibold text-sm tracking-tight text-[var(--text-primary)]">
+              Kamil Hisham
+            </span>
+            <span className="text-[11px] font-mono text-[var(--text-secondary)]">
+              Systems Engineer
+            </span>
           </div>
         </Link>
 
-        {/* HyperUI-Style Aero Tab Navigation */}
+        {/* LinkHunt Minimal Navigation Bar */}
         <nav
           role="navigation"
           aria-label="Main navigation"
-          className="hidden md:flex items-center gap-1 bg-sky-100/60 dark:bg-sky-950/40 p-1.5 rounded-full border border-sky-200/70 dark:border-sky-800/60 shadow-[inset_0_1px_2px_rgba(2,132,199,0.08)]"
+          className="hidden md:flex items-center gap-1 bg-[var(--surface-secondary)] p-1 rounded-lg border border-[var(--border-structural)]"
         >
           {NAV_ITEMS.map((item) => {
             const isCurrent =
@@ -52,10 +48,10 @@ export function Header() {
                 key={item.path}
                 href={item.path}
                 aria-current={isCurrent ? "page" : undefined}
-                className={`px-4 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 ${
+                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
                   isCurrent
-                    ? "aero-btn-primary shadow-sm"
-                    : "text-slate-600 dark:text-sky-200 hover:text-sky-600 dark:hover:text-white"
+                    ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm font-semibold"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 {item.label}
@@ -68,7 +64,7 @@ export function Header() {
         <div className="hidden sm:flex items-center gap-3">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold aero-btn-primary group"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium linkhunt-btn-primary min-h-[44px] group"
           >
             <span>Get in touch</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -83,7 +79,7 @@ export function Header() {
             aria-controls="mobile-nav"
             aria-label="Toggle navigation menu"
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-xl border border-sky-200 dark:border-sky-800 text-slate-700 dark:text-slate-300 hover:bg-sky-50 dark:hover:bg-sky-950 transition-colors"
+            className="p-2.5 min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg border border-[var(--border-structural)] text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] transition-colors"
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -96,25 +92,38 @@ export function Header() {
           id="mobile-nav"
           role="navigation"
           aria-label="Mobile navigation"
-          className="md:hidden border-t border-sky-200 dark:border-sky-800 bg-white/95 dark:bg-[#031B33]/95 p-4 flex flex-col gap-2 shadow-lg"
+          className="md:hidden border-t border-[var(--border-structural)] bg-[var(--surface-primary)] p-4 flex flex-col gap-2"
         >
-          {NAV_ITEMS.map((item) => (
+          {NAV_ITEMS.map((item) => {
+            const isCurrent =
+              pathname === item.path ||
+              (item.path !== "/" && pathname.startsWith(item.path));
+            return (
+              <Link
+                key={item.path}
+                href={item.path}
+                onClick={() => setIsOpen(false)}
+                aria-current={isCurrent ? "page" : undefined}
+                className={`px-3 py-2.5 min-h-[44px] flex items-center text-sm font-medium rounded-lg transition-colors ${
+                  isCurrent
+                    ? "bg-[var(--surface-secondary)] text-[var(--text-primary)] font-semibold"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+          <div className="pt-2 border-t border-[var(--border-structural)] mt-2">
             <Link
-              key={item.path}
-              href={item.path}
+              href="/contact"
               onClick={() => setIsOpen(false)}
-              className="p-3 rounded-xl font-medium text-sm text-slate-800 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-900/50 transition-colors"
+              className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-medium linkhunt-btn-primary min-h-[44px]"
             >
-              {item.label}
+              <span>Get in touch</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
-          ))}
-          <Link
-            href="/contact"
-            onClick={() => setIsOpen(false)}
-            className="mt-2 p-3 text-center rounded-xl font-semibold text-sm aero-btn-primary"
-          >
-            Get in touch
-          </Link>
+          </div>
         </nav>
       )}
     </header>
