@@ -3,6 +3,7 @@ import Link from "next/link";
 import { TelemetryWidget } from "../components/server/TelemetryWidget";
 import { getAllCaseStudies } from "../content";
 import { ArrowRight, MapPin } from "lucide-react";
+import { Hero3DCanvas } from "../components/client/Hero3DCanvas";
 
 export const dynamic = "force-static";
 
@@ -44,9 +45,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-bold text-2xl tracking-tighter shrink-0 border border-[var(--border-structural)] shadow-card">
-          KH
-        </div>
+        <Hero3DCanvas />
       </section>
 
       {/* Main Grid: Case Studies (Left) + Substrate & Telemetry (Right) */}

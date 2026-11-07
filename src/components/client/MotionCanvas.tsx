@@ -2,14 +2,18 @@
 
 import React, { useEffect, useRef } from "react";
 
-interface Point3D {
-  baseX: number;
-  baseY: number;
-  baseZ: number;
+interface Node3D {
+  x: number;
+  y: number;
+  z: number;
+  originX: number;
+  originY: number;
+  originZ: number;
 }
 
-const COUNT = 36;
-const FOCAL_LENGTH = 320;
+const COLS = 12;
+const ROWS = 8;
+const FOCAL = 340;
 
 export function MotionCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -23,23 +27,23 @@ export function MotionCanvas() {
     let animId: number;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
-    let mouseX = 0;
-    let mouseY = 0;
-    let rotX = 0;
-    let rotY = 0;
+    let mouseX = width / 2;
+    let mouseY = height / 2;
+    let time = 0;
 
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mediaQuery.matches) return;
 
-    const points: Point3D[] = [];
-    const radius = Math.min(width, height) * 0.32;
-    for (let i = 0; i < COUNT; i++) {
-      const theta = Math.acos(2 * (i / COUNT) - 1);
-      const phi = Math.sqrt(COUNT * Math.PI) * theta;
-      const x = radius * Math.sin(theta) * Math.cos(phi);
-      const y = radius * Math.sin(theta) * Math.sin(phi);
-      const z = radius * Math.cos(theta);
-      points.push({ baseX: x, baseY: y, baseZ: z });
+    const nodes: Node3D[] = [];
+    const spacingX = Math.max(70, width / (COLS - 1));
+    const spacingY = Math.max(60, height / (ROWS - 1));
+
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const ox = (c - (COLS - 1) / 2) * spacingX;
+        const oy = (r - (ROWS - 1) / 2) * spacingY;
+        nodes.push({ x: ox, y: oy, z: 0, originX: ox, originY: oy, originZ: 0 });
+      }
     }
 
     const handleResize = () => {
@@ -49,58 +53,75 @@ export function MotionCanvas() {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX = (e.clientX - width / 2) * 0.0003;
-      mouseY = (e.clientY - height / 2) * 0.0003;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
     };
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("mousemove", handleMouseMove);
 
     const render = () => {
-      rotX += 0.002 + mouseY;
-      rotY += 0.003 + mouseX;
-
+      time += 0.02;
       ctx.clearRect(0, 0, width, height);
+
       const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const nodeColor = isDark ? "rgba(230, 230, 240, " : "rgba(30, 30, 45, ";
-      const lineColor = isDark ? "rgba(160, 160, 185, " : "rgba(90, 90, 110, ";
+      const pointColor = isDark ? "rgba(240, 240, 255, " : "rgba(30, 41, 59, ";
+      const linkColor = isDark ? "rgba(148, 163, 184, " : "rgba(100, 116, 139, ";
 
-      const projected = points.map((p) => {
-        const x1 = p.baseX * Math.cos(rotY) + p.baseZ * Math.sin(rotY);
-        const z1 = -p.baseX * Math.sin(rotY) + p.baseZ * Math.cos(rotY);
-        const y2 = p.baseY * Math.cos(rotX) - z1 * Math.sin(rotX);
-        const z2 = p.baseY * Math.sin(rotX) + z1 * Math.cos(rotX);
+      const targetRotY = ((mouseX - width / 2) / width) * 0.35;
+      const targetRotX = -((mouseY - height / 2) / height) * 0.25;
 
-        const scale = FOCAL_LENGTH / (FOCAL_LENGTH + z2 + 360);
-        return {
-          x: width / 2 + x1 * scale,
-          y: height / 2 + y2 * scale,
-          scale,
-          alpha: Math.max(0.12, Math.min(0.75, (z2 + radius) / (2 * radius))),
-        };
+      const projected = nodes.map((n) => {
+        const wave = Math.sin(time + n.originX * 0.005 + n.originY * 0.005) * 45;
+        const currZ = n.originZ + wave;
+
+        const x1 = n.originX * Math.cos(targetRotY) + currZ * Math.sin(targetRotY);
+        const z1 = -n.originX * Math.sin(targetRotY) + currZ * Math.cos(targetRotY);
+        const y2 = n.originY * Math.cos(targetRotX) - z1 * Math.sin(targetRotX);
+        const z2 = n.originY * Math.sin(targetRotX) + z1 * Math.cos(targetRotX);
+
+        const scale = FOCAL / (FOCAL + z2 + 420);
+        const px = width / 2 + x1 * scale;
+        const py = height / 2 + y2 * scale;
+        const alpha = Math.max(0.15, Math.min(0.85, (z2 + 100) / 160));
+
+        return { px, py, scale, alpha };
       });
 
-      for (let i = 0; i < projected.length; i++) {
-        for (let j = i + 1; j < projected.length; j++) {
-          const dx = projected[i].x - projected[j].x;
-          const dy = projected[i].y - projected[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 115) {
-            const lineAlpha = (1 - dist / 115) * 0.16;
-            ctx.strokeStyle = `${lineColor}${lineAlpha})`;
-            ctx.lineWidth = 1;
+      // Draw horizontal & vertical structural lattice connections
+      ctx.lineWidth = 1;
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+          const idx = r * COLS + c;
+          const p1 = projected[idx];
+
+          if (c < COLS - 1) {
+            const p2 = projected[idx + 1];
+            const lineAlpha = ((p1.alpha + p2.alpha) / 2) * 0.22;
+            ctx.strokeStyle = `${linkColor}${lineAlpha})`;
             ctx.beginPath();
-            ctx.moveTo(projected[i].x, projected[i].y);
-            ctx.lineTo(projected[j].x, projected[j].y);
+            ctx.moveTo(p1.px, p1.py);
+            ctx.lineTo(p2.px, p2.py);
+            ctx.stroke();
+          }
+
+          if (r < ROWS - 1) {
+            const p3 = projected[idx + COLS];
+            const lineAlpha = ((p1.alpha + p3.alpha) / 2) * 0.22;
+            ctx.strokeStyle = `${linkColor}${lineAlpha})`;
+            ctx.beginPath();
+            ctx.moveTo(p1.px, p1.py);
+            ctx.lineTo(p3.px, p3.py);
             ctx.stroke();
           }
         }
       }
 
-      for (const pt of projected) {
-        ctx.fillStyle = `${nodeColor}${pt.alpha * 0.65})`;
+      // Draw responsive nodes with dynamic depth glow
+      for (const p of projected) {
+        ctx.fillStyle = `${pointColor}${p.alpha * 0.85})`;
         ctx.beginPath();
-        ctx.arc(pt.x, pt.y, Math.max(1, 2.2 * pt.scale), 0, Math.PI * 2);
+        ctx.arc(p.px, p.py, Math.max(1.2, 2.5 * p.scale), 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -120,7 +141,7 @@ export function MotionCanvas() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10 w-full h-full opacity-40 dark:opacity-25"
+      className="pointer-events-none fixed inset-0 z-0 w-full h-full opacity-65 dark:opacity-45"
     />
   );
 }

@@ -68,11 +68,13 @@ body {
   background-color: var(--surface-elevated);
   border: 1px solid var(--border-structural);
   border-radius: 0.75rem;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s ease, box-shadow 0.2s ease;
 }
 
 .linkhunt-card:hover {
+  transform: translateY(-2px);
   border-color: var(--border-highlight);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
 }
 
 /* LinkHunt Minimal Buttons */
@@ -85,11 +87,16 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .linkhunt-btn-primary:hover {
-  opacity: 0.88;
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.linkhunt-btn-primary:active {
+  transform: scale(0.97);
 }
 
 .linkhunt-btn-secondary {
@@ -102,11 +109,16 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
 
 .linkhunt-btn-secondary:hover {
   border-color: var(--border-highlight);
+  transform: translateY(-1px);
+}
+
+.linkhunt-btn-secondary:active {
+  transform: scale(0.97);
 }
 
 /* LinkHunt Monospace / Micro Badge */

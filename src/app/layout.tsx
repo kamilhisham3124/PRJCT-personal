@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className="flex flex-col min-h-screen bg-[var(--surface-primary)] text-[var(--text-primary)] antialiased selection:bg-zinc-800 selection:text-white dark:selection:bg-zinc-200 dark:selection:text-zinc-900"
+        className="flex flex-col min-h-screen bg-[var(--surface-primary)] text-[var(--text-primary)] antialiased relative selection:bg-zinc-800 selection:text-white dark:selection:bg-zinc-200 dark:selection:text-zinc-900"
       >
         <MotionCanvas />
         <a
@@ -35,14 +35,16 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <Header />
-        <main
-          id="main-content"
-          className="flex-1 max-w-dense w-full mx-auto px-4 sm:px-6 py-8 sm:py-12"
-        >
-          {children}
-        </main>
-        <Footer />
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <Header />
+          <main
+            id="main-content"
+            className="flex-1 max-w-dense w-full mx-auto px-4 sm:px-6 py-8 sm:py-12"
+          >
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
