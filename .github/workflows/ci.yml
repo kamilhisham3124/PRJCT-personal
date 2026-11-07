@@ -11,6 +11,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  commit-governance:
+    name: Stage 0 - Conventional Commit Format Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source History
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
+
+      - name: Verify Conventional Commit Format (AGENTS.md Section 9)
+        run: |
+          node -e '
+            const cp = require("child_process");
+            const logs = cp.execSync("git log -n 5 --format=%s").toString().trim().split("\n");
+            const pattern = /^(feat|fix|refactor|style|chore|test|docs|ci|perf)(\([a-zA-Z0-9_\-\.\/]+\))?:\s.+/;
+            for (const msg of logs) {
+              if (!pattern.test(msg)) {
+                console.error(`[COMMIT LINT ERROR] Invalid commit message: "${msg}"`);
+                console.error("Must follow: <type>(<scope>): <description>");
+                process.exit(1);
+              }
+              console.log(`[COMMIT LINT PASS] Valid: "${msg}"`);
+            }
+          '
+
   static-checks:
     name: Stage 1 - Static Checks & Architecture Lint
     runs-on: ubuntu-latest
@@ -76,7 +101,7 @@ jobs:
 
   build:
     name: Stage 4 - Deterministic Production Build
-    needs: [static-checks, security-compliance, unit-tests]
+    needs: [commit-governance, static-checks, security-compliance, unit-tests]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source
@@ -95,4 +120,3 @@ jobs:
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
-
