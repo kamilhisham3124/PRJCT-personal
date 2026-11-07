@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "../components/shared/Header";
 import { Footer } from "../components/shared/Footer";
+import { MotionCanvas } from "../components/client/MotionCanvas";
 
 export const metadata: Metadata = {
   title: "Kamil Hisham | Full-Stack Systems Engineer",
@@ -27,6 +28,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className="flex flex-col min-h-screen bg-[var(--surface-primary)] text-[var(--text-primary)] antialiased selection:bg-zinc-800 selection:text-white dark:selection:bg-zinc-200 dark:selection:text-zinc-900"
       >
+        <MotionCanvas />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-zinc-900 focus:text-white dark:focus:bg-zinc-100 dark:focus:text-zinc-900 focus:text-xs focus:font-semibold focus:rounded-full shadow-lg min-h-[44px] inline-flex items-center"
