@@ -1,10 +1,16 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { getAllCaseStudies } from "../../content";
 import { githubAccessor } from "../../lib/accessors/githubAccessor";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
 export const dynamic = "force-static";
+
+const CASE_STUDY_IMAGES: Record<string, string> = {
+  "employee-task-management": "/images/case-study-task-management.jpg",
+  "gift-delivery-ecommerce": "/images/case-study-ecommerce.jpg",
+};
 
 export default async function WorkPage() {
   const caseStudies = getAllCaseStudies();
@@ -44,10 +50,20 @@ export default async function WorkPage() {
         {studiesWithCommits.map((study) => (
           <article
             key={study.slug}
-            className="group linkhunt-card p-6 flex flex-col justify-between hover:shadow-card-hover transition-all"
+            className="group linkhunt-card p-5 sm:p-6 flex flex-col justify-between hover:shadow-card-hover transition-all"
           >
             <div>
-              <div className="flex items-center justify-between pb-3 mb-4 border-b border-[var(--border-structural)]">
+              <div className="relative w-full h-44 rounded-lg overflow-hidden border border-[var(--border-structural)] mb-4 bg-zinc-900">
+                <Image
+                  src={CASE_STUDY_IMAGES[study.slug] || "/images/case-study-task-management.jpg"}
+                  alt={study.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+
+              <div className="flex items-center justify-between pb-2 mb-3 border-b border-[var(--border-structural)]">
                 <span className="text-[11px] font-mono font-medium tracking-wider uppercase text-[var(--text-secondary)]">
                   {study.slug}
                 </span>
@@ -59,27 +75,23 @@ export default async function WorkPage() {
                 )}
               </div>
 
-              <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-2 group-hover:underline">
+              <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:underline">
                 {study.title}
               </h2>
 
-              <p className="text-sm text-[var(--text-secondary)] mb-6 leading-relaxed">
+              <p className="text-sm text-[var(--text-secondary)] mb-4 leading-relaxed line-clamp-2">
                 {study.summary}
               </p>
 
-              <div className="flex flex-wrap gap-1.5 mb-6">
+              <div className="flex flex-wrap gap-1.5 mb-4">
                 {study.tech_stack.map((tech) => (
-                  <span key={tech} className="linkhunt-badge">
-                    {tech}
-                  </span>
+                  <span key={tech} className="linkhunt-badge">{tech}</span>
                 ))}
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-[var(--border-structural)] text-xs">
-              <span className="text-[var(--text-secondary)] font-mono">
-                {study.published_at}
-              </span>
+            <div className="flex items-center justify-between pt-3 border-t border-[var(--border-structural)] text-xs">
+              <span className="text-[var(--text-secondary)] font-mono">{study.published_at}</span>
               <Link
                 href={`/work/${study.slug}`}
                 className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-primary)] hover:underline min-h-[44px]"

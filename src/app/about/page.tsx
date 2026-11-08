@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { getResumeContent } from "../../content";
 import { Download } from "lucide-react";
 
@@ -9,25 +10,38 @@ export default function AboutPage() {
 
   return (
     <div className="flex flex-col gap-10">
-      <header className="flex flex-col items-start gap-4 pb-6 border-b border-[var(--border-structural)]">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)]">
-          <span>[ENGINEERING_PROFILE]</span>
+      <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-[var(--border-structural)]">
+        <div className="flex flex-col items-start gap-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)]">
+            <span>[ENGINEERING_PROFILE]</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
+            {resume.name}
+          </h1>
+          <p className="text-base text-[var(--text-secondary)] max-w-2xl leading-relaxed">
+            {resume.persona_statement}
+          </p>
+          <div className="pt-2">
+            <a
+              href="/resume.pdf"
+              download="Kamil_Hisham_Resume.pdf"
+              className="inline-flex items-center gap-2 linkhunt-btn-primary rounded-full px-5 py-2.5 text-xs font-medium min-h-[44px] group"
+            >
+              <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+              <span>Download Resume PDF</span>
+            </a>
+          </div>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-          {resume.name}
-        </h1>
-        <p className="text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
-          {resume.persona_statement}
-        </p>
-        <div className="pt-2">
-          <a
-            href="/resume.pdf"
-            download="Kamil_Hisham_Resume.pdf"
-            className="inline-flex items-center gap-2 linkhunt-btn-primary rounded-full px-5 py-2.5 text-xs font-medium min-h-[44px] group"
-          >
-            <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
-            <span>Download Resume PDF</span>
-          </a>
+
+        <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-[var(--border-structural)] shadow-card shrink-0">
+          <Image
+            src="/images/avatar.jpg"
+            alt={resume.name}
+            width={144}
+            height={144}
+            priority
+            className="w-full h-full object-cover object-center"
+          />
         </div>
       </header>
 
@@ -59,9 +73,7 @@ export default function AboutPage() {
       {/* Education & Skills (Semantic HTML per Rule U1) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start pt-4 border-t border-[var(--border-structural)]">
         <section className="flex flex-col gap-3">
-          <h2 className="text-sm font-semibold text-[var(--text-primary)]">
-            Formal Education
-          </h2>
+          <h2 className="text-sm font-semibold text-[var(--text-primary)]">Formal Education</h2>
           <dl className="space-y-1 text-sm">
             <dt className="font-medium text-[var(--text-primary)]">{resume.education.degree}</dt>
             <dd className="text-[var(--text-secondary)]">{resume.education.institution}, {resume.education.location}</dd>
@@ -74,14 +86,10 @@ export default function AboutPage() {
         </section>
 
         <section className="flex flex-col gap-3">
-          <h2 className="text-sm font-semibold text-[var(--text-primary)]">
-            Technical Capabilities
-          </h2>
+          <h2 className="text-sm font-semibold text-[var(--text-primary)]">Technical Capabilities</h2>
           <div className="flex flex-wrap gap-1.5">
             {resume.skills.map((skill) => (
-              <span key={skill} className="linkhunt-badge">
-                {skill}
-              </span>
+              <span key={skill} className="linkhunt-badge">{skill}</span>
             ))}
           </div>
         </section>

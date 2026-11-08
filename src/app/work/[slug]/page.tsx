@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllCaseStudies, getCaseStudyBySlug } from "../../../content";
 import { githubAccessor } from "../../../lib/accessors/githubAccessor";
@@ -6,6 +7,11 @@ import { CredentialCard } from "../../../components/shared/CredentialCard";
 import { CaseStudyNav } from "../../../components/shared/CaseStudyNav";
 
 export const dynamic = "force-static";
+
+const CASE_STUDY_IMAGES: Record<string, string> = {
+  "employee-task-management": "/images/case-study-task-management.jpg",
+  "gift-delivery-ecommerce": "/images/case-study-ecommerce.jpg",
+};
 
 export function generateStaticParams() {
   const caseStudies = getAllCaseStudies();
@@ -55,33 +61,38 @@ export default async function CaseStudyDetailPage({
         </p>
       </header>
 
+      <div className="relative w-full h-52 sm:h-72 rounded-xl overflow-hidden border border-[var(--border-structural)] bg-zinc-900 shadow-card">
+        <Image
+          src={CASE_STUDY_IMAGES[slug] || "/images/case-study-task-management.jpg"}
+          alt={`${study.title} Architecture Visual`}
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 860px"
+          className="object-cover"
+        />
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 flex flex-col gap-6">
           <section className="linkhunt-card p-6">
             <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
               01. Problem Statement &amp; Requirements
             </h2>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              {study.problem_statement}
-            </p>
+            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.problem_statement}</p>
           </section>
 
           <section className="linkhunt-card p-6">
             <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
               02. Architecture &amp; MVC Design
             </h2>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              {study.architecture_overview}
-            </p>
+            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.architecture_overview}</p>
           </section>
 
           <section className="linkhunt-card p-6">
             <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
               03. Relational Schema &amp; Storage Guarantees
             </h2>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              {study.database_design}
-            </p>
+            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.database_design}</p>
           </section>
         </div>
 
