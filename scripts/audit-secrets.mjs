@@ -64,3 +64,4 @@ if (violations > 0) {
 
 console.log(`[SECURITY PASS] Scanned ${scannedFiles.length} files. Zero hardcoded secrets detected.`);
 process.exit(0);
+

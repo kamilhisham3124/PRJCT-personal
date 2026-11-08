@@ -24,9 +24,10 @@ jobs:
         run: |
           node -e '
             const cp = require("child_process");
-            const logs = cp.execSync("git log -n 5 --format=%s").toString().trim().split("\n");
+            const logs = cp.execSync("git log -n 5 --no-merges --format=%s").toString().trim().split("\n");
             const pattern = /^(feat|fix|refactor|style|chore|test|docs|ci|perf)(\([a-zA-Z0-9_\-\.\/]+\))?:\s.+/;
             for (const msg of logs) {
+              if (!msg.trim() || /^Merge\s+/i.test(msg)) continue;
               if (!pattern.test(msg)) {
                 console.error(`[COMMIT LINT ERROR] Invalid commit message: "${msg}"`);
                 console.error("Must follow: <type>(<scope>): <description>");
