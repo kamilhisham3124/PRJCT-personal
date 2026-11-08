@@ -13,7 +13,7 @@ export default function AboutPage() {
       <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-[var(--border-structural)]">
         <div className="flex flex-col items-start gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)]">
-            <span>[ENGINEERING_PROFILE]</span>
+            <span>About Me</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
             {resume.name}
@@ -73,7 +73,7 @@ export default function AboutPage() {
       {/* Education & Skills (Semantic HTML per Rule U1) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start pt-4 border-t border-[var(--border-structural)]">
         <section className="flex flex-col gap-3">
-          <h2 className="text-sm font-semibold text-[var(--text-primary)]">Formal Education</h2>
+          <h2 className="text-sm font-semibold text-[var(--text-primary)]">Education</h2>
           <dl className="space-y-1 text-sm">
             <dt className="font-medium text-[var(--text-primary)]">{resume.education.degree}</dt>
             <dd className="text-[var(--text-secondary)]">{resume.education.institution}, {resume.education.location}</dd>
@@ -86,7 +86,7 @@ export default function AboutPage() {
         </section>
 
         <section className="flex flex-col gap-3">
-          <h2 className="text-sm font-semibold text-[var(--text-primary)]">Technical Capabilities</h2>
+          <h2 className="text-sm font-semibold text-[var(--text-primary)]">Skills &amp; Technologies</h2>
           <div className="flex flex-wrap gap-1.5">
             {resume.skills.map((skill) => (
               <span key={skill} className="linkhunt-badge">{skill}</span>

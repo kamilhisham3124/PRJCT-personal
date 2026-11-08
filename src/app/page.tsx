@@ -28,7 +28,7 @@ export default function HomePage() {
             </span>
             <span className="inline-flex items-center gap-1 text-xs text-[var(--text-secondary)]">
               <MapPin className="w-3.5 h-3.5" />
-              <span>Singapore / Remote</span>
+              <span>India / Remote</span>
             </span>
           </div>
 
@@ -49,8 +49,8 @@ export default function HomePage() {
           </div>
 
           <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
-            Full-stack systems engineer designing normalized relational schemas, resilient backend
-            architectures, and high-performance edge compute platforms.
+            Software engineer building robust web applications and REST APIs with Python, Django,
+            PostgreSQL, and Next.js. Focused on clean architecture and dependable systems.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -72,7 +72,7 @@ export default function HomePage() {
         <div className="lg:col-span-8 flex flex-col gap-6">
           <div className="flex items-center justify-between pb-2 border-b border-[var(--border-structural)]">
             <h2 className="text-base font-semibold text-[var(--text-primary)]">Featured Case Studies</h2>
-            <span className="text-xs font-mono text-[var(--text-secondary)]">[ACID_STORAGE]</span>
+            <span className="text-xs font-mono text-[var(--text-secondary)]">2 Projects</span>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -104,7 +104,7 @@ export default function HomePage() {
                     ))}
                   </div>
                   <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1 text-xs font-medium text-[var(--text-primary)] hover:underline">
-                    <span>View Architecture</span>
+                    <span>View Project</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -119,7 +119,7 @@ export default function HomePage() {
 
           <section className="linkhunt-card p-5">
             <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-secondary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
-              Platform Substrate
+              Tech Stack &amp; Platform
             </h3>
             <div className="flex flex-col gap-2.5 text-xs">
               <div className="flex justify-between items-center"><span className="text-[var(--text-secondary)]">Edge Platform</span><span className="font-medium text-[var(--text-primary)]">Vercel Global Edge</span></div>
@@ -130,14 +130,14 @@ export default function HomePage() {
           </section>
 
           <section className="linkhunt-card p-5">
-            <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1.5">Systems Sandbox</h3>
-            <p className="text-xs text-[var(--text-secondary)] mb-3 leading-relaxed">Deterministic client state machines and live SLA latency monitoring.</p>
+            <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1.5">Interactive Demos</h3>
+            <p className="text-xs text-[var(--text-secondary)] mb-3 leading-relaxed">Client-side state transitions and live edge telemetry.</p>
             <div className="flex flex-col gap-2">
               <Link href="/lab/canvas" className="w-full text-center py-2 px-3 rounded-lg bg-[var(--surface-secondary)] text-xs font-medium hover:border-[var(--border-highlight)] border border-[var(--border-structural)] transition-colors min-h-[44px] inline-flex items-center justify-center">
-                Interactive Canvas Engine &rarr;
+                Component Canvas &rarr;
               </Link>
               <Link href="/lab/telemetry" className="w-full text-center py-2 px-3 rounded-lg bg-[var(--surface-secondary)] text-xs font-medium hover:border-[var(--border-highlight)] border border-[var(--border-structural)] transition-colors min-h-[44px] inline-flex items-center justify-center">
-                24-Hour Telemetry Ledger &rarr;
+                24-Hour Telemetry &rarr;
               </Link>
             </div>
           </section>

@@ -51,7 +51,7 @@ export default async function CaseStudyDetailPage({
 
       <header className="pb-2">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
-          <span>[SYSTEMS_SPECIFICATION]</span>
+          <span>Case Study</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
           {study.title}
@@ -76,21 +76,21 @@ export default async function CaseStudyDetailPage({
         <div className="lg:col-span-2 flex flex-col gap-6">
           <section className="linkhunt-card p-6">
             <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
-              01. Problem Statement &amp; Requirements
+              01. Context &amp; Problem
             </h2>
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.problem_statement}</p>
           </section>
 
           <section className="linkhunt-card p-6">
             <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
-              02. Architecture &amp; MVC Design
+              02. Architecture &amp; Implementation
             </h2>
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.architecture_overview}</p>
           </section>
 
           <section className="linkhunt-card p-6">
             <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
-              03. Relational Schema &amp; Storage Guarantees
+              03. Database Schema &amp; Data Integrity
             </h2>
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.database_design}</p>
           </section>
@@ -110,7 +110,7 @@ export default async function CaseStudyDetailPage({
 
           <div className="linkhunt-card p-6">
             <h3 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] pb-3 mb-4 border-b border-[var(--border-structural)]">
-              Production Metrics
+              Key Metrics
             </h3>
             <div className="flex flex-col gap-2.5">
               {study.verifiable_metrics?.map((m) => (

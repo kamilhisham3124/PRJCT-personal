@@ -38,7 +38,7 @@ export function CredentialCard({
       <div className="bg-amber-50/80 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/60 rounded-xl p-5">
         <div className="flex items-center gap-2 text-xs font-bold text-amber-800 dark:text-amber-400 mb-1">
           <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-          <span>Git Verification Telemetry Degraded</span>
+          <span>Commit Details Currently Unavailable</span>
         </div>
         <p className="text-xs text-amber-700/90 dark:text-amber-400/80">
           Live commit telemetry is temporarily unavailable for this repository.
@@ -51,7 +51,7 @@ export function CredentialCard({
     return (
       <div className="linkhunt-card p-5">
         <div className="text-xs font-mono font-medium text-[var(--text-secondary)] mb-1">
-          Git Credential Verification
+          Repository Commit History
         </div>
         <p className="text-xs text-[var(--text-secondary)]">
           Zero public commits detected in the queried window.
@@ -74,7 +74,7 @@ export function CredentialCard({
             id={titleId}
             className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-primary)]"
           >
-            Cryptographic Proof
+            Latest Commit
           </h3>
         </div>
         {isVerified && (
@@ -116,7 +116,7 @@ export function CredentialCard({
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-primary)] hover:underline min-h-[44px]"
           >
-            <span>Inspect GitHub Repository</span>
+            <span>View on GitHub</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>

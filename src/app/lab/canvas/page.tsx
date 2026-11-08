@@ -16,14 +16,14 @@ export default function LabCanvasPage() {
 
       <header>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
-          <span>[STATE_ENGINE]</span>
+          <span>Client State</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-          Component Composition Sandbox
+          Interactive Component Canvas
         </h1>
         <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-2 max-w-2xl leading-relaxed">
-          Demonstrates modular React component composition and client state management.
-          Layout switches update the view synchronously via Zustand without network overhead.
+          Demonstrates modular React component composition and client-side state management.
+          Layout transitions update synchronously in Zustand without network requests.
         </p>
       </header>
 
@@ -34,10 +34,10 @@ export default function LabCanvasPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="linkhunt-card p-5">
           <div className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] mb-1.5">
-            01 // Latency
+            01 &bull; Fast Interaction
           </div>
           <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2">
-            Deterministic Latency
+            Zero Network Overhead
           </h3>
           <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
             Zero network dependency once mounted. The canvas continues functioning
@@ -47,7 +47,7 @@ export default function LabCanvasPage() {
 
         <div className="linkhunt-card p-5">
           <div className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] mb-1.5">
-            02 // Boundary
+            02 &bull; State Scope
           </div>
           <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2">
             State Isolation
@@ -60,7 +60,7 @@ export default function LabCanvasPage() {
 
         <div className="linkhunt-card p-5">
           <div className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] mb-1.5">
-            03 // Input
+            03 &bull; Accessibility
           </div>
           <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2">
             Keyboard Operability

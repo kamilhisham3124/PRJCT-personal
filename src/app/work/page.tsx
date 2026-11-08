@@ -30,14 +30,14 @@ export default async function WorkPage() {
     <div className="flex flex-col gap-10">
       <div>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
-          <span>[SYSTEMS_PORTFOLIO]</span>
+          <span>Selected Work</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-          Case Studies &amp; Architecture
+          Case Studies &amp; Projects
         </h1>
         <p className="text-sm sm:text-base text-[var(--text-secondary)] max-w-2xl leading-relaxed mt-2">
-          Verifiable evidence of production software engineering: normalized SQL models,
-          12-endpoint REST APIs, and strict MVC separation under ACID guarantees.
+          Production-tested web applications and REST APIs built with Python, Django,
+          PostgreSQL, and SQLite, featuring normalized relational schemas and role-based access.
         </p>
       </div>
 
@@ -96,7 +96,7 @@ export default async function WorkPage() {
                 href={`/work/${study.slug}`}
                 className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-primary)] hover:underline min-h-[44px]"
               >
-                <span>Inspect Architecture</span>
+                <span>View Case Study</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

@@ -29,13 +29,13 @@ export default async function LabTelemetryPage() {
 
       <header>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
-          <span>[TELEMETRY_LEDGER]</span>
+          <span>Edge Telemetry</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-          Edge Telemetry &amp; Latency SLA
+          Edge Telemetry &amp; Latency
         </h1>
         <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-2 max-w-2xl leading-relaxed">
-          Sourced from live edge timing metrics with 60-second stale-while-revalidate caching.
+          Live edge response times and health metrics cached with 60-second background revalidation.
         </p>
       </header>
 

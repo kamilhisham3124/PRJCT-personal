@@ -1,7 +1,7 @@
 {
   "name": "kamil-portfolio",
   "version": "1.0.0",
-  "description": "Deterministic, high-performance systems engineering portfolio for Kamil Hisham",
+  "description": "Personal developer portfolio of Kamil Hisham, showcasing full-stack web applications, REST APIs, and database architectures",
   "private": true,
   "scripts": {
     "dev": "next dev",

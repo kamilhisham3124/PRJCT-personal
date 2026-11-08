@@ -28,14 +28,14 @@ export default function ContactPage() {
     <div className="flex flex-col gap-10">
       <header>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
-          <span>[COMMUNICATION_CHANNEL]</span>
+          <span>Contact</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
           Contact &amp; Inquiries
         </h1>
         <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-2 max-w-2xl leading-relaxed">
-          Reach out for engineering roles, systems reviews, or architectural discussions.
-          Messages are validated server-side and recorded with explicit timestamps.
+          Interested in working together or discussing engineering roles? Feel free to send a message
+          or reach out directly through any of the channels below.
         </p>
       </header>
 
@@ -45,7 +45,7 @@ export default function ContactPage() {
         <div className="flex flex-col gap-6">
           <section className="linkhunt-card p-6">
             <h2 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] mb-4 pb-2 border-b border-[var(--border-structural)]">
-              Verified Coordinates
+              Contact Information
             </h2>
             <div className="space-y-4 text-sm">
               <div className="flex items-center gap-3">

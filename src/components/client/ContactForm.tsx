@@ -22,13 +22,13 @@ export function ContactForm() {
     if (result.status === "validation-error") {
       setFormState("validation-error");
       setFieldErrors(result.fieldErrors || {});
-      setLiveAnnouncement("Validation error. Please verify input fields.");
+      setLiveAnnouncement("Please check the form for errors.");
     } else if (result.status === "server-error") {
       setFormState("error");
-      setLiveAnnouncement("Server error encountered. Submission failed.");
+      setLiveAnnouncement("Unable to send message. Please try again.");
     } else {
       setFormState("success");
-      setLiveAnnouncement("Contact request recorded successfully.");
+      setLiveAnnouncement("Your message has been sent successfully.");
     }
   };
 
@@ -125,7 +125,7 @@ export function ContactForm() {
       {formState === "success" && (
         <div className="p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 rounded-lg text-xs font-medium text-emerald-800 dark:text-emerald-300 flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-          <span>Message persisted with verified timestamp.</span>
+          <span>Thank you for reaching out! Your message has been sent.</span>
         </div>
       )}
 

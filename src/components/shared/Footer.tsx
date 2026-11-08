@@ -31,7 +31,7 @@ export function Footer() {
               Kamil Hisham
             </div>
             <div className="text-xs font-mono text-[var(--text-secondary)]">
-              Full-Stack Systems Engineer
+              Software Engineer
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-[var(--border-structural)] py-4 text-center text-xs font-mono text-[var(--text-secondary)]" suppressHydrationWarning>
-        &copy; {new Date().getFullYear()} Kamil Hisham. Engineered with deterministic architecture.
+        &copy; {new Date().getFullYear()} Kamil Hisham. All rights reserved.
       </div>
     </footer>
   );

@@ -5,14 +5,14 @@ import { Footer } from "../components/shared/Footer";
 import { MotionCanvas } from "../components/client/MotionCanvas";
 
 export const metadata: Metadata = {
-  title: "Kamil Hisham | Full-Stack Systems Engineer",
+  title: "Kamil Hisham | Software Engineer",
   description:
-    "Deterministic backend architecture, normalized relational schemas, and high-performance edge compute portfolios.",
+    "Personal portfolio of Kamil Hisham, Software Engineer specializing in Python, Django REST Framework, relational databases, and modern web applications.",
   metadataBase: new URL("https://kamilhisham.dev"),
   openGraph: {
-    title: "Kamil Hisham | Full-Stack Systems Engineer",
+    title: "Kamil Hisham | Software Engineer",
     description:
-      "Deterministic backend architecture and verified production telemetry.",
+      "Software engineer building web applications and REST APIs with Python, Django, and Next.js.",
     type: "website",
   },
 };

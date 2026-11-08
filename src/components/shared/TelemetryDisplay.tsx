@@ -25,7 +25,7 @@ export function TelemetryDisplay({
       >
         <div className="flex items-center gap-2 text-xs font-mono font-medium text-[var(--text-secondary)] mb-4">
           <span className="animate-spin inline-block w-3 h-3 border-2 border-zinc-400 border-t-transparent rounded-full" />
-          <span>INITIALIZING_EDGE_SENSORS...</span>
+          <span>Loading edge telemetry...</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="h-16 rounded-lg bg-[var(--surface-secondary)] animate-pulse" />
@@ -45,7 +45,7 @@ export function TelemetryDisplay({
       >
         <div className="flex items-center gap-2 text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 mb-1">
           <AlertCircle className="w-4 h-4" />
-          <span>EDGE_TELEMETRY_DEGRADED</span>
+          <span>Telemetry Currently Unavailable</span>
         </div>
         <p className="text-xs text-[var(--text-secondary)]">
           Telemetry stream connection interrupted. Fallback active.

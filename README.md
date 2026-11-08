@@ -1,15 +1,15 @@
-# Kamil Hisham - Systems Software Engineering Portfolio
+# Kamil Hisham — Developer Portfolio
 
-Deterministic, verified portfolio website showcasing normalized backend architectures, REST APIs, and edge computing infrastructure. Built strictly under Anti-AI Slop Specification-Driven Engineering Governance.
+Personal portfolio website showcasing full-stack web applications, REST APIs, and relational database architectures built with Next.js 15, Python/Django, TypeScript, and Tailwind CSS.
 
 ## Tech Stack & Architecture
 
-- Framework: Next.js 15 (React Server Components, App Router)
-- Language: TypeScript (strict mode, zero `any`)
-- Styling: Tailwind CSS (Stripe-inspired design system)
-- Data Validation: Zod schemas at every boundary
-- Accessor Pattern: Isolated data fetchers returning typed `AccessorResult<T>` envelopes
-- Specifications: `.context/` hierarchy (PRD, Architecture, Schema, API, Rules)
+- **Frontend & Routing:** Next.js 15 (App Router, React Server Components)
+- **Language & Typings:** TypeScript (strict mode, zero `any`)
+- **Styling:** Tailwind CSS with custom design tokens and responsive dark mode
+- **Data Validation:** Zod schemas for all forms, APIs, and content boundaries
+- **Data Access:** Typed Accessor pattern returning predictable `AccessorResult<T>` envelopes
+- **Specifications:** Local SDD documentation hierarchy (`.context/`)
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-When credentials are not supplied, deterministic local mock providers maintain offline functionality in development mode.
+When credentials are omitted, local mock providers ensure complete offline functionality during development.
 
 ## Development
 

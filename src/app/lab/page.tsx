@@ -11,14 +11,14 @@ export default function LabIndexPage() {
     <div className="flex flex-col gap-10">
       <header>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
-          <span>[SYSTEMS_LAB]</span>
+          <span>Lab Demos</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-          Engineering Lab &amp; State Sandboxes
+          Engineering Lab &amp; Demos
         </h1>
         <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-2 max-w-2xl leading-relaxed">
-          Interactive client state sandboxes and live edge execution telemetry
-          demonstrating deterministic rendering strategies.
+          Interactive demonstrations of client-side state management, responsive UI composition,
+          and live edge telemetry metrics.
         </p>
       </header>
 
@@ -39,10 +39,10 @@ export default function LabIndexPage() {
               />
             </div>
             <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-secondary)] font-medium mb-2">
-              Module 01 // Interactive State
+              Demo 01 &bull; State Management
             </div>
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:underline">
-              Component Composition Sandbox
+              Interactive Component Canvas
             </h2>
             <p className="text-sm text-[var(--text-secondary)] mb-4 leading-relaxed">
               Client-isolated architecture sandbox with Zustand state management.
@@ -82,7 +82,7 @@ export default function LabIndexPage() {
               />
             </div>
             <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-secondary)] font-medium mb-2">
-              Module 02 // Performance Ledger
+              Demo 02 &bull; Edge Metrics
             </div>
             <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:underline">
               Live Edge Telemetry

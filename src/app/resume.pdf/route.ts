@@ -61,7 +61,7 @@ export async function GET() {
     `(${escapePdf(`Graduated: ${resume.education.graduation_date} | CGPA: ${resume.education.cgpa}`)}) Tj`,
     "0 -20 Td",
     "/F1 12 Tf",
-    "(TECHNICAL CAPABILITIES) Tj",
+    "(SKILLS & TECHNOLOGIES) Tj",
     "/F2 9 Tf",
     "0 -14 Td",
     `(${escapePdf(resume.skills.slice(0, 5).join(", "))}) Tj`,
