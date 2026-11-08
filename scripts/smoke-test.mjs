@@ -6,7 +6,7 @@ const ROUTES = [
   { path: "/", expectedStatus: 200, contains: "Kamil Hisham" },
   { path: "/work", expectedStatus: 200, contains: "Case Studies" },
   { path: "/work/employee-task-management", expectedStatus: 200, contains: "Task Management" },
-  { path: "/work/gift-delivery-ecommerce", expectedStatus: 200, contains: "E-Commerce" },
+  { path: "/work/gift-delivery-ecommerce", expectedStatus: 200, contains: "Gift Delivery" },
   { path: "/about", expectedStatus: 200, contains: "Kamil Hisham" },
   { path: "/contact", expectedStatus: 200, contains: "Contact" },
   { path: "/lab", expectedStatus: 200, contains: "Engineering Lab" },
