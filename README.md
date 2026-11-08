@@ -45,26 +45,34 @@ Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
 ## Quality Gates & Verification
 
-All code must pass five CI verification gates before shipping:
+All code must pass automated CI verification gates before shipping:
 
 ```bash
-# 1. Specification content leak check
+# 1. Specification content leak check (BND-04)
 npm run audit:leak
 
 # 2. File line-budget verification (max 150 lines per module)
 npm run audit:lines
 
-# 3. Native Node unit test suite
+# 3. Leaked secret & credential scanning
+npm run audit:secrets
+
+# 4. Native Node unit test suite
 npm run test:unit
 
-# 4. TypeScript compilation
+# 5. TypeScript strict compilation (zero any)
 npm run typecheck
 
-# 5. ESLint analysis
+# 6. ESLint analysis
 npm run lint
 
-# Or run all gates sequentially
+# Run all local test gates sequentially
 npm test
+
+# Additional diagnostic & operational tools:
+npm run audit:bundle      # Asset and production chunk size verification
+npm run test:smoke        # Automated route health probe
+npm run diagnose:author   # Git author & commit attribution verification
 ```
 
 ## Production Build

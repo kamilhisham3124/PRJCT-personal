@@ -5,11 +5,10 @@ import {
   TelemetryHistoryPoint,
   TelemetryHistoryPointSchema,
 } from "../validators/telemetryValidator";
-import { AccessorErrorEnvelope } from "../validators/errorEnvelope";
 import { AccessorResult } from "./githubAccessor";
 
 export async function vercelTelemetryAccessor(
-  request: VercelTelemetryRequest
+  _request?: VercelTelemetryRequest
 ): Promise<AccessorResult<VercelTelemetryResponse>> {
   const token = process.env.VERCEL_ANALYTICS_API_TOKEN;
 
