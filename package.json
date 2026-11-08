@@ -9,6 +9,7 @@
     "audit:lines": "node scripts/audit-line-limits.mjs",
     "audit:secrets": "node scripts/audit-secrets.mjs",
     "audit:bundle": "node scripts/audit-bundle.mjs",
+    "diagnose:author": "node scripts/diagnose-git-author.mjs",
     "test:unit": "node --experimental-strip-types --no-warnings scripts/test-unit.mjs",
     "test:smoke": "node scripts/smoke-test.mjs",
     "typecheck": "tsc --noEmit",
