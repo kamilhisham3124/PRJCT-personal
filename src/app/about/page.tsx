@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { getResumeContent } from "../../content";
-import { Download } from "lucide-react";
+import { ResumeActionButton } from "../../components/client/ResumeActionButton";
 
 export const dynamic = "force-static";
 
@@ -27,15 +27,17 @@ export default function AboutPage() {
           <p className="text-base text-[var(--text-secondary)] max-w-2xl leading-relaxed">
             {resume.persona_statement}
           </p>
-          <div className="pt-2">
-            <a
-              href="/resume.pdf"
-              download="Kamil_Hisham_Resume.pdf"
-              className="inline-flex items-center gap-2 linkhunt-btn-primary rounded-full px-5 py-2.5 text-xs font-medium min-h-[44px] group"
-            >
-              <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
-              <span>Download Resume PDF</span>
-            </a>
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <ResumeActionButton
+              mode="view"
+              label="View Resume"
+              className="inline-flex items-center gap-2 linkhunt-btn-primary rounded-full px-5 py-2.5 text-xs font-semibold min-h-[44px] group"
+            />
+            <ResumeActionButton
+              mode="download"
+              label="Download Resume"
+              className="inline-flex items-center gap-2 linkhunt-btn-secondary rounded-full px-5 py-2.5 text-xs font-semibold min-h-[44px] group"
+            />
           </div>
         </div>
 

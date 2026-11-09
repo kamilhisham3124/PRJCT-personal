@@ -13,6 +13,7 @@ const ROUTES = [
   { path: "/lab/canvas", expectedStatus: 200 },
   { path: "/lab/telemetry", expectedStatus: 200 },
   { path: "/resume.pdf", expectedStatus: 200 },
+  { path: "/resume.pdf?download=true", expectedStatus: 200 },
   { path: "/images/avatar.jpg", expectedStatus: 200 },
   { path: "/images/case-study-task-management.jpg", expectedStatus: 200 },
   { path: "/images/case-study-ecommerce.jpg", expectedStatus: 200 },
