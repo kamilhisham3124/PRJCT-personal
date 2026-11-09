@@ -5,7 +5,10 @@ import { Footer } from "../components/shared/Footer";
 import { MotionCanvas } from "../components/client/MotionCanvas";
 
 export const metadata: Metadata = {
-  title: "Kamil Hisham | Software Engineer",
+  title: {
+    default: "Kamil Hisham | Software Engineer",
+    template: "%s | Kamil Hisham",
+  },
   description:
     "Personal portfolio of Kamil Hisham, Software Engineer specializing in Python, Django REST Framework, relational databases, and modern web applications.",
   metadataBase: new URL("https://kamilhisham.dev"),

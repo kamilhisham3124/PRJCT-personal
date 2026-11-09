@@ -114,3 +114,23 @@ test("GitHubAccessorResponseSchema validates commit arrays", () => {
   };
   assert.equal(GitHubAccessorResponseSchema.safeParse(payload).success, true);
 });
+
+test("ContactFormResultSchema validates result variants", () => {
+  const successRes = { status: "success", submittedAt: new Date().toISOString() };
+  assert.equal(ContactFormResultSchema.safeParse(successRes).success, true);
+  const errorRes = { status: "validation-error", fieldErrors: { email: "Invalid" } };
+  assert.equal(ContactFormResultSchema.safeParse(errorRes).success, true);
+  assert.equal(ContactFormResultSchema.safeParse({ status: "unknown" }).success, false);
+});
+
+test("VercelTelemetryRequestSchema validates valid metric requests", () => {
+  const req = { metricSet: "edge_latency", windowMinutes: 60 };
+  assert.equal(VercelTelemetryRequestSchema.safeParse(req).success, true);
+  assert.equal(VercelTelemetryRequestSchema.safeParse({ metricSet: "invalid_metric" }).success, false);
+});
+
+test("GitHubAccessorRequestSchema validates accessor requests", () => {
+  const req = { repoOwner: "kamilhisham3124", repoName: "PRJCT-personal", maxCommits: 5 };
+  assert.equal(GitHubAccessorRequestSchema.safeParse(req).success, true);
+  assert.equal(GitHubAccessorRequestSchema.safeParse({ repoOwner: "", repoName: "" }).success, false);
+});

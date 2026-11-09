@@ -1,10 +1,16 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { TelemetryWidget } from "../../components/server/TelemetryWidget";
 import { ArrowRight, Check } from "lucide-react";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Lab",
+  description: "Interactive engineering demonstrations, client-side state models, and edge telemetry.",
+};
 
 export default function LabIndexPage() {
   return (

@@ -1,11 +1,17 @@
 import React from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { vercelTelemetryAccessor, getTelemetryHistory } from "../../../lib/accessors/vercelTelemetryAccessor";
 import { supabaseReadAggregate } from "../../../lib/accessors/supabaseAccessor";
 import { TelemetryDisplay } from "../../../components/shared/TelemetryDisplay";
 import { ChevronRight } from "lucide-react";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Edge Telemetry",
+  description: "Live edge response times and health metrics cached with 60-second background revalidation.",
+};
 
 export default async function LabTelemetryPage() {
   const telemetryRes = await vercelTelemetryAccessor({ metricSet: "edge_latency", windowMinutes: 60 });

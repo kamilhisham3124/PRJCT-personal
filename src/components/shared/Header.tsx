@@ -28,7 +28,7 @@ export function Header() {
               Kamil Hisham
             </span>
             <span className="text-[11px] font-mono text-[var(--text-secondary)]">
-              Systems Engineer
+              Software Engineer
             </span>
           </div>
         </Link>

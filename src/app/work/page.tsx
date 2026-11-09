@@ -1,11 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { getAllCaseStudies } from "../../content";
 import { githubAccessor } from "../../lib/accessors/githubAccessor";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Work",
+  description: "Case studies and production web applications built with Python, Django, and PostgreSQL.",
+};
 
 const CASE_STUDY_IMAGES: Record<string, string> = {
   "employee-task-management": "/images/case-study-task-management.jpg",

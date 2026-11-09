@@ -1,9 +1,15 @@
 import React from "react";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { getResumeContent } from "../../content";
 import { Download } from "lucide-react";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Background, work experience, education, and technical skills of Kamil Hisham.",
+};
 
 export default function AboutPage() {
   const resume = getResumeContent();

@@ -1,7 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { CodeCanvas } from "../../../components/client/CodeCanvas";
 import { ChevronRight } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Interactive Canvas",
+  description: "Interactive component canvas demonstrating modular React architecture and synchronous client state management.",
+};
 
 export default function LabCanvasPage() {
   return (

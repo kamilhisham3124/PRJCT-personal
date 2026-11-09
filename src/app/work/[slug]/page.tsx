@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllCaseStudies, getCaseStudyBySlug } from "../../../content";
 import { githubAccessor } from "../../../lib/accessors/githubAccessor";
@@ -16,6 +17,20 @@ const CASE_STUDY_IMAGES: Record<string, string> = {
 export function generateStaticParams() {
   const caseStudies = getAllCaseStudies();
   return caseStudies.map((cs) => ({ slug: cs.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const study = getCaseStudyBySlug(slug);
+  if (!study) return { title: "Case Study Not Found" };
+  return {
+    title: study.title,
+    description: study.summary,
+  };
 }
 
 export default async function CaseStudyDetailPage({

@@ -1,9 +1,15 @@
 import React from "react";
+import type { Metadata } from "next";
 import { ContactForm } from "../../components/client/ContactForm";
 import { getResumeContent } from "../../content";
 import { Mail, Phone } from "lucide-react";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Kamil Hisham for software engineering opportunities and collaborations.",
+};
 
 function GithubIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
