@@ -1,5 +1,8 @@
 # Kamil Hisham — Developer Portfolio
 
+[![CI/CD Release Governance Pipeline](https://github.com/kamilhisham3124/PRJCT-personal/actions/workflows/ci.yml/badge.svg)](https://github.com/kamilhisham3124/PRJCT-personal/actions/workflows/ci.yml)
+[![CodeQL Security Analysis](https://github.com/kamilhisham3124/PRJCT-personal/actions/workflows/codeql.yml/badge.svg)](https://github.com/kamilhisham3124/PRJCT-personal/actions/workflows/codeql.yml)
+
 Personal portfolio website showcasing full-stack web applications, REST APIs, and relational database architectures built with Next.js 15, Python/Django, TypeScript, and Tailwind CSS.
 
 ## Tech Stack & Architecture
