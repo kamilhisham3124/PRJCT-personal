@@ -56,8 +56,8 @@ export function Hero3DCanvas() {
 
       ctx.clearRect(0, 0, size, size);
       const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const strokeColor = isDark ? "#38BDF8" : "#0284C7";
-      const vertexColor = isDark ? "#FFFFFF" : "#0F172A";
+      const strokeColor = isDark ? "#64748B" : "#94A3B8";
+      const vertexColor = isDark ? "#94A3B8" : "#475569";
       const scale = 30;
 
       const projected = VERTICES.map(([x, y, z]) => {

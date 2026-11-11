@@ -10,7 +10,7 @@ interface ResumeActionButtonProps {
 }
 
 export function ResumeActionButton({
-  className = "inline-flex items-center gap-2 linkhunt-btn-primary rounded-full px-5 py-2.5 text-xs font-semibold min-h-[44px] group",
+  className = "inline-flex items-center gap-2 linkhunt-btn-primary rounded-lg px-5 py-2.5 text-xs font-semibold min-h-[44px] group",
   label,
   mode = "view",
 }: ResumeActionButtonProps) {

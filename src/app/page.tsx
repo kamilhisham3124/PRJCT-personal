@@ -54,11 +54,11 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
-            <Link href="/work" className="px-5 py-2.5 rounded-full text-xs font-semibold linkhunt-btn-primary gap-2">
+            <Link href="/work" className="px-5 py-2.5 rounded-lg text-xs font-semibold linkhunt-btn-primary gap-2">
               <span>Explore Case Studies</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
-            <Link href="/lab" className="px-5 py-2.5 rounded-full text-xs font-semibold linkhunt-btn-secondary">
+            <Link href="/lab" className="px-5 py-2.5 rounded-lg text-xs font-semibold linkhunt-btn-secondary">
               Interactive Lab
             </Link>
           </div>

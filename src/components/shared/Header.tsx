@@ -64,7 +64,7 @@ export function Header() {
         <div className="hidden sm:flex items-center gap-3">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium linkhunt-btn-primary min-h-[44px] group"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium linkhunt-btn-primary min-h-[44px] group"
           >
             <span>Get in touch</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -118,7 +118,7 @@ export function Header() {
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-medium linkhunt-btn-primary min-h-[44px]"
+              className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-medium linkhunt-btn-primary min-h-[44px]"
             >
               <span>Get in touch</span>
               <ArrowUpRight className="w-3.5 h-3.5" />

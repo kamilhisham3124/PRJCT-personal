@@ -34,7 +34,7 @@ export default function RootLayout({
         <MotionCanvas />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-zinc-900 focus:text-white dark:focus:bg-zinc-100 dark:focus:text-zinc-900 focus:text-xs focus:font-semibold focus:rounded-full shadow-lg min-h-[44px] inline-flex items-center"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-zinc-900 focus:text-white dark:focus:bg-zinc-100 dark:focus:text-zinc-900 focus:text-xs focus:font-semibold focus:rounded-lg shadow-lg min-h-[44px] inline-flex items-center"
         >
           Skip to main content
         </a>

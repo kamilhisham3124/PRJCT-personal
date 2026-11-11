@@ -31,12 +31,12 @@ export default function AboutPage() {
             <ResumeActionButton
               mode="view"
               label="View Resume"
-              className="inline-flex items-center gap-2 linkhunt-btn-primary rounded-full px-5 py-2.5 text-xs font-semibold min-h-[44px] group"
+              className="inline-flex items-center gap-2 linkhunt-btn-primary rounded-lg px-5 py-2.5 text-xs font-semibold min-h-[44px] group"
             />
             <ResumeActionButton
               mode="download"
               label="Download Resume"
-              className="inline-flex items-center gap-2 linkhunt-btn-secondary rounded-full px-5 py-2.5 text-xs font-semibold min-h-[44px] group"
+              className="inline-flex items-center gap-2 linkhunt-btn-secondary rounded-lg px-5 py-2.5 text-xs font-semibold min-h-[44px] group"
             />
           </div>
         </div>

@@ -1,39 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --surface-primary: #FAFAFA;
-  --surface-secondary: #F4F4F5;
+  --surface-primary: #F8F9FA;
+  --surface-secondary: #EFF1F4;
   --surface-elevated: #FFFFFF;
-  --border-structural: #E4E4E7;
-  --border-highlight: #A1A1AA;
-  --text-primary: #09090B;
-  --text-secondary: #71717A;
+  --border-structural: #DCE1E8;
+  --border-highlight: #94A3B8;
+  --border-focus: #2563EB;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
   --accent-signal: #E11D48;
-  --accent-brand: #18181B;
+  --accent-brand: #1E293B;
+  --status-success: #059669;
+  --status-warning: #D97706;
+  --status-error: #DC2626;
+  --status-info: #0284C7;
   --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface-primary: #09090B;
-    --surface-secondary: #121214;
-    --surface-elevated: #18181B;
-    --border-structural: #27272A;
-    --border-highlight: #3F3F46;
-    --text-primary: #FAFAFA;
-    --text-secondary: #A1A1AA;
+    --surface-primary: #0E1116;
+    --surface-secondary: #151921;
+    --surface-elevated: #1B202A;
+    --border-structural: #262E3B;
+    --border-highlight: #475569;
+    --border-focus: #3B82F6;
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
     --accent-signal: #FB7185;
-    --accent-brand: #FAFAFA;
+    --accent-brand: #F8FAFC;
+    --status-success: #10B981;
+    --status-warning: #F59E0B;
+    --status-error: #EF4444;
+    --status-info: #38BDF8;
   }
 }
 
-html,
-body {
+html, body {
   background-color: var(--surface-primary);
   color: var(--text-primary);
   font-family: var(--font-inter);
@@ -45,7 +55,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--border-highlight);
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 
@@ -81,7 +91,7 @@ body {
 .linkhunt-btn-primary {
   background-color: var(--text-primary);
   color: var(--surface-primary);
-  border-radius: 9999px;
+  border-radius: 0.5rem;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -95,15 +105,13 @@ body {
   transform: translateY(-1px);
 }
 
-.linkhunt-btn-primary:active {
-  transform: scale(0.97);
-}
+.linkhunt-btn-primary:active { transform: scale(0.97); }
 
 .linkhunt-btn-secondary {
   background-color: var(--surface-secondary);
   color: var(--text-primary);
   border: 1px solid var(--border-structural);
-  border-radius: 9999px;
+  border-radius: 0.5rem;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -117,9 +125,7 @@ body {
   transform: translateY(-1px);
 }
 
-.linkhunt-btn-secondary:active {
-  transform: scale(0.97);
-}
+.linkhunt-btn-secondary:active { transform: scale(0.97); }
 
 /* LinkHunt Monospace / Micro Badge */
 .linkhunt-badge {

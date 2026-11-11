@@ -107,7 +107,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={formState === "submitting"}
-        className="w-full py-2.5 px-5 linkhunt-btn-primary rounded-full transition-opacity flex items-center justify-center gap-2 group disabled:opacity-50 text-xs font-semibold min-h-[44px]"
+        className="w-full py-2.5 px-5 linkhunt-btn-primary rounded-lg transition-opacity flex items-center justify-center gap-2 group disabled:opacity-50 text-xs font-semibold min-h-[44px]"
       >
         {formState === "submitting" ? (
           <>
