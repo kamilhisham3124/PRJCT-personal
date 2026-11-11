@@ -11,9 +11,7 @@ interface Node3D {
   originZ: number;
 }
 
-const COLS = 12;
-const ROWS = 8;
-const FOCAL = 340;
+const COLS = 12, ROWS = 8, FOCAL = 340;
 
 export function MotionCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -25,14 +23,16 @@ export function MotionCanvas() {
     if (!ctx) return;
 
     let animId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-    let mouseX = width / 2;
-    let mouseY = height / 2;
-    let time = 0;
+    let width = (canvas.width = window.innerWidth), height = (canvas.height = window.innerHeight);
+    let mouseX = width / 2, mouseY = height / 2, time = 0;
 
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mediaQuery.matches) return;
+
+    const themeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    let isDark = themeQuery.matches;
+    const handleTheme = (e: MediaQueryListEvent) => { isDark = e.matches; };
+    themeQuery.addEventListener("change", handleTheme);
 
     const nodes: Node3D[] = [];
     const spacingX = Math.max(70, width / (COLS - 1));
@@ -64,7 +64,6 @@ export function MotionCanvas() {
       time += 0.02;
       ctx.clearRect(0, 0, width, height);
 
-      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       const pointColor = isDark ? "rgba(240, 240, 255, " : "rgba(30, 41, 59, ";
       const linkColor = isDark ? "rgba(148, 163, 184, " : "rgba(100, 116, 139, ";
 
@@ -132,6 +131,7 @@ export function MotionCanvas() {
 
     return () => {
       cancelAnimationFrame(animId);
+      themeQuery.removeEventListener("change", handleTheme);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
     };

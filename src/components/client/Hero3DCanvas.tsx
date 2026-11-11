@@ -29,6 +29,13 @@ export function Hero3DCanvas() {
     canvas.height = size * dpr;
     ctx.scale(dpr, dpr);
 
+    const themeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    let isDark = themeQuery.matches;
+    const handleThemeChange = (e: MediaQueryListEvent) => {
+      isDark = e.matches;
+    };
+    themeQuery.addEventListener("change", handleThemeChange);
+
     let angleX = 0.4;
     let angleY = 0.6;
     let speedX = 0.012;
@@ -55,7 +62,6 @@ export function Hero3DCanvas() {
       angleY += speedY;
 
       ctx.clearRect(0, 0, size, size);
-      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       const strokeColor = isDark ? "#64748B" : "#94A3B8";
       const vertexColor = isDark ? "#94A3B8" : "#475569";
       const scale = 30;
@@ -114,6 +120,7 @@ export function Hero3DCanvas() {
 
     return () => {
       cancelAnimationFrame(animId);
+      themeQuery.removeEventListener("change", handleThemeChange);
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mouseleave", handleMouseLeave);
     };
