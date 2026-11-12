@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { ThemeToggle } from "../client/ThemeToggle";
+import { QuickDrawer } from "../client/QuickDrawer";
 
 const NAV_ITEMS = [
   { path: "/work", label: "Work" },
@@ -34,34 +35,22 @@ export function Header() {
             KH
           </div>
           <div className="flex flex-col">
-            <span className="font-semibold text-sm tracking-tight text-[var(--text-primary)]">
-              Kamil Hisham
-            </span>
-            <span className="text-[11px] font-mono text-[var(--text-secondary)]">
-              Software Engineer
-            </span>
+            <span className="font-semibold text-sm tracking-tight text-[var(--text-primary)]">Kamil Hisham</span>
+            <span className="text-[11px] font-mono text-[var(--text-secondary)]">Software Engineer</span>
           </div>
         </Link>
 
         {/* Minimal Navigation Bar */}
-        <nav
-          role="navigation"
-          aria-label="Main navigation"
-          className="hidden md:flex items-center gap-1 bg-[var(--surface-secondary)] p-1 rounded-lg border border-[var(--border-structural)]"
-        >
+        <nav role="navigation" aria-label="Main navigation" className="hidden md:flex items-center gap-1 bg-[var(--surface-secondary)] p-1 rounded-lg border border-[var(--border-structural)]">
           {NAV_ITEMS.map((item) => {
-            const isCurrent =
-              pathname === item.path ||
-              (item.path !== "/" && pathname.startsWith(item.path));
+            const isCurrent = pathname === item.path || (item.path !== "/" && pathname.startsWith(item.path));
             return (
               <Link
                 key={item.path}
                 href={item.path}
                 aria-current={isCurrent ? "page" : undefined}
                 className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-                  isCurrent
-                    ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm font-semibold"
-                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  isCurrent ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm font-semibold" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 {item.label}
@@ -70,21 +59,20 @@ export function Header() {
           })}
         </nav>
 
-        {/* Action Button & Theme Toggle */}
+        {/* Action Controls & Quick Drawer */}
         <div className="hidden sm:flex items-center gap-2">
           <ThemeToggle />
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium linkhunt-btn-primary min-h-[44px] group"
-          >
+          <QuickDrawer />
+          <Link href="/contact" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium linkhunt-btn-primary min-h-[44px] group">
             <span>Get in touch</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
 
-        {/* Mobile Toggle & Theme Toggle */}
+        {/* Mobile Toggle & Quick Drawer */}
         <div className="flex sm:hidden items-center gap-2">
           <ThemeToggle />
+          <QuickDrawer />
           <button
             type="button"
             aria-expanded={isOpen}
@@ -100,16 +88,9 @@ export function Header() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <nav
-          id="mobile-nav"
-          role="navigation"
-          aria-label="Mobile navigation"
-          className="md:hidden border-t border-[var(--border-structural)] bg-[var(--surface-primary)] p-4 flex flex-col gap-2"
-        >
+        <nav id="mobile-nav" role="navigation" aria-label="Mobile navigation" className="md:hidden border-t border-[var(--border-structural)] bg-[var(--surface-primary)] p-4 flex flex-col gap-2">
           {NAV_ITEMS.map((item) => {
-            const isCurrent =
-              pathname === item.path ||
-              (item.path !== "/" && pathname.startsWith(item.path));
+            const isCurrent = pathname === item.path || (item.path !== "/" && pathname.startsWith(item.path));
             return (
               <Link
                 key={item.path}
@@ -117,9 +98,7 @@ export function Header() {
                 onClick={() => setIsOpen(false)}
                 aria-current={isCurrent ? "page" : undefined}
                 className={`px-3 py-2.5 min-h-[44px] flex items-center text-sm font-medium rounded-lg transition-colors ${
-                  isCurrent
-                    ? "bg-[var(--surface-secondary)] text-[var(--text-primary)] font-semibold"
-                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]"
+                  isCurrent ? "bg-[var(--surface-secondary)] text-[var(--text-primary)] font-semibold" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]"
                 }`}
               >
                 {item.label}
@@ -127,11 +106,7 @@ export function Header() {
             );
           })}
           <div className="pt-2 border-t border-[var(--border-structural)] mt-2">
-            <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
-              className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-medium linkhunt-btn-primary min-h-[44px]"
-            >
+            <Link href="/contact" onClick={() => setIsOpen(false)} className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-medium linkhunt-btn-primary min-h-[44px]">
               <span>Get in touch</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>

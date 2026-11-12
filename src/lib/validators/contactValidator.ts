@@ -4,6 +4,8 @@ export const ContactFormInputSchema = z.object({
   name: z.string().min(1, "Name is required").max(120, "Name must not exceed 120 characters"),
   email: z.string().email("A valid email address is required"),
   subject: z.string().max(120).optional(),
+  services: z.array(z.string()).optional(),
+  preferredContact: z.enum(["email", "phone", "other"]).optional(),
   message: z.string().min(1, "Message is required").max(2000, "Message must not exceed 2000 characters"),
 });
 

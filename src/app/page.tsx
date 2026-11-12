@@ -33,6 +33,9 @@ export default function HomePage() {
               <MapPin className="w-3.5 h-3.5" />
               <span>India / Remote</span>
             </span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)]">
+              AI-Assisted Illustration
+            </span>
           </div>
 
           <div className="flex items-center gap-3.5">

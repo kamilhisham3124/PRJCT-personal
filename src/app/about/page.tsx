@@ -3,11 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { getResumeContent } from "../../content";
-import { ResumeActionButton } from "../../components/client/ResumeActionButton";
+import { ResumeMenuButton } from "../../components/client/ResumeMenuButton";
 import { AboutStats } from "../../components/shared/AboutStats";
 import { ExperienceTimeline } from "../../components/shared/ExperienceTimeline";
 import { ServicesSection } from "../../components/shared/ServicesSection";
 import { EndorsementsSection } from "../../components/shared/EndorsementsSection";
+import { Accordion } from "../../components/client/Accordion";
 import { ArrowRight } from "lucide-react";
 
 export const dynamic = "force-static";
@@ -16,6 +17,27 @@ export const metadata: Metadata = {
   title: "About",
   description: "Background, work experience, education, and technical skills of Kamil Hisham.",
 };
+
+const ABOUT_FAQS = [
+  {
+    id: "roles",
+    title: "What types of engineering roles are you targeting?",
+    content: (
+      <p>
+        Full-time Software Engineer positions specializing in Python, Django REST Framework, relational database schema architecture, and dependable web applications.
+      </p>
+    ),
+  },
+  {
+    id: "schema",
+    title: "What is your approach to schema design and API contracts?",
+    content: (
+      <p>
+        I design schemas to Third Normal Form (3NF), enforce strict foreign key constraints and transactional boundaries, and define typed contracts for all external and client-server boundaries.
+      </p>
+    ),
+  },
+];
 
 export default function AboutPage() {
   const resume = getResumeContent();
@@ -34,23 +56,16 @@ export default function AboutPage() {
             {resume.persona_statement}
           </p>
           <div className="flex flex-wrap items-center gap-3 pt-2">
-            <ResumeActionButton mode="view" />
-            <ResumeActionButton
-              mode="download"
-              className="inline-flex items-center gap-2 linkhunt-btn-secondary rounded-lg px-5 py-2.5 text-xs font-semibold min-h-[44px] group"
-            />
+            <ResumeMenuButton />
+            <Link href="/contact" className="inline-flex items-center gap-1.5 linkhunt-btn-primary rounded-lg px-4 py-2.5 text-xs font-semibold min-h-[44px]">
+              <span>Get in Touch</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
 
         <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-[var(--border-structural)] shadow-card shrink-0">
-          <Image
-            src="/images/avatar.jpg"
-            alt={resume.name}
-            width={144}
-            height={144}
-            priority
-            className="w-full h-full object-cover object-center"
-          />
+          <Image src="/images/avatar.jpg" alt={resume.name} width={144} height={144} priority className="w-full h-full object-cover object-center" />
         </div>
       </header>
 
@@ -88,6 +103,14 @@ export default function AboutPage() {
       {/* Services & Capabilities */}
       <ServicesSection />
 
+      {/* Technical FAQ Accordion */}
+      <section className="flex flex-col gap-3">
+        <h2 className="text-base font-semibold text-[var(--text-primary)] pb-2 border-b border-[var(--border-structural)]">
+          Frequently Addressed Technical Questions
+        </h2>
+        <Accordion items={ABOUT_FAQS} />
+      </section>
+
       {/* Peer Endorsements */}
       <EndorsementsSection />
 
@@ -100,23 +123,6 @@ export default function AboutPage() {
           Engineered to meet WCAG 2.2 Level AA accessibility standards, featuring high-contrast typography,
           complete keyboard operability, screen reader live announcements, and support for reduced motion preferences.
         </p>
-      </div>
-
-      {/* Page Progression */}
-      <div className="pt-6 border-t border-[var(--border-structural)] flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Ready to inspect production architectures?</h3>
-          <p className="text-xs text-[var(--text-secondary)] mt-0.5">Review validated case studies or discuss engineering opportunities.</p>
-        </div>
-        <div className="flex items-center gap-2 shrink-0">
-          <Link href="/work" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold linkhunt-btn-primary min-h-[44px]">
-            <span>Explore Case Studies</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-          <Link href="/contact" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold linkhunt-btn-secondary min-h-[44px]">
-            <span>Get in Touch</span>
-          </Link>
-        </div>
       </div>
     </div>
   );

@@ -15,6 +15,8 @@ export async function submitContactForm(
           name: formData.get("name")?.toString() || "",
           email: formData.get("email")?.toString() || "",
           subject: formData.get("subject")?.toString() || undefined,
+          services: formData.getAll("services").map((s) => s.toString()),
+          preferredContact: (formData.get("preferredContact")?.toString() || "email") as "email" | "phone" | "other",
           message: formData.get("message")?.toString() || "",
         }
       : formData;

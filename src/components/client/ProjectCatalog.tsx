@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, Search, LayoutGrid, List } from "lucide-react";
 import type { GitHubCommitItem } from "../../lib/validators/githubValidator";
+import { ProjectGridCard } from "./ProjectGridCard";
 
 export interface CaseStudyItem {
   slug: string;
@@ -15,109 +15,123 @@ export interface CaseStudyItem {
   topCommit?: GitHubCommitItem | null;
 }
 
-const CASE_STUDY_IMAGES: Record<string, string> = {
-  "employee-task-management": "/images/case-study-task-management.jpg",
-  "gift-delivery-ecommerce": "/images/case-study-ecommerce.jpg",
-};
-
-const CATEGORIES = [
-  { id: "all", label: "All Projects" },
-  { id: "backend", label: "Backend & Systems" },
-  { id: "fullstack", label: "Full-Stack Web" },
-];
-
 export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }) {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
-  const filtered = caseStudies.filter((study) => {
-    if (activeCategory === "all") return true;
-    if (activeCategory === "backend") return study.slug === "employee-task-management";
-    if (activeCategory === "fullstack") return study.slug === "gift-delivery-ecommerce";
-    return true;
-  });
+  const filtered = useMemo(() => {
+    return caseStudies.filter((study) => {
+      const matchCat =
+        activeCategory === "all" ||
+        (activeCategory === "backend" && study.slug === "employee-task-management") ||
+        (activeCategory === "fullstack" && study.slug === "gift-delivery-ecommerce");
+      const q = searchQuery.toLowerCase().trim();
+      const matchSearch =
+        !q ||
+        study.title.toLowerCase().includes(q) ||
+        study.summary.toLowerCase().includes(q) ||
+        study.tech_stack.some((t) => t.toLowerCase().includes(q));
+      return matchCat && matchSearch;
+    });
+  }, [caseStudies, activeCategory, searchQuery]);
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Category Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-2 pb-2 border-b border-[var(--border-structural)]">
-        {CATEGORIES.map((cat) => (
-          <button
-            key={cat.id}
-            type="button"
-            onClick={() => setActiveCategory(cat.id)}
-            className={`px-3.5 py-2 rounded-lg text-xs font-medium min-h-[44px] transition-colors border ${
-              activeCategory === cat.id
-                ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] border-[var(--border-highlight)] shadow-sm font-semibold"
-                : "bg-[var(--surface-secondary)] text-[var(--text-secondary)] border-[var(--border-structural)] hover:text-[var(--text-primary)]"
-            }`}
+      {/* Filtering, Search & View Controls */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-[var(--border-structural)]">
+        <div className="relative flex-1 max-w-sm">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--text-secondary)]" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search projects or technologies..."
+            aria-label="Filter case studies by keyword"
+            className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg pl-9 pr-3 py-2 text-xs text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors min-h-[44px]"
+          />
+        </div>
+
+        <div className="flex items-center gap-2">
+          <select
+            value={activeCategory}
+            onChange={(e) => setActiveCategory(e.target.value)}
+            aria-label="Filter by project category"
+            className="bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--border-highlight)] min-h-[44px]"
           >
-            {cat.label}
-          </button>
-        ))}
+            <option value="all">All Categories</option>
+            <option value="backend">Backend &amp; Systems</option>
+            <option value="fullstack">Full-Stack Web</option>
+          </select>
+
+          {/* Content Switcher (Grid vs List) */}
+          <div className="flex items-center rounded-lg border border-[var(--border-structural)] bg-[var(--surface-secondary)] p-0.5" role="group" aria-label="Layout switcher">
+            <button
+              type="button"
+              onClick={() => setViewMode("grid")}
+              aria-label="Grid view layout"
+              aria-pressed={viewMode === "grid"}
+              className={`p-2 rounded min-h-[40px] min-w-[40px] inline-flex items-center justify-center transition-colors ${
+                viewMode === "grid" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              <LayoutGrid className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode("list")}
+              aria-label="List view layout"
+              aria-pressed={viewMode === "list"}
+              className={`p-2 rounded min-h-[40px] min-w-[40px] inline-flex items-center justify-center transition-colors ${
+                viewMode === "list" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              }`}
+            >
+              <List className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filtered.length === 0 && (
-          <p className="text-sm text-[var(--text-secondary)] py-6 col-span-2">
-            No projects found in this category.
-          </p>
-        )}
-        {filtered.map((study) => (
-          <article
-            key={study.slug}
-            className="group linkhunt-card p-5 sm:p-6 flex flex-col justify-between hover:shadow-card-hover transition-all"
-          >
-            <div>
-              <div className="relative w-full h-44 rounded-lg overflow-hidden border border-[var(--border-structural)] mb-4 bg-zinc-900">
-                <Image
-                  src={CASE_STUDY_IMAGES[study.slug] || "/images/case-study-task-management.jpg"}
-                  alt={study.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 500px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+      {filtered.length === 0 ? (
+        <p className="text-sm text-[var(--text-secondary)] py-8 text-center linkhunt-card">
+          No projects matched &ldquo;{searchQuery}&rdquo;. Try another search term.
+        </p>
+      ) : viewMode === "grid" ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filtered.map((study) => (
+            <ProjectGridCard key={study.slug} study={study} />
+          ))}
+        </div>
+      ) : (
+        /* Structural Multi-Column List View */
+        <div className="flex flex-col divide-y divide-[var(--border-structural)] border border-[var(--border-structural)] rounded-lg bg-[var(--surface-elevated)] overflow-hidden">
+          {filtered.map((study) => (
+            <article key={study.slug} className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[var(--surface-secondary)]/50 transition-colors">
+              <div className="flex flex-col gap-1 max-w-xl">
+                <div className="flex items-center gap-2">
+                  <Link href={`/work/${study.slug}`} className="text-sm font-semibold text-[var(--text-primary)] hover:underline">{study.title}</Link>
+                  <span className="text-[11px] font-mono text-[var(--text-secondary)]">({study.published_at})</span>
+                </div>
+                <p className="text-xs text-[var(--text-secondary)] line-clamp-2">{study.summary}</p>
+                <div className="flex flex-wrap gap-1 mt-1">
+                  {study.tech_stack.map((t) => (<span key={t} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--surface-secondary)] text-[var(--text-secondary)]">{t}</span>))}
+                </div>
               </div>
-
-              <div className="flex items-center justify-between pb-2 mb-3 border-b border-[var(--border-structural)]">
-                <span className="text-[11px] font-mono font-medium tracking-wider uppercase text-[var(--text-secondary)]">
-                  {study.slug}
-                </span>
-                {study.topCommit?.verified && (
-                  <span className="inline-flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/60 rounded-md px-2 py-0.5 text-[10px] font-mono font-medium">
-                    <ShieldCheck className="w-3 h-3" />
-                    Verified
-                  </span>
-                )}
-              </div>
-
-              <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-2 group-hover:underline">
-                {study.title}
-              </h2>
-
-              <p className="text-sm text-[var(--text-secondary)] mb-4 leading-relaxed line-clamp-2">
-                {study.summary}
-              </p>
-
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {study.tech_stack.map((tech) => (
-                  <span key={tech} className="linkhunt-badge">{tech}</span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between pt-3 border-t border-[var(--border-structural)] text-xs">
-              <span className="text-[var(--text-secondary)] font-mono">{study.published_at}</span>
-              <Link
-                href={`/work/${study.slug}`}
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-primary)] hover:underline min-h-[44px]"
-              >
-                <span>View Case Study</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+              <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold linkhunt-btn-primary px-3 py-1.5 shrink-0 min-h-[44px]">
+                <span>Inspect</span><ArrowRight className="w-3.5 h-3.5" />
               </Link>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))}
+        </div>
+      )}
+
+      {/* Pagination Controls */}
+      <div className="flex items-center justify-between pt-3 border-t border-[var(--border-structural)] text-xs font-mono text-[var(--text-secondary)]">
+        <span>Showing {filtered.length} of {caseStudies.length} projects</span>
+        <div className="flex items-center gap-1">
+          <span className="px-2 py-1 rounded bg-[var(--surface-secondary)] border border-[var(--border-structural)] text-[var(--text-primary)] font-semibold">1</span>
+          <span>of 1</span>
+        </div>
       </div>
     </div>
   );

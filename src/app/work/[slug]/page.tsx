@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllCaseStudies, getCaseStudyBySlug } from "../../../content";
@@ -8,6 +7,10 @@ import { CredentialCard } from "../../../components/shared/CredentialCard";
 import { CaseStudyNav } from "../../../components/shared/CaseStudyNav";
 import { MetricsCard } from "../../../components/shared/MetricsCard";
 import { ProjectBottomNav } from "../../../components/shared/ProjectBottomNav";
+import { Breadcrumb } from "../../../components/shared/Breadcrumb";
+import { ReadingProgress } from "../../../components/client/ReadingProgress";
+import { LightboxModal } from "../../../components/client/LightboxModal";
+import { CaseStudySections } from "../../../components/shared/CaseStudySections";
 
 export const dynamic = "force-static";
 
@@ -54,13 +57,19 @@ export default async function CaseStudyDetailPage({
   const credState = !commitRes.ok ? "error" : commitRes.data.commits.length === 0 ? "unavailable" : "success";
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
+      <ReadingProgress />
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Work", href: "/work" },
+          { label: study.title },
+        ]}
+      />
+
       <CaseStudyNav items={navItems} currentPath={`/work/${slug}`} />
 
       <header className="pb-2">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
-          <span>Case Study</span>
-        </div>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
           {study.title}
         </h1>
@@ -75,39 +84,15 @@ export default async function CaseStudyDetailPage({
         )}
       </header>
 
-      <div className="relative w-full h-52 sm:h-72 rounded-xl overflow-hidden border border-[var(--border-structural)] bg-zinc-900 shadow-card">
-        <Image
-          src={CASE_STUDY_IMAGES[slug] || "/images/case-study-task-management.jpg"}
-          alt={`${study.title} Architecture Visual`}
-          fill
-          priority
-          sizes="(max-width: 1024px) 100vw, 860px"
-          className="object-cover"
-        />
-      </div>
+      <LightboxModal
+        src={CASE_STUDY_IMAGES[slug] || "/images/case-study-task-management.jpg"}
+        alt={`${study.title} Architecture Visual`}
+        title={study.title}
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 flex flex-col gap-6">
-          <section className="linkhunt-card p-6">
-            <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
-              01. Context &amp; Problem
-            </h2>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.problem_statement}</p>
-          </section>
-
-          <section className="linkhunt-card p-6">
-            <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
-              02. Architecture &amp; Implementation
-            </h2>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.architecture_overview}</p>
-          </section>
-
-          <section className="linkhunt-card p-6">
-            <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
-              03. Database Schema &amp; Data Integrity
-            </h2>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.database_design}</p>
-          </section>
+        <div className="lg:col-span-2">
+          <CaseStudySections study={study} />
         </div>
 
         <aside className="flex flex-col gap-6">
@@ -121,7 +106,6 @@ export default async function CaseStudyDetailPage({
             previewUrl={study.github_repo}
             state={credState}
           />
-
           <MetricsCard metrics={study.verifiable_metrics} />
         </aside>
       </div>
