@@ -12,11 +12,33 @@ export const metadata: Metadata = {
   description:
     "Personal portfolio of Kamil Hisham, Software Engineer specializing in Python, Django REST Framework, relational databases, and modern web applications.",
   metadataBase: new URL("https://kamilhisham.dev"),
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: "Kamil Hisham | Software Engineer",
     description:
       "Software engineer building web applications and REST APIs with Python, Django, and Next.js.",
+    url: "https://kamilhisham.dev",
+    siteName: "Kamil Hisham — Software Engineer",
+    locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/images/avatar.jpg",
+        width: 800,
+        height: 800,
+        alt: "Kamil Hisham",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Kamil Hisham | Software Engineer",
+    description:
+      "Software engineer building web applications and REST APIs with Python, Django, and Next.js.",
+    images: ["/images/avatar.jpg"],
   },
 };
 

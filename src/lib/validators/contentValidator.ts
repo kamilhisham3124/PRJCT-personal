@@ -49,4 +49,5 @@ export const ResumeContentSchema = z.object({
 });
 
 export type CaseStudyContent = z.infer<typeof CaseStudyContentSchema>;
+export type ExperienceEntry = z.infer<typeof ExperienceEntrySchema>;
 export type ResumeContent = z.infer<typeof ResumeContentSchema>;

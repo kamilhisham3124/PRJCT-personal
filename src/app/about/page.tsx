@@ -4,6 +4,10 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { getResumeContent } from "../../content";
 import { ResumeActionButton } from "../../components/client/ResumeActionButton";
+import { AboutStats } from "../../components/shared/AboutStats";
+import { ExperienceTimeline } from "../../components/shared/ExperienceTimeline";
+import { ServicesSection } from "../../components/shared/ServicesSection";
+import { EndorsementsSection } from "../../components/shared/EndorsementsSection";
 import { ArrowRight } from "lucide-react";
 
 export const dynamic = "force-static";
@@ -50,37 +54,13 @@ export default function AboutPage() {
         </div>
       </header>
 
-      {/* Experience Timeline */}
-      <section className="flex flex-col gap-6">
-        <h2 className="text-lg font-semibold text-[var(--text-primary)] pb-2 border-b border-[var(--border-structural)]">
-          Work Experience
-        </h2>
-        <div className="relative border-l border-[var(--border-structural)] ml-3 pl-6 space-y-8">
-          {resume.experience_entries.map((exp, idx) => (
-            <div key={idx} className="relative group">
-              <div className="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--text-primary)] ring-4 ring-[var(--surface-primary)]" />
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                <h3 className="text-sm font-semibold text-[var(--text-primary)]">
-                  {exp.role} <span className="text-[var(--text-secondary)] font-normal">@ {exp.organization}</span>
-                </h3>
-                <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] w-fit">
-                  {exp.start_date} - {exp.end_date || "Present"}
-                </span>
-              </div>
-              <ul className="space-y-1.5 text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
-                {exp.summary.split(". ").filter(Boolean).map((clause, cIdx) => (
-                  <li key={cIdx} className="flex items-start gap-2">
-                    <span className="text-[var(--text-primary)] font-bold select-none">&bull;</span>
-                    <span>{clause.endsWith(".") ? clause : `${clause}.`}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Key Engineering Metrics */}
+      <AboutStats />
 
-      {/* Education & Skills (Semantic HTML per Rule U1) */}
+      {/* Experience Timeline */}
+      <ExperienceTimeline entries={resume.experience_entries} />
+
+      {/* Education & Skills */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start pt-4 border-t border-[var(--border-structural)]">
         <section className="flex flex-col gap-3">
           <h2 className="text-sm font-semibold text-[var(--text-primary)]">Education</h2>
@@ -105,6 +85,12 @@ export default function AboutPage() {
         </section>
       </div>
 
+      {/* Services & Capabilities */}
+      <ServicesSection />
+
+      {/* Peer Endorsements */}
+      <EndorsementsSection />
+
       {/* Accessibility & Standards */}
       <div className="border-l-2 border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 p-4 rounded-r-lg border-y border-r border-emerald-200/60 dark:border-emerald-900/40">
         <h3 className="text-xs font-semibold text-[var(--text-primary)] mb-1">
@@ -116,7 +102,7 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* Page Progression / Next Steps */}
+      {/* Page Progression */}
       <div className="pt-6 border-t border-[var(--border-structural)] flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
           <h3 className="text-sm font-semibold text-[var(--text-primary)]">Ready to inspect production architectures?</h3>

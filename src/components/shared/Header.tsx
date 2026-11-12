@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ThemeToggle } from "../client/ThemeToggle";
 
 const NAV_ITEMS = [
   { path: "/work", label: "Work" },
@@ -42,7 +43,7 @@ export function Header() {
           </div>
         </Link>
 
-        {/* LinkHunt Minimal Navigation Bar */}
+        {/* Minimal Navigation Bar */}
         <nav
           role="navigation"
           aria-label="Main navigation"
@@ -69,8 +70,9 @@ export function Header() {
           })}
         </nav>
 
-        {/* Action Button */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Action Button & Theme Toggle */}
+        <div className="hidden sm:flex items-center gap-2">
+          <ThemeToggle />
           <Link
             href="/contact"
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium linkhunt-btn-primary min-h-[44px] group"
@@ -80,8 +82,9 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="md:hidden">
+        {/* Mobile Toggle & Theme Toggle */}
+        <div className="flex sm:hidden items-center gap-2">
+          <ThemeToggle />
           <button
             type="button"
             aria-expanded={isOpen}

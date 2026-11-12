@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "../../components/client/ContactForm";
 import { CopyEmailButton } from "../../components/client/CopyEmailButton";
 import { getResumeContent } from "../../content";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Calendar } from "lucide-react";
 
 export const dynamic = "force-static";
 
@@ -60,10 +60,7 @@ export default function ContactPage() {
                   <Mail className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
                   <div>
                     <span className="text-[11px] font-mono text-[var(--text-secondary)] block">Email</span>
-                    <a
-                      href={`mailto:${resume.contact.email}`}
-                      className="font-medium text-[var(--text-primary)] hover:underline"
-                    >
+                    <a href={`mailto:${resume.contact.email}`} className="font-medium text-[var(--text-primary)] hover:underline">
                       {resume.contact.email}
                     </a>
                   </div>
@@ -75,9 +72,7 @@ export default function ContactPage() {
                 <Phone className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
                 <div>
                   <span className="text-[11px] font-mono text-[var(--text-secondary)] block">Phone</span>
-                  <span className="font-medium text-[var(--text-primary)]">
-                    {resume.contact.phone}
-                  </span>
+                  <span className="font-medium text-[var(--text-primary)]">{resume.contact.phone}</span>
                 </div>
               </div>
 
@@ -85,12 +80,7 @@ export default function ContactPage() {
                 <GithubIcon className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
                 <div>
                   <span className="text-[11px] font-mono text-[var(--text-secondary)] block">GitHub</span>
-                  <a
-                    href={resume.contact.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-[var(--text-primary)] hover:underline"
-                  >
+                  <a href={resume.contact.github} target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--text-primary)] hover:underline">
                     github.com/kamilhisham3124
                   </a>
                 </div>
@@ -100,15 +90,20 @@ export default function ContactPage() {
                 <LinkedinIcon className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
                 <div>
                   <span className="text-[11px] font-mono text-[var(--text-secondary)] block">LinkedIn</span>
-                  <a
-                    href={resume.contact.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-[var(--text-primary)] hover:underline"
-                  >
+                  <a href={resume.contact.linkedin} target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--text-primary)] hover:underline">
                     linkedin.com/in/kamilhisham
                   </a>
                 </div>
+              </div>
+
+              <div className="pt-3 border-t border-[var(--border-structural)]">
+                <a
+                  href={`mailto:${resume.contact.email}?subject=Schedule%20Technical%20Intro%20/%20Discussion`}
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold linkhunt-btn-secondary min-h-[44px]"
+                >
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>Schedule Technical Discussion</span>
+                </a>
               </div>
             </div>
           </section>

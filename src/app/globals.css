@@ -3,44 +3,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --surface-primary: #F8F9FA;
-  --surface-secondary: #EFF1F4;
-  --surface-elevated: #FFFFFF;
-  --border-structural: #DCE1E8;
-  --border-highlight: #94A3B8;
-  --border-focus: #2563EB;
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #64748B;
-  --accent-signal: #E11D48;
-  --accent-brand: #1E293B;
-  --status-success: #059669;
-  --status-warning: #D97706;
-  --status-error: #DC2626;
-  --status-info: #0284C7;
+:root, :root.light {
+  --surface-primary: #F8F9FA; --surface-secondary: #EFF1F4; --surface-elevated: #FFFFFF;
+  --border-structural: #DCE1E8; --border-highlight: #94A3B8; --border-focus: #2563EB;
+  --text-primary: #0F172A; --text-secondary: #475569; --text-muted: #64748B;
+  --accent-signal: #E11D48; --accent-brand: #1E293B;
+  --status-success: #059669; --status-warning: #D97706; --status-error: #DC2626; --status-info: #0284C7;
   --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --surface-primary: #0E1116;
-    --surface-secondary: #151921;
-    --surface-elevated: #1B202A;
-    --border-structural: #262E3B;
-    --border-highlight: #475569;
-    --border-focus: #3B82F6;
-    --text-primary: #F1F5F9;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
-    --accent-signal: #FB7185;
-    --accent-brand: #F8FAFC;
-    --status-success: #10B981;
-    --status-warning: #F59E0B;
-    --status-error: #EF4444;
-    --status-info: #38BDF8;
+  :root:not(.light) {
+    --surface-primary: #0E1116; --surface-secondary: #151921; --surface-elevated: #1B202A;
+    --border-structural: #262E3B; --border-highlight: #475569; --border-focus: #3B82F6;
+    --text-primary: #F1F5F9; --text-secondary: #94A3B8; --text-muted: #64748B;
+    --accent-signal: #FB7185; --accent-brand: #F8FAFC;
+    --status-success: #10B981; --status-warning: #F59E0B; --status-error: #EF4444; --status-info: #38BDF8;
   }
+}
+
+:root.dark {
+  --surface-primary: #0E1116; --surface-secondary: #151921; --surface-elevated: #1B202A;
+  --border-structural: #262E3B; --border-highlight: #475569; --border-focus: #3B82F6;
+  --text-primary: #F1F5F9; --text-secondary: #94A3B8; --text-muted: #64748B;
+  --accent-signal: #FB7185; --accent-brand: #F8FAFC;
+  --status-success: #10B981; --status-warning: #F59E0B; --status-error: #EF4444; --status-info: #38BDF8;
 }
 
 html, body {

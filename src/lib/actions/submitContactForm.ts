@@ -14,6 +14,7 @@ export async function submitContactForm(
       ? {
           name: formData.get("name")?.toString() || "",
           email: formData.get("email")?.toString() || "",
+          subject: formData.get("subject")?.toString() || undefined,
           message: formData.get("message")?.toString() || "",
         }
       : formData;

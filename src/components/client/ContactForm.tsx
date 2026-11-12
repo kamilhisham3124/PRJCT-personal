@@ -33,92 +33,63 @@ export function ContactForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      noValidate
-      className="linkhunt-card p-6 sm:p-7 flex flex-col gap-4 max-w-xl"
-    >
+    <form onSubmit={handleSubmit} noValidate className="linkhunt-card p-6 sm:p-7 flex flex-col gap-4 max-w-xl">
       <div className="border-b border-[var(--border-structural)] pb-3">
-        <h2 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)]">
-          Inquiry Form
-        </h2>
-        <p className="text-base font-semibold text-[var(--text-primary)] mt-1">
-          Send a direct message
-        </p>
+        <h2 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)]">Inquiry Form</h2>
+        <p className="text-base font-semibold text-[var(--text-primary)] mt-1">Send a direct message</p>
       </div>
 
       <div>
-        <label htmlFor="field-name" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">
-          Full Name
-        </label>
+        <label htmlFor="field-name" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Full Name</label>
         <input
-          id="field-name"
-          name="name"
-          type="text"
-          required
-          placeholder="Jane Doe"
-          aria-invalid={Boolean(fieldErrors.name)}
-          aria-describedby={fieldErrors.name ? "err-name" : undefined}
+          id="field-name" name="name" type="text" required placeholder="Jane Doe"
+          aria-invalid={Boolean(fieldErrors.name)} aria-describedby={fieldErrors.name ? "err-name" : undefined}
           className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors min-h-[44px]"
         />
-        {fieldErrors.name && (
-          <p id="err-name" className="text-xs text-rose-500 mt-1 font-medium">{fieldErrors.name}</p>
-        )}
+        {fieldErrors.name && <p id="err-name" className="text-xs text-rose-500 mt-1 font-medium">{fieldErrors.name}</p>}
       </div>
 
       <div>
-        <label htmlFor="field-email" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">
-          Work Email
-        </label>
+        <label htmlFor="field-email" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Work Email</label>
         <input
-          id="field-email"
-          name="email"
-          type="email"
-          required
-          placeholder="jane@company.com"
-          aria-invalid={Boolean(fieldErrors.email)}
-          aria-describedby={fieldErrors.email ? "err-email" : undefined}
+          id="field-email" name="email" type="email" required placeholder="jane@company.com"
+          aria-invalid={Boolean(fieldErrors.email)} aria-describedby={fieldErrors.email ? "err-email" : undefined}
           className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors min-h-[44px]"
         />
-        {fieldErrors.email && (
-          <p id="err-email" className="text-xs text-rose-500 mt-1 font-medium">{fieldErrors.email}</p>
-        )}
+        {fieldErrors.email && <p id="err-email" className="text-xs text-rose-500 mt-1 font-medium">{fieldErrors.email}</p>}
       </div>
 
       <div>
-        <label htmlFor="field-message" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">
-          Message
-        </label>
+        <label htmlFor="field-subject" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Inquiry Type</label>
+        <select
+          id="field-subject" name="subject"
+          className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3.5 py-2.5 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors min-h-[44px]"
+        >
+          <option value="Full-time Engineering Role">Full-time Engineering Role</option>
+          <option value="Contract & Consulting">Contract & Consulting</option>
+          <option value="Technical Collaboration">Technical Collaboration</option>
+          <option value="General Inquiry">General Inquiry</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="field-message" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Message</label>
         <textarea
-          id="field-message"
-          name="message"
-          rows={4}
-          required
-          placeholder="Describe your inquiry, project scope, or opportunity..."
-          aria-invalid={Boolean(fieldErrors.message)}
-          aria-describedby={fieldErrors.message ? "err-message" : undefined}
+          id="field-message" name="message" rows={4} required placeholder="Describe your inquiry, project scope, or opportunity..."
+          aria-invalid={Boolean(fieldErrors.message)} aria-describedby={fieldErrors.message ? "err-message" : undefined}
           className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg p-3 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors resize-none"
         />
-        {fieldErrors.message && (
-          <p id="err-message" className="text-xs text-rose-500 mt-1 font-medium">{fieldErrors.message}</p>
-        )}
+        {fieldErrors.message && <p id="err-message" className="text-xs text-rose-500 mt-1 font-medium">{fieldErrors.message}</p>}
       </div>
 
       <button
-        type="submit"
-        disabled={formState === "submitting"}
+        type="submit" disabled={formState === "submitting"}
         className="w-full py-2.5 px-5 linkhunt-btn-primary rounded-lg transition-opacity flex items-center justify-center gap-2 group disabled:opacity-50 text-xs font-semibold min-h-[44px]"
       >
         {formState === "submitting" ? (
-          <>
-            <Loader2 className="w-4 h-4 animate-spin" />
-            <span>Sending...</span>
-          </>
+          <><Loader2 className="w-4 h-4 animate-spin" /><span>Sending...</span></>
         ) : (
-          <>
-            <span>Send Message</span>
-            <Send className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </>
+          <><span className="text-xs">Send Message</span><Send className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></>
         )}
       </button>
 
