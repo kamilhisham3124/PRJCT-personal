@@ -6,6 +6,8 @@ import { getAllCaseStudies, getCaseStudyBySlug } from "../../../content";
 import { githubAccessor } from "../../../lib/accessors/githubAccessor";
 import { CredentialCard } from "../../../components/shared/CredentialCard";
 import { CaseStudyNav } from "../../../components/shared/CaseStudyNav";
+import { MetricsCard } from "../../../components/shared/MetricsCard";
+import { ProjectBottomNav } from "../../../components/shared/ProjectBottomNav";
 
 export const dynamic = "force-static";
 
@@ -27,10 +29,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const study = getCaseStudyBySlug(slug);
   if (!study) return { title: "Case Study Not Found" };
-  return {
-    title: study.title,
-    description: study.summary,
-  };
+  return { title: study.title, description: study.summary };
 }
 
 export default async function CaseStudyDetailPage({
@@ -43,22 +42,16 @@ export default async function CaseStudyDetailPage({
   if (!study) notFound();
 
   const caseStudies = getAllCaseStudies();
-  const navItems = caseStudies.map((cs) => ({
-    path: `/work/${cs.slug}`,
-    label: cs.title,
-  }));
+  const navItems = caseStudies.map((cs) => ({ path: `/work/${cs.slug}`, label: cs.title }));
+  const currentIndex = caseStudies.findIndex((cs) => cs.slug === slug);
+  const prevProject = currentIndex > 0 ? caseStudies[currentIndex - 1] : null;
+  const nextProject = currentIndex < caseStudies.length - 1 ? caseStudies[currentIndex + 1] : null;
 
   const parts = study.github_repo.split("/");
-  const repoName = parts[parts.length - 1];
-  const repoOwner = parts[parts.length - 2];
+  const [repoOwner, repoName] = [parts[parts.length - 2], parts[parts.length - 1]];
   const commitRes = await githubAccessor({ repoOwner, repoName, maxCommits: 5 });
-
   const topCommit = commitRes.ok ? commitRes.data.commits[0] : null;
-  const credState = !commitRes.ok
-    ? "error"
-    : commitRes.data.commits.length === 0
-    ? "unavailable"
-    : "success";
+  const credState = !commitRes.ok ? "error" : commitRes.data.commits.length === 0 ? "unavailable" : "success";
 
   return (
     <div className="flex flex-col gap-8">
@@ -74,6 +67,12 @@ export default async function CaseStudyDetailPage({
         <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-2 max-w-3xl leading-relaxed">
           {study.summary}
         </p>
+        {study.role_and_responsibilities && (
+          <div className="mt-3 p-3 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border-structural)] text-xs text-[var(--text-secondary)]">
+            <span className="font-semibold text-[var(--text-primary)]">Role &amp; Responsibilities: </span>
+            <span>{study.role_and_responsibilities}</span>
+          </div>
+        )}
       </header>
 
       <div className="relative w-full h-52 sm:h-72 rounded-xl overflow-hidden border border-[var(--border-structural)] bg-zinc-900 shadow-card">
@@ -123,24 +122,14 @@ export default async function CaseStudyDetailPage({
             state={credState}
           />
 
-          <div className="linkhunt-card p-6">
-            <h3 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] pb-3 mb-4 border-b border-[var(--border-structural)]">
-              Key Metrics
-            </h3>
-            <div className="flex flex-col gap-2.5">
-              {study.verifiable_metrics?.map((m) => (
-                <div
-                  key={m.metric}
-                  className="flex items-center justify-between p-2.5 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border-structural)] text-xs"
-                >
-                  <span className="text-[var(--text-secondary)] font-medium">{m.metric}</span>
-                  <span className="font-semibold text-[var(--text-primary)] font-mono">{m.value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <MetricsCard metrics={study.verifiable_metrics} />
         </aside>
       </div>
+
+      <ProjectBottomNav
+        prevProject={prevProject ? { slug: prevProject.slug, title: prevProject.title } : null}
+        nextProject={nextProject ? { slug: nextProject.slug, title: nextProject.title } : null}
+      />
     </div>
   );
 }

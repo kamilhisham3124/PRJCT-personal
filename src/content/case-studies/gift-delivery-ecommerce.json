@@ -6,6 +6,7 @@
   "github_repo": "https://github.com/kamilhisham3124/gift-delivery-ecommerce",
   "preview_url": "https://github.com/kamilhisham3124/gift-delivery-ecommerce",
   "published_at": "2025-05-10",
+  "role_and_responsibilities": "Full-Stack Engineer — Developed Django MVC backend, custom permission decorators for 3 user roles, transactional order processing, and responsive front-end views.",
   "problem_statement": "Coordinating product catalog updates, inventory reservations, and delivery routing across distinct customer and vendor actors without state drift or race conditions.",
   "architecture_overview": "Model-View-Controller architecture segregating presentation templates, view controllers, and ORM query logic. Custom permission decorators enforce role boundaries across admin, vendor, and customer dashboards.",
   "database_design": "SQLite schema with relational foreign keys establishing strict integrity between Orders, LineItems, Products, and VendorProfiles with automatic cascade handling.",

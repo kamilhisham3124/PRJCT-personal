@@ -1,8 +1,10 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { getResumeContent } from "../../content";
 import { ResumeActionButton } from "../../components/client/ResumeActionButton";
+import { ArrowRight } from "lucide-react";
 
 export const dynamic = "force-static";
 
@@ -112,6 +114,29 @@ export default function AboutPage() {
           Engineered to meet WCAG 2.2 Level AA accessibility standards, featuring high-contrast typography,
           complete keyboard operability, screen reader live announcements, and support for reduced motion preferences.
         </p>
+      </div>
+
+      {/* Page Progression / Next Steps */}
+      <div className="pt-6 border-t border-[var(--border-structural)] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Ready to see these principles in production?</h3>
+          <p className="text-xs text-[var(--text-secondary)] mt-0.5">Explore tested backend architectures or discuss opportunities.</p>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold linkhunt-btn-primary min-h-[44px]"
+          >
+            <span>Explore Case Studies</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold linkhunt-btn-secondary min-h-[44px]"
+          >
+            <span>Get in Touch</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

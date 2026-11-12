@@ -11,6 +11,7 @@ export const CaseStudyContentSchema = z.object({
   problem_statement: z.string().optional(),
   architecture_overview: z.string().optional(),
   database_design: z.string().optional(),
+  role_and_responsibilities: z.string().optional(),
   verifiable_metrics: z.array(z.object({
     metric: z.string(),
     value: z.string(),

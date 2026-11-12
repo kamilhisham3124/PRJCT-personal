@@ -71,7 +71,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
                 type="button"
                 aria-pressed={isSelected}
                 onClick={() => handleLayoutSelect(mode)}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-medium transition-colors ${
+                className={`flex items-center gap-1.5 px-3 py-2 rounded text-xs font-medium transition-colors min-h-[44px] ${
                   isSelected
                     ? "bg-zinc-800 text-white font-semibold"
                     : "text-zinc-400 hover:text-zinc-200"
@@ -86,7 +86,8 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
             type="button"
             onClick={reset}
             title="Reset sandbox"
-            className="p-1.5 text-zinc-400 hover:text-white rounded transition-colors"
+            aria-label="Reset sandbox layout"
+            className="p-2.5 min-w-[44px] min-h-[44px] inline-flex items-center justify-center text-zinc-400 hover:text-white rounded transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>

@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { ContactForm } from "../../components/client/ContactForm";
+import { CopyEmailButton } from "../../components/client/CopyEmailButton";
 import { getResumeContent } from "../../content";
 import { Mail, Phone } from "lucide-react";
 
@@ -54,17 +55,20 @@ export default function ContactPage() {
               Contact Information
             </h2>
             <div className="space-y-4 text-sm">
-              <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
-                <div>
-                  <span className="text-[11px] font-mono text-[var(--text-secondary)] block">Email</span>
-                  <a
-                    href={`mailto:${resume.contact.email}`}
-                    className="font-medium text-[var(--text-primary)] hover:underline"
-                  >
-                    {resume.contact.email}
-                  </a>
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <Mail className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
+                  <div>
+                    <span className="text-[11px] font-mono text-[var(--text-secondary)] block">Email</span>
+                    <a
+                      href={`mailto:${resume.contact.email}`}
+                      className="font-medium text-[var(--text-primary)] hover:underline"
+                    >
+                      {resume.contact.email}
+                    </a>
+                  </div>
                 </div>
+                <CopyEmailButton email={resume.contact.email} />
               </div>
 
               <div className="flex items-center gap-3">

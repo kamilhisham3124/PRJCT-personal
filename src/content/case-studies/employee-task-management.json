@@ -6,6 +6,7 @@
   "github_repo": "https://github.com/kamilhisham3124/employee-task-management",
   "preview_url": "https://github.com/kamilhisham3124/employee-task-management",
   "published_at": "2026-02-15",
+  "role_and_responsibilities": "Sole Backend & Systems Engineer — Designed 3NF PostgreSQL schema, engineered 12 REST API endpoints with Django REST Framework, and configured role-based access control.",
   "problem_statement": "Manual tracking of inter-departmental task assignments led to lost state updates and uncoordinated work handoffs. A centralized, deterministic access-controlled API was required.",
   "architecture_overview": "Structured under Django's Model-View-Controller paradigm with Django REST Framework serialization layers. Implemented 12 REST API endpoints handling authentication, task creation, status transitions, and managerial reporting.",
   "database_design": "Normalized relational schema in PostgreSQL enforcing foreign key constraints between Employee, Department, Task, and TaskAuditLog tables. Role-based query filtering prevents unauthorized cross-department data exposure.",

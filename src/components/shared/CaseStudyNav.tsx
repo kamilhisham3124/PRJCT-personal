@@ -28,7 +28,7 @@ export function CaseStudyNav({ items, currentPath }: CaseStudyNavProps) {
             key={item.path}
             href={item.path}
             aria-current={isCurrent ? "page" : undefined}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors min-h-[36px] inline-flex items-center ${
+            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors min-h-[44px] inline-flex items-center ${
               isCurrent
                 ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-card font-semibold"
                 : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
