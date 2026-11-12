@@ -127,7 +127,7 @@ export function Hero3DCanvas() {
   }, []);
 
   return (
-    <div className="relative group cursor-pointer w-24 h-24 rounded-2xl bg-[var(--surface-elevated)] border border-[var(--border-structural)] shadow-card flex items-center justify-center transition-transform hover:scale-105">
+    <div className="relative group cursor-pointer w-[100px] h-[100px] rounded-2xl bg-[var(--surface-elevated)] border border-[var(--border-structural)] shadow-card flex items-center justify-center transition-transform hover:scale-105 shrink-0">
       <canvas
         ref={canvasRef}
         style={{ width: 100, height: 100 }}

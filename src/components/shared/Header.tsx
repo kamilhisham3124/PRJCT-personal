@@ -30,17 +30,17 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[var(--border-structural)] bg-[var(--surface-primary)]/80 backdrop-blur-md transition-colors">
       <div className="max-w-dense mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group min-h-[44px] py-1">
-          <div className="w-8 h-8 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-bold text-xs tracking-tight transition-transform group-hover:scale-105">
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group min-h-[44px] py-1 shrink-0">
+          <div className="w-8 h-8 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-bold text-xs tracking-tight transition-transform group-hover:scale-105 shrink-0">
             KH
           </div>
           <div className="flex flex-col">
             <span className="font-semibold text-sm tracking-tight text-[var(--text-primary)]">Kamil Hisham</span>
-            <span className="text-[11px] font-mono text-[var(--text-secondary)]">Software Engineer</span>
+            <span className="text-[11px] font-mono text-[var(--text-secondary)] hidden min-[380px]:block">Software Engineer</span>
           </div>
         </Link>
 
-        {/* Minimal Navigation Bar */}
+        {/* Minimal Desktop Navigation */}
         <nav role="navigation" aria-label="Main navigation" className="hidden md:flex items-center gap-1 bg-[var(--surface-secondary)] p-1 rounded-lg border border-[var(--border-structural)]">
           {NAV_ITEMS.map((item) => {
             const isCurrent = pathname === item.path || (item.path !== "/" && pathname.startsWith(item.path));
@@ -59,8 +59,8 @@ export function Header() {
           })}
         </nav>
 
-        {/* Action Controls & Quick Drawer */}
-        <div className="hidden sm:flex items-center gap-2">
+        {/* Action Controls & Quick Drawer (Desktop >= 768px) */}
+        <div className="hidden md:flex items-center gap-2">
           <ThemeToggle />
           <QuickDrawer />
           <Link href="/contact" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium linkhunt-btn-primary min-h-[44px] group">
@@ -69,8 +69,8 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Mobile Toggle & Quick Drawer */}
-        <div className="flex sm:hidden items-center gap-2">
+        {/* Mobile Toggle & Quick Drawer (< 768px, covers all phones & portrait tablets) */}
+        <div className="flex md:hidden items-center gap-1.5 sm:gap-2">
           <ThemeToggle />
           <QuickDrawer />
           <button

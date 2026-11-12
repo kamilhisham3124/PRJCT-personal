@@ -47,7 +47,7 @@ export default async function LabTelemetryPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-8 flex flex-col gap-6">
-          <section className="linkhunt-card p-6">
+          <section className="linkhunt-card p-4 sm:p-6">
             <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-4 pb-2 border-b border-[var(--border-structural)]">
               24-Hour Latency Sampling
             </h2>
@@ -85,7 +85,7 @@ export default async function LabTelemetryPage() {
             </div>
           </section>
 
-          <section className="linkhunt-card p-6">
+          <section className="linkhunt-card p-4 sm:p-6">
             <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-4 pb-2 border-b border-[var(--border-structural)]">
               Database Telemetry Aggregates
             </h2>
@@ -106,9 +106,9 @@ export default async function LabTelemetryPage() {
         </div>
 
         <aside className="lg:col-span-4 flex flex-col gap-6">
-          <TelemetryDisplay state={isSuccess ? "success" : "error"} data={currentData} lastUpdatedAt={currentData?.measuredAt} />
+          <TelemetryDisplay state={isSuccess ? "success" : "error"} data={currentData} lastUpdatedAt={currentData?.measuredAt} compact />
 
-          <section className="linkhunt-card p-6">
+          <section className="linkhunt-card p-4 sm:p-6">
             <h3 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
               Regional Distribution
             </h3>

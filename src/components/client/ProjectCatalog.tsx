@@ -40,7 +40,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
     <div className="flex flex-col gap-6">
       {/* Filtering, Search & View Controls */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-[var(--border-structural)]">
-        <div className="relative flex-1 max-w-sm">
+        <div className="relative w-full sm:max-w-xs md:max-w-sm">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--text-secondary)]" />
           <input
             type="text"
@@ -52,12 +52,12 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
           />
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <select
             value={activeCategory}
             onChange={(e) => setActiveCategory(e.target.value)}
             aria-label="Filter by project category"
-            className="bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--border-highlight)] min-h-[44px]"
+            className="flex-1 sm:flex-initial min-w-0 bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--border-highlight)] min-h-[44px]"
           >
             <option value="all">All Categories</option>
             <option value="backend">Backend &amp; Systems</option>
@@ -65,7 +65,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
           </select>
 
           {/* Content Switcher (Grid vs List) */}
-          <div className="flex items-center rounded-lg border border-[var(--border-structural)] bg-[var(--surface-secondary)] p-0.5" role="group" aria-label="Layout switcher">
+          <div className="flex items-center rounded-lg border border-[var(--border-structural)] bg-[var(--surface-secondary)] p-0.5 shrink-0" role="group" aria-label="Layout switcher">
             <button
               type="button"
               onClick={() => setViewMode("grid")}
@@ -117,7 +117,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
                   {study.tech_stack.map((t) => (<span key={t} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--surface-secondary)] text-[var(--text-secondary)]">{t}</span>))}
                 </div>
               </div>
-              <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold linkhunt-btn-primary px-3 py-1.5 shrink-0 min-h-[44px]">
+              <Link href={`/work/${study.slug}`} className="inline-flex items-center justify-center gap-1 text-xs font-semibold linkhunt-btn-primary px-3 py-1.5 shrink-0 min-h-[44px] w-full sm:w-auto">
                 <span>Inspect</span><ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </article>
@@ -126,7 +126,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
       )}
 
       {/* Pagination Controls */}
-      <div className="flex items-center justify-between pt-3 border-t border-[var(--border-structural)] text-xs font-mono text-[var(--text-secondary)]">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-3 border-t border-[var(--border-structural)] text-xs font-mono text-[var(--text-secondary)]">
         <span>Showing {filtered.length} of {caseStudies.length} projects</span>
         <div className="flex items-center gap-1">
           <span className="px-2 py-1 rounded bg-[var(--surface-secondary)] border border-[var(--border-structural)] text-[var(--text-primary)] font-semibold">1</span>

@@ -41,7 +41,7 @@ export function QuickDrawer() {
             role="dialog"
             aria-modal="true"
             aria-label="Quick Overview Panel"
-            className="relative z-10 w-full max-w-sm bg-[var(--surface-primary)] border-l border-[var(--border-structural)] h-full p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
+            className="relative z-10 w-full max-w-[300px] sm:max-w-sm bg-[var(--surface-primary)] border-l border-[var(--border-structural)] h-full p-4 sm:p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
           >
             <div className="flex flex-col gap-6">
               <div className="flex items-center justify-between pb-3 border-b border-[var(--border-structural)]">
@@ -103,3 +103,4 @@ export function QuickDrawer() {
     </>
   );
 }
+

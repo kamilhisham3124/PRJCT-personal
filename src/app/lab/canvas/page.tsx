@@ -38,7 +38,7 @@ export default function LabCanvasPage() {
 
       {/* Architectural Justification Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="linkhunt-card p-5">
+        <div className="linkhunt-card p-4 sm:p-5">
           <div className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] mb-1.5">
             01 &bull; Fast Interaction
           </div>
@@ -51,7 +51,7 @@ export default function LabCanvasPage() {
           </p>
         </div>
 
-        <div className="linkhunt-card p-5">
+        <div className="linkhunt-card p-4 sm:p-5">
           <div className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] mb-1.5">
             02 &bull; State Scope
           </div>
@@ -64,7 +64,7 @@ export default function LabCanvasPage() {
           </p>
         </div>
 
-        <div className="linkhunt-card p-5">
+        <div className="linkhunt-card p-4 sm:p-5">
           <div className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] mb-1.5">
             03 &bull; Accessibility
           </div>

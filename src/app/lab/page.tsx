@@ -33,7 +33,7 @@ export default function LabIndexPage() {
 
       {/* Lab Modules Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="group linkhunt-card p-6 flex flex-col justify-between hover:shadow-card-hover transition-all">
+        <div className="group linkhunt-card p-4 sm:p-6 flex flex-col justify-between hover:shadow-card-hover transition-all">
           <div>
             <div className="relative w-full h-40 rounded-lg overflow-hidden border border-[var(--border-structural)] mb-4 bg-zinc-900">
               <Image
@@ -76,7 +76,7 @@ export default function LabIndexPage() {
           </Link>
         </div>
 
-        <div className="group linkhunt-card p-6 flex flex-col justify-between hover:shadow-card-hover transition-all">
+        <div className="group linkhunt-card p-4 sm:p-6 flex flex-col justify-between hover:shadow-card-hover transition-all">
           <div>
             <div className="relative w-full h-40 rounded-lg overflow-hidden border border-[var(--border-structural)] mb-4 bg-zinc-900">
               <Image

@@ -65,7 +65,7 @@ export function CredentialCard({
   return (
     <article
       aria-labelledby={titleId}
-      className="linkhunt-card p-5 sm:p-6 flex flex-col gap-4"
+      className="linkhunt-card p-4 sm:p-6 flex flex-col gap-3 sm:gap-4"
     >
       <div className="flex items-center justify-between border-b border-[var(--border-structural)] pb-3">
         <div className="flex items-center gap-2">
@@ -88,7 +88,7 @@ export function CredentialCard({
         )}
       </div>
 
-      <div className="flex items-center gap-2 text-xs">
+      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs">
         <span className="text-[var(--text-secondary)] font-medium">Commit:</span>
         <code className="font-mono bg-[var(--surface-secondary)] border border-[var(--border-structural)] px-2 py-0.5 rounded text-[var(--text-primary)] font-semibold">
           {shortSha}

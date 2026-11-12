@@ -11,7 +11,7 @@ export function DataTable({
 }) {
   return (
     <div className="w-full overflow-x-auto rounded-lg border border-[var(--border-structural)] bg-[var(--surface-elevated)] my-3">
-      <table className="w-full text-left border-collapse text-xs">
+      <table className="w-full min-w-[420px] text-left border-collapse text-xs">
         {caption && (
           <caption className="px-3.5 py-2 text-left font-mono text-[11px] font-semibold text-[var(--text-secondary)] border-b border-[var(--border-structural)] bg-[var(--surface-secondary)]">
             {caption}
@@ -53,3 +53,4 @@ export function DataTable({
     </div>
   );
 }
+

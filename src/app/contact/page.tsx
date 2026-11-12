@@ -50,7 +50,7 @@ export default function ContactPage() {
         <ContactForm />
 
         <div className="flex flex-col gap-6">
-          <section className="linkhunt-card p-6">
+          <section className="linkhunt-card p-4 sm:p-6">
             <h2 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] mb-4 pb-2 border-b border-[var(--border-structural)]">
               Contact Information
             </h2>

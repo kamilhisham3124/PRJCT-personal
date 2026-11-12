@@ -9,13 +9,13 @@ const STATS = [
 
 export function AboutStats() {
   return (
-    <section aria-label="Key Engineering Metrics" className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+    <section aria-label="Key Engineering Metrics" className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
       {STATS.map((stat) => (
         <div
           key={stat.label}
-          className="linkhunt-card p-4 flex flex-col gap-1 text-center sm:text-left"
+          className="linkhunt-card p-3 sm:p-4 flex flex-col gap-1 text-center sm:text-left"
         >
-          <span className="text-xl sm:text-2xl font-bold font-mono text-[var(--text-primary)]">
+          <span className="text-lg sm:text-2xl font-bold font-mono text-[var(--text-primary)]">
             {stat.value}
           </span>
           <span className="text-xs font-semibold text-[var(--text-primary)]">

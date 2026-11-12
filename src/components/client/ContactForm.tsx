@@ -31,7 +31,7 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="linkhunt-card p-6 sm:p-7 flex flex-col gap-4 max-w-xl">
+    <form onSubmit={handleSubmit} noValidate className="linkhunt-card p-4 sm:p-6 sm:p-7 flex flex-col gap-4 max-w-xl w-full">
       <div className="border-b border-[var(--border-structural)] pb-3">
         <h2 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)]">Inquiry Form</h2>
         <p className="text-base font-semibold text-[var(--text-primary)] mt-1">Send a direct message</p>
@@ -75,7 +75,7 @@ export function ContactForm() {
       {/* Radio Button Group: Preferred Contact Method */}
       <div>
         <span className="block text-xs font-medium text-[var(--text-secondary)] mb-1.5">Preferred Contact Method</span>
-        <div className="flex flex-wrap gap-4 text-xs">
+        <div className="flex flex-wrap gap-2.5 sm:gap-4 text-xs">
           {[
             { id: "pref-email", value: "email", label: "Email" },
             { id: "pref-phone", value: "phone", label: "Phone / WhatsApp" },

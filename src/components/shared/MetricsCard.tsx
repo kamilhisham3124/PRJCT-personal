@@ -13,7 +13,7 @@ export function MetricsCard({ metrics }: MetricsCardProps) {
   if (!metrics || metrics.length === 0) return null;
 
   return (
-    <div className="linkhunt-card p-6">
+    <div className="linkhunt-card p-4 sm:p-6">
       <h3 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] pb-3 mb-4 border-b border-[var(--border-structural)]">
         Key Metrics
       </h3>

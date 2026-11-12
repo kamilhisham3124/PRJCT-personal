@@ -64,7 +64,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-[var(--border-structural)] shadow-card shrink-0">
+        <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-[var(--border-structural)] shadow-card shrink-0 self-center md:self-auto">
           <Image src="/images/avatar.jpg" alt={resume.name} width={144} height={144} priority className="w-full h-full object-cover object-center" />
         </div>
       </header>

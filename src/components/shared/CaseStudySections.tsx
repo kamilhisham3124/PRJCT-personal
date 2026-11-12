@@ -41,14 +41,14 @@ export function CaseStudySections({ study }: { study: CaseStudyContent }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <section className="linkhunt-card p-6">
+      <section className="linkhunt-card p-4 sm:p-6">
         <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
           01. Context &amp; Problem
         </h2>
         <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.problem_statement}</p>
       </section>
 
-      <section className="linkhunt-card p-6">
+      <section className="linkhunt-card p-4 sm:p-6">
         <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
           02. Architecture &amp; Implementation
         </h2>
@@ -56,7 +56,7 @@ export function CaseStudySections({ study }: { study: CaseStudyContent }) {
         <CodeSnippet code={sampleCode} language="python" filename={`${study.slug}_service.py`} />
       </section>
 
-      <section className="linkhunt-card p-6">
+      <section className="linkhunt-card p-4 sm:p-6">
         <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
           03. Database Schema &amp; Data Integrity
         </h2>
@@ -74,3 +74,4 @@ export function CaseStudySections({ study }: { study: CaseStudyContent }) {
     </div>
   );
 }
+

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { TelemetryWidget } from "../components/server/TelemetryWidget";
 import { getAllCaseStudies } from "../content";
-import { ArrowRight, MapPin, ChevronDown } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { Hero3DCanvas } from "../components/client/Hero3DCanvas";
 import { SocialProofBar } from "../components/shared/SocialProofBar";
 import { SubstrateCard } from "../components/shared/SubstrateCard";
@@ -66,7 +66,9 @@ export default function HomePage() {
           </div>
         </div>
 
-        <Hero3DCanvas />
+        <div className="self-center sm:self-auto shrink-0">
+          <Hero3DCanvas />
+        </div>
       </section>
 
       {/* Social Proof Bar */}
@@ -116,7 +118,7 @@ export default function HomePage() {
 
         {/* Right Rail: Telemetry & Platform Specs */}
         <aside className="lg:col-span-4 flex flex-col gap-6">
-          <TelemetryWidget />
+          <TelemetryWidget compact />
           <SubstrateCard />
         </aside>
       </div>

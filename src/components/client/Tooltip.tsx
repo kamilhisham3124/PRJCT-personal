@@ -26,12 +26,13 @@ export function Tooltip({
       {isVisible && (
         <span
           role="tooltip"
-          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-xs px-2.5 py-1.5 rounded bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 text-[11px] font-sans font-medium shadow-lg z-50 pointer-events-none text-center"
+          className="absolute bottom-full left-0 sm:left-1/2 sm:-translate-x-1/2 mb-2 w-48 sm:w-max max-w-[200px] sm:max-w-xs px-2.5 py-1.5 rounded bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 text-[11px] font-sans font-medium shadow-lg z-50 pointer-events-none text-left sm:text-center"
         >
           {text}
-          <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-900 dark:border-t-zinc-100" />
+          <span className="absolute top-full left-4 sm:left-1/2 sm:-translate-x-1/2 border-4 border-transparent border-t-zinc-900 dark:border-t-zinc-100" />
         </span>
       )}
     </span>
   );
 }
+

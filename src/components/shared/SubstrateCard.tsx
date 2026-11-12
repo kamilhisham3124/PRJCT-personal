@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function SubstrateCard() {
   return (
-    <section className="linkhunt-card p-5 flex flex-col gap-4">
+    <section className="linkhunt-card p-4 sm:p-5 flex flex-col gap-4">
       <div>
         <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-secondary)] pb-2 border-b border-[var(--border-structural)]">
           Architecture &amp; Substrate

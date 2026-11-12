@@ -14,14 +14,14 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
           return (
-            <li key={item.label} className="inline-flex items-center gap-1.5">
-              {index > 0 && <ChevronRight className="w-3.5 h-3.5 text-[var(--border-highlight)]" aria-hidden="true" />}
+            <li key={item.label} className="inline-flex items-center gap-1.5 min-w-0">
+              {index > 0 && <ChevronRight className="w-3.5 h-3.5 text-[var(--border-highlight)] shrink-0" aria-hidden="true" />}
               {isLast || !item.href ? (
-                <span className="font-semibold text-[var(--text-primary)]" aria-current={isLast ? "page" : undefined}>
+                <span className="font-semibold text-[var(--text-primary)] truncate max-w-[180px] sm:max-w-none" aria-current={isLast ? "page" : undefined}>
                   {item.label}
                 </span>
               ) : (
-                <Link href={item.href} className="hover:text-[var(--text-primary)] transition-colors hover:underline">
+                <Link href={item.href} className="hover:text-[var(--text-primary)] transition-colors hover:underline shrink-0">
                   {item.label}
                 </Link>
               )}

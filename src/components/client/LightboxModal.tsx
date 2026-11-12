@@ -59,12 +59,12 @@ export function LightboxModal({
             className="relative z-10 max-w-4xl w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-xl overflow-hidden shadow-2xl flex flex-col"
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border-structural)] bg-[var(--surface-secondary)]">
-              <span className="font-semibold text-xs text-[var(--text-primary)]">{title}</span>
+              <span className="font-semibold text-xs text-[var(--text-primary)] truncate pr-2 min-w-0">{title}</span>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
                 aria-label="Close lightbox modal"
-                className="p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-primary)] min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
+                className="p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-primary)] min-h-[44px] min-w-[44px] inline-flex items-center justify-center shrink-0"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -78,3 +78,4 @@ export function LightboxModal({
     </>
   );
 }
+

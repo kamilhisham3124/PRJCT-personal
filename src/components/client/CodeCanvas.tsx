@@ -45,7 +45,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
     <div
       role="group"
       aria-label="Interactive layout demonstration"
-      className="bg-zinc-950 text-zinc-100 rounded-xl p-5 sm:p-6 border border-zinc-800 shadow-card"
+      className="bg-zinc-950 text-zinc-100 rounded-xl p-3.5 sm:p-6 border border-zinc-800 shadow-card"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800 pb-4 mb-5">
         <div className="flex items-center gap-3">
@@ -61,7 +61,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-1 bg-zinc-900 p-1 rounded-lg border border-zinc-800">
+        <div className="flex items-center gap-0.5 sm:gap-1 bg-zinc-900 p-0.5 sm:p-1 rounded-lg border border-zinc-800 max-w-full overflow-x-auto">
           {(["grid", "stack", "split"] as CanvasLayout[]).map((mode) => {
             const Icon = mode === "grid" ? LayoutGrid : mode === "stack" ? Rows3 : Columns3;
             const isSelected = layout === mode;
@@ -71,7 +71,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
                 type="button"
                 aria-pressed={isSelected}
                 onClick={() => handleLayoutSelect(mode)}
-                className={`flex items-center gap-1.5 px-3 py-2 rounded text-xs font-medium transition-colors min-h-[44px] ${
+                className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded text-[11px] sm:text-xs font-medium transition-colors min-h-[44px] shrink-0 ${
                   isSelected
                     ? "bg-zinc-800 text-white font-semibold"
                     : "text-zinc-400 hover:text-zinc-200"
@@ -87,7 +87,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
             onClick={reset}
             title="Reset sandbox"
             aria-label="Reset sandbox layout"
-            className="p-2.5 min-w-[44px] min-h-[44px] inline-flex items-center justify-center text-zinc-400 hover:text-white rounded transition-colors"
+            className="p-2 sm:p-2.5 min-w-[44px] min-h-[44px] shrink-0 inline-flex items-center justify-center text-zinc-400 hover:text-white rounded transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </button>
