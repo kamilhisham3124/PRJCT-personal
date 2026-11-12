@@ -74,8 +74,9 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <div className="border-t border-[var(--border-structural)] py-4 text-center text-xs font-mono text-[var(--text-secondary)]" suppressHydrationWarning>
-        &copy; {new Date().getFullYear()} Kamil Hisham. All rights reserved.
+      <div className="border-t border-[var(--border-structural)] py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs font-mono text-[var(--text-secondary)]" suppressHydrationWarning>
+        <span>Handcrafted with Next.js, Django paradigms, and zero bloated dependencies.</span>
+        <span>&copy; {new Date().getFullYear()} Kamil Hisham</span>
       </div>
     </footer>
   );

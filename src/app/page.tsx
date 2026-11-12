@@ -18,13 +18,13 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col gap-10">
-      {/* LinkHunt Identity & Profile Hero */}
+      {/* Identity & Profile Hero */}
       <section className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-4 border-b border-[var(--border-structural)]">
         <div className="flex flex-col gap-3 max-w-xl">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Available for engineering roles</span>
+              <span>Available for full-time engineering roles</span>
             </span>
             <span className="inline-flex items-center gap-1 text-xs text-[var(--text-secondary)]">
               <MapPin className="w-3.5 h-3.5" />
@@ -34,14 +34,7 @@ export default function HomePage() {
 
           <div className="flex items-center gap-3.5">
             <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[var(--border-structural)] shrink-0 shadow-sm">
-              <Image
-                src="/images/avatar.jpg"
-                alt="Kamil Hisham"
-                width={48}
-                height={48}
-                priority
-                className="w-full h-full object-cover"
-              />
+              <Image src="/images/avatar.jpg" alt="Kamil Hisham" width={48} height={48} priority className="w-full h-full object-cover" />
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
               Kamil Hisham
@@ -49,8 +42,8 @@ export default function HomePage() {
           </div>
 
           <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
-            Software engineer building robust web applications and REST APIs with Python, Django,
-            PostgreSQL, and Next.js. Focused on clean architecture and dependable systems.
+            Backend-focused software engineer specializing in Python, Django REST Framework, and PostgreSQL.
+            I design normalized schemas, build deterministic APIs, and write dependable software with minimal dependencies.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -117,28 +110,30 @@ export default function HomePage() {
         <aside className="lg:col-span-4 flex flex-col gap-6">
           <TelemetryWidget />
 
-          <section className="linkhunt-card p-5">
-            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-secondary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
-              Tech Stack &amp; Platform
-            </h3>
-            <div className="flex flex-col gap-2.5 text-xs">
-              <div className="flex justify-between items-center"><span className="text-[var(--text-secondary)]">Edge Platform</span><span className="font-medium text-[var(--text-primary)]">Vercel Global Edge</span></div>
-              <div className="flex justify-between items-center"><span className="text-[var(--text-secondary)]">Runtime Engine</span><span className="font-medium text-[var(--text-primary)]">Next.js 15 RSC</span></div>
-              <div className="flex justify-between items-center"><span className="text-[var(--text-secondary)]">Database Layer</span><span className="font-medium text-[var(--text-primary)]">Supabase PostgreSQL</span></div>
-              <div className="flex justify-between items-center"><span className="text-[var(--text-secondary)]">Accessibility</span><span className="font-medium text-emerald-600 dark:text-emerald-400">WCAG 2.2 AA</span></div>
+          <section className="linkhunt-card p-5 flex flex-col gap-4">
+            <div>
+              <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-secondary)] pb-2 border-b border-[var(--border-structural)]">
+                Architecture &amp; Substrate
+              </h3>
+              <div className="flex flex-col gap-2 pt-2.5 text-xs">
+                <div className="flex justify-between items-center"><span className="text-[var(--text-secondary)]">Edge Platform</span><span className="font-medium text-[var(--text-primary)]">Vercel Global Edge</span></div>
+                <div className="flex justify-between items-center"><span className="text-[var(--text-secondary)]">Runtime Engine</span><span className="font-medium text-[var(--text-primary)]">Next.js 15 RSC</span></div>
+                <div className="flex justify-between items-center"><span className="text-[var(--text-secondary)]">Database Layer</span><span className="font-medium text-[var(--text-primary)]">Supabase PostgreSQL</span></div>
+                <div className="flex justify-between items-center"><span className="text-[var(--text-secondary)]">Accessibility</span><span className="font-medium text-emerald-600 dark:text-emerald-400">WCAG 2.2 AA</span></div>
+              </div>
             </div>
-          </section>
 
-          <section className="linkhunt-card p-5">
-            <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1.5">Interactive Demos</h3>
-            <p className="text-xs text-[var(--text-secondary)] mb-3 leading-relaxed">Client-side state transitions and live edge telemetry.</p>
-            <div className="flex flex-col gap-2">
-              <Link href="/lab/canvas" className="w-full text-center py-2 px-3 rounded-lg bg-[var(--surface-secondary)] text-xs font-medium hover:border-[var(--border-highlight)] border border-[var(--border-structural)] transition-colors min-h-[44px] inline-flex items-center justify-center">
-                Component Canvas &rarr;
-              </Link>
-              <Link href="/lab/telemetry" className="w-full text-center py-2 px-3 rounded-lg bg-[var(--surface-secondary)] text-xs font-medium hover:border-[var(--border-highlight)] border border-[var(--border-structural)] transition-colors min-h-[44px] inline-flex items-center justify-center">
-                24-Hour Telemetry &rarr;
-              </Link>
+            <div className="pt-3 border-t border-[var(--border-structural)]">
+              <h4 className="text-xs font-semibold text-[var(--text-primary)] mb-1">Interactive Demos</h4>
+              <p className="text-xs text-[var(--text-secondary)] mb-2.5 leading-relaxed">Client state machines and edge metrics.</p>
+              <div className="flex flex-col gap-2">
+                <Link href="/lab/canvas" className="w-full text-center py-2 px-3 rounded-lg bg-[var(--surface-secondary)] text-xs font-medium hover:border-[var(--border-highlight)] border border-[var(--border-structural)] transition-colors min-h-[44px] inline-flex items-center justify-center">
+                  Component Canvas &rarr;
+                </Link>
+                <Link href="/lab/telemetry" className="w-full text-center py-2 px-3 rounded-lg bg-[var(--surface-secondary)] text-xs font-medium hover:border-[var(--border-highlight)] border border-[var(--border-structural)] transition-colors min-h-[44px] inline-flex items-center justify-center">
+                  24-Hour Telemetry &rarr;
+                </Link>
+              </div>
             </div>
           </section>
         </aside>

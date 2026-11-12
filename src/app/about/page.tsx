@@ -30,14 +30,9 @@ export default function AboutPage() {
             {resume.persona_statement}
           </p>
           <div className="flex flex-wrap items-center gap-3 pt-2">
-            <ResumeActionButton
-              mode="view"
-              label="View Resume"
-              className="inline-flex items-center gap-2 linkhunt-btn-primary rounded-lg px-5 py-2.5 text-xs font-semibold min-h-[44px] group"
-            />
+            <ResumeActionButton mode="view" />
             <ResumeActionButton
               mode="download"
-              label="Download Resume"
               className="inline-flex items-center gap-2 linkhunt-btn-secondary rounded-lg px-5 py-2.5 text-xs font-semibold min-h-[44px] group"
             />
           </div>
@@ -64,7 +59,7 @@ export default function AboutPage() {
           {resume.experience_entries.map((exp, idx) => (
             <div key={idx} className="relative group">
               <div className="absolute -left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--text-primary)] ring-4 ring-[var(--surface-primary)]" />
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
                 <h3 className="text-sm font-semibold text-[var(--text-primary)]">
                   {exp.role} <span className="text-[var(--text-secondary)] font-normal">@ {exp.organization}</span>
                 </h3>
@@ -72,9 +67,14 @@ export default function AboutPage() {
                   {exp.start_date} - {exp.end_date || "Present"}
                 </span>
               </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
-                {exp.summary}
-              </p>
+              <ul className="space-y-1.5 text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+                {exp.summary.split(". ").filter(Boolean).map((clause, cIdx) => (
+                  <li key={cIdx} className="flex items-start gap-2">
+                    <span className="text-[var(--text-primary)] font-bold select-none">&bull;</span>
+                    <span>{clause.endsWith(".") ? clause : `${clause}.`}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
@@ -119,21 +119,15 @@ export default function AboutPage() {
       {/* Page Progression / Next Steps */}
       <div className="pt-6 border-t border-[var(--border-structural)] flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Ready to see these principles in production?</h3>
-          <p className="text-xs text-[var(--text-secondary)] mt-0.5">Explore tested backend architectures or discuss opportunities.</p>
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Ready to inspect production architectures?</h3>
+          <p className="text-xs text-[var(--text-secondary)] mt-0.5">Review validated case studies or discuss engineering opportunities.</p>
         </div>
         <div className="flex items-center gap-2 shrink-0">
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold linkhunt-btn-primary min-h-[44px]"
-          >
+          <Link href="/work" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold linkhunt-btn-primary min-h-[44px]">
             <span>Explore Case Studies</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold linkhunt-btn-secondary min-h-[44px]"
-          >
+          <Link href="/contact" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold linkhunt-btn-secondary min-h-[44px]">
             <span>Get in Touch</span>
           </Link>
         </div>
