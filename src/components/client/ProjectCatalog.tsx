@@ -71,7 +71,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
               onClick={() => setViewMode("grid")}
               aria-label="Grid view layout"
               aria-pressed={viewMode === "grid"}
-              className={`p-2 rounded min-h-[40px] min-w-[40px] inline-flex items-center justify-center transition-colors ${
+              className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${
                 viewMode === "grid" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
@@ -82,7 +82,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
               onClick={() => setViewMode("list")}
               aria-label="List view layout"
               aria-pressed={viewMode === "list"}
-              className={`p-2 rounded min-h-[40px] min-w-[40px] inline-flex items-center justify-center transition-colors ${
+              className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${
                 viewMode === "list" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >

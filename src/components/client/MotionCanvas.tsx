@@ -29,11 +29,6 @@ export function MotionCanvas() {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mediaQuery.matches) return;
 
-    const themeQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    let isDark = themeQuery.matches;
-    const handleTheme = (e: MediaQueryListEvent) => { isDark = e.matches; };
-    themeQuery.addEventListener("change", handleTheme);
-
     const nodes: Node3D[] = [];
     const spacingX = Math.max(70, width / (COLS - 1));
     const spacingY = Math.max(60, height / (ROWS - 1));
@@ -63,6 +58,11 @@ export function MotionCanvas() {
     const render = () => {
       time += 0.02;
       ctx.clearRect(0, 0, width, height);
+
+      const isDark =
+        document.documentElement.classList.contains("dark") ||
+        (!document.documentElement.classList.contains("light") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
 
       const pointColor = isDark ? "rgba(240, 240, 255, " : "rgba(30, 41, 59, ";
       const linkColor = isDark ? "rgba(148, 163, 184, " : "rgba(100, 116, 139, ";
@@ -131,7 +131,6 @@ export function MotionCanvas() {
 
     return () => {
       cancelAnimationFrame(animId);
-      themeQuery.removeEventListener("change", handleTheme);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
     };
