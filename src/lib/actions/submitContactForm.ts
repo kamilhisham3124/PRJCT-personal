@@ -36,7 +36,27 @@ export async function submitContactForm(
   }
 
   try {
-    const success = await supabaseInsertContactMessage(validation.data);
+    const annotations: string[] = [];
+    if (validation.data.subject) {
+      annotations.push(`[Inquiry Type: ${validation.data.subject}]`);
+    }
+    if (validation.data.preferredContact) {
+      annotations.push(`[Preferred Channel: ${validation.data.preferredContact}]`);
+    }
+    if (validation.data.services && validation.data.services.length > 0) {
+      annotations.push(`[Services: ${validation.data.services.join(", ")}]`);
+    }
+
+    const compiledMessage =
+      annotations.length > 0
+        ? `${annotations.join(" ")}\n\n${validation.data.message}`
+        : validation.data.message;
+
+    const success = await supabaseInsertContactMessage({
+      name: validation.data.name,
+      email: validation.data.email,
+      message: compiledMessage,
+    });
     if (!success) {
       return {
         status: "server-error",

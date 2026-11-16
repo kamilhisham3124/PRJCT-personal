@@ -39,7 +39,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="field-name" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Full Name</label>
-        <input id="field-name" name="name" type="text" required placeholder="Jane Doe" aria-invalid={Boolean(fieldErrors.name)} aria-describedby={fieldErrors.name ? "err-name" : undefined} className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors min-h-[44px]" />
+        <input id="field-name" name="name" type="text" required maxLength={100} placeholder="Jane Doe" aria-invalid={Boolean(fieldErrors.name)} aria-describedby={fieldErrors.name ? "err-name" : undefined} className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors min-h-[44px]" />
         {fieldErrors.name && <p id="err-name" className="text-xs text-rose-500 mt-1 font-medium">{fieldErrors.name}</p>}
       </div>
 
@@ -91,7 +91,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="field-message" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Message</label>
-        <textarea id="field-message" name="message" rows={3} required placeholder="Describe your inquiry, project scope, or opportunity..." aria-invalid={Boolean(fieldErrors.message)} aria-describedby={fieldErrors.message ? "err-message" : undefined} className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg p-3 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors resize-none" />
+        <textarea id="field-message" name="message" rows={3} required minLength={10} maxLength={2000} placeholder="Describe your inquiry, project scope, or opportunity (min 10 characters)..." aria-invalid={Boolean(fieldErrors.message)} aria-describedby={fieldErrors.message ? "err-message" : undefined} className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg p-3 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors resize-none" />
         {fieldErrors.message && <p id="err-message" className="text-xs text-rose-500 mt-1 font-medium">{fieldErrors.message}</p>}
       </div>
 

@@ -33,16 +33,30 @@ test("ContactFormInputSchema rejects invalid email and empty name", () => {
   const invalidEmail = {
     name: "Alex",
     email: "not-an-email",
-    message: "Hello world.",
+    message: "Inquiry with sufficient characters.",
   };
   assert.equal(ContactFormInputSchema.safeParse(invalidEmail).success, false);
 
   const emptyName = {
     name: "",
     email: "alex@valid.com",
-    message: "Valid message text.",
+    message: "Inquiry with sufficient characters.",
   };
   assert.equal(ContactFormInputSchema.safeParse(emptyName).success, false);
+
+  const shortMessage = {
+    name: "Alex",
+    email: "alex@valid.com",
+    message: "Too short",
+  };
+  assert.equal(ContactFormInputSchema.safeParse(shortMessage).success, false);
+
+  const longName = {
+    name: "A".repeat(101),
+    email: "alex@valid.com",
+    message: "Valid inquiry message text exceeding minimum threshold.",
+  };
+  assert.equal(ContactFormInputSchema.safeParse(longName).success, false);
 });
 
 test("ResumeContentSchema parses production resume.json", () => {

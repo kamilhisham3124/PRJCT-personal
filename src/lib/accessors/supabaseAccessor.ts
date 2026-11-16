@@ -97,9 +97,15 @@ export async function supabaseInsertContactMessage(data: {
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!url || !anonKey) {
+    if (process.env.NODE_ENV === "production") {
+      console.error("[supabaseAccessor] Production database unconfigured: missing Supabase credentials");
+      return false;
+    }
     contactMessagesStore.push({
       id: `local-${Date.now()}`,
-      ...data,
+      name: data.name,
+      email: data.email,
+      message: data.message,
       submitted_at: new Date().toISOString(),
     });
     return true;
@@ -115,7 +121,9 @@ export async function supabaseInsertContactMessage(data: {
         Prefer: "return=minimal",
       },
       body: JSON.stringify({
-        ...data,
+        name: data.name,
+        email: data.email,
+        message: data.message,
         submitted_at: new Date().toISOString(),
       }),
     });
