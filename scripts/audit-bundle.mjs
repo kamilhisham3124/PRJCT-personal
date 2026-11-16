@@ -27,23 +27,49 @@ if (fs.existsSync(imagesDir)) {
 
 // 2. Audit compiled chunks if production build exists
 const manifestPath = path.join(rootDir, ".next", "build-manifest.json");
-const isDevBuild = fs.existsSync(manifestPath) && fs.readFileSync(manifestPath, "utf8").includes("development");
+const chunksDir = path.join(rootDir, ".next", "static", "chunks");
 
-if (isDevBuild) {
-  console.log("[BUNDLE INFO] Development cache detected in .next/ — chunk budgets enforced in CI production build.");
+if (!fs.existsSync(manifestPath) || !fs.existsSync(chunksDir)) {
+  console.log("[BUNDLE INFO] No compiled build detected in .next/ — run `npm run build` to audit chunks.");
 } else {
-  const chunksDir = path.join(rootDir, ".next", "static", "chunks");
-  if (fs.existsSync(chunksDir)) {
-    const chunks = fs.readdirSync(chunksDir);
+  let isDevBuild = false;
+  try {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+    isDevBuild = Array.isArray(manifest.devFiles) && manifest.devFiles.length > 0;
+  } catch {
+    isDevBuild = false;
+  }
+
+  if (isDevBuild) {
+    console.log("[BUNDLE INFO] Development cache detected in .next/ — chunk budgets enforced in CI production build.");
+  } else {
+    function getChunks(dir) {
+      let results = [];
+      if (!fs.existsSync(dir)) return results;
+      for (const file of fs.readdirSync(dir)) {
+        const fullPath = path.join(dir, file);
+        const stat = fs.statSync(fullPath);
+        if (stat.isDirectory()) {
+          results = results.concat(getChunks(fullPath));
+        } else if (file.endsWith(".js") && !file.startsWith("polyfills")) {
+          results.push({ name: file, fullPath, size: stat.size });
+        }
+      }
+      return results;
+    }
+
+    const chunks = getChunks(chunksDir);
+    let auditedCount = 0;
     for (const chunk of chunks) {
-      if (!chunk.endsWith(".js") || chunk.startsWith("polyfills")) continue;
-      const fullPath = path.join(chunksDir, chunk);
-      const stat = fs.statSync(fullPath);
-      if (stat.size > MAX_CHUNK_BYTES) {
-        console.error(`[BUNDLE VIOLATION] Chunk ${chunk} is ${(stat.size / 1024).toFixed(1)} KB (exceeds 200 KB budget)`);
+      auditedCount++;
+      if (chunk.size > MAX_CHUNK_BYTES) {
+        console.error(`[BUNDLE VIOLATION] Chunk ${chunk.name} is ${(chunk.size / 1024).toFixed(1)} KB (exceeds 200 KB budget)`);
         violations++;
+      } else {
+        console.log(`[CHUNK OK] ${chunk.name}: ${(chunk.size / 1024).toFixed(1)} KB`);
       }
     }
+    console.log(`[CHUNKS AUDITED] Verified ${auditedCount} production chunk(s).`);
   }
 }
 
