@@ -17,7 +17,7 @@ The incident was caused by literal copy-paste of planning and specification pros
 ### 3. Remediation Actions
 1. **Rewrote Affected UI Strings**: Replaced all hardcoded specification references in `src/app/page.tsx`, `src/app/about/page.tsx`, `src/app/contact/page.tsx`, `src/app/lab/page.tsx`, `src/app/lab/canvas/page.tsx`, `src/app/lab/telemetry/page.tsx`, `src/app/work/page.tsx`, and `src/app/work/[slug]/page.tsx` with original, visitor-facing copy.
 2. **Build Guard Gate**: Implemented `scripts/audit-spec-leak.mjs` hooked into `package.json` `prebuild` script. Any specification pattern in UI files halts the build immediately with exit code 1.
-3. **Bundler Exclusion**: Configured Webpack `IgnorePlugin` in `next.config.mjs` to block `.context/` paths from client/server bundles. Added `.context/` to `.gitignore`.
+3. **Bundler Exclusion**: Configured Webpack `IgnorePlugin` in `next.config.mjs` to block `.context/` paths from client/server bundles (`.context/` is tracked in the repository for SDD governance, but isolated from build output).
 4. **Permanent Policy**: Enacted the permanent specification isolation rule in `AGENTS.md` and `CLAUDE.md`.
 
 ### 4. Verification
