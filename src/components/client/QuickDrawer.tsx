@@ -44,8 +44,8 @@ export function QuickDrawer() {
         <div className="flex flex-col gap-6">
           <div className="flex items-center justify-between pb-3 border-b border-[var(--border-structural)]">
             <div>
-              <span className="text-xs font-mono font-medium text-[var(--text-secondary)]">UI Shell &bull; Right Panel</span>
-              <h2 className="text-base font-semibold text-[var(--text-primary)]">Quick Overview</h2>
+              <span className="text-xs font-mono font-medium text-[var(--text-secondary)]">Quick Reference</span>
+              <h2 className="text-base font-semibold text-[var(--text-primary)]">Overview &amp; Contact</h2>
             </div>
             <button
               type="button"
@@ -58,7 +58,7 @@ export function QuickDrawer() {
           </div>
 
           <div className="space-y-3 text-xs">
-            <span className="font-mono uppercase tracking-wider text-[var(--text-secondary)] block">Fast Contact</span>
+            <span className="font-mono uppercase tracking-wider text-[var(--text-secondary)] block">Contact Details</span>
             <div className="flex items-center gap-2.5 text-[var(--text-primary)]">
               <Mail className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
               <a href="mailto:kamil.hisham3124@gmail.com" className="hover:underline">kamil.hisham3124@gmail.com</a>
@@ -74,7 +74,7 @@ export function QuickDrawer() {
           </div>
 
           <div className="pt-4 border-t border-[var(--border-structural)] space-y-2">
-            <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] block mb-2">Direct Navigation</span>
+            <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] block mb-2">Quick Links</span>
             <Link href="/work" onClick={() => setIsOpen(false)} className="flex items-center justify-between py-2 text-xs font-medium text-[var(--text-primary)] hover:underline min-h-[44px]">
               <span>Selected Case Studies</span><ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-secondary)]" />
             </Link>

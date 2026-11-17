@@ -69,7 +69,7 @@ export function Footer() {
               <CheckCircle2 className="w-3 h-3" />
               <span>WCAG 2.2 AA</span>
             </span>
-            <span className="leading-relaxed">Handcrafted with Next.js, Django paradigms, and zero bloated dependencies.</span>
+            <span className="leading-relaxed">Built with Next.js, TypeScript, and clean software engineering principles.</span>
           </div>
           <span className="shrink-0">&copy; {new Date().getFullYear()} Kamil Hisham</span>
         </div>

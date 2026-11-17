@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center text-center py-16 sm:py-24 gap-6">
       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)]">
-        <span>HTTP 404 &bull; Resource Not Found</span>
+        <span>Error 404 &bull; Page Not Found</span>
       </div>
 
       <div className="max-w-md flex flex-col gap-3">
@@ -14,10 +14,10 @@ export default function NotFound() {
           404
         </h1>
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">
-          Page Not Located
+          Page Not Found
         </h2>
         <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-          The route you requested does not exist on this server or has been relocated to another path.
+          The page you are looking for doesn&apos;t exist or has moved.
         </p>
       </div>
 
