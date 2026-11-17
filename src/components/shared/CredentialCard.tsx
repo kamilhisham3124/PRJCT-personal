@@ -41,7 +41,7 @@ export function CredentialCard({
           <span>Commit Details Currently Unavailable</span>
         </div>
         <p className="text-xs text-amber-700/90 dark:text-amber-400/80">
-          Live commit telemetry is temporarily unavailable for this repository.
+          Recent commit history is temporarily unavailable from GitHub.
         </p>
       </div>
     );
@@ -54,7 +54,7 @@ export function CredentialCard({
           Repository Commit History
         </div>
         <p className="text-xs text-[var(--text-secondary)]">
-          Zero public commits detected in the queried window.
+          No public commits found in this repository.
         </p>
       </div>
     );

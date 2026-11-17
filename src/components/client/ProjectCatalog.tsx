@@ -118,7 +118,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
                 </div>
               </div>
               <Link href={`/work/${study.slug}`} className="inline-flex items-center justify-center gap-1 text-xs font-semibold linkhunt-btn-primary px-3 py-1.5 shrink-0 min-h-[44px] w-full sm:w-auto">
-                <span>Inspect</span><ArrowRight className="w-3.5 h-3.5" />
+                <span>View Project</span><ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </article>
           ))}

@@ -12,16 +12,16 @@ export function CaseStudySections({ study }: { study: CaseStudyContent }) {
       : `def create_order(request):\n    with transaction.atomic():\n        cart = get_cart_or_404(request.user)\n        order = Order.objects.create(user=request.user, total=cart.total)\n        for item in cart.items.select_for_update():\n            OrderItem.objects.create(order=order, product=item.product, quantity=item.quantity)\n        cart.clear()\n    return redirect('order_confirmation', order_id=order.id)`;
 
   const specRows = [
-    ["Runtime Substrate", "Python 3.12 / Django 5.x", "Deterministic environment"],
+    ["Backend Stack", "Python 3.12 / Django 5.x", "Deterministic environment"],
     ["Persistence Layer", "PostgreSQL / SQLite", "ACID compliant transactions"],
-    ["Access Governance", "Role-Based Permissions", "Enforced at model & view layers"],
+    ["Access Control", "Role-Based Permissions", "Enforced at model & view layers"],
     ["Test Coverage", "Unit & API Integration", "100% endpoint assertions passing"],
   ];
 
   const accordionItems = [
     {
       id: "methodology",
-      title: "Architecture & Verification Protocol",
+      title: "Architecture & Testing Standards",
       content: (
         <p>
           Engineered using strict test-driven contracts. Every endpoint adheres to uniform JSON response envelopes and validates inputs against typed schemas before mutating database state.
@@ -68,7 +68,7 @@ export function CaseStudySections({ study }: { study: CaseStudyContent }) {
       </section>
 
       <section className="flex flex-col gap-2">
-        <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)]">Deep-Dive Methodologies</h3>
+        <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)]">Technical Deep Dive</h3>
         <Accordion items={accordionItems} />
       </section>
     </div>
