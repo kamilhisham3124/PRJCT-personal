@@ -13,10 +13,10 @@ const TECH_ECOSYSTEM = [
 
 export function SocialProofBar() {
   return (
-    <section aria-label="Core Technical Substrate" className="py-2 border-y border-[var(--border-structural)]">
+    <section aria-label="Core Technologies" className="py-2 border-y border-[var(--border-structural)]">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-secondary)] shrink-0">
-          Core Technical Substrate
+          Core Technologies
         </span>
         <div className="flex flex-wrap items-center gap-2">
           {TECH_ECOSYSTEM.map((tech) => (

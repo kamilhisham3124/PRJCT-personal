@@ -106,7 +106,7 @@ export default function AboutPage() {
       {/* Technical FAQ Accordion */}
       <section className="flex flex-col gap-3">
         <h2 className="text-base font-semibold text-[var(--text-primary)] pb-2 border-b border-[var(--border-structural)]">
-          Frequently Addressed Technical Questions
+          Frequently Asked Questions
         </h2>
         <Accordion items={ABOUT_FAQS} />
       </section>

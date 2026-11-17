@@ -63,7 +63,7 @@ export function WritingSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-xs font-medium text-[var(--text-primary)] hover:underline shrink-0 min-h-[44px]"
             >
-              <span>Read Architecture Note</span>
+              <span>View on GitHub</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </article>

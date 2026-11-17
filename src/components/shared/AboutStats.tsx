@@ -4,7 +4,7 @@ const STATS = [
   { value: "100%", label: "WCAG 2.2 AA", sub: "Accessibility conformance" },
   { value: "10+", label: "SQL Tables", sub: "Strict 3NF normalization" },
   { value: "50+", label: "Endpoints", sub: "Deterministic REST contracts" },
-  { value: "0", label: "Bloated Deps", sub: "Lean, verifiable codebases" },
+  { value: "0", label: "Unused Dependencies", sub: "Lean, minimal dependency footprint" },
 ];
 
 export function AboutStats() {
