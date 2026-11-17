@@ -102,7 +102,7 @@ export default function ContactPage() {
                   className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold linkhunt-btn-secondary min-h-[44px]"
                 >
                   <Calendar className="w-3.5 h-3.5" />
-                  <span>Schedule Technical Discussion</span>
+                  <span>Email to Schedule a Call</span>
                 </a>
               </div>
             </div>

@@ -44,8 +44,8 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="field-email" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Work Email</label>
-        <input id="field-email" name="email" type="email" required placeholder="jane@company.com" aria-invalid={Boolean(fieldErrors.email)} aria-describedby={fieldErrors.email ? "err-email" : undefined} className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors min-h-[44px]" />
+        <label htmlFor="field-email" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Email Address</label>
+        <input id="field-email" name="email" type="email" required placeholder="name@example.com" aria-invalid={Boolean(fieldErrors.email)} aria-describedby={fieldErrors.email ? "err-email" : undefined} className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3.5 py-2.5 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors min-h-[44px]" />
         {fieldErrors.email && <p id="err-email" className="text-xs text-rose-500 mt-1 font-medium">{fieldErrors.email}</p>}
       </div>
 
@@ -91,7 +91,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="field-message" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Message</label>
-        <textarea id="field-message" name="message" rows={3} required minLength={10} maxLength={2000} placeholder="Describe your inquiry, project scope, or opportunity (min 10 characters)..." aria-invalid={Boolean(fieldErrors.message)} aria-describedby={fieldErrors.message ? "err-message" : undefined} className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg p-3 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors resize-none" />
+        <textarea id="field-message" name="message" rows={3} required minLength={10} maxLength={2000} placeholder="Describe your project, role, or question (at least 10 characters)..." aria-invalid={Boolean(fieldErrors.message)} aria-describedby={fieldErrors.message ? "err-message" : undefined} className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg p-3 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors resize-none" />
         {fieldErrors.message && <p id="err-message" className="text-xs text-rose-500 mt-1 font-medium">{fieldErrors.message}</p>}
       </div>
 
@@ -103,7 +103,7 @@ export function ContactForm() {
       {formState === "success" && (
         <div role="status" className="p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 rounded-lg text-xs font-medium text-emerald-800 dark:text-emerald-300 flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-          <span>Thank you! Your inquiry has been submitted and stored in our verified database.</span>
+          <span>Thank you! Your message has been sent. I&apos;ll get back to you soon.</span>
         </div>
       )}
       {formState === "error" && (
