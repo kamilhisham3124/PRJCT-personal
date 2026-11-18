@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Mail, Phone, MapPin, X, ArrowUpRight, PanelRight } from "lucide-react";
+import { ReadingModeToggle } from "./ReadingModeToggle";
 
 export function QuickDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,7 +88,8 @@ export function QuickDrawer() {
           </div>
         </div>
 
-        <div className="pt-4 border-t border-[var(--border-structural)] mt-auto">
+        <div className="pt-4 border-t border-[var(--border-structural)] mt-auto space-y-3">
+          <ReadingModeToggle />
           <a
             href="/resume.pdf?download=true"
             className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold linkhunt-btn-primary min-h-[44px]"
