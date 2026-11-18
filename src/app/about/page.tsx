@@ -9,7 +9,7 @@ import { ExperienceTimeline } from "../../components/shared/ExperienceTimeline";
 import { ServicesSection } from "../../components/shared/ServicesSection";
 import { EndorsementsSection } from "../../components/shared/EndorsementsSection";
 import { Accordion } from "../../components/client/Accordion";
-import { ArrowRight } from "lucide-react";
+import { PhosphorArrowRight } from "../../components/icons";
 
 export const dynamic = "force-static";
 
@@ -59,7 +59,7 @@ export default function AboutPage() {
             <ResumeMenuButton />
             <Link href="/contact" className="inline-flex items-center gap-1.5 linkhunt-btn-primary rounded-lg px-4 py-2.5 text-xs font-semibold min-h-[44px]">
               <span>Get in Touch</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <PhosphorArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>

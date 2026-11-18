@@ -1,10 +1,10 @@
 import React from "react";
-import { Server, Database, Layers } from "lucide-react";
+import { PhosphorHardDrives, PhosphorDatabase, PhosphorStack } from "../icons";
 
 const SERVICES = [
   {
     title: "REST API Engineering",
-    icon: Server,
+    icon: PhosphorHardDrives,
     description: "Designing high-throughput, deterministic backend APIs with predictable contracts and robust security.",
     deliverables: [
       "OpenAPI 3.0 schemas & typed contracts",
@@ -15,7 +15,7 @@ const SERVICES = [
   },
   {
     title: "Relational Database Architecture",
-    icon: Database,
+    icon: PhosphorDatabase,
     description: "Engineering normalized SQL schemas that prevent data corruption and guarantee transactional consistency.",
     deliverables: [
       "3NF normalized database schema definitions",
@@ -26,7 +26,7 @@ const SERVICES = [
   },
   {
     title: "Full-Stack Web Delivery",
-    icon: Layers,
+    icon: PhosphorStack,
     description: "Building production-grade web interfaces with zero unnecessary dependencies and strict performance budgets.",
     deliverables: [
       "Next.js React Server Component pipelines",

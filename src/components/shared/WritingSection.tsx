@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, BookOpen } from "lucide-react";
+import { PhosphorArrowUpRight, PhosphorBookOpen } from "../icons";
 
 const INSIGHTS = [
   {
@@ -34,7 +34,7 @@ export function WritingSection() {
           <h2 className="text-base font-semibold text-[var(--text-primary)]">Technical Writing &amp; Notes</h2>
           <p className="text-xs text-[var(--text-secondary)] mt-0.5">Architectural deep dives on backend engineering and systems.</p>
         </div>
-        <BookOpen className="w-4 h-4 text-[var(--text-secondary)]" />
+        <PhosphorBookOpen className="w-4 h-4 text-[var(--text-secondary)]" />
       </div>
 
       <div className="flex flex-col gap-3">
@@ -64,7 +64,7 @@ export function WritingSection() {
               className="inline-flex items-center gap-1 text-xs font-medium text-[var(--text-primary)] hover:underline shrink-0 min-h-[44px]"
             >
               <span>View on GitHub</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <PhosphorArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </article>
         ))}

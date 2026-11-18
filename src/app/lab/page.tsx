@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { TelemetryWidget } from "../../components/server/TelemetryWidget";
-import { ArrowRight, Check } from "lucide-react";
+import { PhosphorArrowRight, PhosphorCheck } from "../../components/icons";
 
 export const dynamic = "force-dynamic";
 
@@ -61,7 +61,7 @@ export default function LabIndexPage() {
                 "Offline-capable state architecture",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
-                  <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                  <PhosphorCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                   <span>{item}</span>
                 </div>
               ))}
@@ -72,7 +72,7 @@ export default function LabIndexPage() {
             className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-primary)] hover:underline pt-4 border-t border-[var(--border-structural)] min-h-[44px]"
           >
             <span>Open Interactive Canvas</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <PhosphorArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
@@ -104,7 +104,7 @@ export default function LabIndexPage() {
                 "Interactive health check verification",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
-                  <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                  <PhosphorCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                   <span>{item}</span>
                 </div>
               ))}
@@ -115,7 +115,7 @@ export default function LabIndexPage() {
             className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-primary)] hover:underline pt-4 border-t border-[var(--border-structural)] min-h-[44px]"
           >
             <span>Inspect 24-Hour Telemetry</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <PhosphorArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>

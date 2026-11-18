@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { TelemetryWidget } from "../components/server/TelemetryWidget";
 import { getAllCaseStudies } from "../content";
-import { ArrowRight, MapPin } from "lucide-react";
+import { PhosphorArrowRight, PhosphorMapPin } from "../components/icons";
 import { Hero3DCanvas } from "../components/client/Hero3DCanvas";
 import { SocialProofBar } from "../components/shared/SocialProofBar";
 import { SubstrateCard } from "../components/shared/SubstrateCard";
@@ -30,7 +30,7 @@ export default function HomePage() {
               <span>Available for full-time engineering roles</span>
             </span>
             <span className="inline-flex items-center gap-1 text-xs text-[var(--text-secondary)]">
-              <MapPin className="w-3.5 h-3.5" />
+              <PhosphorMapPin className="w-3.5 h-3.5" />
               <span>India / Remote</span>
             </span>
           </div>
@@ -55,7 +55,7 @@ export default function HomePage() {
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link href="/work" className="px-5 py-2.5 rounded-lg text-xs font-semibold linkhunt-btn-primary gap-2">
               <span>Explore Case Studies</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <PhosphorArrowRight className="w-3.5 h-3.5" />
             </Link>
             <Link href="/lab" className="px-5 py-2.5 rounded-lg text-xs font-semibold linkhunt-btn-secondary">
               Interactive Lab
@@ -105,7 +105,7 @@ export default function HomePage() {
                   </div>
                   <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1 text-xs font-medium text-[var(--text-primary)] hover:underline">
                     <span>View Project</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <PhosphorArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </article>

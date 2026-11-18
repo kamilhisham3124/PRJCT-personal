@@ -1,6 +1,11 @@
 import React from "react";
 import { VercelTelemetryResponse } from "../../lib/validators/telemetryValidator";
-import { Zap, Cpu, Server, AlertCircle } from "lucide-react";
+import {
+  PhosphorLightning,
+  PhosphorCpu,
+  PhosphorHardDrives,
+  PhosphorWarningCircle,
+} from "../icons";
 
 export interface TelemetryDisplayProps {
   data?: VercelTelemetryResponse;
@@ -37,7 +42,7 @@ export function TelemetryDisplay({
     return (
       <div className="rounded-xl border border-rose-200 dark:border-rose-900 bg-rose-50/60 dark:bg-rose-950/40 p-4 sm:p-5" role="region" aria-label="System telemetry dashboard">
         <div className="flex items-center gap-2 text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 mb-1">
-          <AlertCircle className="w-4 h-4" />
+          <PhosphorWarningCircle className="w-4 h-4" />
           <span>Telemetry Currently Unavailable</span>
         </div>
         <p className="text-xs text-[var(--text-secondary)]">Telemetry stream connection interrupted. Fallback active.</p>
@@ -54,9 +59,9 @@ export function TelemetryDisplay({
   const totalNodes = data?.nodeStatus.length ?? 0;
 
   const metrics = [
-    { label: "Edge Latency", icon: Zap, value: data ? `${Math.round(data.edgeLatencyMs)}` : "--", unit: "ms" },
-    { label: "Active Nodes", icon: Server, value: `${healthyNodes}/${totalNodes}`, unit: "healthy" },
-    { label: "Bundle Gzip", icon: Cpu, value: data?.bundleSizeKb ? data.bundleSizeKb.toFixed(1) : "--", unit: "KB" },
+    { label: "Edge Latency", icon: PhosphorLightning, value: data ? `${Math.round(data.edgeLatencyMs)}` : "--", unit: "ms" },
+    { label: "Active Nodes", icon: PhosphorHardDrives, value: `${healthyNodes}/${totalNodes}`, unit: "healthy" },
+    { label: "Bundle Gzip", icon: PhosphorCpu, value: data?.bundleSizeKb ? data.bundleSizeKb.toFixed(1) : "--", unit: "KB" },
   ];
 
   return (

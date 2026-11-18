@@ -1,5 +1,10 @@
 import React from "react";
-import { GitCommit, ShieldCheck, ExternalLink, AlertCircle } from "lucide-react";
+import {
+  PhosphorGitCommit,
+  PhosphorShieldCheck,
+  PhosphorArrowSquareOut,
+  PhosphorWarningCircle,
+} from "../icons";
 
 export interface CredentialCardProps {
   projectSlug: string;
@@ -37,7 +42,7 @@ export function CredentialCard({
     return (
       <div className="bg-amber-50/80 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/60 rounded-xl p-5">
         <div className="flex items-center gap-2 text-xs font-bold text-amber-800 dark:text-amber-400 mb-1">
-          <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+          <PhosphorWarningCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
           <span>Commit Details Currently Unavailable</span>
         </div>
         <p className="text-xs text-amber-700/90 dark:text-amber-400/80">
@@ -69,7 +74,7 @@ export function CredentialCard({
     >
       <div className="flex items-center justify-between border-b border-[var(--border-structural)] pb-3">
         <div className="flex items-center gap-2">
-          <GitCommit className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
+          <PhosphorGitCommit className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
           <h3
             id={titleId}
             className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-primary)]"
@@ -82,7 +87,7 @@ export function CredentialCard({
             className="inline-flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/60 rounded-md px-2 py-0.5 text-[10px] font-mono font-medium"
             aria-label="Signed commit"
           >
-            <ShieldCheck className="w-3 h-3" />
+            <PhosphorShieldCheck className="w-3.5 h-3.5" />
             Verified
           </span>
         )}
@@ -117,7 +122,7 @@ export function CredentialCard({
             className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-primary)] hover:underline min-h-[44px]"
           >
             <span>View on GitHub</span>
-            <ExternalLink className="w-3.5 h-3.5" />
+            <PhosphorArrowSquareOut className="w-3.5 h-3.5" />
           </a>
         </div>
       )}

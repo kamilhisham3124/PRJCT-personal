@@ -1,5 +1,5 @@
 import React from "react";
-import { Quote } from "lucide-react";
+import { PhosphorQuotes } from "../icons";
 
 const ENDORSEMENTS = [
   {
@@ -31,7 +31,7 @@ export function EndorsementsSection() {
             className="linkhunt-card p-5 sm:p-6 flex flex-col justify-between hover:shadow-card-hover transition-all"
           >
             <div>
-              <Quote className="w-5 h-5 text-[var(--text-muted)] mb-3 opacity-60" />
+              <PhosphorQuotes className="w-5 h-5 text-[var(--text-muted)] mb-3 opacity-60" />
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed italic">
                 &ldquo;{item.quote}&rdquo;
               </p>

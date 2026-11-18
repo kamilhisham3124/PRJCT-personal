@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Home } from "lucide-react";
+import { PhosphorArrowLeft, PhosphorHouse } from "../components/icons";
 
 export default function NotFound() {
   return (
@@ -26,14 +26,14 @@ export default function NotFound() {
           href="/"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-semibold linkhunt-btn-primary min-h-[44px]"
         >
-          <Home className="w-3.5 h-3.5" />
+          <PhosphorHouse className="w-3.5 h-3.5" />
           <span>Return Home</span>
         </Link>
         <Link
           href="/work"
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-semibold linkhunt-btn-secondary min-h-[44px]"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
+          <PhosphorArrowLeft className="w-3.5 h-3.5" />
           <span>Explore Case Studies</span>
         </Link>
       </div>

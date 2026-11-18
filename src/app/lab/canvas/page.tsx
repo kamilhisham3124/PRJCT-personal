@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { CodeCanvas } from "../../../components/client/CodeCanvas";
-import { ChevronRight } from "lucide-react";
+import { PhosphorCaretRight } from "../../../components/icons";
 
 export const metadata: Metadata = {
   title: "Interactive Canvas",
@@ -16,7 +16,7 @@ export default function LabCanvasPage() {
         <Link href="/lab" className="hover:text-[var(--text-primary)] transition-colors">
           Lab
         </Link>
-        <ChevronRight className="w-3.5 h-3.5" />
+        <PhosphorCaretRight className="w-3.5 h-3.5" />
         <span className="text-[var(--text-primary)] font-medium">Interactive Canvas</span>
       </div>
 

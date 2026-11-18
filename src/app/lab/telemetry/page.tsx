@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { vercelTelemetryAccessor, getTelemetryHistory } from "../../../lib/accessors/vercelTelemetryAccessor";
 import { supabaseReadAggregate } from "../../../lib/accessors/supabaseAccessor";
 import { TelemetryDisplay } from "../../../components/shared/TelemetryDisplay";
-import { ChevronRight } from "lucide-react";
+import { PhosphorCaretRight } from "../../../components/icons";
 
 export const revalidate = 60;
 
@@ -29,7 +29,7 @@ export default async function LabTelemetryPage() {
         <Link href="/lab" className="hover:text-[var(--text-primary)] transition-colors">
           Lab
         </Link>
-        <ChevronRight className="w-3.5 h-3.5" />
+        <PhosphorCaretRight className="w-3.5 h-3.5" />
         <span className="text-[var(--text-primary)] font-medium">Edge Telemetry</span>
       </div>
 
