@@ -3,7 +3,14 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import { Mail, Phone, MapPin, X, ArrowUpRight, PanelRight } from "lucide-react";
+import {
+  PhosphorEnvelopeSimple,
+  PhosphorPhone,
+  PhosphorMapPin,
+  PhosphorX,
+  PhosphorArrowUpRight,
+  PhosphorSidebarSimple,
+} from "../icons";
 import { ReadingModeToggle } from "./ReadingModeToggle";
 
 export function QuickDrawer() {
@@ -54,22 +61,22 @@ export function QuickDrawer() {
               aria-label="Close quick overview panel"
               className="p-2 min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)]"
             >
-              <X className="w-4 h-4" />
+              <PhosphorX className="w-4 h-4" />
             </button>
           </div>
 
           <div className="space-y-3 text-xs">
             <span className="font-mono uppercase tracking-wider text-[var(--text-secondary)] block">Contact Details</span>
             <div className="flex items-center gap-2.5 text-[var(--text-primary)]">
-              <Mail className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
+              <PhosphorEnvelopeSimple className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
               <a href="mailto:kamil.hisham3124@gmail.com" className="hover:underline">kamil.hisham3124@gmail.com</a>
             </div>
             <div className="flex items-center gap-2.5 text-[var(--text-primary)]">
-              <Phone className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
+              <PhosphorPhone className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
               <span>+91-8610333768</span>
             </div>
             <div className="flex items-center gap-2.5 text-[var(--text-secondary)]">
-              <MapPin className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
+              <PhosphorMapPin className="w-4 h-4 text-[var(--text-secondary)] shrink-0" />
               <span>India / Remote Availability</span>
             </div>
           </div>
@@ -77,13 +84,13 @@ export function QuickDrawer() {
           <div className="pt-4 border-t border-[var(--border-structural)] space-y-2">
             <span className="font-mono text-xs uppercase tracking-wider text-[var(--text-secondary)] block mb-2">Quick Links</span>
             <Link href="/work" onClick={() => setIsOpen(false)} className="flex items-center justify-between py-2 text-xs font-medium text-[var(--text-primary)] hover:underline min-h-[44px]">
-              <span>Selected Case Studies</span><ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-secondary)]" />
+              <span>Selected Case Studies</span><PhosphorArrowUpRight className="w-3.5 h-3.5 text-[var(--text-secondary)]" />
             </Link>
             <Link href="/lab" onClick={() => setIsOpen(false)} className="flex items-center justify-between py-2 text-xs font-medium text-[var(--text-primary)] hover:underline min-h-[44px]">
-              <span>Component Lab &amp; Telemetry</span><ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-secondary)]" />
+              <span>Component Lab &amp; Telemetry</span><PhosphorArrowUpRight className="w-3.5 h-3.5 text-[var(--text-secondary)]" />
             </Link>
             <Link href="/about" onClick={() => setIsOpen(false)} className="flex items-center justify-between py-2 text-xs font-medium text-[var(--text-primary)] hover:underline min-h-[44px]">
-              <span>Engineering Experience</span><ArrowUpRight className="w-3.5 h-3.5 text-[var(--text-secondary)]" />
+              <span>Engineering Experience</span><PhosphorArrowUpRight className="w-3.5 h-3.5 text-[var(--text-secondary)]" />
             </Link>
           </div>
         </div>
@@ -111,7 +118,7 @@ export function QuickDrawer() {
         aria-controls="quick-drawer-panel"
         className="min-w-[44px] min-h-[44px] p-2.5 inline-flex items-center justify-center rounded-lg border border-[var(--border-structural)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] transition-colors"
       >
-        <PanelRight className="w-4 h-4" />
+        <PhosphorSidebarSimple className="w-4 h-4" />
       </button>
 
       {mounted && typeof document !== "undefined" && drawerContent

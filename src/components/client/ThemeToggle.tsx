@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Sun, Moon } from "lucide-react";
+import { PhosphorSun, PhosphorMoon } from "../icons";
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -45,9 +45,9 @@ export function ThemeToggle() {
       className="min-w-[44px] min-h-[44px] p-2.5 inline-flex items-center justify-center rounded-lg border border-[var(--border-structural)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] transition-colors"
     >
       {theme === "dark" ? (
-        <Sun className="w-4 h-4 text-amber-400" />
+        <PhosphorSun className="w-4 h-4 text-amber-400" />
       ) : (
-        <Moon className="w-4 h-4 text-[var(--text-primary)]" />
+        <PhosphorMoon className="w-4 h-4 text-[var(--text-primary)]" filled />
       )}
     </button>
   );

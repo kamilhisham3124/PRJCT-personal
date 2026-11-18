@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { PhosphorCaretRight } from "../icons";
 
 export interface BreadcrumbItem {
   label: string;
@@ -15,7 +15,7 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
           const isLast = index === items.length - 1;
           return (
             <li key={item.label} className="inline-flex items-center gap-1.5 min-w-0">
-              {index > 0 && <ChevronRight className="w-3.5 h-3.5 text-[var(--border-highlight)] shrink-0" aria-hidden="true" />}
+              {index > 0 && <PhosphorCaretRight className="w-3.5 h-3.5 text-[var(--border-highlight)] shrink-0" aria-hidden="true" />}
               {isLast || !item.href ? (
                 <span className="font-semibold text-[var(--text-primary)] truncate max-w-[180px] sm:max-w-none" aria-current={isLast ? "page" : undefined}>
                   {item.label}

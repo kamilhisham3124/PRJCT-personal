@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Eye } from "lucide-react";
+import { PhosphorEye } from "../icons";
 
 export function ReadingModeToggle() {
   const [isHyperlegible, setIsHyperlegible] = useState(false);
@@ -33,7 +33,7 @@ export function ReadingModeToggle() {
     return (
       <div className="min-h-[44px] flex items-center justify-between text-xs text-[var(--text-secondary)]">
         <span className="flex items-center gap-2">
-          <Eye className="w-3.5 h-3.5" />
+          <PhosphorEye className="w-3.5 h-3.5" />
           <span>Enhanced Legibility</span>
         </span>
         <span className="text-[10px] uppercase font-mono tracking-wider">Default</span>
@@ -50,7 +50,7 @@ export function ReadingModeToggle() {
       className="w-full min-h-[44px] py-2 px-3 flex items-center justify-between rounded-lg border border-[var(--border-structural)] bg-[var(--surface-secondary)] text-xs text-[var(--text-primary)] hover:border-[var(--border-highlight)] transition-colors"
     >
       <span className="flex items-center gap-2 font-medium">
-        <Eye className={`w-3.5 h-3.5 ${isHyperlegible ? "text-[var(--accent-signal)]" : "text-[var(--text-secondary)]"}`} />
+        <PhosphorEye className={`w-3.5 h-3.5 ${isHyperlegible ? "text-[var(--accent-signal)]" : "text-[var(--text-secondary)]"}`} filled={isHyperlegible} />
         <span>Enhanced Legibility</span>
       </span>
       <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${isHyperlegible ? "bg-[var(--accent-signal)] text-white" : "text-[var(--text-secondary)]"}`}>

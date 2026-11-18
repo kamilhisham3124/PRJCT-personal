@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { PhosphorArrowUpRight, PhosphorListDashes, PhosphorX } from "../icons";
 import { ThemeToggle } from "../client/ThemeToggle";
 import { QuickDrawer } from "../client/QuickDrawer";
 
@@ -49,9 +49,8 @@ export function Header() {
                 key={item.path}
                 href={item.path}
                 aria-current={isCurrent ? "page" : undefined}
-                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-                  isCurrent ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm font-semibold" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-                }`}
+                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${isCurrent ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm font-semibold" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  }`}
               >
                 {item.label}
               </Link>
@@ -65,7 +64,7 @@ export function Header() {
           <QuickDrawer />
           <Link href="/contact" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium linkhunt-btn-primary min-h-[44px] group">
             <span>Get in touch</span>
-            <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <PhosphorArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
 
@@ -81,7 +80,7 @@ export function Header() {
             onClick={() => setIsOpen(!isOpen)}
             className="p-2.5 min-w-[44px] min-h-[44px] inline-flex items-center justify-center rounded-lg border border-[var(--border-structural)] text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] transition-colors"
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isOpen ? <PhosphorX className="w-5 h-5" /> : <PhosphorListDashes className="w-5 h-5" />}
           </button>
         </div>
       </div>
@@ -97,9 +96,8 @@ export function Header() {
                 href={item.path}
                 onClick={() => setIsOpen(false)}
                 aria-current={isCurrent ? "page" : undefined}
-                className={`px-3 py-2.5 min-h-[44px] flex items-center text-sm font-medium rounded-lg transition-colors ${
-                  isCurrent ? "bg-[var(--surface-secondary)] text-[var(--text-primary)] font-semibold" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]"
-                }`}
+                className={`px-3 py-2.5 min-h-[44px] flex items-center text-sm font-medium rounded-lg transition-colors ${isCurrent ? "bg-[var(--surface-secondary)] text-[var(--text-primary)] font-semibold" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-secondary)]"
+                  }`}
               >
                 {item.label}
               </Link>
@@ -108,7 +106,7 @@ export function Header() {
           <div className="pt-2 border-t border-[var(--border-structural)] mt-2">
             <Link href="/contact" onClick={() => setIsOpen(false)} className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-medium linkhunt-btn-primary min-h-[44px]">
               <span>Get in touch</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <PhosphorArrowUpRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </nav>
