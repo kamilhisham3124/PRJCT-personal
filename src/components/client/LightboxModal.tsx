@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { X, ZoomIn } from "lucide-react";
+import { PhosphorX, PhosphorMagnifyingGlassPlus } from "../icons";
 
 export function LightboxModal({
   src,
@@ -40,7 +40,7 @@ export function LightboxModal({
           className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white text-xs font-semibold">
-          <ZoomIn className="w-4 h-4" />
+          <PhosphorMagnifyingGlassPlus className="w-4 h-4" />
           <span>Click to view full size</span>
         </div>
       </button>
@@ -66,7 +66,7 @@ export function LightboxModal({
                 aria-label="Close lightbox modal"
                 className="p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-primary)] min-h-[44px] min-w-[44px] inline-flex items-center justify-center shrink-0"
               >
-                <X className="w-5 h-5" />
+                <PhosphorX className="w-5 h-5" />
               </button>
             </div>
             <div className="relative w-full h-[60vh] max-h-[600px] bg-zinc-950">

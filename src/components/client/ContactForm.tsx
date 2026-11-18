@@ -2,7 +2,12 @@
 
 import React, { useState } from "react";
 import { submitContactForm } from "../../lib/actions/submitContactForm";
-import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import {
+  PhosphorPaperPlaneTilt,
+  PhosphorCheckCircle,
+  PhosphorWarningCircle,
+  PhosphorSpinnerGap,
+} from "../icons";
 
 export function ContactForm() {
   const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error" | "validation-error">("idle");
@@ -96,19 +101,19 @@ export function ContactForm() {
       </div>
 
       <button type="submit" disabled={formState === "submitting"} className="w-full py-2.5 px-5 linkhunt-btn-primary rounded-lg transition-opacity flex items-center justify-center gap-2 group disabled:opacity-50 text-xs font-semibold min-h-[44px]">
-        {formState === "submitting" ? (<><Loader2 className="w-4 h-4 animate-spin" /><span>Sending...</span></>) : (<><span className="text-xs">Send Message</span><Send className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></>)}
+        {formState === "submitting" ? (<><PhosphorSpinnerGap className="w-4 h-4 animate-spin" /><span>Sending...</span></>) : (<><span className="text-xs">Send Message</span><PhosphorPaperPlaneTilt className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></>)}
       </button>
 
       {/* Notifications */}
       {formState === "success" && (
         <div role="status" className="p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 rounded-lg text-xs font-medium text-emerald-800 dark:text-emerald-300 flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+          <PhosphorCheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" filled />
           <span>Thank you! Your message has been sent. I&apos;ll get back to you soon.</span>
         </div>
       )}
       {formState === "error" && (
         <div role="alert" className="p-3 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/60 rounded-lg text-xs font-medium text-rose-800 dark:text-rose-300 flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" />
+          <PhosphorWarningCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" filled />
           <span>Service temporarily unreachable. Please reach out directly via email.</span>
         </div>
       )}

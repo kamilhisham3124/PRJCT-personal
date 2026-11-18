@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Check, Copy } from "lucide-react";
+import { PhosphorCheck, PhosphorCopy } from "../icons";
 
 export function CodeSnippet({
   code,
@@ -38,12 +38,12 @@ export function CodeSnippet({
         >
           {copied ? (
             <>
-              <Check className="w-3.5 h-3.5 text-emerald-400" />
+              <PhosphorCheck className="w-3.5 h-3.5 text-emerald-400" />
               <span className="text-[10px] text-emerald-400 font-sans">Copied</span>
             </>
           ) : (
             <>
-              <Copy className="w-3.5 h-3.5" />
+              <PhosphorCopy className="w-3.5 h-3.5" />
               <span className="text-[10px] font-sans">Copy</span>
             </>
           )}

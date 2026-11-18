@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Copy, Check } from "lucide-react";
+import { PhosphorCopy, PhosphorCheck } from "../icons";
 
 export interface CopyEmailButtonProps {
   email: string;
@@ -44,12 +44,12 @@ export function CopyEmailButton({ email, className }: CopyEmailButtonProps) {
     >
       {copied ? (
         <>
-          <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+          <PhosphorCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
           <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Copied!</span>
         </>
       ) : (
         <>
-          <Copy className="w-3.5 h-3.5" />
+          <PhosphorCopy className="w-3.5 h-3.5" />
           <span>Copy</span>
         </>
       )}

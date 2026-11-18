@@ -2,7 +2,12 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import { ArrowRight, Search, LayoutGrid, List } from "lucide-react";
+import {
+  PhosphorArrowRight,
+  PhosphorMagnifyingGlass,
+  PhosphorSquaresFour,
+  PhosphorList,
+} from "../icons";
 import type { GitHubCommitItem } from "../../lib/validators/githubValidator";
 import { ProjectGridCard } from "./ProjectGridCard";
 
@@ -41,7 +46,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
       {/* Filtering, Search & View Controls */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-[var(--border-structural)]">
         <div className="relative w-full sm:max-w-xs md:max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--text-secondary)]" />
+          <PhosphorMagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--text-secondary)]" />
           <input
             type="text"
             value={searchQuery}
@@ -75,7 +80,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
                 viewMode === "grid" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
-              <LayoutGrid className="w-4 h-4" />
+              <PhosphorSquaresFour className="w-4 h-4" />
             </button>
             <button
               type="button"
@@ -86,7 +91,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
                 viewMode === "list" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               }`}
             >
-              <List className="w-4 h-4" />
+              <PhosphorList className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -118,7 +123,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
                 </div>
               </div>
               <Link href={`/work/${study.slug}`} className="inline-flex items-center justify-center gap-1 text-xs font-semibold linkhunt-btn-primary px-3 py-1.5 shrink-0 min-h-[44px] w-full sm:w-auto">
-                <span>View Project</span><ArrowRight className="w-3.5 h-3.5" />
+                <span>View Project</span><PhosphorArrowRight className="w-3.5 h-3.5" />
               </Link>
             </article>
           ))}

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { PhosphorArrowRight, PhosphorShieldCheck } from "../icons";
 import type { CaseStudyItem } from "./ProjectCatalog";
 
 const CASE_STUDY_IMAGES: Record<string, string> = {
@@ -26,7 +26,7 @@ export function ProjectGridCard({ study }: { study: CaseStudyItem }) {
           <span className="text-[11px] font-mono uppercase text-[var(--text-secondary)]">{study.slug}</span>
           {study.topCommit?.verified && (
             <span className="inline-flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 rounded-md px-2 py-0.5 text-[10px] font-mono">
-              <ShieldCheck className="w-3 h-3" />Verified
+              <PhosphorShieldCheck className="w-3 h-3" />Verified
             </span>
           )}
         </div>
@@ -42,7 +42,7 @@ export function ProjectGridCard({ study }: { study: CaseStudyItem }) {
         <span className="text-[var(--text-secondary)] font-mono">{study.published_at}</span>
         <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--text-primary)] hover:underline min-h-[44px]">
           <span>View Case Study</span>
-          <ArrowRight className="w-3.5 h-3.5" />
+          <PhosphorArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>
     </article>

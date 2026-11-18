@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { PhosphorCaretDown } from "../icons";
 
 export interface AccordionItem {
   id: string;
@@ -35,7 +35,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
               className="flex items-center justify-between p-4 text-left font-semibold text-xs sm:text-sm text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] transition-colors min-h-[44px]"
             >
               <span>{item.title}</span>
-              <ChevronDown
+              <PhosphorCaretDown
                 className={`w-4 h-4 text-[var(--text-secondary)] transition-transform duration-200 shrink-0 ml-2 ${
                   isOpen ? "rotate-180" : ""
                 }`}

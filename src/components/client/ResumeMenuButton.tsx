@@ -2,7 +2,13 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Download, ChevronDown, FileText, ExternalLink, User } from "lucide-react";
+import {
+  PhosphorDownloadSimple,
+  PhosphorCaretDown,
+  PhosphorFileText,
+  PhosphorArrowSquareOut,
+  PhosphorUser,
+} from "../icons";
 
 export function ResumeMenuButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,9 +41,9 @@ export function ResumeMenuButton() {
         aria-label="Resume options dropdown menu"
         className="inline-flex items-center gap-2 linkhunt-btn-secondary rounded-lg px-4 py-2.5 text-xs font-semibold min-h-[44px]"
       >
-        <Download className="w-3.5 h-3.5" />
+        <PhosphorDownloadSimple className="w-3.5 h-3.5" />
         <span>Resume Options</span>
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+        <PhosphorCaretDown className={`w-3.5 h-3.5 transition-transform ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
       {isOpen && (
@@ -52,7 +58,7 @@ export function ResumeMenuButton() {
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-2.5 px-3 py-2 rounded-md text-xs font-medium text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] min-h-[44px]"
           >
-            <FileText className="w-4 h-4 text-[var(--text-secondary)]" />
+            <PhosphorFileText className="w-4 h-4 text-[var(--text-secondary)]" />
             <div>
               <span className="block font-semibold">Download PDF</span>
               <span className="block text-[10px] text-[var(--text-secondary)]">Standard A4 / ATS formatted</span>
@@ -67,7 +73,7 @@ export function ResumeMenuButton() {
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-2.5 px-3 py-2 rounded-md text-xs font-medium text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] min-h-[44px]"
           >
-            <ExternalLink className="w-4 h-4 text-[var(--text-secondary)]" />
+            <PhosphorArrowSquareOut className="w-4 h-4 text-[var(--text-secondary)]" />
             <div>
               <span className="block font-semibold">View in Browser</span>
               <span className="block text-[10px] text-[var(--text-secondary)]">Opens PDF in a new tab</span>
@@ -80,7 +86,7 @@ export function ResumeMenuButton() {
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-2.5 px-3 py-2 rounded-md text-xs font-medium text-[var(--text-primary)] hover:bg-[var(--surface-secondary)] min-h-[44px]"
           >
-            <User className="w-4 h-4 text-[var(--text-secondary)]" />
+            <PhosphorUser className="w-4 h-4 text-[var(--text-secondary)]" />
             <div>
               <span className="block font-semibold">Interactive Profile</span>
               <span className="block text-[10px] text-[var(--text-secondary)]">Explore experience &amp; metrics</span>

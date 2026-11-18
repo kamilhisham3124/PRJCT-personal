@@ -2,7 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import { useCanvasStore, CanvasLayout } from "../../lib/stores/canvasStore";
-import { LayoutGrid, Rows3, Columns3, RotateCcw, Terminal } from "lucide-react";
+import {
+  PhosphorSquaresFour,
+  PhosphorRows,
+  PhosphorColumns,
+  PhosphorArrowCounterClockwise,
+  PhosphorTerminalWindow,
+  PhosphorArrowRight,
+} from "../icons";
 
 export interface CodeCanvasProps {
   initialLayout: CanvasLayout;
@@ -56,14 +63,14 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
           </div>
           <div className="h-4 w-px bg-zinc-800" />
           <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-400">
-            <Terminal className="w-3.5 h-3.5 text-zinc-300" />
+            <PhosphorTerminalWindow className="w-3.5 h-3.5 text-zinc-300" />
             <span className="text-zinc-200 font-medium">state_engine.tsx</span>
           </div>
         </div>
 
         <div className="flex items-center gap-0.5 sm:gap-1 bg-zinc-900 p-0.5 sm:p-1 rounded-lg border border-zinc-800 max-w-full overflow-x-auto">
           {(["grid", "stack", "split"] as CanvasLayout[]).map((mode) => {
-            const Icon = mode === "grid" ? LayoutGrid : mode === "stack" ? Rows3 : Columns3;
+            const Icon = mode === "grid" ? PhosphorSquaresFour : mode === "stack" ? PhosphorRows : PhosphorColumns;
             const isSelected = layout === mode;
             return (
               <button
@@ -89,7 +96,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
             aria-label="Reset sandbox layout"
             className="p-2 sm:p-2.5 min-w-[44px] min-h-[44px] shrink-0 inline-flex items-center justify-center text-zinc-400 hover:text-white rounded transition-colors"
           >
-            <RotateCcw className="w-3.5 h-3.5" />
+            <PhosphorArrowCounterClockwise className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
@@ -120,7 +127,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
           {history.map((h, i) => (
             <span key={i} className="inline-flex items-center gap-1">
               <span className="bg-zinc-900 border border-zinc-800 text-zinc-300 px-2 py-0.5 rounded text-[11px]">{h}</span>
-              {i < history.length - 1 && <span className="text-zinc-600">&rarr;</span>}
+              {i < history.length - 1 && <PhosphorArrowRight className="w-3 h-3 text-zinc-600 shrink-0" aria-hidden="true" />}
             </span>
           ))}
         </div>
