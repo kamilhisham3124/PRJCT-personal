@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { ContactForm } from "../../components/client/ContactForm";
 import { CopyEmailButton } from "../../components/client/CopyEmailButton";
+import { Breadcrumb } from "../../components/shared/Breadcrumb";
 import { getResumeContent } from "../../content";
 import {
   GithubBrandIcon,
@@ -22,7 +23,8 @@ export default function ContactPage() {
   const resume = getResumeContent();
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-8">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
       <header>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
           <span>Contact</span>

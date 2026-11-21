@@ -8,6 +8,10 @@ export interface BreadcrumbItem {
 }
 
 export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
+  if (!items || items.length <= 1) {
+    return null;
+  }
+
   return (
     <nav aria-label="Breadcrumb" className="py-1">
       <ol className="flex flex-wrap items-center gap-1.5 text-xs font-mono text-[var(--text-secondary)]">

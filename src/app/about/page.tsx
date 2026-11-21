@@ -10,6 +10,7 @@ import { ServicesSection } from "../../components/shared/ServicesSection";
 import { EndorsementsSection } from "../../components/shared/EndorsementsSection";
 import { Accordion } from "../../components/client/Accordion";
 import { PhosphorArrowRight } from "../../components/icons";
+import { Breadcrumb } from "../../components/shared/Breadcrumb";
 
 export const dynamic = "force-static";
 
@@ -43,7 +44,8 @@ export default function AboutPage() {
   const resume = getResumeContent();
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-8">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "About" }]} />
       <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-[var(--border-structural)]">
         <div className="flex flex-col items-start gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)]">
@@ -65,7 +67,7 @@ export default function AboutPage() {
         </div>
 
         <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-[var(--border-structural)] shadow-card shrink-0 self-center md:self-auto">
-          <Image src="/images/avatar.jpg" alt={resume.name} width={144} height={144} priority className="w-full h-full object-cover object-center" />
+          <Image src="/images/avatar.jpg" alt={resume.name} width={144} height={144} loading="eager" className="w-full h-full object-cover object-center" />
         </div>
       </header>
 
@@ -100,7 +102,7 @@ export default function AboutPage() {
         </section>
       </div>
 
-      {/* Services & Capabilities */}
+      {/* Core Engineering Competencies */}
       <ServicesSection />
 
       {/* Technical FAQ Accordion */}
@@ -111,7 +113,7 @@ export default function AboutPage() {
         <Accordion items={ABOUT_FAQS} />
       </section>
 
-      {/* Peer Endorsements */}
+      {/* Engineering References & Verification */}
       <EndorsementsSection />
 
       {/* Accessibility & Standards */}

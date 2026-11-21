@@ -1,8 +1,7 @@
 import React from "react";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { CodeCanvas } from "../../../components/client/CodeCanvas";
-import { PhosphorCaretRight } from "../../../components/icons";
+import { Breadcrumb } from "../../../components/shared/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Interactive Canvas",
@@ -12,13 +11,13 @@ export const metadata: Metadata = {
 export default function LabCanvasPage() {
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-secondary)]">
-        <Link href="/lab" className="hover:text-[var(--text-primary)] transition-colors">
-          Lab
-        </Link>
-        <PhosphorCaretRight className="w-3.5 h-3.5" />
-        <span className="text-[var(--text-primary)] font-medium">Interactive Canvas</span>
-      </div>
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Lab", href: "/lab" },
+          { label: "Interactive Canvas" },
+        ]}
+      />
 
       <header>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">

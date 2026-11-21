@@ -4,6 +4,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { TelemetryWidget } from "../../components/server/TelemetryWidget";
 import { PhosphorArrowRight, PhosphorCheck } from "../../components/icons";
+import { Breadcrumb } from "../../components/shared/Breadcrumb";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +15,8 @@ export const metadata: Metadata = {
 
 export default function LabIndexPage() {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-8">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Lab" }]} />
       <header>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
           <span>Lab Demos</span>

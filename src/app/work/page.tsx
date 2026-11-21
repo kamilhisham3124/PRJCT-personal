@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getAllCaseStudies } from "../../content";
 import { githubAccessor } from "../../lib/accessors/githubAccessor";
 import { ProjectCatalog } from "../../components/client/ProjectCatalog";
+import { Breadcrumb } from "../../components/shared/Breadcrumb";
 
 export const dynamic = "force-static";
 
@@ -26,7 +27,8 @@ export default async function WorkPage() {
   );
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
+      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Work" }]} />
       <div>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
           <span>Selected Work</span>

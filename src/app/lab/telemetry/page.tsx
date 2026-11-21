@@ -1,10 +1,9 @@
 import React from "react";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { vercelTelemetryAccessor, getTelemetryHistory } from "../../../lib/accessors/vercelTelemetryAccessor";
 import { supabaseReadAggregate } from "../../../lib/accessors/supabaseAccessor";
 import { TelemetryDisplay } from "../../../components/shared/TelemetryDisplay";
-import { PhosphorCaretRight } from "../../../components/icons";
+import { Breadcrumb } from "../../../components/shared/Breadcrumb";
 
 export const revalidate = 60;
 
@@ -25,13 +24,13 @@ export default async function LabTelemetryPage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-secondary)]">
-        <Link href="/lab" className="hover:text-[var(--text-primary)] transition-colors">
-          Lab
-        </Link>
-        <PhosphorCaretRight className="w-3.5 h-3.5" />
-        <span className="text-[var(--text-primary)] font-medium">Edge Telemetry</span>
-      </div>
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Lab", href: "/lab" },
+          { label: "Edge Telemetry" },
+        ]}
+      />
 
       <header>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
