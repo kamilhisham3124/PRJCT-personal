@@ -58,15 +58,15 @@ export function ContactForm() {
         <label htmlFor="field-subject" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Inquiry Type</label>
         <select id="field-subject" name="subject" className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3.5 py-2.5 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors min-h-[44px]">
           <option value="Full-time Engineering Role">Full-time Engineering Role</option>
-          <option value="Contract & Consulting">Contract & Consulting</option>
-          <option value="Technical Collaboration">Technical Collaboration</option>
-          <option value="General Inquiry">General Inquiry</option>
+          <option value="Technical Collaboration">Technical Collaboration / Open Source</option>
+          <option value="Architecture Consultation">Architecture &amp; Schema Consultation</option>
+          <option value="General Inquiry">General Engineering Inquiry</option>
         </select>
       </div>
 
-      {/* Checkbox Group: Service Interests */}
+      {/* Checkbox Group: Technical Areas of Interest */}
       <div>
-        <span className="block text-xs font-medium text-[var(--text-secondary)] mb-1.5">Service Interests (Check all that apply)</span>
+        <span className="block text-xs font-medium text-[var(--text-secondary)] mb-1.5">Engineering Areas of Interest (Optional)</span>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
           {["REST API Architecture", "Database Normalization", "Next.js Full-Stack", "Code Review & Audit"].map((svc) => (
             <label key={svc} className="flex items-center gap-2 p-2 rounded-lg border border-[var(--border-structural)] bg-[var(--surface-primary)] cursor-pointer hover:border-[var(--border-highlight)] min-h-[44px]">
@@ -103,6 +103,10 @@ export function ContactForm() {
       <button type="submit" disabled={formState === "submitting"} className="w-full py-2.5 px-5 linkhunt-btn-primary rounded-lg transition-opacity flex items-center justify-center gap-2 group disabled:opacity-50 text-xs font-semibold min-h-[44px]">
         {formState === "submitting" ? (<><PhosphorSpinnerGap className="w-4 h-4 animate-spin" /><span>Sending...</span></>) : (<><span className="text-xs">Send Message</span><PhosphorPaperPlaneTilt className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></>)}
       </button>
+
+      <p className="text-[11px] text-center text-[var(--text-secondary)] -mt-1">
+        Inquiries receive a response within 24&ndash;48 hours. Direct email copy available above.
+      </p>
 
       {/* Notifications */}
       {formState === "success" && (

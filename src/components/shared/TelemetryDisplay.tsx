@@ -119,6 +119,10 @@ export function TelemetryDisplay({
           })}
         </div>
       )}
+
+      <p className="text-[10px] font-mono text-[var(--text-secondary)] pt-2.5 mt-2.5 border-t border-[var(--border-structural)]">
+        Simulated telemetry based on Vercel deployment benchmarks and static asset analysis.
+      </p>
     </div>
   );
 }

@@ -39,10 +39,10 @@ const SERVICES = [
 
 export function ServicesSection() {
   return (
-    <section aria-label="Services and Capabilities" className="flex flex-col gap-5">
+    <section aria-label="Core Engineering Competencies" className="flex flex-col gap-5">
       <div className="pb-2 border-b border-[var(--border-structural)]">
-        <h2 className="text-base font-semibold text-[var(--text-primary)]">Services &amp; Capabilities</h2>
-        <p className="text-xs text-[var(--text-secondary)] mt-0.5">Engineering disciplines and concrete project deliverables.</p>
+        <h2 className="text-base font-semibold text-[var(--text-primary)]">Core Engineering Competencies</h2>
+        <p className="text-xs text-[var(--text-secondary)] mt-0.5">Specialized backend and full-stack disciplines with concrete technical deliverables.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -63,7 +63,7 @@ export function ServicesSection() {
 
               <div className="pt-3 border-t border-[var(--border-structural)]">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-secondary)] block mb-2">
-                  Concrete Deliverables
+                  Technical Scope &amp; Output
                 </span>
                 <ul className="space-y-1.5 text-xs text-[var(--text-secondary)]">
                   {service.deliverables.map((item) => (

@@ -1,10 +1,10 @@
 import React from "react";
 
 const STATS = [
-  { value: "100%", label: "WCAG 2.2 AA", sub: "Accessibility conformance" },
-  { value: "10+", label: "SQL Tables", sub: "Strict 3NF normalization" },
-  { value: "50+", label: "Endpoints", sub: "Deterministic REST contracts" },
-  { value: "0", label: "Unused Dependencies", sub: "Lean, minimal dependency footprint" },
+  { value: "3NF", label: "Relational Schema", sub: "Strict PostgreSQL normalization" },
+  { value: "12", label: "REST Endpoints", sub: "Validated API contract suite" },
+  { value: "8.0/10", label: "Engineering CGPA", sub: "B.E. Computer Science (2025)" },
+  { value: "100%", label: "WCAG 2.2 AA", sub: "Full keyboard & reader support" },
 ];
 
 export function AboutStats() {
@@ -15,13 +15,13 @@ export function AboutStats() {
           key={stat.label}
           className="linkhunt-card p-3 sm:p-4 flex flex-col gap-1 text-center sm:text-left"
         >
-          <span className="text-lg sm:text-2xl font-bold font-mono text-[var(--text-primary)]">
+          <span className="text-lg sm:text-2xl font-bold font-mono tracking-tight text-[var(--text-primary)]">
             {stat.value}
           </span>
-          <span className="text-xs font-semibold text-[var(--text-primary)]">
+          <span className="text-xs font-semibold text-[var(--text-primary)] leading-snug">
             {stat.label}
           </span>
-          <span className="text-[11px] text-[var(--text-secondary)]">
+          <span className="text-[11px] text-[var(--text-secondary)] leading-tight">
             {stat.sub}
           </span>
         </div>

@@ -32,7 +32,7 @@ export function WritingSection() {
       <div className="flex items-center justify-between pb-2 border-b border-[var(--border-structural)]">
         <div>
           <h2 className="text-base font-semibold text-[var(--text-primary)]">Technical Writing &amp; Notes</h2>
-          <p className="text-xs text-[var(--text-secondary)] mt-0.5">Architectural deep dives on backend engineering and systems.</p>
+          <p className="text-xs text-[var(--text-secondary)] mt-0.5">Architectural deep dives and repository technical notes.</p>
         </div>
         <PhosphorBookOpen className="w-4 h-4 text-[var(--text-secondary)]" />
       </div>
@@ -63,7 +63,7 @@ export function WritingSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-xs font-medium text-[var(--text-primary)] hover:underline shrink-0 min-h-[44px]"
             >
-              <span>View on GitHub</span>
+              <span>GitHub Technical Note</span>
               <PhosphorArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </article>
