@@ -83,4 +83,7 @@
 :root.mode-hyperlegible {
   --font-family-body: var(--font-family-accessible);
   --font-family-display: var(--font-family-accessible);
+  --font-family-mono: var(--font-family-accessible);
+  --font-jetbrains-mono: var(--font-family-accessible);
+  --font-inter: var(--font-family-accessible);
 }

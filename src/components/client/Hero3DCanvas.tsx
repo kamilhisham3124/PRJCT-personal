@@ -103,12 +103,15 @@ export function Hero3DCanvas() {
 
       // Draw center monogram
       ctx.fillStyle = isDark ? "#FFFFFF" : "#0F172A";
-      ctx.font = "bold 13px Inter, sans-serif";
+      ctx.font = "bold 13px 'Red Hat Display', sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText("KH", size / 2, size / 2);
 
-      animId = requestAnimationFrame(render);
+      const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!isReduced) {
+        animId = requestAnimationFrame(render);
+      }
     };
 
     render();

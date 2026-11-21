@@ -38,6 +38,7 @@ html, body {
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.15s ease;
 }
 
 :focus-visible {
@@ -64,13 +65,23 @@ html, body {
   background-color: var(--surface-elevated);
   border: 1px solid var(--border-structural);
   border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 1px 2px -1px rgba(15, 23, 42, 0.02);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s ease, box-shadow 0.2s ease;
 }
 
 .linkhunt-card:hover {
   transform: translateY(-2px);
   border-color: var(--border-highlight);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.08), 0 3px 8px -2px rgba(15, 23, 42, 0.04);
+}
+
+:root.dark .linkhunt-card {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 4px 16px -2px rgba(0, 0, 0, 0.3);
+}
+
+:root.dark .linkhunt-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 8px 24px -4px rgba(0, 0, 0, 0.5);
 }
 
 /* LinkHunt Minimal Buttons */
@@ -91,7 +102,7 @@ html, body {
   transform: translateY(-1px);
 }
 
-.linkhunt-btn-primary:active { transform: scale(0.97); }
+.linkhunt-btn-primary:active { transform: scale(0.98); }
 
 .linkhunt-btn-secondary {
   background-color: var(--surface-secondary);
@@ -111,7 +122,7 @@ html, body {
   transform: translateY(-1px);
 }
 
-.linkhunt-btn-secondary:active { transform: scale(0.97); }
+.linkhunt-btn-secondary:active { transform: scale(0.98); }
 
 /* LinkHunt Monospace / Micro Badge */
 .linkhunt-badge {
@@ -126,4 +137,8 @@ html, body {
   background-color: var(--surface-secondary);
   color: var(--text-secondary);
   border: 1px solid var(--border-structural);
+}
+
+:root.light .linkhunt-badge, :root:not(.dark) .linkhunt-badge {
+  border-color: rgba(203, 213, 225, 0.7);
 }
