@@ -37,7 +37,7 @@ export default function HomePage() {
 
           <div className="flex items-center gap-3.5">
             <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[var(--border-structural)] shrink-0 shadow-sm">
-              <Image src="/images/avatar.jpg" alt="Kamil Hisham" width={48} height={48} priority className="w-full h-full object-cover" />
+              <Image src="/images/avatar.jpg" alt="Kamil Hisham" width={48} height={48} loading="eager" className="w-full h-full object-cover" />
             </div>
             <div>
               <span className="text-xs font-mono text-[var(--text-secondary)] block">Hi, I&apos;m</span>
@@ -48,8 +48,8 @@ export default function HomePage() {
           </div>
 
           <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
-            Backend-focused software engineer specializing in Python, Django REST Framework, and PostgreSQL.
-            I design normalized schemas, build deterministic APIs, and write dependable software with minimal dependencies.
+            Software engineer specializing in Python, Django REST Framework, and PostgreSQL.
+            I design normalized schemas, build deterministic APIs, and engineer dependable full-stack web applications with Next.js.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -58,7 +58,7 @@ export default function HomePage() {
               <PhosphorArrowRight className="w-3.5 h-3.5" />
             </Link>
             <Link href="/lab" className="px-5 py-2.5 rounded-lg text-xs font-semibold linkhunt-btn-secondary">
-              Interactive Lab
+              Interactive Systems Lab
             </Link>
           </div>
         </div>
@@ -84,28 +84,35 @@ export default function HomePage() {
               <p className="text-sm text-[var(--text-secondary)] py-6">No production case studies available.</p>
             )}
             {caseStudies.map((study, idx) => (
-              <article key={study.slug} className="group linkhunt-card p-5 sm:p-6 flex flex-col gap-3 hover:shadow-card-hover transition-all">
-                <div className="relative w-full h-36 rounded-lg overflow-hidden border border-[var(--border-structural)] bg-zinc-900">
+              <article key={study.slug} className="group linkhunt-card p-5 sm:p-6 flex flex-col gap-3.5 hover:shadow-card-hover transition-all">
+                <Link
+                  href={`/work/${study.slug}`}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  className="relative w-full h-36 rounded-lg overflow-hidden border border-[var(--border-structural)] bg-zinc-900 block"
+                >
                   <Image
                     src={CASE_STUDY_IMAGES[study.slug] || "/images/case-study-task-management.jpg"}
                     alt={study.title} fill sizes="(max-width: 768px) 100vw, 600px"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                </div>
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                  <Link href={`/work/${study.slug}`} className="text-lg font-semibold text-[var(--text-primary)] group-hover:underline">
+                </Link>
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5">
+                  <Link href={`/work/${study.slug}`} className="text-base sm:text-lg font-semibold text-[var(--text-primary)] group-hover:underline">
                     0{idx + 1}. {study.title}
                   </Link>
-                  <span className="text-xs font-mono text-[var(--text-secondary)]">{study.published_at}</span>
+                  <span className="text-[11px] font-mono text-[var(--text-secondary)] shrink-0">
+                    {study.slug === "employee-task-management" ? "Feb 2026" : "May 2025"}
+                  </span>
                 </div>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.summary}</p>
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">{study.summary}</p>
                 <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[var(--border-structural)]">
                   <div className="flex flex-wrap gap-1.5">
                     {study.tech_stack.map((t) => (<span key={t} className="linkhunt-badge">{t}</span>))}
                   </div>
-                  <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1 text-xs font-medium text-[var(--text-primary)] hover:underline">
+                  <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--text-primary)] hover:underline min-h-[44px]">
                     <span>View Project</span>
-                    <PhosphorArrowRight className="w-3.5 h-3.5" />
+                    <PhosphorArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                   </Link>
                 </div>
               </article>

@@ -2,12 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import {
-  PhosphorArrowRight,
-  PhosphorMagnifyingGlass,
-  PhosphorSquaresFour,
-  PhosphorList,
-} from "../icons";
+import { PhosphorArrowRight, PhosphorSquaresFour, PhosphorList } from "../icons";
 import type { GitHubCommitItem } from "../../lib/validators/githubValidator";
 import { ProjectGridCard } from "./ProjectGridCard";
 
@@ -20,102 +15,73 @@ export interface CaseStudyItem {
   topCommit?: GitHubCommitItem | null;
 }
 
+const CATEGORIES = [
+  { id: "all", label: "All Projects" },
+  { id: "backend", label: "Backend & Systems" },
+  { id: "fullstack", label: "Full-Stack Web" },
+] as const;
+
 export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }) {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCat, setActiveCat] = useState<"all" | "backend" | "fullstack">("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const filtered = useMemo(() => {
     return caseStudies.filter((study) => {
-      const matchCat =
-        activeCategory === "all" ||
-        (activeCategory === "backend" && study.slug === "employee-task-management") ||
-        (activeCategory === "fullstack" && study.slug === "gift-delivery-ecommerce");
-      const q = searchQuery.toLowerCase().trim();
-      const matchSearch =
-        !q ||
-        study.title.toLowerCase().includes(q) ||
-        study.summary.toLowerCase().includes(q) ||
-        study.tech_stack.some((t) => t.toLowerCase().includes(q));
-      return matchCat && matchSearch;
+      if (activeCat === "backend") return study.slug === "employee-task-management";
+      if (activeCat === "fullstack") return study.slug === "gift-delivery-ecommerce";
+      return true;
     });
-  }, [caseStudies, activeCategory, searchQuery]);
+  }, [caseStudies, activeCat]);
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Filtering, Search & View Controls */}
+      {/* Curated Category Pills & View Mode Switcher */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-[var(--border-structural)]">
-        <div className="relative w-full sm:max-w-xs md:max-w-sm">
-          <PhosphorMagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[var(--text-secondary)]" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search projects or technologies..."
-            aria-label="Filter case studies by keyword"
-            className="w-full bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg pl-9 pr-3 py-2 text-xs text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--border-highlight)] transition-colors min-h-[44px]"
-          />
+        <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filter case studies by category">
+          {CATEGORIES.map((cat) => {
+            const isActive = activeCat === cat.id;
+            const count = cat.id === "all" ? caseStudies.length : 1;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setActiveCat(cat.id)}
+                aria-pressed={isActive}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium min-h-[44px] transition-colors ${
+                  isActive ? "bg-[var(--text-primary)] text-[var(--surface-primary)] font-semibold shadow-sm" : "bg-[var(--surface-secondary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-structural)]"
+                }`}
+              >
+                <span>{cat.label}</span>
+                <span className={`text-[11px] font-mono px-1.5 py-0.5 rounded ${isActive ? "bg-[var(--surface-primary)]/20 text-[var(--surface-primary)]" : "bg-[var(--surface-primary)] text-[var(--text-secondary)]"}`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        <div className="flex items-center gap-2 w-full sm:w-auto">
-          <select
-            value={activeCategory}
-            onChange={(e) => setActiveCategory(e.target.value)}
-            aria-label="Filter by project category"
-            className="flex-1 sm:flex-initial min-w-0 bg-[var(--surface-primary)] border border-[var(--border-structural)] rounded-lg px-3 py-2 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--border-highlight)] min-h-[44px]"
-          >
-            <option value="all">All Categories</option>
-            <option value="backend">Backend &amp; Systems</option>
-            <option value="fullstack">Full-Stack Web</option>
-          </select>
-
-          {/* Content Switcher (Grid vs List) */}
-          <div className="flex items-center rounded-lg border border-[var(--border-structural)] bg-[var(--surface-secondary)] p-0.5 shrink-0" role="group" aria-label="Layout switcher">
-            <button
-              type="button"
-              onClick={() => setViewMode("grid")}
-              aria-label="Grid view layout"
-              aria-pressed={viewMode === "grid"}
-              className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${
-                viewMode === "grid" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
-            >
-              <PhosphorSquaresFour className="w-4 h-4" />
-            </button>
-            <button
-              type="button"
-              onClick={() => setViewMode("list")}
-              aria-label="List view layout"
-              aria-pressed={viewMode === "list"}
-              className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${
-                viewMode === "list" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
-            >
-              <PhosphorList className="w-4 h-4" />
-            </button>
-          </div>
+        <div className="flex items-center self-end sm:self-auto rounded-lg border border-[var(--border-structural)] bg-[var(--surface-secondary)] p-0.5 shrink-0" role="group" aria-label="Layout switcher">
+          <button type="button" onClick={() => setViewMode("grid")} aria-label="Grid layout" aria-pressed={viewMode === "grid"} className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${viewMode === "grid" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}>
+            <PhosphorSquaresFour className="w-4 h-4" />
+          </button>
+          <button type="button" onClick={() => setViewMode("list")} aria-label="List layout" aria-pressed={viewMode === "list"} className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${viewMode === "list" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}>
+            <PhosphorList className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
-      {filtered.length === 0 ? (
-        <p className="text-sm text-[var(--text-secondary)] py-8 text-center linkhunt-card">
-          No projects matched &ldquo;{searchQuery}&rdquo;. Try another search term.
-        </p>
-      ) : viewMode === "grid" ? (
+      {viewMode === "grid" ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filtered.map((study) => (
-            <ProjectGridCard key={study.slug} study={study} />
-          ))}
+          {filtered.map((study) => (<ProjectGridCard key={study.slug} study={study} />))}
         </div>
       ) : (
-        /* Structural Multi-Column List View */
         <div className="flex flex-col divide-y divide-[var(--border-structural)] border border-[var(--border-structural)] rounded-lg bg-[var(--surface-elevated)] overflow-hidden">
           {filtered.map((study) => (
             <article key={study.slug} className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[var(--surface-secondary)]/50 transition-colors">
               <div className="flex flex-col gap-1 max-w-xl">
                 <div className="flex items-center gap-2">
                   <Link href={`/work/${study.slug}`} className="text-sm font-semibold text-[var(--text-primary)] hover:underline">{study.title}</Link>
-                  <span className="text-[11px] font-mono text-[var(--text-secondary)]">({study.published_at})</span>
+                  <span className="text-[11px] font-mono text-[var(--text-secondary)]">({study.slug === "employee-task-management" ? "Feb 2026" : "May 2025"})</span>
                 </div>
                 <p className="text-xs text-[var(--text-secondary)] line-clamp-2">{study.summary}</p>
                 <div className="flex flex-wrap gap-1 mt-1">
@@ -130,7 +96,6 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
         </div>
       )}
 
-      {/* Pagination Controls */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-3 border-t border-[var(--border-structural)] text-xs font-mono text-[var(--text-secondary)]">
         <span>Showing {filtered.length} of {caseStudies.length} projects</span>
         <div className="flex items-center gap-1">

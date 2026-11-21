@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { PhosphorX, PhosphorMagnifyingGlassPlus } from "../icons";
+import { PhosphorX, PhosphorMagnifyingGlassPlus, PhosphorArrowUpRight } from "../icons";
 
 export function LightboxModal({
   src,
@@ -60,17 +60,29 @@ export function LightboxModal({
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border-structural)] bg-[var(--surface-secondary)]">
               <span className="font-semibold text-xs text-[var(--text-primary)] truncate pr-2 min-w-0">{title}</span>
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                aria-label="Close lightbox modal"
-                className="p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-primary)] min-h-[44px] min-w-[44px] inline-flex items-center justify-center shrink-0"
-              >
-                <PhosphorX className="w-5 h-5" />
-              </button>
+              <div className="flex items-center gap-2 shrink-0">
+                <a
+                  href={src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open full resolution asset for ${title} in new tab`}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-primary)] rounded-lg min-h-[44px] transition-colors"
+                >
+                  <span>Open Full Asset</span>
+                  <PhosphorArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Close lightbox modal"
+                  className="p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-primary)] min-h-[44px] min-w-[44px] inline-flex items-center justify-center shrink-0"
+                >
+                  <PhosphorX className="w-5 h-5" />
+                </button>
+              </div>
             </div>
             <div className="relative w-full h-[60vh] max-h-[600px] bg-zinc-950">
-              <Image src={src} alt={alt} fill sizes="100vw" className="object-contain p-2" priority />
+              <Image src={src} alt={alt} fill sizes="100vw" className="object-contain p-2" loading="eager" />
             </div>
           </div>
         </div>

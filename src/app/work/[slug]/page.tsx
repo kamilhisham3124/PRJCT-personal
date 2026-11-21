@@ -11,6 +11,7 @@ import { Breadcrumb } from "../../../components/shared/Breadcrumb";
 import { ReadingProgress } from "../../../components/client/ReadingProgress";
 import { LightboxModal } from "../../../components/client/LightboxModal";
 import { CaseStudySections } from "../../../components/shared/CaseStudySections";
+import { ExecutiveBriefCard } from "../../../components/shared/ExecutiveBriefCard";
 
 export const dynamic = "force-static";
 
@@ -83,6 +84,8 @@ export default async function CaseStudyDetailPage({
           </div>
         )}
       </header>
+
+      <ExecutiveBriefCard study={study} />
 
       <LightboxModal
         src={CASE_STUDY_IMAGES[slug] || "/images/case-study-task-management.jpg"}

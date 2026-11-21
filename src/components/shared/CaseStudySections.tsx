@@ -40,34 +40,38 @@ export function CaseStudySections({ study }: { study: CaseStudyContent }) {
   ];
 
   return (
-    <div className="flex flex-col gap-6">
-      <section className="linkhunt-card p-4 sm:p-6">
-        <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
+    <div className="flex flex-col gap-8">
+      <section className="flex flex-col gap-3 pb-6 border-b border-[var(--border-structural)]">
+        <h2 className="text-base font-semibold tracking-tight text-[var(--text-primary)]">
           01. Context &amp; Problem
         </h2>
         <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.problem_statement}</p>
       </section>
 
-      <section className="linkhunt-card p-4 sm:p-6">
-        <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
+      <section className="flex flex-col gap-3 pb-6 border-b border-[var(--border-structural)]">
+        <h2 className="text-base font-semibold tracking-tight text-[var(--text-primary)]">
           02. Architecture &amp; Implementation
         </h2>
-        <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-3">{study.architecture_overview}</p>
-        <CodeSnippet code={sampleCode} language="python" filename={`${study.slug}_service.py`} />
+        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.architecture_overview}</p>
+        <div className="mt-1">
+          <CodeSnippet code={sampleCode} language="python" filename={`${study.slug}_service.py`} />
+        </div>
       </section>
 
-      <section className="linkhunt-card p-4 sm:p-6">
-        <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 pb-2 border-b border-[var(--border-structural)]">
+      <section className="flex flex-col gap-3 pb-6 border-b border-[var(--border-structural)]">
+        <h2 className="text-base font-semibold tracking-tight text-[var(--text-primary)]">
           03. Database Schema &amp; Data Integrity
         </h2>
-        <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-2">{study.database_design}</p>
-        <p className="text-xs text-[var(--text-secondary)] mb-3">
+        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.database_design}</p>
+        <p className="text-xs text-[var(--text-secondary)]">
           Architecture leverages <Tooltip text="Role-Based Access Control">RBAC</Tooltip> and <Tooltip text="Third Normal Form">3NF</Tooltip> normalization.
         </p>
-        <DataTable headers={["System Layer", "Specification", "Guarantee"]} rows={specRows} caption="Verified Technical Architecture Specifications" />
+        <div className="mt-1">
+          <DataTable headers={["System Layer", "Specification", "Guarantee"]} rows={specRows} caption="Verified Technical Architecture Specifications" />
+        </div>
       </section>
 
-      <section className="flex flex-col gap-2">
+      <section className="flex flex-col gap-3">
         <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)]">Technical Deep Dive</h3>
         <Accordion items={accordionItems} />
       </section>
