@@ -13,6 +13,8 @@ export function ContactForm() {
   const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error" | "validation-error">("idle");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [liveAnnouncement, setLiveAnnouncement] = useState("");
+  const [mountedAt] = useState(() => Date.now());
+  const [lastPayload, setLastPayload] = useState<{ subject: string; message: string } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,6 +22,12 @@ export function ContactForm() {
     setFieldErrors({});
 
     const formData = new FormData(e.currentTarget);
+    formData.append("durationMs", String(Date.now() - mountedAt));
+    setLastPayload({
+      subject: formData.get("subject")?.toString() || "Engineering Inquiry",
+      message: formData.get("message")?.toString() || "",
+    });
+
     const result = await submitContactForm(formData);
 
     if (result.status === "validation-error") {
@@ -28,7 +36,7 @@ export function ContactForm() {
       setLiveAnnouncement("Please check the form for errors.");
     } else if (result.status === "server-error") {
       setFormState("error");
-      setLiveAnnouncement("Unable to send message. Please try again.");
+      setLiveAnnouncement("Service unreachable. Please use the direct email link.");
     } else {
       setFormState("success");
       setLiveAnnouncement("Your message has been sent successfully.");
@@ -41,6 +49,9 @@ export function ContactForm() {
         <h2 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)]">Inquiry Form</h2>
         <p className="text-base font-semibold text-[var(--text-primary)] mt-1">Send a direct message</p>
       </div>
+
+      {/* Bot mitigation honeypot - invisible to human users */}
+      <div className="hidden" aria-hidden="true" style={{ display: "none" }}><input name="hp_website" type="text" tabIndex={-1} autoComplete="off" /></div>
 
       <div>
         <label htmlFor="field-name" className="block text-xs font-medium text-[var(--text-secondary)] mb-1">Full Name</label>
@@ -116,9 +127,17 @@ export function ContactForm() {
         </div>
       )}
       {formState === "error" && (
-        <div role="alert" className="p-3 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/60 rounded-lg text-xs font-medium text-rose-800 dark:text-rose-300 flex items-center gap-2">
-          <PhosphorWarningCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" filled />
-          <span>Service temporarily unreachable. Please reach out directly via email.</span>
+        <div role="alert" className="p-3 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/60 rounded-lg text-xs flex flex-col gap-2 text-rose-800 dark:text-rose-300">
+          <div className="flex items-center gap-2 font-medium">
+            <PhosphorWarningCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 shrink-0" filled />
+            <span>Service unreachable. Your draft has been preserved:</span>
+          </div>
+          <a
+            href={`mailto:kamil.hisham3124@gmail.com?subject=${encodeURIComponent(lastPayload?.subject || "Engineering Inquiry")}&body=${encodeURIComponent(lastPayload?.message || "")}`}
+            className="inline-flex items-center gap-1 font-semibold underline min-h-[44px]"
+          >
+            <span>Send pre-filled draft via email client &rarr;</span>
+          </a>
         </div>
       )}
 

@@ -105,8 +105,8 @@ export default function ContactPage() {
               Privacy &amp; Data Notice
             </h3>
             <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-              Information submitted through this form is stored in a secured PostgreSQL database
-              and used strictly for professional correspondence. Inquiries are never shared.
+              Inquiries submitted through this form are securely processed for direct professional
+              correspondence. Contact information is strictly confidential and never shared.
             </p>
           </div>
         </div>

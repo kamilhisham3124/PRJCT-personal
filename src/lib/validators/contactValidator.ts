@@ -7,6 +7,8 @@ export const ContactFormInputSchema = z.object({
   services: z.array(z.string()).optional(),
   preferredContact: z.enum(["email", "phone", "other"]).optional(),
   message: z.string().min(10, "Message must be at least 10 characters").max(2000, "Message must not exceed 2000 characters"),
+  hp_website: z.string().max(100).optional(),
+  durationMs: z.number().optional(),
 });
 
 export const ContactFormResultSchema = z.object({

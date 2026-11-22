@@ -18,8 +18,23 @@ export async function submitContactForm(
           services: formData.getAll("services").map((s) => s.toString()),
           preferredContact: (formData.get("preferredContact")?.toString() || "email") as "email" | "phone" | "other",
           message: formData.get("message")?.toString() || "",
+          hp_website: formData.get("hp_website")?.toString() || undefined,
+          durationMs: formData.get("durationMs") ? Number(formData.get("durationMs")) : undefined,
         }
       : formData;
+
+  const duration =
+    typeof rawData.durationMs === "number"
+      ? rawData.durationMs
+      : typeof rawData.durationMs === "string"
+      ? Number(rawData.durationMs)
+      : undefined;
+
+  // Bot mitigation: silent success on honeypot fill or inhuman submission speed (< 800ms)
+  if (rawData.hp_website || (duration !== undefined && !Number.isNaN(duration) && duration < 800)) {
+    console.error("[submitContactForm] Automated bot submission dropped silently");
+    return { status: "success", submittedAt: new Date().toISOString() };
+  }
 
   const validation = ContactFormInputSchema.safeParse(rawData);
 
@@ -36,6 +51,10 @@ export async function submitContactForm(
   }
 
   try {
+    const cleanName = validation.data.name.trim().replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
+    const cleanEmail = validation.data.email.trim().toLowerCase();
+    const cleanMessage = validation.data.message.trim();
+
     const annotations: string[] = [];
     if (validation.data.subject) {
       annotations.push(`[Inquiry Type: ${validation.data.subject}]`);
@@ -44,17 +63,17 @@ export async function submitContactForm(
       annotations.push(`[Preferred Channel: ${validation.data.preferredContact}]`);
     }
     if (validation.data.services && validation.data.services.length > 0) {
-      annotations.push(`[Services: ${validation.data.services.join(", ")}]`);
+      annotations.push(`[Areas: ${validation.data.services.join(", ")}]`);
     }
 
     const compiledMessage =
       annotations.length > 0
-        ? `${annotations.join(" ")}\n\n${validation.data.message}`
-        : validation.data.message;
+        ? `${annotations.join(" ")}\n\n${cleanMessage}`
+        : cleanMessage;
 
     const success = await supabaseInsertContactMessage({
-      name: validation.data.name,
-      email: validation.data.email,
+      name: cleanName,
+      email: cleanEmail,
       message: compiledMessage,
     });
     if (!success) {
