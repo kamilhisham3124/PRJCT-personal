@@ -122,3 +122,13 @@ input, select, textarea { accent-color: var(--accent-primary); }
   border-color: var(--control-border-disabled);
   cursor: not-allowed;
 }
+.terminal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-highlight) var(--surface-terminal-bar);
+}
+.terminal-scrollbar::-webkit-scrollbar { height: 8px; }
+.terminal-scrollbar::-webkit-scrollbar-track { background: var(--surface-terminal-bar); border-radius: 4px; }
+.terminal-scrollbar::-webkit-scrollbar-thumb { background: var(--border-highlight); border-radius: 4px; }
+.code-fade-right {
+  background: linear-gradient(90deg, transparent 0%, var(--surface-terminal) 88%);
+}
