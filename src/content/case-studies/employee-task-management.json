@@ -9,7 +9,33 @@
   "role_and_responsibilities": "Sole Backend & Systems Engineer — Designed 3NF PostgreSQL schema, engineered 12 REST API endpoints with Django REST Framework, and configured role-based access control.",
   "problem_statement": "Manual tracking of inter-departmental task assignments led to lost state updates and uncoordinated work handoffs. A centralized, deterministic access-controlled API was required.",
   "architecture_overview": "Structured under Django's Model-View-Controller paradigm with Django REST Framework serialization layers. Implemented 12 REST API endpoints handling authentication, task creation, status transitions, and managerial reporting.",
+  "problem_narrative": "Cross-departmental task coordination previously relied on disconnected status updates where handoffs between team leads and contributors could overwrite active assignments. Resolving these race conditions required an explicit state machine and strict ownership checks so only authorized roles can reassign work or alter priority levels.",
+  "architecture_narrative": "Each incoming request authenticates via session credentials and passes custom DRF permission classes before reaching serializer validation. Mutation actions such as task assignment update explicit database columns (update_fields) within a single serializer lifecycle so invalid inputs fail predictably without partial writes.",
   "database_design": "Normalized relational schema in PostgreSQL enforcing foreign key constraints between Employee, Department, Task, and TaskAuditLog tables. Role-based query filtering prevents unauthorized cross-department data exposure.",
+  "technical_specs": [
+    {
+      "layer": "Backend Stack",
+      "specification": "Python 3.12 / Django 5.x",
+      "guarantee": "DRF ViewSets & typed serializers"
+    },
+    {
+      "layer": "Persistence Layer",
+      "specification": "PostgreSQL",
+      "guarantee": "3NF schema & foreign key constraints"
+    },
+    {
+      "layer": "Access Control",
+      "specification": "Role-Based Permissions",
+      "guarantee": "Enforced at model & view layers"
+    },
+    {
+      "layer": "Test Coverage",
+      "specification": "Unit & API Integration",
+      "guarantee": "100% endpoint assertions passing"
+    }
+  ],
+  "architecture_standards": "Engineered using strict contract verification across 12 REST endpoints. Request payloads pass DRF serializer validation before database writes, returning uniform JSON response envelopes.",
+  "schema_guarantees": "Enforces Third Normal Form (3NF) across Employee, Department, Task, and TaskAuditLog tables with explicit foreign key cascading rules and department-scoped query filtering.",
   "verifiable_metrics": [
     { "metric": "Endpoints Delivered", "value": "12 validated REST endpoints" },
     { "metric": "Database Normalization", "value": "3NF relational schema" },

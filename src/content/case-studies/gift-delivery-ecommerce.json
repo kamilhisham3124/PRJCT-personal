@@ -9,7 +9,33 @@
   "role_and_responsibilities": "Full-Stack Engineer — Developed Django MVC backend, custom permission decorators for 3 user roles, transactional order processing, and responsive front-end views.",
   "problem_statement": "Coordinating product catalog updates, inventory reservations, and delivery routing across distinct customer and vendor actors without state drift or race conditions.",
   "architecture_overview": "Model-View-Controller architecture segregating presentation templates, view controllers, and ORM query logic. Custom permission decorators enforce role boundaries across admin, vendor, and customer dashboards.",
+  "problem_narrative": "Multi-actor e-commerce storefronts split operational authority across customers placing orders, vendors updating catalog fulfillment, and administrators moderating platform activity. Without strict view-level isolation and transactional stock decrements, shared Django routes risk unauthorized privilege crossover and oversold inventory during checkout.",
+  "architecture_narrative": "Server-rendered Django MVC template views enforce strict dashboard segregation via custom Python permission decorators rather than external REST endpoints. During checkout, the order service wraps cart line-item iteration inside transaction.atomic() with select_for_update row locking so order creation and cart clearance commit as one indivisible unit.",
   "database_design": "SQLite schema with relational foreign keys establishing strict integrity between Orders, LineItems, Products, and VendorProfiles with automatic cascade handling.",
+  "technical_specs": [
+    {
+      "layer": "Application Stack",
+      "specification": "Python 3.12 / Django MVC",
+      "guarantee": "Server-rendered templates & modular apps"
+    },
+    {
+      "layer": "Persistence Layer",
+      "specification": "SQLite (Django ORM)",
+      "guarantee": "Relational foreign keys & atomic transactions"
+    },
+    {
+      "layer": "Authorization Boundary",
+      "specification": "Custom Permission Decorators",
+      "guarantee": "Isolated Customer, Vendor & Admin views"
+    },
+    {
+      "layer": "Checkout Integrity",
+      "specification": "Transactional Order Flow",
+      "guarantee": "Atomic stock updates & server-side form checks"
+    }
+  ],
+  "architecture_standards": "Built with modular Django applications isolating URL routing, server-side form validation, custom permission decorators, and HTML template rendering without exposing external API endpoints.",
+  "schema_guarantees": "Uses SQLite with explicit foreign key constraints linking Orders, LineItems, Products, and VendorProfiles, protected by atomic checkout transactions and cascade handling.",
   "verifiable_metrics": [
     { "metric": "User Roles Managed", "value": "3 distinct dashboard views (Admin, Vendor, Customer)" },
     { "metric": "Data Integrity", "value": "ACID compliance via Django ORM transactions" },

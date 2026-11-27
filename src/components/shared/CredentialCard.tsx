@@ -17,6 +17,15 @@ export interface CredentialCardProps {
   state: "loading" | "success" | "error" | "unavailable";
 }
 
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function formatUtcDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  const day = String(d.getUTCDate()).padStart(2, "0");
+  return `${day} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
 export function CredentialCard({
   projectSlug,
   commitSha,
@@ -99,8 +108,8 @@ export function CredentialCard({
           {shortSha}
         </code>
         {authoredDate && (
-          <span className="text-[var(--text-secondary)] font-mono text-[11px]" suppressHydrationWarning>
-            ({new Date(authoredDate).toLocaleDateString()})
+          <span className="text-[var(--text-secondary)] font-mono text-[11px]">
+            ({formatUtcDate(authoredDate)})
           </span>
         )}
       </div>

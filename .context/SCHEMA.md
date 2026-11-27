@@ -11,17 +11,27 @@
 
 ```typescript
 CaseStudyContentSchema = z.object({
-  slug:                  z.string().min(1),          // URL-safe identifier
-  title:                 z.string().max(100),          // Display title
-  summary:               z.string().max(280),          // 1-2 sentence abstract
-  tech_stack:            z.array(z.string()).min(1),   // Ordered technology list
-  github_repo:           z.string().url(),             // Full GitHub repo URL
-  preview_url:           z.string().url().optional(),  // Live preview URL if any
-  published_at:          z.string(),                   // ISO date string YYYY-MM-DD
-  problem_statement:     z.string().optional(),        // Business problem narrative
-  architecture_overview: z.string().optional(),        // System design narrative
-  database_design:       z.string().optional(),        // Schema/storage narrative
-  verifiable_metrics:    z.array(z.object({           // Production evidence
+  slug:                     z.string().min(1),          // URL-safe identifier
+  title:                    z.string().max(100),          // Display title
+  summary:                  z.string().max(280),          // 1-2 sentence abstract
+  tech_stack:               z.array(z.string()).min(1),   // Ordered technology list
+  github_repo:              z.string().url(),             // Full GitHub repo URL
+  preview_url:              z.string().url().optional(),  // Live preview URL if any
+  published_at:             z.string(),                   // ISO date string YYYY-MM-DD
+  problem_statement:        z.string().optional(),        // Executive brief problem constraint
+  architecture_overview:    z.string().optional(),        // Executive brief solution summary
+  problem_narrative:        z.string().optional(),        // Section 01 detailed context narrative
+  architecture_narrative:   z.string().optional(),        // Section 02 implementation narrative
+  database_design:          z.string().optional(),        // Section 03 schema/storage narrative
+  role_and_responsibilities: z.string().optional(),       // Engineer role summary
+  technical_specs:          z.array(z.object({            // Project-specific spec table rows
+    layer:         z.string(),
+    specification: z.string(),
+    guarantee:     z.string(),
+  })).optional(),
+  architecture_standards:   z.string().optional(),        // Project-specific methodology accordion copy
+  schema_guarantees:        z.string().optional(),        // Project-specific schema accordion copy
+  verifiable_metrics:       z.array(z.object({            // Production evidence
     metric: z.string(),
     value:  z.string(),
   })).optional(),
