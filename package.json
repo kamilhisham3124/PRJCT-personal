@@ -10,7 +10,7 @@
     "audit:secrets": "node scripts/audit-secrets.mjs",
     "audit:bundle": "node scripts/audit-bundle.mjs",
     "diagnose:author": "node scripts/diagnose-git-author.mjs",
-    "test:unit": "node --experimental-strip-types --no-warnings scripts/test-unit.mjs",
+    "test:unit": "node --experimental-strip-types --no-warnings scripts/test-unit.mjs && node --experimental-strip-types --no-warnings scripts/test-icons.mjs && node --experimental-strip-types --no-warnings scripts/test-regression.mjs",
     "test:smoke": "node scripts/smoke-test.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "next lint",
