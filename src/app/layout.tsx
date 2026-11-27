@@ -60,7 +60,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <div className="relative z-10 flex flex-col min-h-screen">
+        <div id="app-shell" className="relative z-10 flex flex-col min-h-screen">
           <Header />
           <main
             id="main-content"
