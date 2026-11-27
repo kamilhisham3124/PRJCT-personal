@@ -41,6 +41,7 @@ export {
   PhosphorSun,
   PhosphorMoon,
   PhosphorMapPin,
+  PhosphorMonitor,
 } from "./ThemeIcons";
 
 export {
@@ -64,3 +65,25 @@ export {
   PhosphorColumns,
   PhosphorArrowCounterClockwise,
 } from "./LabIcons";
+
+export {
+  TechPythonIcon,
+  TechDjangoIcon,
+  TechNextjsIcon,
+  TechTypeScriptIcon,
+  TechJavaScriptIcon,
+  TechHtmlIcon,
+  TechCssIcon,
+} from "./TechIcons";
+
+export {
+  TechPostgresIcon,
+  TechSqliteIcon,
+  TechDockerIcon,
+  TechRedisIcon,
+  TechSupabaseIcon,
+  TechGitIcon,
+  TechPostmanIcon,
+  TechVercelIcon,
+  TechMysqlIcon,
+} from "./PlatformIcons";

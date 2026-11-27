@@ -40,3 +40,13 @@ export function PhosphorMapPin({ className = "w-4 h-4", ...props }: IconProps) {
     </svg>
   );
 }
+
+export function PhosphorMonitor({ className = "w-4 h-4", ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className} {...props}>
+      <rect x="32" y="48" width="192" height="144" rx="16" />
+      <line x1="160" y1="224" x2="96" y2="224" />
+      <line x1="128" y1="192" x2="128" y2="224" />
+    </svg>
+  );
+}
