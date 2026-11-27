@@ -50,10 +50,10 @@ export function ReadingModeToggle() {
       className="w-full min-h-[44px] py-2 px-3 flex items-center justify-between rounded-lg border border-[var(--border-structural)] bg-[var(--surface-secondary)] text-xs text-[var(--text-primary)] hover:border-[var(--border-highlight)] transition-colors"
     >
       <span className="flex items-center gap-2 font-medium">
-        <PhosphorEye className={`w-3.5 h-3.5 ${isHyperlegible ? "text-[var(--accent-signal)]" : "text-[var(--text-secondary)]"}`} filled={isHyperlegible} />
+        <PhosphorEye className={`w-3.5 h-3.5 ${isHyperlegible ? "text-fg-accent" : "text-text-secondary"}`} filled={isHyperlegible} />
         <span>Enhanced Legibility</span>
       </span>
-      <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${isHyperlegible ? "bg-[var(--accent-signal)] text-white" : "text-[var(--text-secondary)]"}`}>
+      <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${isHyperlegible ? "bg-accent-primary text-fg-on-emphasis font-semibold" : "text-text-muted"}`}>
         {isHyperlegible ? "Active" : "Default"}
       </span>
     </button>
