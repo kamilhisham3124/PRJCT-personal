@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { PhosphorArrowRight, PhosphorSquaresFour, PhosphorList } from "../icons";
+import { TechBadge } from "../shared/TechBadge";
 import type { GitHubCommitItem } from "../../lib/validators/githubValidator";
 import { ProjectGridCard } from "./ProjectGridCard";
 
@@ -48,11 +49,13 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
                 onClick={() => setActiveCat(cat.id)}
                 aria-pressed={isActive}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium min-h-[44px] transition-colors ${
-                  isActive ? "bg-[var(--text-primary)] text-[var(--surface-primary)] font-semibold shadow-sm" : "bg-[var(--surface-secondary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-structural)]"
+                  isActive
+                    ? "bg-accent-primary text-fg-on-emphasis border border-transparent font-semibold shadow-card"
+                    : "bg-control-rest text-text-secondary hover:text-text-primary border border-border-structural"
                 }`}
               >
                 <span>{cat.label}</span>
-                <span className={`text-[11px] font-mono px-1.5 py-0.5 rounded ${isActive ? "bg-[var(--surface-primary)]/20 text-[var(--surface-primary)]" : "bg-[var(--surface-primary)] text-[var(--text-secondary)]"}`}>
+                <span className={`text-[11px] font-mono px-1.5 py-0.5 rounded ${isActive ? "bg-surface-elevated text-fg-accent font-semibold" : "bg-surface-primary text-text-muted"}`}>
                   {count}
                 </span>
               </button>
@@ -60,12 +63,12 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
           })}
         </div>
 
-        <div className="flex items-center self-end sm:self-auto rounded-lg border border-[var(--border-structural)] bg-[var(--surface-secondary)] p-0.5 shrink-0" role="group" aria-label="Layout switcher">
-          <button type="button" onClick={() => setViewMode("grid")} aria-label="Grid layout" aria-pressed={viewMode === "grid"} className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${viewMode === "grid" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}>
-            <PhosphorSquaresFour className="w-4 h-4" />
+        <div className="flex items-center self-end sm:self-auto rounded-lg border border-border-structural bg-surface-secondary p-0.5 shrink-0" role="group" aria-label="Layout switcher">
+          <button type="button" onClick={() => setViewMode("grid")} aria-label="Grid layout" aria-pressed={viewMode === "grid"} className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${viewMode === "grid" ? "bg-surface-elevated text-fg-accent border border-accent-border shadow-card" : "text-text-secondary hover:text-text-primary border border-transparent"}`}>
+            <PhosphorSquaresFour className="w-4 h-4 shrink-0" aria-hidden="true" />
           </button>
-          <button type="button" onClick={() => setViewMode("list")} aria-label="List layout" aria-pressed={viewMode === "list"} className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${viewMode === "list" ? "bg-[var(--surface-elevated)] text-[var(--text-primary)] shadow-sm" : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"}`}>
-            <PhosphorList className="w-4 h-4" />
+          <button type="button" onClick={() => setViewMode("list")} aria-label="List layout" aria-pressed={viewMode === "list"} className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${viewMode === "list" ? "bg-surface-elevated text-fg-accent border border-accent-border shadow-card" : "text-text-secondary hover:text-text-primary border border-transparent"}`}>
+            <PhosphorList className="w-4 h-4 shrink-0" aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -75,17 +78,17 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
           {filtered.map((study) => (<ProjectGridCard key={study.slug} study={study} />))}
         </div>
       ) : (
-        <div className="flex flex-col divide-y divide-[var(--border-structural)] border border-[var(--border-structural)] rounded-lg bg-[var(--surface-elevated)] overflow-hidden">
+        <div className="flex flex-col divide-y divide-border-structural border border-border-structural rounded-lg bg-surface-elevated overflow-hidden shadow-card">
           {filtered.map((study) => (
-            <article key={study.slug} className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[var(--surface-secondary)]/50 transition-colors">
+            <article key={study.slug} className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-surface-secondary transition-colors">
               <div className="flex flex-col gap-1 max-w-xl">
                 <div className="flex items-center gap-2">
-                  <Link href={`/work/${study.slug}`} className="text-sm font-semibold text-[var(--text-primary)] hover:underline">{study.title}</Link>
-                  <span className="text-[11px] font-mono text-[var(--text-secondary)]">({study.slug === "employee-task-management" ? "Feb 2026" : "May 2025"})</span>
+                  <Link href={`/work/${study.slug}`} className="text-sm font-semibold text-text-primary hover:text-fg-accent hover:underline transition-colors">{study.title}</Link>
+                  <span className="text-[11px] font-mono text-text-muted">({study.slug === "employee-task-management" ? "Feb 2026" : "May 2025"})</span>
                 </div>
-                <p className="text-xs text-[var(--text-secondary)] line-clamp-2">{study.summary}</p>
+                <p className="text-xs text-text-secondary line-clamp-2">{study.summary}</p>
                 <div className="flex flex-wrap gap-1 mt-1">
-                  {study.tech_stack.map((t) => (<span key={t} className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--surface-secondary)] text-[var(--text-secondary)]">{t}</span>))}
+                  {study.tech_stack.map((t) => (<TechBadge key={t} name={t} size="sm" />))}
                 </div>
               </div>
               <Link href={`/work/${study.slug}`} className="inline-flex items-center justify-center gap-1 text-xs font-semibold linkhunt-btn-primary px-3 py-1.5 shrink-0 min-h-[44px] w-full sm:w-auto">

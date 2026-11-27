@@ -11,15 +11,15 @@ function formatMonthYear(d: string | null): string {
 
 export function ExperienceTimeline({ entries }: { entries: ExperienceEntry[] }) {
   return (
-    <section className="flex flex-col gap-6">
-      <h2 className="text-lg font-semibold text-[var(--text-primary)] pb-2 border-b border-[var(--border-structural)]">
+    <section className="flex flex-col gap-4 sm:gap-6">
+      <h2 className="text-base sm:text-lg font-semibold text-[var(--text-primary)] pb-2 border-b border-[var(--border-structural)]">
         Work Experience
       </h2>
-      <div className="relative border-l border-[var(--border-structural)] ml-3 sm:ml-4 pl-5 sm:pl-6 space-y-8">
+      <div className="relative border-l border-[var(--border-structural)] ml-3 sm:ml-4 pl-4 sm:pl-6 space-y-4 sm:space-y-6">
         {entries.map((exp, idx) => (
           <div key={idx} className="relative group">
             <div className="absolute -left-[25px] sm:-left-[29px] top-1.5 w-2.5 h-2.5 rounded-full bg-[var(--text-primary)] ring-4 ring-[var(--surface-primary)]" />
-            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5 sm:mb-2">
               <h3 className="text-sm font-semibold text-[var(--text-primary)]">
                 {exp.role} <span className="text-[var(--text-secondary)] font-normal block sm:inline">@ {exp.organization}</span>
               </h3>
@@ -27,7 +27,7 @@ export function ExperienceTimeline({ entries }: { entries: ExperienceEntry[] }) 
                 {formatMonthYear(exp.start_date)} &ndash; {formatMonthYear(exp.end_date)}
               </span>
             </div>
-            <ul className="space-y-1.5 text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+            <ul className="space-y-1 sm:space-y-1.5 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">
               {exp.summary.split(". ").filter(Boolean).map((clause, cIdx) => (
                 <li key={cIdx} className="flex items-start gap-2">
                   <span className="text-[var(--text-primary)] font-bold select-none">&bull;</span>

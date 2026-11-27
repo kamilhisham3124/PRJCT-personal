@@ -8,16 +8,16 @@ export function ExecutiveBriefCard({ study }: { study: CaseStudyContent }) {
   return (
     <section
       aria-label="Executive Brief"
-      className="linkhunt-card p-4 sm:p-5 bg-[var(--surface-secondary)]/50 border border-[var(--border-structural)] rounded-xl my-4"
+      className="linkhunt-card p-4 sm:p-5 bg-surface-secondary border border-border-structural rounded-xl my-4"
     >
-      <div className="flex items-center justify-between pb-3 mb-3 border-b border-[var(--border-structural)]">
+      <div className="flex items-center justify-between pb-3 mb-3 border-b border-border-structural">
         <div className="flex items-center gap-2">
-          <PhosphorLightning className="w-4 h-4 text-amber-500 shrink-0" />
-          <h2 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-primary)]">
+          <PhosphorLightning className="w-4 h-4 text-fg-accent shrink-0" />
+          <h2 className="text-xs font-mono font-semibold uppercase tracking-wider text-text-primary">
             Executive Brief &bull; 30-Second Summary
           </h2>
         </div>
-        <span className="text-[11px] font-mono text-[var(--text-secondary)]">Recruiter Overview</span>
+        <span className="text-[11px] font-mono text-fg-accent font-medium">Recruiter Overview</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">

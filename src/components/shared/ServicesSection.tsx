@@ -45,30 +45,30 @@ export function ServicesSection() {
         <p className="text-xs text-[var(--text-secondary)] mt-0.5">Specialized backend and full-stack disciplines with concrete technical deliverables.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-5">
         {SERVICES.map((service) => {
           const Icon = service.icon;
           return (
             <div
               key={service.title}
-              className="linkhunt-card p-5 flex flex-col justify-between hover:shadow-card-hover transition-all"
+              className="linkhunt-card p-3.5 sm:p-5 flex flex-col justify-between hover:shadow-card-hover transition-all"
             >
               <div>
-                <div className="w-9 h-9 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border-structural)] flex items-center justify-center text-[var(--text-primary)] mb-3">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-accent-subtle border border-accent-border flex items-center justify-center text-fg-accent mb-2.5 sm:mb-3">
                   <Icon className="w-4 h-4" />
                 </div>
-                <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-1.5">{service.title}</h3>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-4">{service.description}</p>
+                <h3 className="text-sm font-semibold text-text-primary mb-1 sm:mb-1.5">{service.title}</h3>
+                <p className="text-xs text-text-secondary leading-relaxed mb-3 sm:mb-4">{service.description}</p>
               </div>
 
-              <div className="pt-3 border-t border-[var(--border-structural)]">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-secondary)] block mb-2">
+              <div className="pt-2.5 sm:pt-3 border-t border-border-structural">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-text-muted block mb-1.5 sm:mb-2">
                   Technical Scope &amp; Output
                 </span>
-                <ul className="space-y-1.5 text-xs text-[var(--text-secondary)]">
+                <ul className="space-y-1 sm:space-y-1.5 text-xs text-text-secondary">
                   {service.deliverables.map((item) => (
                     <li key={item} className="flex items-start gap-1.5">
-                      <span className="text-emerald-600 dark:text-emerald-400 font-bold select-none">&bull;</span>
+                      <span className="text-fg-accent font-bold select-none">&bull;</span>
                       <span>{item}</span>
                     </li>
                   ))}

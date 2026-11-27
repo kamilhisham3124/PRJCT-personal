@@ -40,12 +40,12 @@ export function CredentialCard({
 
   if (state === "error") {
     return (
-      <div className="bg-amber-50/80 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/60 rounded-xl p-5">
-        <div className="flex items-center gap-2 text-xs font-bold text-amber-800 dark:text-amber-400 mb-1">
-          <PhosphorWarningCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+      <div className="bg-status-warning-bg border border-status-warning-border rounded-xl p-5">
+        <div className="flex items-center gap-2 text-xs font-bold text-status-warning-fg mb-1">
+          <PhosphorWarningCircle className="w-4 h-4 text-status-warning shrink-0" />
           <span>Commit Details Currently Unavailable</span>
         </div>
-        <p className="text-xs text-amber-700/90 dark:text-amber-400/80">
+        <p className="text-xs text-text-secondary">
           Recent commit history is temporarily unavailable from GitHub.
         </p>
       </div>
@@ -84,7 +84,7 @@ export function CredentialCard({
         </div>
         {isVerified && (
           <span
-            className="inline-flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/60 rounded-md px-2 py-0.5 text-[10px] font-mono font-medium"
+            className="inline-flex items-center gap-1 bg-status-success-bg text-status-success-fg border border-status-success-border rounded-md px-2 py-0.5 text-[10px] font-mono font-medium"
             aria-label="Signed commit"
           >
             <PhosphorShieldCheck className="w-3.5 h-3.5" />

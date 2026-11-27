@@ -8,6 +8,7 @@ import { AboutStats } from "../../components/shared/AboutStats";
 import { ExperienceTimeline } from "../../components/shared/ExperienceTimeline";
 import { ServicesSection } from "../../components/shared/ServicesSection";
 import { EndorsementsSection } from "../../components/shared/EndorsementsSection";
+import { TechBadge } from "../../components/shared/TechBadge";
 import { Accordion } from "../../components/client/Accordion";
 import { PhosphorArrowRight } from "../../components/icons";
 import { Breadcrumb } from "../../components/shared/Breadcrumb";
@@ -44,9 +45,9 @@ export default function AboutPage() {
   const resume = getResumeContent();
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6 sm:gap-8 min-w-0">
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "About" }]} />
-      <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-[var(--border-structural)]">
+      <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6 pb-5 sm:pb-6 border-b border-[var(--border-structural)]">
         <div className="flex flex-col items-start gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)]">
             <span>About Me</span>
@@ -78,14 +79,14 @@ export default function AboutPage() {
       <ExperienceTimeline entries={resume.experience_entries} />
 
       {/* Education & Skills */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start pt-4 border-t border-[var(--border-structural)]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start pt-4 border-t border-[var(--border-structural)] min-w-0">
         <section className="flex flex-col gap-3">
           <h2 className="text-sm font-semibold text-[var(--text-primary)]">Education</h2>
           <dl className="space-y-1 text-sm">
             <dt className="font-medium text-[var(--text-primary)]">{resume.education.degree}</dt>
             <dd className="text-[var(--text-secondary)]">{resume.education.institution}, {resume.education.location}</dd>
             <dd className="pt-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono bg-status-success-bg text-status-success-fg border border-status-success-border">
                 Graduated: {resume.education.graduation_date} | CGPA: {resume.education.cgpa}
               </span>
             </dd>
@@ -96,7 +97,7 @@ export default function AboutPage() {
           <h2 className="text-sm font-semibold text-[var(--text-primary)]">Skills &amp; Technologies</h2>
           <div className="flex flex-wrap gap-1.5">
             {resume.skills.map((skill) => (
-              <span key={skill} className="linkhunt-badge">{skill}</span>
+              <TechBadge key={skill} name={skill} />
             ))}
           </div>
         </section>
@@ -117,11 +118,11 @@ export default function AboutPage() {
       <EndorsementsSection />
 
       {/* Accessibility & Standards */}
-      <div className="border-l-2 border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20 p-4 rounded-r-lg border-y border-r border-emerald-200/60 dark:border-emerald-900/40">
-        <h3 className="text-xs font-semibold text-[var(--text-primary)] mb-1">
+      <div className="border-l-2 border-status-success bg-status-success-bg p-4 rounded-r-lg border-y border-r border-status-success-border">
+        <h3 className="text-xs font-semibold text-status-success-fg mb-1">
           Accessibility &amp; Standards Conformance
         </h3>
-        <p className="text-xs text-[var(--text-secondary)] leading-relaxed max-w-3xl">
+        <p className="text-xs text-text-secondary leading-relaxed max-w-3xl">
           Engineered to meet WCAG 2.2 Level AA accessibility standards, featuring high-contrast typography,
           complete keyboard operability, screen reader live announcements, and support for reduced motion preferences.
         </p>

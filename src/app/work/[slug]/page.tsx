@@ -7,6 +7,7 @@ import { CredentialCard } from "../../../components/shared/CredentialCard";
 import { CaseStudyNav } from "../../../components/shared/CaseStudyNav";
 import { MetricsCard } from "../../../components/shared/MetricsCard";
 import { ProjectBottomNav } from "../../../components/shared/ProjectBottomNav";
+import { TechBadge } from "../../../components/shared/TechBadge";
 import { Breadcrumb } from "../../../components/shared/Breadcrumb";
 import { ReadingProgress } from "../../../components/client/ReadingProgress";
 import { LightboxModal } from "../../../components/client/LightboxModal";
@@ -58,7 +59,7 @@ export default async function CaseStudyDetailPage({
   const credState = !commitRes.ok ? "error" : commitRes.data.commits.length === 0 ? "unavailable" : "success";
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-5 sm:gap-6 min-w-0">
       <ReadingProgress />
       <Breadcrumb
         items={[
@@ -78,11 +79,17 @@ export default async function CaseStudyDetailPage({
           {study.summary}
         </p>
         {study.role_and_responsibilities && (
-          <div className="mt-3 p-3 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border-structural)] text-xs text-[var(--text-secondary)]">
-            <span className="font-semibold text-[var(--text-primary)]">Role &amp; Responsibilities: </span>
+          <div className="mt-3 p-3 rounded-r-lg border-l-2 border-accent-primary border-y border-r border-border-structural bg-surface-secondary text-xs text-text-secondary">
+            <span className="font-semibold text-text-primary">Role &amp; Responsibilities: </span>
             <span>{study.role_and_responsibilities}</span>
           </div>
         )}
+        <div className="flex flex-wrap items-center gap-1.5 mt-3">
+          <span className="text-[11px] font-mono text-text-muted uppercase tracking-wider mr-1">Stack:</span>
+          {study.tech_stack.map((tech) => (
+            <TechBadge key={tech} name={tech} size="sm" />
+          ))}
+        </div>
       </header>
 
       <ExecutiveBriefCard study={study} />
@@ -93,7 +100,7 @@ export default async function CaseStudyDetailPage({
         title={study.title}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 min-w-0">
         <div className="lg:col-span-2 min-w-0">
           <CaseStudySections study={study} />
         </div>

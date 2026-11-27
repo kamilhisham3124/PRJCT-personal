@@ -40,15 +40,15 @@ export function CaseStudySections({ study }: { study: CaseStudyContent }) {
   ];
 
   return (
-    <div className="flex flex-col gap-8">
-      <section className="flex flex-col gap-3 pb-6 border-b border-[var(--border-structural)]">
+    <div className="flex flex-col gap-5 sm:gap-8">
+      <section className="flex flex-col gap-2.5 sm:gap-3 pb-4 sm:pb-6 border-b border-[var(--border-structural)]">
         <h2 className="text-base font-semibold tracking-tight text-[var(--text-primary)]">
           01. Context &amp; Problem
         </h2>
         <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{study.problem_statement}</p>
       </section>
 
-      <section className="flex flex-col gap-3 pb-6 border-b border-[var(--border-structural)]">
+      <section className="flex flex-col gap-2.5 sm:gap-3 pb-4 sm:pb-6 border-b border-[var(--border-structural)]">
         <h2 className="text-base font-semibold tracking-tight text-[var(--text-primary)]">
           02. Architecture &amp; Implementation
         </h2>
@@ -58,7 +58,7 @@ export function CaseStudySections({ study }: { study: CaseStudyContent }) {
         </div>
       </section>
 
-      <section className="flex flex-col gap-3 pb-6 border-b border-[var(--border-structural)]">
+      <section className="flex flex-col gap-2.5 sm:gap-3 pb-4 sm:pb-6 border-b border-[var(--border-structural)]">
         <h2 className="text-base font-semibold tracking-tight text-[var(--text-primary)]">
           03. Database Schema &amp; Data Integrity
         </h2>
@@ -71,7 +71,7 @@ export function CaseStudySections({ study }: { study: CaseStudyContent }) {
         </div>
       </section>
 
-      <section className="flex flex-col gap-3">
+      <section className="flex flex-col gap-2.5 sm:gap-3">
         <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)]">Technical Deep Dive</h3>
         <Accordion items={accordionItems} />
       </section>

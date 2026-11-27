@@ -34,25 +34,25 @@ export function WritingSection() {
           <h2 className="text-base font-semibold text-[var(--text-primary)]">Technical Writing &amp; Notes</h2>
           <p className="text-xs text-[var(--text-secondary)] mt-0.5">Architectural deep dives and repository technical notes.</p>
         </div>
-        <PhosphorBookOpen className="w-4 h-4 text-[var(--text-secondary)]" />
+        <PhosphorBookOpen className="w-4 h-4 text-fg-accent" />
       </div>
 
       <div className="flex flex-col gap-3">
         {INSIGHTS.map((item) => (
           <article
             key={item.title}
-            className="linkhunt-card p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:shadow-card-hover transition-all"
+            className="linkhunt-card p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
           >
             <div className="flex flex-col gap-1 max-w-xl">
-              <div className="flex items-center gap-2 text-[11px] font-mono text-[var(--text-secondary)]">
+              <div className="flex items-center gap-2 text-[11px] font-mono text-text-muted">
                 <span>{item.date}</span>
                 <span>&bull;</span>
                 <span>{item.readingTime}</span>
               </div>
-              <h3 className="text-sm font-semibold text-[var(--text-primary)] hover:underline">
+              <h3 className="text-sm font-semibold text-text-primary">
                 {item.title}
               </h3>
-              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+              <p className="text-xs text-text-secondary leading-relaxed">
                 {item.excerpt}
               </p>
             </div>
@@ -61,7 +61,7 @@ export function WritingSection() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs font-medium text-[var(--text-primary)] hover:underline shrink-0 min-h-[44px]"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-fg-accent hover:underline shrink-0 min-h-[44px]"
             >
               <span>GitHub Technical Note</span>
               <PhosphorArrowUpRight className="w-3.5 h-3.5" />

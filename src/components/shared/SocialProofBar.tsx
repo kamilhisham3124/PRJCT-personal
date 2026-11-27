@@ -1,31 +1,27 @@
 import React from "react";
+import { TechBadge } from "./TechBadge";
 
 const TECH_ECOSYSTEM = [
-  { name: "Python", category: "Language" },
-  { name: "Django REST", category: "Framework" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "Next.js 15", category: "Frontend / RSC" },
-  { name: "TypeScript", category: "Language" },
-  { name: "Docker", category: "Containers" },
-  { name: "Redis", category: "Cache / Queue" },
-  { name: "Supabase", category: "Storage & Auth" },
+  "Python",
+  "Django REST",
+  "PostgreSQL",
+  "Next.js 15",
+  "TypeScript",
+  "Docker",
+  "Redis",
+  "Supabase",
 ];
 
 export function SocialProofBar() {
   return (
-    <section aria-label="Core Technologies" className="py-2 border-y border-[var(--border-structural)]">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-secondary)] shrink-0">
+    <section aria-label="Core Technologies" className="py-2.5 border-y border-border-structural">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
+        <span className="text-[11px] font-mono uppercase tracking-wider text-text-secondary shrink-0 select-none">
           Core Technologies
         </span>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           {TECH_ECOSYSTEM.map((tech) => (
-            <span
-              key={tech.name}
-              className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] transition-colors hover:text-[var(--text-primary)] hover:border-[var(--border-highlight)]"
-            >
-              {tech.name}
-            </span>
+            <TechBadge key={tech} name={tech} />
           ))}
         </div>
       </div>

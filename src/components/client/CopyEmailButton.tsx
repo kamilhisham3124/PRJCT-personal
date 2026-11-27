@@ -44,13 +44,13 @@ export function CopyEmailButton({ email, className }: CopyEmailButtonProps) {
     >
       {copied ? (
         <>
-          <PhosphorCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-          <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Copied!</span>
+          <PhosphorCheck className="w-3.5 h-3.5 text-status-success-fg shrink-0" aria-hidden="true" />
+          <span className="text-status-success-fg font-semibold" aria-hidden="true">Copied!</span>
         </>
       ) : (
         <>
-          <PhosphorCopy className="w-3.5 h-3.5" />
-          <span>Copy</span>
+          <PhosphorCopy className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          <span aria-hidden="true">Copy</span>
         </>
       )}
       <span className="sr-only" aria-live="polite">
