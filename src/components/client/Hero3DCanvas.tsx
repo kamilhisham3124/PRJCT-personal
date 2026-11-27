@@ -22,70 +22,51 @@ export function Hero3DCanvas() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animId: number;
+    let animId = 0;
     const dpr = window.devicePixelRatio || 1;
     const size = 100;
     canvas.width = size * dpr;
     canvas.height = size * dpr;
     ctx.scale(dpr, dpr);
 
-    let angleX = 0.4;
-    let angleY = 0.6;
-    let speedX = 0.012;
-    let speedY = 0.016;
+    let angleX = 0.42;
+    let angleY = 0.62;
+    let speedX = 0.011;
+    let speedY = 0.015;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      const mx = (e.clientX - (rect.left + rect.width / 2)) / rect.width;
-      const my = (e.clientY - (rect.top + rect.height / 2)) / rect.height;
-      speedX = my * 0.04;
-      speedY = mx * 0.04;
+    const readPalette = () => {
+      const s = getComputedStyle(document.documentElement);
+      return {
+        stroke: s.getPropertyValue("--border-highlight").trim() || "#68768A",
+        vertex: s.getPropertyValue("--fg-accent").trim() || "#095C4F",
+        ink: s.getPropertyValue("--text-primary").trim() || "#0F141C",
+      };
     };
 
-    const handleMouseLeave = () => {
-      speedX = 0.012;
-      speedY = 0.016;
-    };
+    let palette = readPalette();
+    const isReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    canvas.addEventListener("mousemove", handleMouseMove);
-    canvas.addEventListener("mouseleave", handleMouseLeave);
-
-    const render = () => {
-      angleX += speedX;
-      angleY += speedY;
-
+    const draw = (advance: boolean) => {
+      if (advance) {
+        angleX += speedX;
+        angleY += speedY;
+      }
       ctx.clearRect(0, 0, size, size);
-      const isDark = document.documentElement.classList.contains("dark") ||
-        (!document.documentElement.classList.contains("light") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-      const strokeColor = isDark ? "#64748B" : "#94A3B8";
-      const vertexColor = isDark ? "#94A3B8" : "#475569";
       const scale = 30;
+      const cosY = Math.cos(angleY), sinY = Math.sin(angleY);
+      const cosX = Math.cos(angleX), sinX = Math.sin(angleX);
 
       const projected = VERTICES.map(([x, y, z]) => {
-        // Rotate Y
-        const cosY = Math.cos(angleY);
-        const sinY = Math.sin(angleY);
         const x1 = x * cosY + z * sinY;
         const z1 = -x * sinY + z * cosY;
-
-        // Rotate X
-        const cosX = Math.cos(angleX);
-        const sinX = Math.sin(angleX);
         const y2 = y * cosX - z1 * sinX;
         const z2 = y * sinX + z1 * cosX;
-
-        const f = 200;
-        const pScale = f / (f + z2 * scale + 60);
-        return {
-          px: size / 2 + x1 * scale * pScale,
-          py: size / 2 + y2 * scale * pScale,
-          pScale,
-        };
+        const pScale = 200 / (200 + z2 * scale + 60);
+        return { px: size / 2 + x1 * scale * pScale, py: size / 2 + y2 * scale * pScale, pScale };
       });
 
-      // Draw wireframe edges
       ctx.lineWidth = 1.5;
-      ctx.strokeStyle = strokeColor;
+      ctx.strokeStyle = palette.stroke;
       for (const [s, e] of EDGES) {
         ctx.beginPath();
         ctx.moveTo(projected[s].px, projected[s].py);
@@ -93,44 +74,58 @@ export function Hero3DCanvas() {
         ctx.stroke();
       }
 
-      // Draw glowing vertices
+      ctx.fillStyle = palette.vertex;
       for (const pt of projected) {
-        ctx.fillStyle = vertexColor;
         ctx.beginPath();
-        ctx.arc(pt.px, pt.py, 2.5 * pt.pScale, 0, Math.PI * 2);
+        ctx.arc(pt.px, pt.py, 2.4 * pt.pScale, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // Draw center monogram
-      ctx.fillStyle = isDark ? "#FFFFFF" : "#0F172A";
+      ctx.fillStyle = palette.ink;
       ctx.font = "bold 13px 'Red Hat Display', sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText("KH", size / 2, size / 2);
-
-      const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!isReduced) {
-        animId = requestAnimationFrame(render);
-      }
     };
 
-    render();
+    const tick = () => {
+      draw(true);
+      if (!isReducedMotion()) animId = requestAnimationFrame(tick);
+    };
+
+    const refreshTheme = () => {
+      palette = readPalette();
+      if (isReducedMotion()) draw(false);
+    };
+
+    const observer = new MutationObserver(refreshTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-theme"] });
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    mq.addEventListener("change", refreshTheme);
+
+    const onMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      speedX = ((e.clientY - (rect.top + rect.height / 2)) / rect.height) * 0.04;
+      speedY = ((e.clientX - (rect.left + rect.width / 2)) / rect.width) * 0.04;
+    };
+    const onLeave = () => { speedX = 0.011; speedY = 0.015; };
+
+    canvas.addEventListener("mousemove", onMove);
+    canvas.addEventListener("mouseleave", onLeave);
+    if (isReducedMotion()) draw(false); else tick();
 
     return () => {
       cancelAnimationFrame(animId);
-      canvas.removeEventListener("mousemove", handleMouseMove);
-      canvas.removeEventListener("mouseleave", handleMouseLeave);
+      observer.disconnect();
+      mq.removeEventListener("change", refreshTheme);
+      canvas.removeEventListener("mousemove", onMove);
+      canvas.removeEventListener("mouseleave", onLeave);
     };
   }, []);
 
   return (
-    <div className="relative group cursor-pointer w-[100px] h-[100px] rounded-2xl bg-[var(--surface-elevated)] border border-[var(--border-structural)] shadow-card flex items-center justify-center transition-transform hover:scale-105 shrink-0">
-      <canvas
-        ref={canvasRef}
-        style={{ width: 100, height: 100 }}
-        aria-label="Interactive 3D Systems Logo"
-        className="block"
-      />
+    <div className="relative group cursor-pointer w-[100px] h-[100px] rounded-2xl bg-surface-elevated border border-border-structural shadow-card flex items-center justify-center transition-transform hover:scale-105 shrink-0">
+      <canvas ref={canvasRef} width={100} height={100} aria-label="Interactive 3D Systems Logo" className="block w-[100px] h-[100px]" />
     </div>
   );
 }

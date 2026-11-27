@@ -24,15 +24,15 @@ export function TelemetryDisplay({
 }: TelemetryDisplayProps) {
   if (state === "loading") {
     return (
-      <div className="linkhunt-card p-4 sm:p-5" style={{ minHeight: "130px" }} role="region" aria-label="System telemetry dashboard">
-        <div className="flex items-center gap-2 text-xs font-mono font-medium text-[var(--text-secondary)] mb-4">
-          <span className="animate-spin inline-block w-3 h-3 border-2 border-zinc-400 border-t-transparent rounded-full" />
+      <div className="linkhunt-card p-4 sm:p-5 min-h-[130px]" role="region" aria-label="System telemetry dashboard">
+        <div className="flex items-center gap-2 text-xs font-mono font-medium text-text-secondary mb-4">
+          <span className="animate-spin inline-block w-3 h-3 border-2 border-border-highlight border-t-transparent rounded-full" />
           <span>Loading edge telemetry...</span>
         </div>
         <div className={compact ? "space-y-2" : "grid grid-cols-1 sm:grid-cols-3 gap-3"}>
-          <div className="h-12 rounded-lg bg-[var(--surface-secondary)] animate-pulse" />
-          <div className="h-12 rounded-lg bg-[var(--surface-secondary)] animate-pulse" />
-          <div className="h-12 rounded-lg bg-[var(--surface-secondary)] animate-pulse" />
+          <div className="h-12 rounded-lg bg-surface-secondary animate-pulse" />
+          <div className="h-12 rounded-lg bg-surface-secondary animate-pulse" />
+          <div className="h-12 rounded-lg bg-surface-secondary animate-pulse" />
         </div>
       </div>
     );
@@ -40,14 +40,14 @@ export function TelemetryDisplay({
 
   if (state === "error") {
     return (
-      <div className="rounded-xl border border-rose-200 dark:border-rose-900 bg-rose-50/60 dark:bg-rose-950/40 p-4 sm:p-5" role="region" aria-label="System telemetry dashboard">
-        <div className="flex items-center gap-2 text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 mb-1">
+      <div className="rounded-xl border border-status-error-border bg-status-error-bg p-4 sm:p-5" role="region" aria-label="System telemetry dashboard">
+        <div className="flex items-center gap-2 text-xs font-mono font-semibold text-status-error-fg mb-1">
           <PhosphorWarningCircle className="w-4 h-4" />
           <span>Telemetry Currently Unavailable</span>
         </div>
-        <p className="text-xs text-[var(--text-secondary)]">Telemetry stream connection interrupted. Fallback active.</p>
+        <p className="text-xs text-text-secondary">Telemetry stream connection interrupted. Fallback active.</p>
         {onRetry && (
-          <button onClick={onRetry} className="mt-3 text-xs font-semibold text-[var(--text-primary)] hover:underline min-h-[44px]">
+          <button onClick={onRetry} className="mt-3 text-xs font-semibold text-fg-accent hover:underline min-h-[44px]">
             Retry Connection
           </button>
         )}
@@ -66,18 +66,18 @@ export function TelemetryDisplay({
 
   return (
     <div className="linkhunt-card p-4 sm:p-5" role="region" aria-label="System telemetry dashboard">
-      <div className="flex justify-between items-center mb-3 pb-2.5 border-b border-[var(--border-structural)]">
+      <div className="flex justify-between items-center mb-3 pb-2.5 border-b border-border-structural">
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-success opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-status-success" />
           </span>
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-primary)]">
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-text-primary">
             Live Edge Telemetry
           </span>
         </div>
         {lastUpdatedAt && (
-          <span className="text-[11px] font-mono text-[var(--text-secondary)]" suppressHydrationWarning>
+          <span className="text-[11px] font-mono text-text-muted" suppressHydrationWarning>
             {new Date(lastUpdatedAt).toLocaleTimeString()}
           </span>
         )}
@@ -88,13 +88,13 @@ export function TelemetryDisplay({
           {metrics.map((m) => {
             const Icon = m.icon;
             return (
-              <div key={m.label} className="flex items-center justify-between p-2.5 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border-structural)] text-xs">
-                <div className="flex items-center gap-2 text-[var(--text-secondary)] font-medium">
-                  <Icon className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+              <div key={m.label} className="flex items-center justify-between p-2.5 rounded-lg bg-surface-secondary border border-border-structural text-xs">
+                <div className="flex items-center gap-2 text-text-secondary font-medium">
+                  <Icon className="w-3.5 h-3.5 text-status-success shrink-0" />
                   <span>{m.label}</span>
                 </div>
-                <div className="font-mono font-bold text-[var(--text-primary)]">
-                  {m.value} <span className="font-normal text-[var(--text-secondary)] text-[10px]">{m.unit}</span>
+                <div className="font-mono font-bold text-text-primary">
+                  {m.value} <span className="font-normal text-text-muted text-[10px]">{m.unit}</span>
                 </div>
               </div>
             );
@@ -105,14 +105,14 @@ export function TelemetryDisplay({
           {metrics.map((m) => {
             const Icon = m.icon;
             return (
-              <div key={m.label} className="p-3.5 rounded-lg bg-[var(--surface-secondary)] border border-[var(--border-structural)]">
-                <div className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)] font-medium mb-1">
-                  <Icon className="w-3.5 h-3.5 text-emerald-500" />
+              <div key={m.label} className="p-3.5 rounded-lg bg-surface-secondary border border-border-structural">
+                <div className="flex items-center gap-1.5 text-xs text-text-secondary font-medium mb-1">
+                  <Icon className="w-3.5 h-3.5 text-status-success" />
                   <span>{m.label}</span>
                 </div>
-                <div className="text-xl font-bold text-[var(--text-primary)] font-mono">
+                <div className="text-xl font-bold text-text-primary font-mono">
                   {m.value}
-                  <span className="text-xs font-normal text-[var(--text-secondary)] ml-1">{m.unit}</span>
+                  <span className="text-xs font-normal text-text-muted ml-1">{m.unit}</span>
                 </div>
               </div>
             );

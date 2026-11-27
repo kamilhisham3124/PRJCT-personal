@@ -31,8 +31,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
 
   useEffect(() => {
     const isNarrow = typeof window !== "undefined" && window.innerWidth < 1024;
-    const resolved = isNarrow ? "stack" : initialLayout;
-    initialize(resolved);
+    initialize(isNarrow ? "stack" : initialLayout);
   }, [initialLayout, initialize]);
 
   const handleLayoutSelect = (next: CanvasLayout) => {
@@ -43,32 +42,32 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
 
   const layoutContainerClass =
     layout === "grid"
-      ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"
+      ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3"
       : layout === "stack"
-      ? "flex flex-col gap-2.5"
-      : "grid grid-cols-1 md:grid-cols-3 gap-3";
+      ? "flex flex-col gap-2 sm:gap-2.5"
+      : "grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3";
 
   return (
     <div
       role="group"
       aria-label="Interactive layout demonstration"
-      className="bg-zinc-950 text-zinc-100 rounded-xl p-3.5 sm:p-6 border border-zinc-800 shadow-card"
+      className="bg-surface-terminal text-fg-terminal rounded-xl p-3 sm:p-6 border border-border-terminal shadow-card"
     >
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800 pb-4 mb-5">
+      <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 border-b border-border-terminal pb-3 mb-3.5 sm:pb-4 sm:mb-5">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-zinc-700 inline-block" />
-            <span className="w-2.5 h-2.5 rounded-full bg-zinc-700 inline-block" />
-            <span className="w-2.5 h-2.5 rounded-full bg-zinc-700 inline-block" />
+          <div className="flex items-center gap-1.5" aria-hidden="true">
+            <span className="w-2.5 h-2.5 rounded-full bg-border-terminal inline-block" />
+            <span className="w-2.5 h-2.5 rounded-full bg-border-terminal inline-block" />
+            <span className="w-2.5 h-2.5 rounded-full bg-accent-primary inline-block" />
           </div>
-          <div className="h-4 w-px bg-zinc-800" />
-          <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-400">
-            <PhosphorTerminalWindow className="w-3.5 h-3.5 text-zinc-300" />
-            <span className="text-zinc-200 font-medium">state_engine.tsx</span>
+          <div className="h-4 w-px bg-border-terminal" />
+          <div className="flex items-center gap-1.5 text-xs font-mono text-fg-terminal-muted">
+            <PhosphorTerminalWindow className="w-3.5 h-3.5 text-fg-terminal" />
+            <span className="text-fg-terminal font-medium">state_engine.tsx</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-0.5 sm:gap-1 bg-zinc-900 p-0.5 sm:p-1 rounded-lg border border-zinc-800 max-w-full overflow-x-auto">
+        <div className="flex items-center gap-0.5 sm:gap-1 bg-surface-terminal-bar p-0.5 sm:p-1 rounded-lg border border-border-terminal max-w-full overflow-x-auto">
           {(["grid", "stack", "split"] as CanvasLayout[]).map((mode) => {
             const Icon = mode === "grid" ? PhosphorSquaresFour : mode === "stack" ? PhosphorRows : PhosphorColumns;
             const isSelected = layout === mode;
@@ -80,8 +79,8 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
                 onClick={() => handleLayoutSelect(mode)}
                 className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded text-[11px] sm:text-xs font-medium transition-colors min-h-[44px] shrink-0 ${
                   isSelected
-                    ? "bg-zinc-800 text-white font-semibold"
-                    : "text-zinc-400 hover:text-zinc-200"
+                    ? "bg-accent-primary text-fg-on-emphasis font-semibold"
+                    : "text-fg-terminal-muted hover:text-fg-terminal"
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -94,7 +93,7 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
             onClick={reset}
             title="Reset sandbox"
             aria-label="Reset sandbox layout"
-            className="p-2 sm:p-2.5 min-w-[44px] min-h-[44px] shrink-0 inline-flex items-center justify-center text-zinc-400 hover:text-white rounded transition-colors"
+            className="p-2 sm:p-2.5 min-w-[44px] min-h-[44px] shrink-0 inline-flex items-center justify-center text-fg-terminal-muted hover:text-fg-terminal rounded transition-colors"
           >
             <PhosphorArrowCounterClockwise className="w-3.5 h-3.5" />
           </button>
@@ -105,29 +104,29 @@ export function CodeCanvas({ initialLayout, onLayoutChange }: CodeCanvasProps) {
         {SAMPLE_MODULES.map((item, idx) => (
           <div
             key={item.id}
-            className={`p-3.5 rounded-lg bg-zinc-900/80 border border-zinc-800 hover:border-zinc-700 transition-colors ${
+            className={`p-2.5 sm:p-3.5 rounded-lg bg-surface-terminal-card border border-border-terminal hover:border-accent-border transition-colors ${
               layout === "split" && idx < 2 ? "md:col-span-2" : ""
             }`}
           >
-            <div className="flex items-center justify-between text-[11px] font-mono text-zinc-400 mb-1.5">
+            <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-fg-terminal-muted mb-1 sm:mb-1.5">
               <span>node_0{idx + 1}</span>
-              <span className="bg-emerald-950/40 text-emerald-400 px-1.5 py-0.5 rounded text-[10px] font-mono border border-emerald-800/40">
+              <span className="bg-status-success-bg text-status-success-fg px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] font-mono border border-status-success-border">
                 {item.status}
               </span>
             </div>
-            <div className="text-sm font-semibold text-white mb-0.5">{item.label}</div>
-            <div className="text-xs font-mono text-zinc-400">{item.tech}</div>
+            <div className="text-xs sm:text-sm font-semibold text-fg-terminal mb-0.5">{item.label}</div>
+            <div className="text-[10px] sm:text-xs font-mono text-fg-terminal-muted">{item.tech}</div>
           </div>
         ))}
       </div>
 
       {history.length > 0 && (
-        <div className="mt-5 pt-3.5 border-t border-zinc-800 flex items-center gap-2 text-xs font-mono text-zinc-400 overflow-x-auto">
-          <span className="text-zinc-500">History:</span>
+        <div className="mt-3.5 pt-2.5 sm:mt-5 sm:pt-3.5 border-t border-border-terminal flex items-center gap-2 text-xs font-mono text-fg-terminal-muted overflow-x-auto">
+          <span>History:</span>
           {history.map((h, i) => (
             <span key={i} className="inline-flex items-center gap-1">
-              <span className="bg-zinc-900 border border-zinc-800 text-zinc-300 px-2 py-0.5 rounded text-[11px]">{h}</span>
-              {i < history.length - 1 && <PhosphorArrowRight className="w-3 h-3 text-zinc-600 shrink-0" aria-hidden="true" />}
+              <span className="bg-surface-terminal-bar border border-border-terminal text-fg-terminal px-2 py-0.5 rounded text-[11px]">{h}</span>
+              {i < history.length - 1 && <PhosphorArrowRight className="w-3 h-3 text-fg-terminal-muted shrink-0" aria-hidden="true" />}
             </span>
           ))}
         </div>
