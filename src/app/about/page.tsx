@@ -119,13 +119,16 @@ export default function AboutPage() {
       <EndorsementsSection />
 
       {/* Accessibility & Standards */}
-      <section className="border-l-2 border-status-success pl-3.5 py-0.5">
-        <h3 className="text-xs font-semibold text-status-success-fg mb-1">
-          Accessibility &amp; Standards Conformance
+      <section className="border-l-2 border-status-success pl-3.5 py-0.5 space-y-1.5">
+        <h3 className="text-xs font-semibold text-status-success-fg">
+          Accessibility &amp; Standards Target
         </h3>
         <p className="text-xs text-text-secondary leading-relaxed max-w-3xl">
-          Engineered to meet WCAG 2.2 Level AA accessibility standards, featuring high-contrast typography,
-          complete keyboard operability, screen reader live announcements, and support for reduced motion preferences.
+          Built toward WCAG 2.2 AA practices, featuring high-contrast typography,
+          keyboard operability, screen reader live announcements, and support for reduced motion preferences.
+        </p>
+        <p className="text-[11px] font-mono text-text-muted leading-relaxed max-w-3xl">
+          WCAG 2.2 AA is a design target. Accessibility is validated through manual keyboard testing and automated checks during development.
         </p>
       </section>
     </div>

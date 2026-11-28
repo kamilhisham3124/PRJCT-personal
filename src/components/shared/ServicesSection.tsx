@@ -32,7 +32,7 @@ const SERVICES = [
     deliverables: [
       "Next.js React Server Component pipelines",
       "Type-safe form actions & Zod runtime validation",
-      "WCAG 2.2 Level AA accessibility compliance",
+      "WCAG 2.2 AA target practices & keyboard operability",
       "Sub-second First Contentful Paint benchmarks",
     ],
   },

@@ -4,7 +4,7 @@ const STATS = [
   { value: "3NF", label: "Relational Schema", sub: "Strict PostgreSQL normalization" },
   { value: "12", label: "REST Endpoints", sub: "Validated API contract suite" },
   { value: "8.0/10", label: "Engineering CGPA", sub: "B.E. Computer Science (2025)" },
-  { value: "100%", label: "WCAG 2.2 AA", sub: "Full keyboard & reader support" },
+  { value: "AA", label: "Targeting WCAG 2.2 AA", sub: "Keyboard & semantic design target" },
 ];
 
 export function AboutStats() {

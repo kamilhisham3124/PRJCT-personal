@@ -59,7 +59,7 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 min-w-0">
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-status-success-bg text-status-success-fg border border-status-success-border w-fit shrink-0 whitespace-nowrap">
               <PhosphorCheckCircle className="w-3 h-3 shrink-0" />
-              <span>WCAG 2.2 AA</span>
+              <span>WCAG 2.2 AA target</span>
             </span>
             <span className="leading-relaxed">Built with Next.js, TypeScript, and clean software engineering principles.</span>
           </div>

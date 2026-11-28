@@ -40,7 +40,7 @@ export function SubstrateCard() {
             <dt className="text-[11px] font-mono text-text-secondary">Accessibility</dt>
             <dd className="inline-flex items-center gap-1.5 font-medium text-status-success-fg">
               <PhosphorShieldCheck className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-              <span>WCAG 2.2 AA</span>
+              <span>WCAG 2.2 AA target</span>
             </dd>
           </div>
         </dl>
