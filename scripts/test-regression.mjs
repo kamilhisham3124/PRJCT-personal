@@ -101,6 +101,24 @@ test("Static prose sections use plain variant without altering KEY METRICS or te
   assert.ok(metricsCode.includes("linkhunt-card"), "KEY METRICS card must remain a bordered linkhunt-card");
 });
 
+test("Accessibility copy avoids unverified 100% claims and bottom nav preserves consistent full/concise labels", async () => {
+  const aboutStatsCode = fs.readFileSync("src/components/shared/AboutStats.tsx", "utf8");
+  const footerCode = fs.readFileSync("src/components/shared/Footer.tsx", "utf8");
+  const substrateCode = fs.readFileSync("src/components/shared/SubstrateCard.tsx", "utf8");
+  const aboutPageCode = fs.readFileSync("src/app/about/page.tsx", "utf8");
+  const bottomNavCode = fs.readFileSync("src/components/shared/ProjectBottomNav.tsx", "utf8");
+  const { getShortProjectLabel } = await import("../src/lib/utils/caseStudyMeta.ts");
+
+  assert.ok(!aboutStatsCode.includes('"100%"'), "About KPI card must not claim 100% WCAG conformance");
+  assert.ok(aboutStatsCode.includes("Targeting WCAG 2.2 AA"), "About KPI card must use honest target framing");
+  assert.ok(footerCode.includes("WCAG 2.2 AA target") && substrateCode.includes("WCAG 2.2 AA target"), "Footer and sidebar badges must match target framing");
+  assert.ok(aboutPageCode.includes("WCAG 2.2 AA is a design target."), "About page must include methodology note");
+  assert.ok(!bottomNavCode.includes("truncate") && !bottomNavCode.includes("max-w-[140px]"), "Bottom nav must not mid-word truncate project titles");
+  assert.ok(bottomNavCode.includes("All Case Studies") && !bottomNavCode.includes("prevProject ?"), "Bottom nav must always render All Case Studies");
+  assert.equal(getShortProjectLabel("Employee Task Management System"), "Employee Task");
+  assert.equal(getShortProjectLabel("Gift Delivery Ecommerce System"), "Gift Delivery");
+});
+
 test("Central date formatter normalizes all visible dates deterministically in UTC", async () => {
   const {
     formatMonthYear,

@@ -8,3 +8,8 @@ export function getCaseStudyCategory(slug: string): string {
     ? "Backend Architecture"
     : "Full-Stack Web";
 }
+
+export function getShortProjectLabel(title: string, maxWords = 2): string {
+  const words = title.trim().split(/\s+/).filter(Boolean);
+  return words.slice(0, maxWords).join(" ");
+}
