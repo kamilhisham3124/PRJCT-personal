@@ -1,13 +1,6 @@
 import React from "react";
 import type { ExperienceEntry } from "../../lib/validators/contentValidator";
-
-function formatMonthYear(d: string | null): string {
-  if (!d) return "Present";
-  const [y, m] = d.split("-");
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const mIdx = parseInt(m, 10) - 1;
-  return mIdx >= 0 && mIdx < 12 ? `${months[mIdx]} ${y}` : d;
-}
+import { formatDateRange } from "../../lib/utils/formatDate";
 
 export function ExperienceTimeline({ entries }: { entries: ExperienceEntry[] }) {
   return (
@@ -23,8 +16,8 @@ export function ExperienceTimeline({ entries }: { entries: ExperienceEntry[] }) 
               <h3 className="text-sm font-semibold text-[var(--text-primary)]">
                 {exp.role} <span className="text-[var(--text-secondary)] font-normal block sm:inline">@ {exp.organization}</span>
               </h3>
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] w-fit">
-                {formatMonthYear(exp.start_date)} &ndash; {formatMonthYear(exp.end_date)}
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] w-fit whitespace-nowrap">
+                {formatDateRange(exp.start_date, exp.end_date)}
               </span>
             </div>
             <ul className="space-y-1 sm:space-y-1.5 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed max-w-2xl">

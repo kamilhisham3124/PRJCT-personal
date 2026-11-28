@@ -12,6 +12,7 @@ import { TechBadge } from "../../components/shared/TechBadge";
 import { Accordion } from "../../components/client/Accordion";
 import { PhosphorArrowRight } from "../../components/icons";
 import { Breadcrumb } from "../../components/shared/Breadcrumb";
+import { formatMonthYear } from "../../lib/utils/formatDate";
 
 export const dynamic = "force-static";
 
@@ -87,7 +88,7 @@ export default function AboutPage() {
             <dd className="text-[var(--text-secondary)]">{resume.education.institution}, {resume.education.location}</dd>
             <dd className="pt-2">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono bg-status-success-bg text-status-success-fg border border-status-success-border">
-                Graduated: {resume.education.graduation_date} | CGPA: {resume.education.cgpa}
+                Graduated: {formatMonthYear(resume.education.graduation_date)} | CGPA: {resume.education.cgpa}
               </span>
             </dd>
           </dl>

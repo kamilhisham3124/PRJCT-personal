@@ -1,6 +1,7 @@
 import React from "react";
 import { PhosphorDatabase } from "../icons";
 import type { TelemetryAggregateItem } from "../../lib/accessors/supabaseAccessor";
+import { formatAbsoluteTimestamp } from "../../lib/utils/formatDate";
 
 export function DatabaseAggregatesPanel({
   aggregates,
@@ -27,7 +28,7 @@ export function DatabaseAggregatesPanel({
                 {item.metric_value.toLocaleString()}
               </div>
               <div className="text-[11px] font-mono text-[var(--text-secondary)] mt-1" suppressHydrationWarning>
-                Updated: {new Date(item.last_computed_at).toLocaleTimeString()}
+                Updated: {formatAbsoluteTimestamp(item.last_computed_at)}
               </div>
             </div>
           ))}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { PhosphorArrowRight, PhosphorShieldCheck } from "../icons";
 import { TechBadge } from "../shared/TechBadge";
 import type { CaseStudyItem } from "./ProjectCatalog";
+import { formatMonthYear } from "../../lib/utils/formatDate";
 
 const CASE_STUDY_IMAGES: Record<string, string> = {
   "employee-task-management": "/images/case-study-task-management.jpg",
@@ -12,7 +13,7 @@ const CASE_STUDY_IMAGES: Record<string, string> = {
 
 export function ProjectGridCard({ study }: { study: CaseStudyItem }) {
   const categoryLabel = study.slug === "employee-task-management" ? "Backend Architecture" : "Full-Stack Web";
-  const formattedDate = study.slug === "employee-task-management" ? "Feb 2026" : "May 2025";
+  const formattedDate = formatMonthYear(study.published_at);
 
   return (
     <article className="group linkhunt-card p-5 sm:p-6 flex flex-col justify-between hover:shadow-card-hover transition-all">

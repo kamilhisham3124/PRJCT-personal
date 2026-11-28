@@ -6,6 +6,7 @@ import { PhosphorArrowRight, PhosphorSquaresFour, PhosphorList } from "../icons"
 import { TechBadge } from "../shared/TechBadge";
 import type { GitHubCommitItem } from "../../lib/validators/githubValidator";
 import { ProjectGridCard } from "./ProjectGridCard";
+import { formatMonthYear } from "../../lib/utils/formatDate";
 
 export interface CaseStudyItem {
   slug: string;
@@ -84,7 +85,7 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
               <div className="flex flex-col gap-1 max-w-xl">
                 <div className="flex items-center gap-2">
                   <Link href={`/work/${study.slug}`} className="text-sm font-semibold text-text-primary hover:text-fg-accent hover:underline transition-colors">{study.title}</Link>
-                  <span className="text-[11px] font-mono text-text-muted">({study.slug === "employee-task-management" ? "Feb 2026" : "May 2025"})</span>
+                  <span className="text-[11px] font-mono text-text-muted whitespace-nowrap">({formatMonthYear(study.published_at)})</span>
                 </div>
                 <p className="text-xs text-text-secondary line-clamp-2">{study.summary}</p>
                 <div className="flex flex-wrap gap-1 mt-1">

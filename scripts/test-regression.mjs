@@ -68,6 +68,34 @@ test("Footer and shared sections maintain compact vertical mobile spacing", () =
   const timelineCode = fs.readFileSync("src/components/shared/ExperienceTimeline.tsx", "utf8");
   
   assert.ok(footerCode.includes("py-5 sm:py-8"), "Footer must use compact 20px vertical padding on mobile");
+  assert.ok(footerCode.includes("MAIN_NAV_ITEMS"), "Footer must reuse shared MAIN_NAV_ITEMS contract");
+  assert.ok(footerCode.includes("whitespace-nowrap"), "Footer brand, links, badge, and copyright must prevent mid-label wrapping");
+  assert.ok(footerCode.includes("grid-cols-3"), "Footer mobile navigation must use balanced 3-column grid to eliminate orphaned Quick Reference link");
   assert.ok(servicesCode.includes("p-3.5 sm:p-5"), "Competency cards must use compact padding on mobile");
   assert.ok(timelineCode.includes("space-y-4 sm:space-y-6"), "Timeline must use tightened spacing on mobile");
+});
+
+test("Central date formatter normalizes all visible dates deterministically in UTC", async () => {
+  const {
+    formatMonthYear,
+    formatDayMonthYear,
+    formatCommitDate,
+    formatDateRange,
+    formatAbsoluteTimestamp,
+  } = await import("../src/lib/utils/formatDate.ts");
+
+  assert.equal(formatMonthYear("2025-05-01"), "May 2025");
+  assert.equal(formatMonthYear("2026-02-15"), "Feb 2026");
+  assert.equal(formatMonthYear("2025-09"), "Sep 2025");
+  assert.equal(formatDayMonthYear("2025-05-08T14:32:10Z"), "08 May 2025");
+  assert.equal(formatCommitDate("2026-02-12T10:14:22Z"), "12 Feb 2026");
+  assert.equal(formatDateRange("2025-10-01", null), "Oct 2025 \u2013 Present");
+  assert.equal(formatDateRange("2023-06-01", "2023-08-31"), "Jun 2023 \u2013 Aug 2023");
+  assert.equal(formatAbsoluteTimestamp("2026-02-12T00:05:00Z"), "12 Feb 2026, 00:05 UTC");
+  assert.equal(formatMonthYear("08/05/2025"), "08/05/2025");
+
+  const dbPanelCode = fs.readFileSync("src/components/shared/DatabaseAggregatesPanel.tsx", "utf8");
+  const credCode = fs.readFileSync("src/components/shared/CredentialCard.tsx", "utf8");
+  assert.ok(!dbPanelCode.includes("toLocaleTimeString"), "DatabaseAggregatesPanel must use shared UTC timestamp formatter");
+  assert.ok(!credCode.includes("toLocaleDateString"), "CredentialCard must use shared UTC date formatter");
 });

@@ -1,25 +1,25 @@
 import React from "react";
-import Link from "next/link";
 import { PhosphorArrowUpRight, PhosphorBookOpen } from "../icons";
+import { formatMonthYear } from "../../lib/utils/formatDate";
 
 const INSIGHTS = [
   {
     title: "Designing Deterministic REST APIs with Django",
-    date: "Feb 2026",
+    date: "2026-02",
     readingTime: "5 min read",
     excerpt: "Structuring schema validation, standardized error envelopes, and idempotent handlers for backend reliability.",
     href: "https://github.com/kamilhisham3124/PRJCT-personal",
   },
   {
     title: "Zero-Dependency Next.js RSC Architecture",
-    date: "Jan 2026",
+    date: "2026-01",
     readingTime: "4 min read",
     excerpt: "Reducing client bundle footprint and eliminating fragile npm abstractions with native web standards and React Server Components.",
     href: "https://github.com/kamilhisham3124/PRJCT-personal",
   },
   {
     title: "Relational Integrity & Normalization in PostgreSQL",
-    date: "Nov 2025",
+    date: "2025-11",
     readingTime: "6 min read",
     excerpt: "Preventing silent data corruption through strict 3NF models, cascading foreign keys, and ACID transaction boundaries.",
     href: "https://github.com/kamilhisham3124/PRJCT-personal",
@@ -45,7 +45,7 @@ export function WritingSection() {
           >
             <div className="flex flex-col gap-1 max-w-xl">
               <div className="flex items-center gap-2 text-[11px] font-mono text-text-muted">
-                <span>{item.date}</span>
+                <span>{formatMonthYear(item.date)}</span>
                 <span>&bull;</span>
                 <span>{item.readingTime}</span>
               </div>

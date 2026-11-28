@@ -9,6 +9,7 @@ import { SocialProofBar } from "../components/shared/SocialProofBar";
 import { TechBadge } from "../components/shared/TechBadge";
 import { SubstrateCard } from "../components/shared/SubstrateCard";
 import { WritingSection } from "../components/shared/WritingSection";
+import { formatMonthYear } from "../lib/utils/formatDate";
 
 export const dynamic = "force-static";
 
@@ -103,7 +104,7 @@ export default function HomePage() {
                     0{idx + 1}. {study.title}
                   </Link>
                   <span className="text-[11px] font-mono text-text-muted shrink-0">
-                    {study.slug === "employee-task-management" ? "Feb 2026" : "May 2025"}
+                    {formatMonthYear(study.published_at)}
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">{study.summary}</p>

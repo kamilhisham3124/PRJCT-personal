@@ -5,6 +5,7 @@ import {
   PhosphorArrowSquareOut,
   PhosphorWarningCircle,
 } from "../icons";
+import { formatCommitDate } from "../../lib/utils/formatDate";
 
 export interface CredentialCardProps {
   projectSlug: string;
@@ -15,15 +16,6 @@ export interface CredentialCardProps {
   isVerified?: boolean;
   previewUrl?: string;
   state: "loading" | "success" | "error" | "unavailable";
-}
-
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-function formatUtcDate(iso: string): string {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return iso;
-  const day = String(d.getUTCDate()).padStart(2, "0");
-  return `${day} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
 }
 
 export function CredentialCard({
@@ -109,7 +101,7 @@ export function CredentialCard({
         </code>
         {authoredDate && (
           <span className="text-[var(--text-secondary)] font-mono text-[11px]">
-            ({formatUtcDate(authoredDate)})
+            ({formatCommitDate(authoredDate)})
           </span>
         )}
       </div>
