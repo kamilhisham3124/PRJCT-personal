@@ -5,16 +5,11 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import {
   PhosphorEnvelopeSimple, PhosphorPhone, PhosphorMapPin,
-  PhosphorX, PhosphorArrowUpRight, PhosphorSidebarSimple,
+  PhosphorX, PhosphorSidebarSimple,
 } from "../icons";
 import { ReadingModeToggle } from "./ReadingModeToggle";
-
-const QUICK_NAV = [
-  { href: "/work", label: "Selected Case Studies" },
-  { href: "/lab", label: "Component Lab & Telemetry" },
-  { href: "/about", label: "Engineering Experience" },
-  { href: "/contact", label: "Direct Inquiry Form" },
-];
+import { QUICK_DRAWER_NAV_ITEMS } from "../../lib/utils/navigation";
+import { DrawerLinkIcon } from "../shared/DrawerLinkIcon";
 
 type LockProp = "overflow" | "height" | "minHeight";
 
@@ -90,10 +85,10 @@ export function QuickDrawer() {
 
         <div className="pt-4 border-t border-border-structural space-y-1">
           <span className="font-mono text-xs uppercase tracking-wider text-text-secondary block mb-1.5">Quick Navigation</span>
-          {QUICK_NAV.map((item) => (
-            <Link key={item.href} href={item.href} onClick={handleNavClick} className="flex items-center justify-between py-2 text-xs font-medium text-text-primary hover:text-fg-accent hover:underline min-h-[44px]">
+          {QUICK_DRAWER_NAV_ITEMS.map((item) => (
+            <Link key={item.href} href={item.href} onClick={handleNavClick} {...(item.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="flex items-center justify-between py-2 text-xs font-medium text-text-primary hover:text-fg-accent hover:underline min-h-[44px]">
               <span>{item.label}</span>
-              <PhosphorArrowUpRight className="w-3.5 h-3.5 text-text-secondary" />
+              <DrawerLinkIcon isExternal={item.isExternal} className="w-3.5 h-3.5 text-text-secondary shrink-0" />
             </Link>
           ))}
         </div>

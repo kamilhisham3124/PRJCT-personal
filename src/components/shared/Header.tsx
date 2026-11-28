@@ -4,20 +4,16 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  PhosphorArrowUpRight,
   PhosphorListDashes,
   PhosphorX,
   PhosphorSidebarSimple,
 } from "../icons";
 import { ThemeToggle } from "../client/ThemeToggle";
 import { QuickDrawer } from "../client/QuickDrawer";
+import { MAIN_NAV_ITEMS, QUICK_DRAWER_TRIGGER_META, CONTACT_CTA_ITEM } from "../../lib/utils/navigation";
+import { DrawerLinkIcon } from "./DrawerLinkIcon";
 
-const NAV_ITEMS = [
-  { path: "/work", label: "Work" },
-  { path: "/about", label: "About" },
-  { path: "/lab", label: "Lab" },
-  { path: "/contact", label: "Contact" },
-];
+const NAV_ITEMS = MAIN_NAV_ITEMS;
 
 export function Header() {
   const pathname = usePathname();
@@ -48,11 +44,11 @@ export function Header() {
         {/* Minimal Desktop Navigation */}
         <nav role="navigation" aria-label="Main navigation" className="hidden md:flex items-center gap-1 bg-surface-secondary p-1 rounded-lg border border-border-structural">
           {NAV_ITEMS.map((item) => {
-            const isCurrent = pathname === item.path || (item.path !== "/" && pathname.startsWith(item.path));
+            const isCurrent = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
             return (
               <Link
-                key={item.path}
-                href={item.path}
+                key={item.href}
+                href={item.href}
                 aria-current={isCurrent ? "page" : undefined}
                 className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${isCurrent ? "bg-surface-elevated text-fg-accent border border-accent-border shadow-card font-semibold" : "text-text-secondary hover:text-text-primary border border-transparent"
                   }`}
@@ -67,9 +63,9 @@ export function Header() {
         <div className="hidden md:flex items-center gap-2">
           <ThemeToggle />
           <QuickDrawer />
-          <Link href="/contact" className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs linkhunt-btn-primary min-h-[44px] group">
-            <span>Get in touch</span>
-            <PhosphorArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          <Link href={CONTACT_CTA_ITEM.href} {...(CONTACT_CTA_ITEM.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs linkhunt-btn-primary min-h-[44px] group">
+            <span>{CONTACT_CTA_ITEM.label}</span>
+            <DrawerLinkIcon isExternal={CONTACT_CTA_ITEM.isExternal} className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform shrink-0" />
           </Link>
         </div>
 
@@ -94,11 +90,11 @@ export function Header() {
       {isOpen && (
         <nav id="mobile-nav" role="navigation" aria-label="Mobile navigation" className="md:hidden border-t border-border-structural bg-surface-primary p-4 flex flex-col gap-2 shadow-menu">
           {NAV_ITEMS.map((item) => {
-            const isCurrent = pathname === item.path || (item.path !== "/" && pathname.startsWith(item.path));
+            const isCurrent = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
             return (
               <Link
-                key={item.path}
-                href={item.path}
+                key={item.href}
+                href={item.href}
                 onClick={() => setIsOpen(false)}
                 aria-current={isCurrent ? "page" : undefined}
                 className={`px-3 py-2.5 min-h-[44px] flex items-center text-sm font-medium rounded-lg transition-colors ${isCurrent ? "bg-accent-subtle text-fg-accent border border-accent-border font-semibold" : "text-text-secondary hover:text-text-primary hover:bg-surface-secondary"
@@ -120,14 +116,14 @@ export function Header() {
           >
             <span className="flex items-center gap-2">
               <PhosphorSidebarSimple className="w-4 h-4 text-fg-accent shrink-0" />
-              <span>Quick Reference: Overview &amp; Contact</span>
+              <span>{QUICK_DRAWER_TRIGGER_META.label}</span>
             </span>
-            <PhosphorArrowUpRight className="w-3.5 h-3.5 text-text-secondary shrink-0" />
+            <DrawerLinkIcon isExternal={QUICK_DRAWER_TRIGGER_META.isExternal} className="w-3.5 h-3.5 text-text-secondary shrink-0" />
           </button>
           <div className="pt-2 border-t border-border-structural mt-1">
-            <Link href="/contact" onClick={() => setIsOpen(false)} className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs linkhunt-btn-primary min-h-[44px]">
-              <span>Get in touch</span>
-              <PhosphorArrowUpRight className="w-3.5 h-3.5" />
+            <Link href={CONTACT_CTA_ITEM.href} onClick={() => setIsOpen(false)} {...(CONTACT_CTA_ITEM.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-xs linkhunt-btn-primary min-h-[44px]">
+              <span>{CONTACT_CTA_ITEM.label}</span>
+              <DrawerLinkIcon isExternal={CONTACT_CTA_ITEM.isExternal} className="w-3.5 h-3.5 shrink-0" />
             </Link>
           </div>
         </nav>
