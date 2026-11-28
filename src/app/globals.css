@@ -9,6 +9,7 @@ html, body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  scroll-padding-top: 5rem;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.2s ease, color 0.15s ease;
@@ -112,7 +113,12 @@ input, select, textarea { accent-color: var(--accent-primary); }
   color: var(--text-primary);
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
-.portfolio-input::placeholder { color: var(--text-muted); }
+.portfolio-input::placeholder { color: var(--text-muted); opacity: 1; }
+:root.dark .portfolio-input::placeholder,
+:root[data-theme="dark"] .portfolio-input::placeholder { color: var(--text-secondary); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not(.light) .portfolio-input::placeholder { color: var(--text-secondary); }
+}
 .portfolio-input:hover:not(:disabled) { border-color: var(--border-highlight); }
 .portfolio-input:focus { outline: none; border-color: var(--border-focus); box-shadow: 0 0 0 1px var(--border-focus); }
 .portfolio-input[aria-invalid="true"] { border-color: var(--status-error); }
