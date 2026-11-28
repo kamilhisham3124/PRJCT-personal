@@ -4,10 +4,11 @@ import {
   PhosphorEnvelopeSimple,
   PhosphorArrowUpRight,
 } from "../icons";
+import { SurfaceCard } from "./SurfaceCard";
 
 export function EndorsementsSection() {
   return (
-    <section aria-label="Professional References and Verification" className="flex flex-col gap-4">
+    <section aria-label="Professional References and Verification" className="flex flex-col gap-3 sm:gap-4">
       <div className="pb-2 border-b border-[var(--border-structural)]">
         <h2 className="text-base font-semibold text-[var(--text-primary)]">
           Engineering References &amp; Verification
@@ -17,47 +18,43 @@ export function EndorsementsSection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-        <div className="linkhunt-card p-3.5 sm:p-5 flex flex-col justify-between">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5">
+        <SurfaceCard variant="plain" className="border-t-0 border-l-2 border-accent-primary pl-3 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+            <div className="flex items-center gap-2 mb-1">
               <PhosphorShieldCheck className="w-4 h-4 text-status-success shrink-0" />
               <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-text-primary">
                 Industry Supervision
               </h3>
             </div>
-            <p className="text-xs text-text-secondary leading-relaxed mb-2 sm:mb-3">
+            <p className="text-xs text-text-secondary leading-relaxed mb-1.5">
               Direct technical references from engineering leads at Clovion Tech Solutions Pvt. Ltd. confirming REST API delivery, PostgreSQL schema design, and Git collaboration are available.
             </p>
           </div>
-          <div className="pt-2 sm:pt-3 border-t border-border-structural">
-            <span className="text-[11px] font-mono text-text-muted">
-              Clovion Tech Solutions &bull; Nagercoil, India
-            </span>
-          </div>
-        </div>
+          <span className="text-[11px] font-mono text-text-muted">
+            Clovion Tech Solutions &bull; Nagercoil, India
+          </span>
+        </SurfaceCard>
 
-        <div className="linkhunt-card p-3.5 sm:p-5 flex flex-col justify-between">
+        <SurfaceCard variant="plain" className="border-t-0 border-l-2 border-accent-primary pl-3 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+            <div className="flex items-center gap-2 mb-1">
               <PhosphorShieldCheck className="w-4 h-4 text-status-success shrink-0" />
               <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-text-primary">
                 Academic Evaluation
               </h3>
             </div>
-            <p className="text-xs text-text-secondary leading-relaxed mb-2 sm:mb-3">
+            <p className="text-xs text-text-secondary leading-relaxed mb-1.5">
               Academic credentials, coursework evaluations, and degree verification from the Department of Computer Science &amp; Engineering at PET Engineering College are fully documented.
             </p>
           </div>
-          <div className="pt-2 sm:pt-3 border-t border-border-structural">
-            <span className="text-[11px] font-mono text-text-muted">
-              PET Engineering College &bull; CGPA: 8.0/10
-            </span>
-          </div>
-        </div>
+          <span className="text-[11px] font-mono text-text-muted">
+            PET Engineering College &bull; CGPA: 8.0/10
+          </span>
+        </SurfaceCard>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-lg bg-surface-secondary border border-border-structural text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 border-t border-border-structural text-xs">
         <span className="text-text-secondary">
           Need contact details for references or official transcripts?
         </span>

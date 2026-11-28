@@ -46,10 +46,10 @@ export default function AboutPage() {
   const resume = getResumeContent();
 
   return (
-    <div className="flex flex-col gap-6 sm:gap-8 min-w-0">
+    <div className="flex flex-col gap-4 sm:gap-7 min-w-0">
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "About" }]} />
-      <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5 sm:gap-6 pb-5 sm:pb-6 border-b border-[var(--border-structural)]">
-        <div className="flex flex-col items-start gap-3">
+      <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3.5 sm:gap-6 pb-4 sm:pb-6 border-b border-[var(--border-structural)]">
+        <div className="flex flex-col items-start gap-2.5 sm:gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)]">
             <span>About Me</span>
           </div>
@@ -68,7 +68,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-[var(--border-structural)] shadow-card shrink-0 self-center md:self-auto">
+        <div className="relative w-24 h-24 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border border-[var(--border-structural)] shadow-card shrink-0 self-center md:self-auto">
           <Image src="/images/avatar.jpg" alt={resume.name} width={144} height={144} loading="eager" className="w-full h-full object-cover object-center" />
         </div>
       </header>
@@ -80,7 +80,7 @@ export default function AboutPage() {
       <ExperienceTimeline entries={resume.experience_entries} />
 
       {/* Education & Skills */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start pt-4 border-t border-[var(--border-structural)] min-w-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-7 items-start pt-3 sm:pt-4 border-t border-[var(--border-structural)] min-w-0">
         <section className="flex flex-col gap-3">
           <h2 className="text-sm font-semibold text-[var(--text-primary)]">Education</h2>
           <dl className="space-y-1 text-sm">
@@ -119,7 +119,7 @@ export default function AboutPage() {
       <EndorsementsSection />
 
       {/* Accessibility & Standards */}
-      <div className="border-l-2 border-status-success bg-status-success-bg p-4 rounded-r-lg border-y border-r border-status-success-border">
+      <section className="border-l-2 border-status-success pl-3.5 py-0.5">
         <h3 className="text-xs font-semibold text-status-success-fg mb-1">
           Accessibility &amp; Standards Conformance
         </h3>
@@ -127,7 +127,7 @@ export default function AboutPage() {
           Engineered to meet WCAG 2.2 Level AA accessibility standards, featuring high-contrast typography,
           complete keyboard operability, screen reader live announcements, and support for reduced motion preferences.
         </p>
-      </div>
+      </section>
     </div>
   );
 }

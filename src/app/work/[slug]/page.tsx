@@ -79,7 +79,7 @@ export default async function CaseStudyDetailPage({
           {study.summary}
         </p>
         {study.role_and_responsibilities && (
-          <div className="mt-3 p-3 rounded-r-lg border-l-2 border-accent-primary border-y border-r border-border-structural bg-surface-secondary text-xs text-text-secondary">
+          <div className="mt-2.5 pl-3 py-0.5 border-l-2 border-accent-primary text-xs text-text-secondary">
             <span className="font-semibold text-text-primary">Role &amp; Responsibilities: </span>
             <span>{study.role_and_responsibilities}</span>
           </div>

@@ -71,8 +71,34 @@ test("Footer and shared sections maintain compact vertical mobile spacing", () =
   assert.ok(footerCode.includes("MAIN_NAV_ITEMS"), "Footer must reuse shared MAIN_NAV_ITEMS contract");
   assert.ok(footerCode.includes("whitespace-nowrap"), "Footer brand, links, badge, and copyright must prevent mid-label wrapping");
   assert.ok(footerCode.includes("grid-cols-3"), "Footer mobile navigation must use balanced 3-column grid to eliminate orphaned Quick Reference link");
-  assert.ok(servicesCode.includes("p-3.5 sm:p-5"), "Competency cards must use compact padding on mobile");
+  assert.ok(servicesCode.includes('variant="plain"') && servicesCode.includes("gap-3 sm:gap-5"), "Competencies must use compressed plain prose layout without card boxes");
   assert.ok(timelineCode.includes("space-y-4 sm:space-y-6"), "Timeline must use tightened spacing on mobile");
+});
+
+test("Work catalog gates pagination, restores List View fidelity, and pins Home CTAs", () => {
+  const catalogCode = fs.readFileSync("src/components/client/ProjectCatalog.tsx", "utf8");
+  const listCardCode = fs.readFileSync("src/components/client/ProjectListCard.tsx", "utf8");
+  const homeCode = fs.readFileSync("src/app/page.tsx", "utf8");
+
+  assert.ok(catalogCode.includes("pageCount > 1"), "Pagination chrome must be gated behind pageCount > 1");
+  assert.ok(!catalogCode.includes("Showing {filtered.length} of"), "Ambiguous unfiltered count phrasing must be replaced");
+  assert.ok(listCardCode.includes("Verified") && listCardCode.includes("View Case Study"), "List View must preserve Verified badge and Case Study CTA");
+  assert.ok(listCardCode.includes("whitespace-nowrap") && listCardCode.includes("line-clamp-2"), "List View date and description must prevent mid-date wrapping and clip");
+  assert.ok(homeCode.includes("mt-auto flex items-center justify-between"), "Home project card footer must pin CTA cleanly across breakpoints");
+});
+
+test("Static prose sections use plain variant without altering KEY METRICS or telemetry cards", () => {
+  const servicesCode = fs.readFileSync("src/components/shared/ServicesSection.tsx", "utf8");
+  const endorsementsCode = fs.readFileSync("src/components/shared/EndorsementsSection.tsx", "utf8");
+  const writingCode = fs.readFileSync("src/components/shared/WritingSection.tsx", "utf8");
+  const canvasCode = fs.readFileSync("src/app/lab/canvas/page.tsx", "utf8");
+  const metricsCode = fs.readFileSync("src/components/shared/MetricsCard.tsx", "utf8");
+
+  for (const code of [servicesCode, endorsementsCode, writingCode, canvasCode]) {
+    assert.ok(!code.includes("linkhunt-card"), "Static prose sections must not wrap content in bordered linkhunt-card");
+    assert.ok(code.includes('variant="plain"'), "Static prose sections must use SurfaceCard plain variant");
+  }
+  assert.ok(metricsCode.includes("linkhunt-card"), "KEY METRICS card must remain a bordered linkhunt-card");
 });
 
 test("Central date formatter normalizes all visible dates deterministically in UTC", async () => {

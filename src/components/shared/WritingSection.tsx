@@ -1,6 +1,7 @@
 import React from "react";
 import { PhosphorArrowUpRight, PhosphorBookOpen } from "../icons";
 import { formatMonthYear } from "../../lib/utils/formatDate";
+import { SurfaceCard } from "./SurfaceCard";
 
 const INSIGHTS = [
   {
@@ -28,7 +29,7 @@ const INSIGHTS = [
 
 export function WritingSection() {
   return (
-    <section aria-label="Technical Writing and Insights" className="flex flex-col gap-5">
+    <section aria-label="Technical Writing and Insights" className="flex flex-col gap-3.5 sm:gap-5">
       <div className="flex items-center justify-between pb-2 border-b border-[var(--border-structural)]">
         <div>
           <h2 className="text-base font-semibold text-[var(--text-primary)]">Technical Writing &amp; Notes</h2>
@@ -37,11 +38,13 @@ export function WritingSection() {
         <PhosphorBookOpen className="w-4 h-4 text-fg-accent" />
       </div>
 
-      <div className="flex flex-col gap-3">
-        {INSIGHTS.map((item) => (
-          <article
+      <div className="flex flex-col border-b border-[var(--border-structural)]">
+        {INSIGHTS.map((item, idx) => (
+          <SurfaceCard
             key={item.title}
-            className="linkhunt-card p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+            variant="plain"
+            as="article"
+            className={`py-3 sm:py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 ${idx === 0 ? "border-t-0 pt-1" : ""}`}
           >
             <div className="flex flex-col gap-1 max-w-xl">
               <div className="flex items-center gap-2 text-[11px] font-mono text-text-muted">
@@ -66,7 +69,7 @@ export function WritingSection() {
               <span>GitHub Technical Note</span>
               <PhosphorArrowUpRight className="w-3.5 h-3.5" />
             </a>
-          </article>
+          </SurfaceCard>
         ))}
       </div>
     </section>

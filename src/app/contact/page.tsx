@@ -23,7 +23,7 @@ export default function ContactPage() {
   const resume = getResumeContent();
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-5 sm:gap-8">
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
       <header>
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-medium bg-[var(--surface-secondary)] text-[var(--text-secondary)] border border-[var(--border-structural)] mb-3">
@@ -38,10 +38,10 @@ export default function ContactPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start min-w-0">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 items-start min-w-0">
         <ContactForm />
 
-        <div className="flex flex-col gap-6 min-w-0">
+        <div className="flex flex-col gap-4 sm:gap-6 min-w-0">
           <section className="linkhunt-card p-4 sm:p-6 min-w-0">
             <h2 className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] mb-4 pb-2 border-b border-[var(--border-structural)]">
               Contact Information
@@ -100,7 +100,7 @@ export default function ContactPage() {
             </div>
           </section>
 
-          <div className="border-l-2 border-accent-primary bg-surface-secondary rounded-r-lg p-4 border-y border-r border-border-structural min-w-0">
+          <section className="border-l-2 border-accent-primary pl-3.5 py-0.5 min-w-0">
             <h3 className="text-xs font-mono font-medium uppercase tracking-wider text-fg-accent mb-1">
               Privacy &amp; Data Notice
             </h3>
@@ -108,7 +108,7 @@ export default function ContactPage() {
               Inquiries submitted through this form are securely processed for direct professional
               correspondence. Contact information is strictly confidential and never shared.
             </p>
-          </div>
+          </section>
         </div>
       </div>
     </div>
