@@ -26,7 +26,7 @@ export default function LabIndexPage() {
         </h1>
         <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-2 max-w-2xl leading-relaxed">
           Interactive demonstrations of client-side state management, responsive UI composition,
-          and live edge telemetry metrics.
+          and benchmarked edge telemetry metrics.
         </p>
       </header>
 
@@ -83,7 +83,7 @@ export default function LabIndexPage() {
             <div className="relative w-full h-40 rounded-lg overflow-hidden border border-border-structural mb-4 bg-surface-terminal">
               <Image
                 src="/images/lab-telemetry.jpg"
-                alt="Live Edge Telemetry"
+                alt="Edge Telemetry Snapshot"
                 fill
                 sizes="(max-width: 768px) 100vw, 500px"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -93,11 +93,11 @@ export default function LabIndexPage() {
               Demo 02 &bull; Edge Metrics
             </div>
             <h2 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-fg-accent group-hover:underline transition-colors">
-              Live Edge Telemetry
+              Edge Telemetry Snapshot
             </h2>
             <p className="text-sm text-text-secondary mb-4 leading-relaxed">
-              Expanded 24-hour historical telemetry view showing real edge latency,
-              bundle sizes, and PoP node health across global distributions.
+              Expanded 24-hour historical telemetry view showing simulated edge latency,
+              bundle sizes, and PoP node health benchmarks.
             </p>
             <div className="space-y-1.5 mb-6">
               {[

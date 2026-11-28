@@ -14,36 +14,36 @@ export function SubstrateCard() {
         <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-secondary)] pb-2 border-b border-[var(--border-structural)]">
           Site Architecture &amp; Stack
         </h3>
-        <div className="flex flex-col gap-2 pt-2.5 text-xs">
-          <div className="flex justify-between items-center">
-            <span className="text-[var(--text-secondary)]">Edge Platform</span>
-            <span className="inline-flex items-center gap-1.5 font-medium text-[var(--text-primary)]">
+        <dl className="flex flex-col gap-2.5 pt-2.5 text-xs">
+          <div className="flex flex-col gap-0.5 pb-2 border-b border-border-muted">
+            <dt className="text-[11px] font-mono text-[var(--text-secondary)]">Edge Platform</dt>
+            <dd className="inline-flex items-center gap-1.5 font-medium text-[var(--text-primary)]">
               <TechVercelIcon className="w-3.5 h-3.5 text-[var(--text-secondary)] shrink-0" aria-hidden="true" />
               <span>Vercel Global Edge</span>
-            </span>
+            </dd>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-[var(--text-secondary)]">Runtime Engine</span>
-            <span className="inline-flex items-center gap-1.5 font-medium text-[var(--text-primary)]">
+          <div className="flex flex-col gap-0.5 pb-2 border-b border-border-muted">
+            <dt className="text-[11px] font-mono text-[var(--text-secondary)]">Runtime Engine</dt>
+            <dd className="inline-flex items-center gap-1.5 font-medium text-[var(--text-primary)]">
               <TechNextjsIcon className="w-3.5 h-3.5 text-[var(--text-secondary)] shrink-0" aria-hidden="true" />
               <span>Next.js 15 RSC</span>
-            </span>
+            </dd>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-[var(--text-secondary)]">Database Layer</span>
-            <span className="inline-flex items-center gap-1.5 font-medium text-[var(--text-primary)]">
+          <div className="flex flex-col gap-0.5 pb-2 border-b border-border-muted">
+            <dt className="text-[11px] font-mono text-[var(--text-secondary)]">Database Layer</dt>
+            <dd className="inline-flex items-center gap-1.5 font-medium text-[var(--text-primary)]">
               <TechSupabaseIcon className="w-3.5 h-3.5 text-[var(--text-secondary)] shrink-0" aria-hidden="true" />
               <span>Supabase PostgreSQL</span>
-            </span>
+            </dd>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-text-secondary">Accessibility</span>
-            <span className="inline-flex items-center gap-1.5 font-medium text-status-success-fg">
+          <div className="flex flex-col gap-0.5">
+            <dt className="text-[11px] font-mono text-text-secondary">Accessibility</dt>
+            <dd className="inline-flex items-center gap-1.5 font-medium text-status-success-fg">
               <PhosphorShieldCheck className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
               <span>WCAG 2.2 AA</span>
-            </span>
+            </dd>
           </div>
-        </div>
+        </dl>
       </div>
 
       <div className="pt-3 border-t border-border-structural">
