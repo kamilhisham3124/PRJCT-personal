@@ -39,12 +39,18 @@ export function DatabaseAggregatesPanel({
             <span>Supabase Metric Storage Standby</span>
           </div>
           <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-            Upstream Supabase analytics synchronization is operating in offline standby mode. Edge latency measurements above and regional probe telemetry remain actively computed.
+            Upstream Supabase analytics synchronization is operating in offline standby mode. Simulated benchmark latency metrics and regional node topology remain actively computed.
           </p>
-          <div className="pt-2 border-t border-[var(--border-structural)] flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-            <span>Source: PostgreSQL pg_stat_statements</span>
-            <span className="text-status-success-fg">Edge Probes: 5 Regions Active</span>
-          </div>
+          <dl className="pt-2.5 border-t border-[var(--border-structural)] flex flex-col gap-1.5 text-[11px] font-mono">
+            <div className="text-[var(--text-muted)]">
+              <dt className="inline">Source: </dt>
+              <dd className="inline">PostgreSQL pg_stat_statements</dd>
+            </div>
+            <div className="text-status-success-fg">
+              <dt className="inline">Edge Probes: </dt>
+              <dd className="inline">5 Regions Active</dd>
+            </div>
+          </dl>
         </div>
       )}
     </section>

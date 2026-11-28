@@ -5,12 +5,13 @@ import { supabaseReadAggregate } from "../../../lib/accessors/supabaseAccessor";
 import { TelemetryDisplay } from "../../../components/shared/TelemetryDisplay";
 import { Breadcrumb } from "../../../components/shared/Breadcrumb";
 import { DatabaseAggregatesPanel } from "../../../components/shared/DatabaseAggregatesPanel";
+import { TelemetrySamplesPanel } from "../../../components/shared/TelemetrySamplesPanel";
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Edge Telemetry",
-  description: "Live edge response times and health metrics cached with 60-second background revalidation.",
+  description: "Simulated edge response times and benchmarked node health metrics cached with 60-second background revalidation.",
 };
 
 export default async function LabTelemetryPage() {
@@ -35,58 +36,13 @@ export default async function LabTelemetryPage() {
           Edge Telemetry &amp; Latency
         </h1>
         <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-2 max-w-2xl leading-relaxed">
-          Live edge response times and health metrics cached with 60-second background revalidation.
+          Simulated edge response times and benchmarked node health metrics cached with 60-second background revalidation.
         </p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start min-w-0">
         <div className="lg:col-span-8 flex flex-col gap-6 min-w-0">
-          <section className="linkhunt-card p-4 sm:p-6 min-w-0">
-            <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-4 pb-2 border-b border-[var(--border-structural)]">
-              24-Hour Latency Sampling
-            </h2>
-            <div
-              tabIndex={0}
-              role="region"
-              aria-label="24-Hour Latency Sampling Table"
-              className="overflow-x-auto scroll-smooth rounded-lg border border-[var(--border-structural)] focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] focus:outline-none"
-            >
-              <div className="sm:hidden px-3 py-1.5 text-[11px] font-mono text-[var(--text-muted)] bg-[var(--surface-secondary)] border-b border-[var(--border-structural)] flex items-center justify-between select-none">
-                <span>&larr; Scroll table horizontally &rarr;</span>
-                <span>8 samples</span>
-              </div>
-              <table className="w-full min-w-[460px] text-left text-xs">
-                <thead>
-                  <tr className="border-b border-[var(--border-structural)] text-[var(--text-secondary)] font-medium bg-[var(--surface-secondary)]">
-                    <th scope="col" className="py-2.5 px-3 whitespace-nowrap">Timestamp (UTC)</th>
-                    <th scope="col" className="py-2.5 px-3 whitespace-nowrap">Edge Latency</th>
-                    <th scope="col" className="py-2.5 px-3 whitespace-nowrap">Bundle Gzip</th>
-                    <th scope="col" className="py-2.5 px-3 whitespace-nowrap">SLA Status</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[var(--border-structural)]">
-                  {historyPoints.slice(-8).map((point, idx) => (
-                    <tr key={idx} className="hover:bg-[var(--surface-secondary)] transition-colors">
-                      <td className="py-2.5 px-3 text-[var(--text-secondary)] font-mono whitespace-nowrap">
-                        {new Date(point.timestamp).toISOString().substring(11, 19)}Z
-                      </td>
-                      <td className="py-2.5 px-3 font-semibold text-[var(--text-primary)] font-mono whitespace-nowrap">
-                        {point.edgeLatencyMs}ms
-                      </td>
-                      <td className="py-2.5 px-3 text-[var(--text-secondary)] font-mono whitespace-nowrap">
-                        {point.bundleSizeKb}KB
-                      </td>
-                      <td className="py-2.5 px-3 whitespace-nowrap">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-status-success-bg text-status-success-fg border border-status-success-border whitespace-nowrap">
-                          Pass &le; 50ms
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
+          <TelemetrySamplesPanel points={historyPoints.slice(-8)} />
 
           <DatabaseAggregatesPanel aggregates={aggregates} />
         </div>

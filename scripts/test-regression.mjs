@@ -2,26 +2,30 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 
-test("Lab Telemetry 24-Hour Latency Sampling table has accessible scroll and no text-wrapping issues", () => {
-  const telemetryCode = fs.readFileSync("src/app/lab/telemetry/page.tsx", "utf8");
-  
-  // Accessible scroll container verification
-  assert.ok(telemetryCode.includes('tabIndex={0}'), "Table container must have tabIndex={0} for keyboard scroll");
-  assert.ok(telemetryCode.includes('role="region"'), "Table container must have role=region");
-  assert.ok(telemetryCode.includes('aria-label="24-Hour Latency Sampling Table"'), "Table container must have descriptive aria-label");
-  assert.ok(telemetryCode.includes('min-w-[460px]'), "Table must have min-width preventing cramped columns on 320px/375px");
-  assert.ok(telemetryCode.includes('whitespace-nowrap'), "Cells and headers must have whitespace-nowrap to prevent awkward multi-line breaks");
-  assert.ok(telemetryCode.includes('Pass &le; 50ms'), "SLA status pill must be explicitly rendered with threshold");
-  assert.ok(telemetryCode.includes('Scroll table horizontally'), "Scroll affordance hint must be rendered for small mobile viewports");
+test("Lab Telemetry 24-Hour Latency Sampling surfaces mobile cards and accessible desktop table", () => {
+  const samplesCode = fs.readFileSync("src/components/shared/TelemetrySamplesPanel.tsx", "utf8");
+  const telemetryDisplayCode = fs.readFileSync("src/components/shared/TelemetryDisplay.tsx", "utf8");
+
+  // Desktop accessible table + Mobile stacked cards (all 4 columns visible < 768px)
+  assert.ok(samplesCode.includes('tabIndex={0}'), "Table container must have tabIndex={0} for keyboard scroll");
+  assert.ok(samplesCode.includes('role="region"'), "Table container must have role=region");
+  assert.ok(samplesCode.includes('aria-label="24-Hour Latency Sampling Table"'), "Table container must have descriptive aria-label");
+  assert.ok(samplesCode.includes('md:hidden flex flex-col'), "Mobile samples must render stacked cards below md without horizontal clipping");
+  assert.ok(samplesCode.includes('Bundle Gzip'), "Bundle Gzip must be rendered cleanly");
+  assert.ok(samplesCode.includes('Pass &le; 50ms'), "SLA status pill must be explicitly rendered with threshold");
+  assert.ok(!telemetryDisplayCode.includes("Live Edge Telemetry"), "Telemetry card must not imply a live feed");
+  assert.ok(!telemetryDisplayCode.includes("animate-ping"), "Telemetry card must not use a pulsing live indicator");
+  assert.ok(telemetryDisplayCode.includes("Simulated telemetry based on Vercel deployment benchmarks"), "Disclosure must remain present");
 });
 
-test("Database Telemetry Aggregates provides genuine data rendering and truthful standby empty state", () => {
+test("Database Telemetry Aggregates separates standby metadata and states standby mode truthfully", () => {
   const panelCode = fs.readFileSync("src/components/shared/DatabaseAggregatesPanel.tsx", "utf8");
-  
+
   assert.ok(panelCode.includes("Database Telemetry Aggregates"));
   assert.ok(panelCode.includes("aggregates.length > 0"));
   assert.ok(panelCode.includes("Supabase Metric Storage Standby"), "Must display explicit, truthful standby state when data is unavailable");
   assert.ok(panelCode.includes("offline standby mode"), "Must truthfully state offline standby without inventing metrics");
+  assert.ok(panelCode.includes("flex flex-col gap-1.5"), "Standby metadata rows must stack cleanly with spacing gap");
   assert.ok(panelCode.includes("PhosphorDatabase"), "Must display database icon");
 });
 
