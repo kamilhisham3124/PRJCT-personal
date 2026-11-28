@@ -1,12 +1,10 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Link from "next/link";
-import { PhosphorArrowRight, PhosphorSquaresFour, PhosphorList } from "../icons";
-import { TechBadge } from "../shared/TechBadge";
+import { PhosphorSquaresFour, PhosphorList } from "../icons";
 import type { GitHubCommitItem } from "../../lib/validators/githubValidator";
 import { ProjectGridCard } from "./ProjectGridCard";
-import { formatMonthYear } from "../../lib/utils/formatDate";
+import { ProjectListCard } from "./ProjectListCard";
 
 export interface CaseStudyItem {
   slug: string;
@@ -23,6 +21,8 @@ const CATEGORIES = [
   { id: "fullstack", label: "Full-Stack Web" },
 ] as const;
 
+const PAGE_SIZE = 10;
+
 export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }) {
   const [activeCat, setActiveCat] = useState<"all" | "backend" | "fullstack">("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -35,10 +35,20 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
     });
   }, [caseStudies, activeCat]);
 
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const activeFilterLabel =
+    activeCat === "backend"
+      ? "Backend"
+      : activeCat === "fullstack"
+        ? "Full-Stack"
+        : null;
+  const countCopy = activeFilterLabel
+    ? `${filtered.length} ${filtered.length === 1 ? "project" : "projects"} (filter: ${activeFilterLabel})`
+    : `${filtered.length} ${filtered.length === 1 ? "project" : "projects"}`;
+
   return (
-    <div className="flex flex-col gap-6">
-      {/* Curated Category Pills & View Mode Switcher */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-[var(--border-structural)]">
+    <div className="flex flex-col gap-5 sm:gap-6">
+      <div className="flex flex-col gap-3 pb-3 border-b border-[var(--border-structural)]">
         <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Filter case studies by category">
           {CATEGORIES.map((cat) => {
             const isActive = activeCat === cat.id;
@@ -64,13 +74,21 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
           })}
         </div>
 
-        <div className="flex items-center self-end sm:self-auto rounded-lg border border-border-structural bg-surface-secondary p-0.5 shrink-0" role="group" aria-label="Layout switcher">
-          <button type="button" onClick={() => setViewMode("grid")} aria-label="Grid layout" aria-pressed={viewMode === "grid"} className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${viewMode === "grid" ? "bg-surface-elevated text-fg-accent border border-accent-border shadow-card" : "text-text-secondary hover:text-text-primary border border-transparent"}`}>
-            <PhosphorSquaresFour className="w-4 h-4 shrink-0" aria-hidden="true" />
-          </button>
-          <button type="button" onClick={() => setViewMode("list")} aria-label="List layout" aria-pressed={viewMode === "list"} className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${viewMode === "list" ? "bg-surface-elevated text-fg-accent border border-accent-border shadow-card" : "text-text-secondary hover:text-text-primary border border-transparent"}`}>
-            <PhosphorList className="w-4 h-4 shrink-0" aria-hidden="true" />
-          </button>
+        <div className="flex items-center justify-between gap-2 pt-2 border-t border-border-muted">
+          <span className="text-xs font-medium text-text-secondary min-w-0">
+            {countCopy}
+          </span>
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-[11px] font-mono text-text-muted hidden sm:inline">View:</span>
+            <div className="flex items-center rounded-lg border border-border-structural bg-surface-secondary p-0.5 shrink-0" role="group" aria-label="Layout switcher">
+              <button type="button" onClick={() => setViewMode("grid")} aria-label="Grid layout" aria-pressed={viewMode === "grid"} className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${viewMode === "grid" ? "bg-surface-elevated text-fg-accent border border-accent-border shadow-card" : "text-text-secondary hover:text-text-primary border border-transparent"}`}>
+                <PhosphorSquaresFour className="w-4 h-4 shrink-0" aria-hidden="true" />
+              </button>
+              <button type="button" onClick={() => setViewMode("list")} aria-label="List layout" aria-pressed={viewMode === "list"} className={`p-2.5 rounded min-h-[44px] min-w-[44px] inline-flex items-center justify-center transition-colors ${viewMode === "list" ? "bg-surface-elevated text-fg-accent border border-accent-border shadow-card" : "text-text-secondary hover:text-text-primary border border-transparent"}`}>
+                <PhosphorList className="w-4 h-4 shrink-0" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -80,33 +98,19 @@ export function ProjectCatalog({ caseStudies }: { caseStudies: CaseStudyItem[] }
         </div>
       ) : (
         <div className="flex flex-col divide-y divide-border-structural border border-border-structural rounded-lg bg-surface-elevated overflow-hidden shadow-card">
-          {filtered.map((study) => (
-            <article key={study.slug} className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-surface-secondary transition-colors">
-              <div className="flex flex-col gap-1 max-w-xl">
-                <div className="flex items-center gap-2">
-                  <Link href={`/work/${study.slug}`} className="text-sm font-semibold text-text-primary hover:text-fg-accent hover:underline transition-colors">{study.title}</Link>
-                  <span className="text-[11px] font-mono text-text-muted whitespace-nowrap">({formatMonthYear(study.published_at)})</span>
-                </div>
-                <p className="text-xs text-text-secondary line-clamp-2">{study.summary}</p>
-                <div className="flex flex-wrap gap-1 mt-1">
-                  {study.tech_stack.map((t) => (<TechBadge key={t} name={t} size="sm" />))}
-                </div>
-              </div>
-              <Link href={`/work/${study.slug}`} className="inline-flex items-center justify-center gap-1 text-xs font-semibold linkhunt-btn-primary px-3 py-1.5 shrink-0 min-h-[44px] w-full sm:w-auto">
-                <span>View Project</span><PhosphorArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </article>
-          ))}
+          {filtered.map((study) => (<ProjectListCard key={study.slug} study={study} />))}
         </div>
       )}
 
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-3 border-t border-[var(--border-structural)] text-xs font-mono text-[var(--text-secondary)]">
-        <span>Showing {filtered.length} of {caseStudies.length} projects</span>
-        <div className="flex items-center gap-1">
-          <span className="px-2 py-1 rounded bg-[var(--surface-secondary)] border border-[var(--border-structural)] text-[var(--text-primary)] font-semibold">1</span>
-          <span>of 1</span>
+      {pageCount > 1 && (
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-3 border-t border-[var(--border-structural)] text-xs font-mono text-[var(--text-secondary)]">
+          <span>{countCopy}</span>
+          <div className="flex items-center gap-1">
+            <span className="px-2 py-1 rounded bg-[var(--surface-secondary)] border border-[var(--border-structural)] text-[var(--text-primary)] font-semibold">1</span>
+            <span>of {pageCount}</span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

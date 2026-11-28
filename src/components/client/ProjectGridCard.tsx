@@ -5,14 +5,13 @@ import { PhosphorArrowRight, PhosphorShieldCheck } from "../icons";
 import { TechBadge } from "../shared/TechBadge";
 import type { CaseStudyItem } from "./ProjectCatalog";
 import { formatMonthYear } from "../../lib/utils/formatDate";
-
-const CASE_STUDY_IMAGES: Record<string, string> = {
-  "employee-task-management": "/images/case-study-task-management.jpg",
-  "gift-delivery-ecommerce": "/images/case-study-ecommerce.jpg",
-};
+import {
+  CASE_STUDY_IMAGES,
+  getCaseStudyCategory,
+} from "../../lib/utils/caseStudyMeta";
 
 export function ProjectGridCard({ study }: { study: CaseStudyItem }) {
-  const categoryLabel = study.slug === "employee-task-management" ? "Backend Architecture" : "Full-Stack Web";
+  const categoryLabel = getCaseStudyCategory(study.slug);
   const formattedDate = formatMonthYear(study.published_at);
 
   return (
@@ -50,9 +49,9 @@ export function ProjectGridCard({ study }: { study: CaseStudyItem }) {
           ))}
         </div>
       </div>
-      <div className="flex items-center justify-between pt-3 border-t border-border-structural text-xs">
-        <span className="text-text-muted font-mono text-[11px]">{formattedDate}</span>
-        <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1.5 text-xs font-semibold text-fg-accent hover:underline min-h-[44px]">
+      <div className="mt-auto flex items-center justify-between pt-3 border-t border-border-structural text-xs">
+        <span className="text-text-muted font-mono text-[11px] whitespace-nowrap shrink-0">{formattedDate}</span>
+        <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1.5 text-xs font-semibold text-fg-accent hover:underline min-h-[44px] whitespace-nowrap shrink-0">
           <span>View Case Study</span>
           <PhosphorArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
         </Link>

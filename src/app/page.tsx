@@ -10,21 +10,20 @@ import { TechBadge } from "../components/shared/TechBadge";
 import { SubstrateCard } from "../components/shared/SubstrateCard";
 import { WritingSection } from "../components/shared/WritingSection";
 import { formatMonthYear } from "../lib/utils/formatDate";
+import {
+  CASE_STUDY_IMAGES,
+  getCaseStudyCategory,
+} from "../lib/utils/caseStudyMeta";
 
 export const dynamic = "force-static";
-
-const CASE_STUDY_IMAGES: Record<string, string> = {
-  "employee-task-management": "/images/case-study-task-management.jpg",
-  "gift-delivery-ecommerce": "/images/case-study-ecommerce.jpg",
-};
 
 export default function HomePage() {
   const caseStudies = getAllCaseStudies();
 
   return (
-    <div className="flex flex-col gap-6 sm:gap-10 min-w-0">
+    <div className="flex flex-col gap-5 sm:gap-9 min-w-0">
       {/* Identity & Profile Hero */}
-      <section className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6 pb-6 sm:pb-8 border-b border-border-structural min-w-0">
+      <section className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 pb-4 sm:pb-7 border-b border-border-structural min-w-0">
         <div className="flex flex-col gap-3.5 max-w-xl border-l-2 border-accent-primary pl-4 sm:pl-5">
           <div className="flex flex-wrap items-center gap-2.5">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-status-success-bg text-status-success-fg border border-status-success-border">
@@ -86,7 +85,7 @@ export default function HomePage() {
               <p className="text-sm text-text-secondary py-6">No production case studies available.</p>
             )}
             {caseStudies.map((study, idx) => (
-              <article key={study.slug} className="group linkhunt-card p-5 sm:p-6 flex flex-col gap-3.5">
+              <article key={study.slug} className="group linkhunt-card p-4 sm:p-6 flex flex-col gap-3">
                 <Link
                   href={`/work/${study.slug}`}
                   tabIndex={-1}
@@ -108,11 +107,14 @@ export default function HomePage() {
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">{study.summary}</p>
-                <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-border-structural">
-                  <div className="flex flex-wrap gap-1.5">
-                    {study.tech_stack.map((t) => (<TechBadge key={t} name={t} />))}
-                  </div>
-                  <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-fg-accent hover:underline min-h-[44px]">
+                <div className="flex flex-wrap gap-1.5">
+                  {study.tech_stack.map((t) => (<TechBadge key={t} name={t} />))}
+                </div>
+                <div className="mt-auto flex items-center justify-between gap-2 pt-2.5 border-t border-border-structural text-xs">
+                  <span className="text-[11px] font-mono text-fg-accent font-medium">
+                    {getCaseStudyCategory(study.slug)}
+                  </span>
+                  <Link href={`/work/${study.slug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-fg-accent hover:underline min-h-[44px] whitespace-nowrap shrink-0">
                     <span>View Project</span>
                     <PhosphorArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                   </Link>
